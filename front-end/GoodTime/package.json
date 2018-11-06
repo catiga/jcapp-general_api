@@ -1,0 +1,38 @@
+{
+  "name": "tencent",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "better-scroll": "^1.12.6",
+    "iview": "^3.0.0",
+    "js-cookie": "^2.2.0",
+    "vue": "^2.5.16",
+    "vue-awesome-swiper": "^3.1.3",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-rc.10",
+    "@vue/cli-service": "^3.0.0-rc.10",
+    "fetch-jsonp": "^1.1.3",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
