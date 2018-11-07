@@ -70,7 +70,8 @@
 			...mapState(['logo']),
 		},
 		mounted() {
-			this.logo = JSON.parse(sessionStorage.getItem("logo") || {});
+			// this.logo = JSON.parse(sessionStorage.getItem("logo") || {});
+			this.logo = sessionStorage.getItem("logo");
 			console.log(this.logo);
 		},
 		methods:{
