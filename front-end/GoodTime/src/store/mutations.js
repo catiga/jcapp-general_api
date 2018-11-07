@@ -33,6 +33,10 @@ const mutations = {
     [types.TOGGLE_COMBO_SHOW](state, data) {
         state.comboShow = data
     },
+    //获取logo
+    [types.GET_LOGO](state, data) {
+        state.logo = data
+    }
 }
 
 export default mutations

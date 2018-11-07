@@ -8,5 +8,7 @@ const state = {
     firCatId: -1,
     // 套餐弹窗展示
     comboShow: false,
+    //logo信息
+    logo: {}
 }
 export default state
