@@ -4,6 +4,20 @@
   </div>
 </template>
 
+<script>
+import {mapActions} from 'vuex'
+
+export default {
+  created() {
+    this.getLogo();
+  },
+  methods: {
+    ...mapActions(['getLogo']),
+  }
+}
+</script>
+
+
 <style>
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;

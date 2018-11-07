@@ -108,8 +108,6 @@ export const initFirCatId = function({commit, state}) {
 //获取用户信息
 export const getLogo = function({commit, state}) {
     userData().then(res => {
-        let res_str = JSON.stringify(res);
-        sessionStorage.setItem("logo", res_str);
         commit(types.GET_LOGO, res);
     })
 }

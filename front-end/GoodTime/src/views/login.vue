@@ -2,7 +2,7 @@
 	<div><!-- 固定 容器-->
 		<div class="login-top">
 			<!-- <img class="login-top-logo" src="http://pe1s.static.pdr365.com/timg.jpeg" > -->
-			<img class="login-top-logo" :src="logo_img" >
+			<img v-if="logo" class="login-top-logo" :src="logo.logo" >
 			<p class="login-top-title">欢迎来到腾讯好时光</p>	
 		</div>
 		<div class="login-mid">
@@ -54,9 +54,6 @@
 				time:'获取验证码',
 				num:'',
 				apid:'',
-				logo: {},
-				logo_img: ""
-
 			};
 		},beforeRouteEnter:function(to, from, next){
 			//当组件加载时自动调用此函数 函数结尾必须next();
@@ -68,11 +65,6 @@
 		},
 		computed: {
 			...mapState(['logo']),
-		},
-		mounted() {
-			// this.logo = JSON.parse(sessionStorage.getItem("logo") || {});
-			this.logo = sessionStorage.getItem("logo");
-			console.log(this.logo);
 		},
 		methods:{
 			back:function(){

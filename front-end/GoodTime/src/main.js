@@ -22,10 +22,6 @@ Object.keys(filters).forEach(key => {
 Vue.use(VueAwesomeSwiper)
 Vue.use(iView)
 
-store.dispatch('getLogo')
-
-
-
 
 Vue.config.productionTip = false
 
