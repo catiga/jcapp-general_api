@@ -302,6 +302,9 @@
                 this.isShow = false;
             },
             godo_seats:function(planId,lastUpdateTime,hallId,plan_date){
+            	if(!lastUpdateTime) {
+            		lastUpdateTime = '0';
+            	}
                 this.$router.push({name: 'seats', params: { planId: planId, lastUpdateTime: lastUpdateTime, hallId: hallId,cinemaId: this.cinemaId, plan_date : plan_date}})
             },
             godo_cinemas:function(){
