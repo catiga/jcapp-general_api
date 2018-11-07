@@ -54,6 +54,7 @@
 				time:'获取验证码',
 				num:'',
 				apid:'',
+				logo: {},
 				logo_img: ""
 
 			};
@@ -69,8 +70,8 @@
 			...mapState(['logo']),
 		},
 		mounted() {
+			this.logo = JSON.parse(sessionStorage.getItem("logo") || {});
 			console.log(this.logo);
-			this.logo_img = this.logo.logo;
 		},
 		methods:{
 			back:function(){
