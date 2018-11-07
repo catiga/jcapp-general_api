@@ -52,7 +52,7 @@
 				time:'获取验证码',
 				num:'',
 				apid:'',
-				logo: this.logo_info.logo
+				logo: ""
 
 			};
 		},beforeRouteEnter:function(to, from, next){
@@ -67,6 +67,13 @@
 			logo_info() {
 				console.log(this.$store.state.logo);
 				return this.$store.state.logo
+			}
+		},
+		mounted() {
+			if(this.logo_info.logo) {
+				console.log('get logo');
+			} else {
+				console.log('no logo');
 			}
 		},
 		methods:{
