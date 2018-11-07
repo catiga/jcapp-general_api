@@ -1,7 +1,8 @@
 <template>
 	<div><!-- 固定 容器-->
 		<div class="login-top">
-			<img class="login-top-logo" src="http://pe1s.static.pdr365.com/timg.jpeg" >
+			<!-- <img class="login-top-logo" src="http://pe1s.static.pdr365.com/timg.jpeg" > -->
+			<img class="login-top-logo" :src="logo_info.logo" >
 			<p class="login-top-title">欢迎来到腾讯好时光</p>	
 		</div>
 		<div class="login-mid">
@@ -60,7 +61,13 @@
 		},created:function(){
 			//组件加载完成会自动调用此方法
 			this.apid = this.$route.params.apid;
-		},methods:{
+		},
+		computed: {
+			logo_info() {
+				return this.$store.state.logo
+			}
+		},
+		methods:{
 			back:function(){
 				//自定义返回上一页函数 可以copy到每一个组件中方便使用
 				router.go(-1);
