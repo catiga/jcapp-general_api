@@ -14,4 +14,6 @@ export const LISTEN_CART = 'LISTEN_CART'
 
 export const TOGGLE_COMBO_SHOW = 'TOGGLE_COMBO_SHOW'
 
+export const GET_LOGO = 'GET_LOGO'
+
 

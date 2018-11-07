@@ -12,6 +12,7 @@ import './assets/js/rem'
 import 'swiper/dist/css/swiper.css'
 
 import filters from '@/common/filter'
+// import GLOBAL from '@/common/global.js'
 
 Object.keys(filters).forEach(key => {
 	Vue.filter(key, filters[key])
@@ -20,6 +21,11 @@ Object.keys(filters).forEach(key => {
 
 Vue.use(VueAwesomeSwiper)
 Vue.use(iView)
+
+store.dispatch('getLogo')
+
+
+
 
 Vue.config.productionTip = false
 

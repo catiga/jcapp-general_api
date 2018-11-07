@@ -1,8 +1,9 @@
 import * as types from './mutation-types'
 import {
     groupListData,
-    goodsListData
+    goodsListData,
 } from '@/api/goods'
+import {userData} from '@/api/logo'
 
 //获取卖品分组
 export const getGroupList = function ({commit},routeName) {
@@ -102,6 +103,14 @@ export const ToggleComboShow = function ({ commit, state }) {
 //初始化firCatId
 export const initFirCatId = function({commit, state}) {
     commit(types.SET_FIR_CAT_ID, -1);
+}
+
+//获取用户信息
+export const getLogo = function({commit, state}) {
+    userData().then(res => {
+        console.log(res);
+        commit(types.GET_LOGO);
+    })
 }
 
 
