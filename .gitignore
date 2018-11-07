@@ -130,3 +130,5 @@ target/
 *.njsproj
 *.sln
 
+/.classpath
+/.project
