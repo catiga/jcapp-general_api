@@ -108,7 +108,6 @@ export const initFirCatId = function({commit, state}) {
 //获取用户信息
 export const getLogo = function({commit, state}) {
     userData().then(res => {
-        console.log(res);
         commit(types.GET_LOGO, res);
     })
 }

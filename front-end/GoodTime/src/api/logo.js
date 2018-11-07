@@ -5,7 +5,6 @@ export const userData = () => {
     let obj = {};
     return axios.get(url).then(res => {
         obj = res.data;
-        console.log(obj);
         return obj;
     })
 }
