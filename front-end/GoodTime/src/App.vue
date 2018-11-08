@@ -4,21 +4,6 @@
   </div>
 </template>
 
-<script>
-import {mapActions} from 'vuex'
-
-export default {
-  beforeRouteEnter(to,form,next) {
-    this.getLogo();
-    next();
-  },
-  methods: {
-    ...mapActions(['getLogo']),
-  }
-}
-</script>
-
-
 <style>
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
