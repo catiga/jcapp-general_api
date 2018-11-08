@@ -36,14 +36,13 @@ module.exports = {
       .set('_conf', resolve('config'))
   },
 
-  // configureWebpack: {
-  //   externals: {
-  //     'vue': 'Vue',
-  //     'vue-router': 'VueRouter',
-  //     'vuex': 'Vuex',
-  //     'iview': 'iview',
-  //   }
-  // },
+  configureWebpack: {
+    externals: {
+      'vue': 'Vue',
+      'vue-router': 'VueRouter',
+      'vuex': 'Vuex',
+    }
+  },
 
   //设置跨域代理
   devServer: {
