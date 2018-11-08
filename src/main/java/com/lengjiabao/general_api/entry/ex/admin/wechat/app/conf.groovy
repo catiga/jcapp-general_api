@@ -39,7 +39,7 @@ IndexFull index = new IndexFull();
 
 def pid = GlobalHolder.pid;
 def token = JC.request.param('token');
-SimpleAjax ret = JC.internal.call(SimpleAjax, 'project', '/auth/check_token', [token:token,pid:pid]);
+SimpleAjax ret = JC.internal.call(SimpleAjax, 'project', '/auth/check_token_with_pid', [token:token,pid:pid]);
 if(!ret.available) {
 	return index;
 }

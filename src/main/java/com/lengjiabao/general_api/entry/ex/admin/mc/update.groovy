@@ -5,6 +5,10 @@ import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 
 def token = JC.request.param('token');
+SimpleAjax token_ret = JC.internal.call(SimpleAjax, 'project', '/auth/check_token_with_pid', [token:token]);
+if(!token_ret.available) {
+	return GeneralPub.comfail('no_login,登录状态已过期');
+}
 
 def id = JC.request.param('id');
 def name = JC.request.param('name');
