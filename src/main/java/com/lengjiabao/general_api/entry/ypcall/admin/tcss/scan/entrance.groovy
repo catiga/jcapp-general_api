@@ -59,6 +59,12 @@ for(x in seats) {
 }
 ticket_data['o_seats'] = o_seats;
 
+def orderRemote = [:];
+orderRemote['ticket_flag1'] = tcode;
+orderRemote['ticket_flag2'] = vcode;
+
+ticket_data['orderRemote'] = orderRemote;
+
 doo.data = ticket_data;
 
 return GeneralPub.success(doo);
