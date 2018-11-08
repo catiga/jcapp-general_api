@@ -10,8 +10,46 @@ import com.jeancoder.core.http.JCRequest
 import com.jeancoder.app.sdk.source.RequestSource
 
 
-//def date_sort_result = new LinkedList();
-//println date_sort_result.get(0);
+def sort_plans(def now_plans) {
+	def date_sort_result = new LinkedList();
+	for(x in now_plans) {
+		if(!date_sort_result) {
+			date_sort_result += x;
+		}
+		def last_one = date_sort_result.getLast();
+		def first_one = date_sort_result.getFirst();
+		
+		if(last_one['startTime']<=x['startTime']) {
+			date_sort_result += x;
+		} else {
+			def sort_index = 0;
+			def it = date_sort_result.iterator();
+			while(it.hasNext()) {
+				def y = it.next();
+				if(x['startTime']>=y['startTime']) {
+					sort_index++;
+				} else {
+					if(sort_index) {
+						date_sort_result.add(sort_index - 1, x);
+					} else {
+						date_sort_result.add(x);
+					}
+				}
+			}
+		}
+	}
+	return date_sort_result;
+}
+
+//def now_plans = [];
+//now_plans.add([start_Time:'2018-11-01', 'name':'你好']);
+//now_plans.add([start_Time:'2018-11-02', 'name':'你好']);
+//now_plans.add([start_Time:'2018-11-07', 'name':'你好']);
+//now_plans.add([start_Time:'2018-11-08', 'name':'你好']);
+//now_plans.add([start_Time:'2018-11-03', 'name':'你好']);
+//now_plans.add([start_Time:'2018-11-06', 'name':'你好']);
+//
+//println sort_plans(now_plans);
 //return;
 
 def cinema_id = JC.request.param('cinema_id');
@@ -68,34 +106,4 @@ Result result = new Result();
 return result.setData(aaaa);
 
 
-def sort_plans(def now_plans) {
-	def date_sort_result = new LinkedList();
-	for(x in now_plans) {
-		if(!date_sort_result) {
-			date_sort_result += x;
-		}
-		def last_one = date_sort_result.getLast();
-		def first_one = date_sort_result.getFirst();
-		
-		if(last_one['startTime']<=x['startTime']) {
-			date_sort_result += x;
-		} else {
-			def sort_index = 0;
-			def it = date_sort_result.iterator();
-			while(it.hasNext()) {
-				def y = it.next();
-				if(x['startTime']>=y['startTime']) {
-					sort_index++;
-				} else {
-					if(sort_index) {
-						date_sort_result.add(sort_index - 1, x);
-					} else {
-						date_sort_result.add(x);
-					}
-				}
-			}
-		}
-	}
-	return date_sort_result;
-}
 
