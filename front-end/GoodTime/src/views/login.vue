@@ -2,8 +2,8 @@
 	<div><!-- 固定 容器-->
 		<div class="login-top">
 			<!-- <img class="login-top-logo" src="http://pe1s.static.pdr365.com/timg.jpeg" > -->
-			<img v-if="logo" class="login-top-logo" :src="logo.logo" >
-			<p class="login-top-title">欢迎来到腾讯好时光</p>	
+			<img v-if="logo_img" class="login-top-logo" :src="logo_img" >
+			<p v-if="logo" class="login-top-title">{{logo.proj_name}}</p>	
 		</div>
 		<div class="login-mid">
 			<form autocomplete="off" method="POST" class="form-wrapper" id="login-formWrapper">
@@ -54,6 +54,7 @@
 				time:'获取验证码',
 				num:'',
 				apid:'',
+				logo_img: ""
 			};
 		},beforeRouteEnter:function(to, from, next){
 			//当组件加载时自动调用此函数 函数结尾必须next();
@@ -65,9 +66,6 @@
 		},
 		computed: {
 			...mapState(['logo']),
-		},
-		mounted() {
-			console.log(this.logo);
 		},
 		methods:{
 			back:function(){
@@ -145,6 +143,14 @@
 		        	}
 		        });
 		        page.login = false;
+			}
+		},
+		watch: {
+			logo() {
+				if(this.logo) {
+					console.log(this.logo);
+					this.logo_img = this.logo.logo;
+				}
 			}
 		}
 	}
