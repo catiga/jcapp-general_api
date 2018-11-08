@@ -1,4 +1,4 @@
-package com.lengjiabao.general_api.entry.ypcall.admin.cashier
+package com.lengjiabao.general_api.entry.ex.admin.cashier
 
 import com.jeancoder.app.sdk.JC
 import com.lengjiabao.general_api.ready.common.SimpleAjax
@@ -9,8 +9,16 @@ def tnum = JC.request.param('tnum');
 def tid = JC.request.param('tid');
 
 def pid = GlobalHolder.pid;
+def token = JC.request.param('token');
+SimpleAjax ret = JC.internal.call(SimpleAjax, 'project', '/auth/check_token_with_pid', [token:token,pid:pid]);
+if(!ret.available) {
+	return GeneralPub.comfail('no_login');
+}
 
-SimpleAjax trade_data = JC.internal.call(SimpleAjax, 'trade', '/incall/check_trade', [tnum:tnum,pid:pid]);
+//重新定义pid，取当前用户管理归属项目
+def aim_pid = ret.data['user']['pid'];
+
+SimpleAjax trade_data = JC.internal.call(SimpleAjax, 'trade', '/incall/check_trade', [tnum:tnum,pid:aim_pid]);
 
 if(!trade_data.available) {
 	def code = trade_data.messages[0];
@@ -37,3 +45,4 @@ for(x in pays) {
 }
 
 return GeneralPub.success([trade, available_pays]);
+

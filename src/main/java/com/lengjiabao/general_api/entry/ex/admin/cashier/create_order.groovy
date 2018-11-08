@@ -1,5 +1,5 @@
 // 创建卖品订单
-package com.lengjiabao.general_api.entry.ypcall.admin.cashier
+package com.lengjiabao.general_api.entry.ex.admin.cashier
 
 import com.jeancoder.app.sdk.JC
 import com.jeancoder.app.sdk.source.CommunicationSource
@@ -15,14 +15,18 @@ import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 def pid = GlobalHolder.pid;
 
 def token = JC.request.param('token');
-SimpleAjax ret = JC.internal.call(SimpleAjax, 'project', '/auth/check_token', [token:token,pid:pid]);
+SimpleAjax ret = JC.internal.call(SimpleAjax, 'project', '/auth/check_token_with_pid', [token:token]);
 if(!ret.available) {
 	return GeneralPub.comfail('no_login');
 }
+
+//重新定义pid，取当前用户管理归属项目
+def aim_pid = ret.data['user']['pid'];
+
 def gs = JC.request.param('gs');
 def s_id = JC.request.param('s_id');
 def tnum = '';
-ret = JC.internal.call(SimpleAjax, 'scm', '/pay/create_order', [gs:gs,s_id:s_id,tnum:tnum,token:token,pid:pid]);
+ret = JC.internal.call(SimpleAjax, 'scm', '/pay/create_order', [gs:gs,s_id:s_id,tnum:tnum,token:token,pid:aim_pid]);
 
 if(!ret.available) {
 	def msg = ret.messages[0];
