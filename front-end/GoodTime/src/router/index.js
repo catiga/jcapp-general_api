@@ -14,3 +14,5 @@ router.beforeEach((to, from, next) => {
     store.dispatch('getLogo');
     next();
 })
+
+export default router
