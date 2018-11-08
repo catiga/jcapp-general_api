@@ -79,7 +79,13 @@ def sort_plans(def now_plans) {
 				if(x['startTime']>=y['startTime']) {
 					sort_index++;
 				} else {
-					date_sort_result.add(sort_index - 1, x);
+					try {
+						date_sort_result.add(sort_index - 1, x);
+					}catch(any) {
+						println sort_index;
+						println x;
+						any.printStackTrace();
+					}
 				}
 			}
 		}
