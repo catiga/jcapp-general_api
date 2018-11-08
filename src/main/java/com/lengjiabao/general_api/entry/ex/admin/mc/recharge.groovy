@@ -17,6 +17,9 @@ if(!ret.available) {
 //重新定义pid，取当前用户管理归属项目
 def aim_pid = ret.data['user']['pid'];
 
+def op_user_id = ret.data['user']['id'];
+def op_user_name = ret.data['user']['name'];
+
 def id = JC.request.param('id');
 def mc_num = JC.request.param('mc_num');
 def mch_id = JC.request.param('mch_id');
@@ -34,7 +37,7 @@ if(r_amount==null) {
 
 print 'aim_pid===' + aim_pid;
 
-SimpleAjax result = JC.internal.call(SimpleAjax, 'crm', '/h5/mc/createRechargeAmountOrder', [pid:aim_pid,mc_num:mc_num,h_id:mch_id,r_amount:r_amount]);
+SimpleAjax result = JC.internal.call(SimpleAjax, 'crm', '/h5/mc/createRechargeAmountOrder', [pid:aim_pid,mc_num:mc_num,h_id:mch_id,r_amount:r_amount,op_user_id:op_user_id,op_user_name:op_user_name]);
 
 if(!result.available) {
 	def err_code = result.messages[0];
