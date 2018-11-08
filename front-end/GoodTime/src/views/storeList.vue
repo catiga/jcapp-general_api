@@ -76,7 +76,6 @@
     import shopCart from '_c/shopCart/shopCart.vue'
     import comboCart from '_c/comboCart/comboCart.vue'
     import tabBottom from '_c/tabBottom/tabBottom.vue'
-    import {mapState,mapActions} from 'vuex'
     
     import {
         mapState,
