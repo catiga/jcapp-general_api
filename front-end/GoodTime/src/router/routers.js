@@ -33,8 +33,8 @@ import couponsForOrder from '@/views/couponsForOrder.vue'
 import couponsForGoods from '@/views/couponsForGoods.vue'
 
 export default [
-      { path: '/index',name: 'index', component: index },
-      { path: '/', name: 'storeList', component: storeList },
+      { path: '/',name: 'index', component: index },
+      { path: '/index', name: 'storeList', component: storeList },
       { path: '/cinemaList/:mid',name: 'cinemaList', component: cinemaList },
       { path: '/videoDetails/:mid/:index',name: 'videoDetails', component: videoDetails },
       { path: '/moviecinemaList/:mid',name: 'moviecinemaList', component: moviecinemaList },
