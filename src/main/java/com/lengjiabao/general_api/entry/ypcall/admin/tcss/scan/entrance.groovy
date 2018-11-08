@@ -69,10 +69,10 @@ for(x in seats) {
 	os['seat_sc'] = x['seat_sc'];
 	os['handle_fee'] = '0';
 	
-	if (new BigDecimal(each).compareTo(new BigDecimal(x[0]['pub_fee'].toString())) >= 0 ) {
+	if (new BigDecimal(each).compareTo(new BigDecimal(x['pub_fee'].toString())) >= 0 ) {
 		os['sale_fee'] = each;
 	} else {
-		os['sale_fee'] =x['pub_fee'];
+		os['sale_fee'] = x['pub_fee'];
 	}
 	o_seats.add(os);
 }
