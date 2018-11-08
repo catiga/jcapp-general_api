@@ -76,6 +76,8 @@
     import shopCart from '_c/shopCart/shopCart.vue'
     import comboCart from '_c/comboCart/comboCart.vue'
     import tabBottom from '_c/tabBottom/tabBottom.vue'
+    import {mapState,mapActions} from 'vuex'
+    
     import {
         mapState,
         mapGetters,
@@ -103,7 +105,7 @@
             next();
         },
         computed: {
-            ...mapState(['groupList', 'goodsList', 'firCatId', 'cartList', 'comboShow']),
+            ...mapState(['groupList', 'goodsList', 'firCatId', 'cartList', 'comboShow', 'logo']),
         },
         created() {
         	let store_id = this.$route.params.sid;

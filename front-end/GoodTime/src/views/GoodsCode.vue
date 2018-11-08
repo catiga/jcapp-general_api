@@ -78,7 +78,7 @@
 			    <div class="my-card marginy-cardbot5  my-module-5" style="float: left;width: 100%;border-top: .18em dashed #efeff4;border-radius: 0 0 .18rem .18rem;">
 			    	<p class="my-module-5-title" style="border-bottom: 1px solid #efeff4;padding-bottom: .2rem;margin: .3rem .3rem .2rem .3rem;color: #ccc;">购买须知</p>
 			    	<p class="my-module-5-clause" style="color: #000;font-size: .28rem;">使用时间</p>
-			    	<p class="my-module-5-clause">腾讯券24小时可用</p>
+			    	<p class="my-module-5-clause">券24小时可用</p>
 			    	<!-- <p class="my-module-5-clause">3、凭打印好的纸质电影票，检票入场观影。</p> -->
 			    </div>
 			</div>

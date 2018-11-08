@@ -57,7 +57,7 @@
                 <a class="weui-cell myweui-cell vip-cell weui-cell_access" href="javascript:;">
                     <div class="weui-cell__bd">
                         <div></div>
-                        <p class="vip-cell-title" style="font-size: .3rem;">腾讯影院会员卡</p>
+                        <p class="vip-cell-title" style="font-size: .3rem;">{{logo.proj_name}}会员卡</p>
                         <p class="vip-cell-con">开卡影票最低<span>25元起</span></p>
                     </div>
                     <div class="weui-cell__ft">
@@ -175,7 +175,7 @@
                         1、由于设备故障等不可抗力因素，存在少量场次取消的情况，会进行退票退款<br /> 
                         2、由于影院系统不稳定等因素，存在出票失败的情况，会进行退款<br /> 
                         3、取票码不再通过短信发送，可在“钱包-卡券”或“我的-电影票”中查看<br /> 
-                        4、下单即代表你同意<a href="javascript:void(0);" style="color: #00c203">《腾讯好时光用户服务协议》</a><br /> 
+                        4、下单即代表你同意<a href="javascript:void(0);" style="color: #00c203">《{{logo.proj_name}}用户服务协议》</a><br /> 
                         5、订单编号{{movieDetails.order_no}}
                     </p>
                 </div>
@@ -261,6 +261,8 @@
 </template>
 <script>
     import Cookies from 'js-cookie'
+    import {mapState,mapActions} from 'vuex'
+    
     export default {
         data() {
             return {
@@ -292,6 +294,9 @@
             	this.o_c = JSON.parse(o_c_str);
             }
         },
+        computed: {
+			...mapState(['logo']),
+		},
         mounted: function () {
             this.on = Cookies.get('orderNo');
             this.tnum = this.$route.params.tnum;
