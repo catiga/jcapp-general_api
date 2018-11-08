@@ -30,7 +30,9 @@ try {
 		def date_sort_result = new LinkedList();
 		
 		for(x in date_list) {
-			x['plans'] = sort_plans(x['plans']);
+			def sort_plans = sort_plans(x['plans']);
+			x['plans'] = sort_plans;
+			
 			if(!date_sort_result) {
 				date_sort_result += x;
 			}
