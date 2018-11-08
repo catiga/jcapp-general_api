@@ -4,6 +4,7 @@ import com.jeancoder.app.sdk.JC
 import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
+import com.lengjiabao.general_api.ready.util.MoneyUtil
 import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 
 def token = JC.request.param('token');
@@ -46,6 +47,15 @@ ticket_data['pay_amount'] = order['pay_amount'];
 ticket_data['ticket_sum'] = order['ticket_sum'];
 ticket_data['a_time'] = order['a_time'];
 
+def each = MoneyUtil.divide(order['pay_amount'], order['ticket_sum'].toString());
+if (new BigDecimal(each).compareTo(new BigDecimal(seats[0]['pub_fee'].toString())) >= 0 ) {
+	ticket_data['total_amount'] = each;
+} else {
+	ticket_data['total_amount'] =seats[0]['pub_fee'];
+}
+
+
+
 def o_seats = [];
 for(x in seats) {
 	def os = [:];
@@ -56,7 +66,6 @@ for(x in seats) {
 	os['seat_sc'] = x['seat_sc'];
 	os['handle_fee'] = '0';
 	os['sale_fee'] = x['sale_fee'];
-	
 	o_seats.add(os);
 }
 ticket_data['o_seats'] = o_seats;
