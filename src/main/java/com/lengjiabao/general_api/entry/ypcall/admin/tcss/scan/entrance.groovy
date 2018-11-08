@@ -48,7 +48,7 @@ ticket_data['pay_amount'] = new BigDecimal(order['pay_amount']).divide(new BigDe
 ticket_data['ticket_sum'] = order['ticket_sum'];
 ticket_data['a_time'] = order['a_time'];
 
-def each = MoneyUtil.divide(order['pay_amount'], order['ticket_sum'].toString());
+def each = MoneyUtil.divide(order['pay_amount'].toString(), order['ticket_sum'].toString());
 if (new BigDecimal(each).compareTo(new BigDecimal(seats[0]['pub_fee'].toString())) >= 0 ) {
 	ticket_data['total_amount'] = each;
 	ticket_data['pay_amount'] = each;
