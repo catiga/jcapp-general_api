@@ -4,6 +4,7 @@ import com.jeancoder.app.sdk.JC
 import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
+import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 
 def token = JC.request.param('token');
 def tcode = JC.request.param('tcode');
@@ -59,8 +60,7 @@ ticket_data['o_seats'] = o_seats;
 
 doo.data = ticket_data;
 
-println JackSonBeanMapper.toJson(doo);
-return doo;
+return GeneralPub.success(doo);
 
 //try{
 //	HpOrderDto order = ypchandler_hp.tcss_my_order_detail_by_tvcode(tcode,vcode);
