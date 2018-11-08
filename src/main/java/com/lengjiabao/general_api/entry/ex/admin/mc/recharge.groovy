@@ -32,6 +32,8 @@ if(r_amount==null) {
 	return GeneralPub.comfail('充值金额参数错误');
 }
 
+print 'aim_pid===' + aim_pid;
+
 SimpleAjax result = JC.internal.call(SimpleAjax, 'crm', '/h5/mc/createRechargeAmountOrder', [pid:aim_pid,mc_num:mc_num,h_id:mch_id,r_amount:r_amount]);
 
 if(!result.available) {
