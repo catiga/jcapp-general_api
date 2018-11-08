@@ -43,8 +43,8 @@ ticket_data['plan_time'] = order['plan_time'];
 ticket_data['film_name'] = order['film_name'];
 ticket_data['handle_fee'] = '0';
 ticket_data['order_no'] = order['order_no'];
-ticket_data['total_amount'] = order['total_amount'];
-ticket_data['pay_amount'] = order['pay_amount'];
+ticket_data['total_amount'] = new BigDecimal(order['total_amount']).divide(new BigDecimal(100)).setScale(2).toString();
+ticket_data['pay_amount'] = new BigDecimal(order['pay_amount']).divide(new BigDecimal(100)).setScale(2).toString();
 ticket_data['ticket_sum'] = order['ticket_sum'];
 ticket_data['a_time'] = order['a_time'];
 
