@@ -74,7 +74,11 @@ try {
 			Collections.sort(x['plans'], new Comparators() {
 				public int compare(def o1, def o2) {
 					// 升序
-					 return o1['startTime'].compareTo(o2['startTime']);
+					if(o1['startTime']>=o2['startTime']) {
+						return 1;
+					} else {
+						return -1;
+					}
 				}
 			});
 			
