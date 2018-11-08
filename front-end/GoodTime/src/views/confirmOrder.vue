@@ -507,17 +507,16 @@
                 let t_num = this.tnum;
                 this.$router.push({name: "couponsForOrder", params: {order_no:num,tnum:t_num}});
             },
+            /**
+             * changePrice - 选择支付方式修改价格
+             * 
+             * @param {String} ct - 支付方式  （会员卡支付 101001 , 微信支付 201101） 
+             * @param {String} tnum - 交易编号
+             * @param {String} unicode - 会员标识 
+             * @param {String} coupons - 优惠券列表 (逗号分割)
+             * 
+             */
             changePrice(ct)  {
-                /**
-                 * 选择支付方式修改价格
-                 * 
-                 * @param {String} ct - 支付方式  （会员卡支付 101001 , 微信支付 201101） 
-                 * @param {String} tnum - 交易编号
-                 * @param {String} unicode - 会员标识 
-                 * @param {String} coupons - 优惠券列表 (逗号分割)
-                 * 
-                 */
-
                 this.loading = true;
                 this.pay_methods = ct;
 
@@ -531,6 +530,8 @@
                     if (d.code == 0) {
                         this.movieDetails = d.data;
                     }
+                }).catch(e => {
+                    this.loading = false;
                 })
             },
         }
