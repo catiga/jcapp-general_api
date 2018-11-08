@@ -2,6 +2,7 @@ package com.lengjiabao.general_api.entry.ypcall.admin.mc
 
 import com.jeancoder.app.sdk.JC
 import com.lengjiabao.general_api.ready.common.SimpleAjax
+import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 
 def pid = GlobalHolder.pid;
