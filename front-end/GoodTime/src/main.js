@@ -14,6 +14,8 @@ import 'swiper/dist/css/swiper.css'
 import filters from '@/common/filter'
 // import GLOBAL from '@/common/global.js'
 
+store.dispatch('getLogo')
+
 Object.keys(filters).forEach(key => {
 	Vue.filter(key, filters[key])
 })
