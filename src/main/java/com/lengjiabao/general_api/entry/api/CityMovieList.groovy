@@ -9,24 +9,6 @@ import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 import com.jeancoder.core.http.JCRequest
 import com.jeancoder.app.sdk.source.RequestSource
 
-
-def datas = '''[
-{"startTime":"2018-11-09 09:20:00"},
-{"startTime":"2018-11-09 11:20:00"},
-{"startTime":"2018-11-09 15:20:00"},
-{"startTime":"2018-11-09 14:20:00"},
-{"startTime":"2018-11-09 17:20:00"},
-{"startTime":"2018-11-09 16:20:00"},
-{"startTime":"2018-11-09 19:20:00"},
-{"startTime":"2018-11-09 18:20:00"},
-{"startTime":"2018-11-09 20:20:00"}
-]
-''';
-
-
-
-
-
 def sort_plans(def now_plans, def key) {
 	def date_sort_result = new LinkedList();
 	for(x in now_plans) {
