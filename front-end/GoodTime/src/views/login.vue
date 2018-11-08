@@ -66,6 +66,9 @@
 		computed: {
 			...mapState(['logo']),
 		},
+		mounted() {
+			console.log(this.logo);
+		},
 		methods:{
 			back:function(){
 				//自定义返回上一页函数 可以copy到每一个组件中方便使用
