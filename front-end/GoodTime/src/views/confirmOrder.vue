@@ -459,6 +459,9 @@
                 fetch(url).then(r => r.json()).then(d => {
                     // if (d.available) {
                         page.CardData = d.obj;
+                        if(d.obj) {
+                            this.changePrice('101001');
+                        }
                     // }    
                     page.loading = false;
                 });
@@ -521,7 +524,7 @@
                 this.loading = true;
                 this.pay_methods = ct;
 
-                let unicode = this.CardData[0].card_code || "";
+                let unicode = ct === '101001' ? this.CardData[0].card_code : "";
                 let coupon_id = this.o_c.id || "";
                 let url = '/general_api/api/change_price?tnum=' + this.tnum + "&order_no=" + this.on + "&ct=" + ct + "&unicode=" + unicode + "&coupons=" + coupon_id + '&ts='+Date.parse(new Date());
                 
