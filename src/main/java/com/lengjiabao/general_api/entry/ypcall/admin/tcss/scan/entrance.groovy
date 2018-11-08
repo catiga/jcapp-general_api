@@ -1,3 +1,4 @@
+
 package com.lengjiabao.general_api.entry.ypcall.admin.tcss.scan
 
 import com.jeancoder.app.sdk.JC
@@ -50,8 +51,10 @@ ticket_data['a_time'] = order['a_time'];
 def each = MoneyUtil.divide(order['pay_amount'], order['ticket_sum'].toString());
 if (new BigDecimal(each).compareTo(new BigDecimal(seats[0]['pub_fee'].toString())) >= 0 ) {
 	ticket_data['total_amount'] = each;
+	ticket_data['pay_amount'] = each;
 } else {
 	ticket_data['total_amount'] =seats[0]['pub_fee'];
+	ticket_data['pay_amount'] = each;
 }
 
 
@@ -65,7 +68,12 @@ for(x in seats) {
 	os['seat_sr'] = x['seat_sr'];
 	os['seat_sc'] = x['seat_sc'];
 	os['handle_fee'] = '0';
-	os['sale_fee'] = x['sale_fee'];
+	
+	if (new BigDecimal(each).compareTo(new BigDecimal(x[0]['pub_fee'].toString())) >= 0 ) {
+		os['sale_fee'] = each;
+	} else {
+		os['sale_fee'] =x['pub_fee'];
+	}
 	o_seats.add(os);
 }
 ticket_data['o_seats'] = o_seats;
@@ -78,6 +86,7 @@ ticket_data['orderRemote'] = orderRemote;
 
 doo.data = ticket_data;
 
+println "entrance_____" + JackSonBeanMapper.toJson(doo);
 return GeneralPub.success(doo);
 
 //try{
