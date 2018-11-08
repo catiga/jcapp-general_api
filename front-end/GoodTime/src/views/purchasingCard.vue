@@ -183,7 +183,7 @@
 			};
 		},beforeRouteEnter:function(to, from, next){
 			//当组件加载时自动调用此函数 函数结尾必须next();
-			document.title="腾讯好时光";
+			document.title="会员卡";
 			next();
 		},created:function(){
 			//组件加载完成会自动调用此方法

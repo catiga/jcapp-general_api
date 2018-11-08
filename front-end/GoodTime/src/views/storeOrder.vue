@@ -60,7 +60,7 @@
                 <a class="weui-cell myweui-cell vip-cell weui-cell_access" href="javascript:;">
                     <div class="weui-cell__bd">
                         <div></div>
-                        <p class="vip-cell-title" style="color: #2c3e50;">腾讯影院会员卡</p>
+                        <p class="vip-cell-title" style="color: #2c3e50;">影院会员卡</p>
                         <p class="vip-cell-con">开卡卖品最低<span>25元起</span></p>
                     </div>
                     <div class="weui-cell__ft">

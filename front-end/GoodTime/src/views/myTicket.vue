@@ -36,8 +36,8 @@
 					<!--影票-->
 					<div class="cardWrap" v-for="item in TicketList" v-on:click="godo_code(item.order_no)">
 						<div class="card cardtop">
-							<p>腾讯好时光</p>
-							<img v-if="item.order_status=='2000'" class="cardtop-flag" src="http://pe1s.static.pdr365.com/tencent/icon/t_no_get.png" />
+							<p>{{logo.proj_name}}</p>
+							<img v-if="item.order_status=='2000' || item.order_status=='2900' || item.order_status=='2901'" class="cardtop-flag" src="http://pe1s.static.pdr365.com/tencent/icon/t_no_get.png" />
 							<img v-else class="cardtop-flag" src="http://pe1s.static.pdr365.com/tencent/icon/t_done.png" />
 						</div>
 						<div class="card cardbot">
@@ -63,7 +63,7 @@
 					<!--小吃-->
 					<div class="cardWrap" v-for="(item,index) in OrderList" v-if="item.oss!='0000'" v-on:click="godo_goodscode(item.order_no,index)">
 						<div class="card cardtop">
-							<p>腾讯好时光</p>
+							<p>{{logo.proj_name}}</p>
 							<img v-if="item.oss=='1000'" class="cardtop-flag" src="http://pe1s.static.pdr365.com/dailingqu.png" />
 							<img v-if="item.oss=='1010'" class="cardtop-flag" src="http://pe1s.static.pdr365.com/dailingqu.png" />
 							<img v-if="item.oss=='1020'" class="cardtop-flag" src="http://pe1s.static.pdr365.com/dailingqu.png" />
@@ -109,6 +109,8 @@
 </template>
 <script>
 	import Cookies from 'js-cookie'
+	import {mapState,mapActions} from 'vuex'
+	
 	export default {
 	data : function(){
 		return {
@@ -130,7 +132,11 @@
 		//组件加载完成会自动调用此方法
 		// this.GetCode();//获取code
 		this.GetAccount();
-	},methods:{
+	},
+	computed: {
+		...mapState(['logo']),
+	},
+	methods:{
 		GetCode:function(){
             var token = Cookies.get('_lac_ated_');
             if(!token) {

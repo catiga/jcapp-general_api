@@ -66,7 +66,7 @@
                     <a class="weui-cell myweui-cell vip-cell weui-cell_access" href="javascript:;">
                         <div class="weui-cell__bd">
                             <div></div>
-                            <p class="vip-cell-title" style="color: #2c3e50;">腾讯影院会员卡</p>
+                            <p class="vip-cell-title" style="color: #2c3e50;">{{logo.proj_name}}会员卡</p>
                             <p class="vip-cell-con">开卡卖品最低<span>25元起</span></p>
                         </div>
                         <div class="weui-cell__ft">
@@ -169,7 +169,7 @@
                     <a class="weui-cell myweui-cell vip-cell weui-cell_access" href="javascript:;">
                         <div class="weui-cell__bd">
                             <div></div>
-                            <p class="vip-cell-title" style="color: #2c3e50;">腾讯影院会员卡</p>
+                            <p class="vip-cell-title" style="color: #2c3e50;">{{logo.proj_name}}会员卡</p>
                             <p class="vip-cell-con">开卡卖品最低<span>25元起</span></p>
                         </div>
                         <div class="weui-cell__ft">
@@ -277,11 +277,11 @@
 </template>
 <script>
     import Cookies from 'js-cookie'
-    
-    
     import {
+    	mapState,
         mapActions,
     } from 'vuex'
+    
     export default {
         data() {
             return {
@@ -309,6 +309,7 @@
             document.title="订单结算";
             next();
         },computed: {
+        	...mapState(['logo']),
         },
         created() {
             let o_c_1000_str = sessionStorage.getItem("o_c_1000");
