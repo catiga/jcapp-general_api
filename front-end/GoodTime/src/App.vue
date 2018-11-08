@@ -10,6 +10,7 @@ import {mapActions} from 'vuex'
 export default {
   beforeRouterEnter(to,form,next) {
     this.getLogo();
+    next();
   },
   methods: {
     ...mapActions(['getLogo']),
