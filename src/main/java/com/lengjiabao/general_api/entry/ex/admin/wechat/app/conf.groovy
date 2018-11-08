@@ -2,6 +2,7 @@ package com.lengjiabao.general_api.entry.ex.admin.wechat.app
 
 import com.jeancoder.app.sdk.JC
 import com.lengjiabao.general_api.ready.common.SimpleAjax
+import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 
 class FunConf {
@@ -36,8 +37,9 @@ def collect_admin=[f4];
 
 IndexFull index = new IndexFull();
 
+def pid = GlobalHolder.pid;
 def token = JC.request.param('token');
-SimpleAjax ret = JC.internal.call(SimpleAjax, 'project', '/auth/check_token', [token:token,pid:1]);
+SimpleAjax ret = JC.internal.call(SimpleAjax, 'project', '/auth/check_token', [token:token,pid:pid]);
 if(!ret.available) {
 	return index;
 }
