@@ -3,12 +3,17 @@ package com.lengjiabao.general_api.entry.ypcall.admin.tcss.scan
 import com.jeancoder.app.sdk.JC
 import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
+import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 
 def token = JC.request.param('token');
 def tcode = JC.request.param('tcode');
 def vcode = JC.request.param('vcode');
 def store_id = JC.request.param('store_id');
 def partner = '11110001';
+
+println 'tcode=' + tcode;
+println 'vcode=' + vcode;
+println 'store_id=' + store_id;
 
 def pid = GlobalHolder.pid;
 
@@ -53,6 +58,8 @@ for(x in seats) {
 ticket_data['o_seats'] = o_seats;
 
 doo.data = ticket_data;
+
+println JackSonBeanMapper.toJson(doo);
 return doo;
 
 //try{
