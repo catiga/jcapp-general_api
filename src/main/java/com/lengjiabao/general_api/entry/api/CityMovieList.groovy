@@ -34,9 +34,8 @@ try {
 		def date_sort_result = new LinkedList();
 		
 		for(x in date_list) {
-			//sort x['plans']
 			x['plans'] = sort_plans(x['plans']);
-			
+			println JackSonBeanMapper.toJson(x);
 			if(!date_sort_result) {
 				date_sort_result += x;
 			}
@@ -56,6 +55,7 @@ try {
 				}
 			}
 		}
+		it_next['dates'] = date_sort_result;
 	}
 	aaaa['data'] = aaaa_data;
 }catch(any) {
