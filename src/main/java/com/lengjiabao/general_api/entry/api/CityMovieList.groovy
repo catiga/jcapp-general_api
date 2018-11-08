@@ -41,7 +41,6 @@ def aaaa = JC.internal.call('ticketingsys', '/api/movies', [cinema_id:cinema_id]
 try {
 	aaaa = JackSonBeanMapper.jsonToMap(aaaa);
 	def aaaa_data = aaaa['data'];
-	println aaaa_data;
 	Iterator it = aaaa_data.iterator();
 	//针对结果日期进行排序
 	while(it.hasNext()) {
