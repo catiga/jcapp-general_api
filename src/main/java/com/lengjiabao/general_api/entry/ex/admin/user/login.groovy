@@ -1,4 +1,4 @@
-package com.lengjiabao.general_api.entry.ypcall.admin.user
+package com.lengjiabao.general_api.entry.ex.admin.user
 
 import com.jeancoder.app.sdk.JC
 import com.lengjiabao.general_api.ready.util.MD5Util
@@ -10,4 +10,7 @@ def password = JC.request.param('password');
 def token = username + password + System.currentTimeMillis();
 token = MD5Util.getMD5(token);
 
-return GeneralPub.success(token);
+def data = [:];
+data['token'] = token;
+
+return GeneralPub.success(data);
