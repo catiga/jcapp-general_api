@@ -11,8 +11,6 @@ def jc_pass = JC.request.param('password');
 
 def pid = GlobalHolder.pid;
 
-println jc_name + ":" + jc_pass + "---" + pid;
-
 SimpleAjax ret = JC.internal.call(SimpleAjax, 'project', '/auth/check_login', [jc_name:jc_name,jc_pass:jc_pass,pid:pid]);
 if(!ret.available) {
 	def err_code = ret.messages[0];
