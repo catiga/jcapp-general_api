@@ -73,7 +73,7 @@
                     <p>会员余额支付（余额：{{CardData[0].balance/100}}元）</p>
                 </div>
                 <div class="weui-cell__ft">
-                    <input type="radio" class="weui-check" name="radio1" id="x11" checked="checked">
+                    <input type="radio" class="weui-check" name="radio1" id="x11" :checked="pay_methods === '101001' ? true : false">
                     <span class="weui-icon-checked" style="transform:scale(.8)"></span>
                 </div>
             </label>
@@ -82,7 +82,7 @@
                     <p>微信支付</p>
                 </div>
                 <div class="weui-cell__ft">
-                    <input type="radio" name="radio1" class="weui-check" id="x12">
+                    <input type="radio" name="radio1" class="weui-check" id="x12" :checked="pay_methods === '201101' ? true : false">
                     <span class="weui-icon-checked" style="transform:scale(.8)"></span>
                 </div>
             </label>
@@ -282,6 +282,7 @@
                 o_c: "",
                 offer_amount: "", //优惠价格
                 offer_show: false,
+                pay_methods: '101001'
             }
         },
         beforeRouteEnter: function (to, from, next) {
@@ -517,10 +518,13 @@
                  * 
                  */
 
-                let unicode = this.CardData[0].card_code || "";
-
-                let url = '/general_api/api/change_price?tnum='+this.tnum+ "&ct=" + ct + "&unicode=" + unicode + "&coupons=" + coupon_id +'&ts='+Date.parse(new Date());
                 this.loading = true;
+                this.pay_methods = ct;
+
+                let unicode = this.CardData[0].card_code || "";
+                let coupon_id = this.o_c.id || "";
+                let url = '/general_api/api/change_price?tnum=' + this.tnum + "&ct=" + ct + "&unicode=" + unicode + "&coupons=" + coupon_id + '&ts='+Date.parse(new Date());
+                
                 fetch(url).then(r => r.json()).then(d => {
                     this.loading = false;
                     console.log(d);
