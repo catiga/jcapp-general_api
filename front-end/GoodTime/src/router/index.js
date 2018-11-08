@@ -10,9 +10,9 @@ const router = new Router({
     routes,
 })
 
-router.beforeEach((to, from, next) => {
-    store.dispatch('getLogo');
-    next();
-})
+// router.beforeEach((to, from, next) => {
+//     store.dispatch('getLogo');
+//     next();
+// })
 
 export default router
