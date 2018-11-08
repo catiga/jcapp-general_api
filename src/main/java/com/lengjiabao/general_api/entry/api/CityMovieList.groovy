@@ -15,11 +15,13 @@ def sort_plans(def now_plans) {
 	for(x in now_plans) {
 		if(!date_sort_result) {
 			date_sort_result += x;
+			continue;
 		}
 		def last_one = date_sort_result.getLast();
 		def first_one = date_sort_result.getFirst();
 		
 		if(last_one['startTime']<=x['startTime']) {
+			println last_one['startTime'] + '???' + x['startTime'];
 			date_sort_result += x;
 		} else {
 			def sort_index = 0;
@@ -30,7 +32,7 @@ def sort_plans(def now_plans) {
 					if(sort_index) {
 						date_sort_result.add(sort_index - 1, x);
 					} else {
-						date_sort_result.add(x);
+						date_sort_result.add(0, x);
 					}
 					break;
 				}
@@ -40,17 +42,6 @@ def sort_plans(def now_plans) {
 	return date_sort_result;
 }
 
-
-//def now_plans = [];
-//now_plans.add([start_Time:'2018-11-01', 'name':'你好']);
-//now_plans.add([start_Time:'2018-11-02', 'name':'你好']);
-//now_plans.add([start_Time:'2018-11-07', 'name':'你好']);
-//now_plans.add([start_Time:'2018-11-08', 'name':'你好']);
-//now_plans.add([start_Time:'2018-11-03', 'name':'你好']);
-//now_plans.add([start_Time:'2018-11-06', 'name':'你好']);
-//
-//println sort_plans(now_plans);
-//return;
 
 def cinema_id = JC.request.param('cinema_id');
 
@@ -68,8 +59,7 @@ try {
 		def date_sort_result = new LinkedList();
 		
 		for(x in date_list) {
-			def sort_plans = sort_plans(x['plans']);
-			x['plans'] = sort_plans;
+			x['plans'] = sort_plans(x['plans']);
 			
 			if(!date_sort_result) {
 				date_sort_result += x;
@@ -88,7 +78,7 @@ try {
 						if(sort_index) {
 							date_sort_result.add(sort_index - 1, x);
 						} else {
-							date_sort_result.add(x);
+							date_sort_result.add(0, x);
 						}
 						break;
 					}
