@@ -2,8 +2,8 @@
 	<div><!-- 固定 容器-->
 		<div class="login-top">
 			<!-- <img class="login-top-logo" src="http://pe1s.static.pdr365.com/timg.jpeg" > -->
-			<div class="login-top-logo">
-				<img v-show="logo" :src="logo.logo" >
+			<div class="login-top-logo" style="position:relative;">
+				<img v-show="logo" :src="logo.logo" style="position:absolute;left;0;top:0;display:block;width:100%;height:100%;" >
 			</div>
 			<p v-show="logo" class="login-top-title">{{logo.proj_name}}</p>	
 		</div>
@@ -160,11 +160,6 @@
 	width: 1.5rem;
 	height: 1.4rem;
 	margin: 1.95rem 0 .53rem;
-}
-.login-top-logo {
-	display: block;
-	width: 100%;
-	height: 100%;
 }
 .login-top-title{
 	display: inline-block;
