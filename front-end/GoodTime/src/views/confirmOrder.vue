@@ -68,7 +68,7 @@
 
         <!-- 选择支付方式  开始 -->
         <section class="myweui-cells weui-cells_checkbox" style="margin-top: .3rem;" v-else>
-            <label v-if="CardData" class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x11" style="background: #fff;">
+            <label v-if="CardData" class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x11" style="background: #fff;" @click.stop="changePrice">
                 <div class="weui-cell__bd">
                     <p>会员余额支付（余额：{{CardData[0].balance/100}}元）</p>
                 </div>
@@ -77,7 +77,7 @@
                     <span class="weui-icon-checked" style="transform:scale(.8)"></span>
                 </div>
             </label>
-            <label class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x12" style="background: #fff;">
+            <label class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x12" style="background: #fff;" @click.stop="changePrice">
                 <div class="weui-cell__bd">
                     <p>微信支付</p>
                 </div>
@@ -505,7 +505,23 @@
                 let num = this.order_no;
                 let t_num = this.tnum;
                 this.$router.push({name: "couponsForOrder", params: {order_no:num,tnum:t_num}});
-            }
+            },
+            /**
+             * 选择支付方式修改价格
+             * 
+             * @param 
+             */
+            changePrice()  {
+                let url = '/general_api/api/change_price?order_no='+page.on+ "&coupon_id=" + coupon_id +'&ts='+Date.parse(new Date());
+                this.loading = true;
+                fetch(url).then(r => r.json()).then(d => {
+                    this.loading = false;
+                    console.log(d);
+                    if (d.code == 0) {
+                        this.movieDetails = d.data;
+                    }
+                })
+            },
         }
     }
 </script>
