@@ -22,7 +22,37 @@ if(!ret_data.available) {
 	doo.msg = ret_data.messages[1];
 	return doo;
 }
-doo.data = ret_data.data[0];
+def order = ret_data.data[0];
+def seats = ret_data.data[1];
+
+def ticket_data = [:];
+ticket_data['store_name'] = order['store_name'];
+ticket_data['hall_name'] = order['hall_name'];
+ticket_data['plan_date'] = order['plan_date'];
+ticket_data['plan_time'] = order['plan_time'];
+ticket_data['film_name'] = order['film_name'];
+ticket_data['handle_fee'] = '0';
+ticket_data['order_no'] = order['order_no'];
+ticket_data['total_amount'] = order['total_amount'];
+ticket_data['pay_amount'] = order['pay_amount'];
+ticket_data['ticket_sum'] = order['ticket_sum'];
+
+def o_seats = [];
+for(x in seats) {
+	def os = [:];
+	os['seat_no'] = x['seat_no'];
+	os['seat_gr'] = x['seat_sr'];
+	os['seat_gc'] = x['seat_sc'];
+	os['seat_sr'] = x['seat_sr'];
+	os['seat_sc'] = x['seat_sc'];
+	os['handle_fee'] = '0';
+	os['sale_fee'] = x['sale_fee'];
+	
+	o_seats.add(os);
+}
+ticket_data['o_seats'] = o_seats;
+
+doo.data = ticket_data;
 return doo;
 
 //try{
