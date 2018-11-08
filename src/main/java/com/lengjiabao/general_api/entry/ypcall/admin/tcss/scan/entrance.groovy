@@ -42,6 +42,7 @@ ticket_data['order_no'] = order['order_no'];
 ticket_data['total_amount'] = order['total_amount'];
 ticket_data['pay_amount'] = order['pay_amount'];
 ticket_data['ticket_sum'] = order['ticket_sum'];
+ticket_data['a_time'] = order['a_time'];
 
 def o_seats = [];
 for(x in seats) {
