@@ -200,26 +200,26 @@ def sort_plans(def now_plans, def key) {
 def cinema_id = JC.request.param('cinema_id');
 def aaaa = JC.internal.call('ticketingsys', '/api/movies', [cinema_id:cinema_id]);
 
-try {
-	aaaa = JackSonBeanMapper.jsonToMap(aaaa);
-	def aaaa_data = aaaa['data'];
-	println aaaa_data;
-	Iterator it = aaaa_data.iterator();
-	//针对结果日期进行排序
-	while(it.hasNext()) {
-		//def it_name = it.next()['name'].toString();
-		def it_next = it.next();
-		def date_list = it_next['dates'];
-		
+//try {
+//	aaaa = JackSonBeanMapper.jsonToMap(aaaa);
+//	def aaaa_data = aaaa['data'];
+//	println aaaa_data;
+//	Iterator it = aaaa_data.iterator();
+//	//针对结果日期进行排序
+//	while(it.hasNext()) {
+//		//def it_name = it.next()['name'].toString();
+//		def it_next = it.next();
+//		def date_list = it_next['dates'];
+//		
 //		for(x in date_list) {
 //			x['plans'] = sort_plans(x['plans'], 'startTime');
 //		}
-		it_next['dates'] = sort_plans(date_list, 'date');
-	}
-	//aaaa['data'] = aaaa_data;
-}catch(any) {
-	any.printStackTrace();
-}
+//		it_next['dates'] = sort_plans(date_list, 'date');
+//	}
+//	//aaaa['data'] = aaaa_data;
+//}catch(any) {
+//	any.printStackTrace();
+//}
 
 Result result = new Result();
 return result.setData(aaaa);
