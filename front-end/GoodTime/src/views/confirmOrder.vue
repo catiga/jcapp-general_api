@@ -68,7 +68,7 @@
 
         <!-- 选择支付方式  开始 -->
         <section class="myweui-cells weui-cells_checkbox" style="margin-top: .3rem;" v-else>
-            <label v-if="CardData" class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x11" style="background: #fff;" @click.stop="changePrice">
+            <label v-if="CardData" class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x11" style="background: #fff;" @click.prevent="changePrice('101001')">
                 <div class="weui-cell__bd">
                     <p>会员余额支付（余额：{{CardData[0].balance/100}}元）</p>
                 </div>
@@ -77,7 +77,7 @@
                     <span class="weui-icon-checked" style="transform:scale(.8)"></span>
                 </div>
             </label>
-            <label class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x12" style="background: #fff;" @click.stop="changePrice">
+            <label class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x12" style="background: #fff;" @click.prevent="changePrice('201101')">
                 <div class="weui-cell__bd">
                     <p>微信支付</p>
                 </div>
@@ -506,13 +506,20 @@
                 let t_num = this.tnum;
                 this.$router.push({name: "couponsForOrder", params: {order_no:num,tnum:t_num}});
             },
-            /**
-             * 选择支付方式修改价格
-             * 
-             * @param 
-             */
-            changePrice()  {
-                let url = '/general_api/api/change_price?order_no='+page.on+ "&coupon_id=" + coupon_id +'&ts='+Date.parse(new Date());
+            changePrice(ct)  {
+                /**
+                 * 选择支付方式修改价格
+                 * 
+                 * @param {String} ct - 支付方式  （会员卡支付 101001 , 微信支付 201101） 
+                 * @param {String} tnum - 交易编号
+                 * @param {String} unicode - 会员标识 
+                 * @param {String} coupons - 优惠券列表 (逗号分割)
+                 * 
+                 */
+
+                let unicode = this.CardData[0].card_code || "";
+
+                let url = '/general_api/api/change_price?tnum='+this.tnum+ "&ct=" + ct + "&unicode=" + unicode + "&coupons=" + coupon_id +'&ts='+Date.parse(new Date());
                 this.loading = true;
                 fetch(url).then(r => r.json()).then(d => {
                     this.loading = false;
