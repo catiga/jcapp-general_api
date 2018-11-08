@@ -12,10 +12,11 @@
 				</router-link>
 			</div>
 		</div> -->
-		<div class="swiper-gb" style="height:3.25rem">
+		<div class="swiper-gb" style="height:1rem">
             <swiper class="banner-box" :options="swiperOption" ref="indexSwiper">
                 <swiper-slide class="banner-slide" style="transform:scale(1);padding:0;">
-                	<img class="banner-img" src="https://cdn.iplaysky.com/static/img/wechat_banner.png">
+                	<!-- <img class="banner-img" src="https://cdn.iplaysky.com/static/img/wechat_banner.png"> -->
+					<div></div>
                 </swiper-slide>
             </swiper>
             <div class="city-box">
