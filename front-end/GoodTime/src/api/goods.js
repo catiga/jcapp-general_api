@@ -48,7 +48,7 @@ export const groupListData = routeName => {
   }).catch(e => {
     console.log(e);
     loading.hide();
-    weui.topTips('获取分组失败', 3000);
+    // weui.topTips('获取分组失败', 3000);
     return arr;
   });
 };
