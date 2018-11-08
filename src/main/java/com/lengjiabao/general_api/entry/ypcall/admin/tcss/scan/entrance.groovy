@@ -24,7 +24,7 @@ DataObj doo = new DataObj();
 doo.code = "0";
 doo.msg = "success";
 
-SimpleAjax ret_data = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketing/take_by_codes', [get_code:tcode,validate_code:vcode,pid:pid]);
+SimpleAjax ret_data = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketing/take_by_codes', [get_code:"584808",validate_code:"267740",pid:2]);
 if(!ret_data.available) {
 	doo.code = ret_data.messages[0];
 	doo.msg = ret_data.messages[1];
@@ -43,16 +43,16 @@ ticket_data['plan_time'] = order['plan_time'];
 ticket_data['film_name'] = order['film_name'];
 ticket_data['handle_fee'] = '0';
 ticket_data['order_no'] = order['order_no'];
-ticket_data['total_amount'] = new BigDecimal(order['total_amount']).divide(new BigDecimal(100)).setScale(2).toString();
-ticket_data['pay_amount'] = new BigDecimal(order['pay_amount']).divide(new BigDecimal(100)).setScale(2).toString();
+ticket_data['total_amount'] = order['total_amount'];
+ticket_data['pay_amount'] = order['pay_amount'];
 ticket_data['ticket_sum'] = order['ticket_sum'];
 ticket_data['a_time'] = order['a_time'];
 
 def each = MoneyUtil.divide(order['pay_amount'].toString(), order['ticket_sum'].toString());
 if (new BigDecimal(each).compareTo(new BigDecimal(seats[0]['pub_fee'].toString())) >= 0 ) {
 	// 价格正常
-	ticket_data['total_amount'] = each;
-	ticket_data['pay_amount'] = each;
+	ticket_data['total_amount'] = new BigDecimal(each).divide(new BigDecimal(100)).setScale(2).toString() ;
+	ticket_data['pay_amount'] = new BigDecimal(each).divide(new BigDecimal(100)).setScale(2).toString() ;
 } else {
 	// 价格除以100
 	ticket_data['total_amount'] = new BigDecimal(seats[0]['pub_fee']).divide(new BigDecimal(100)).setScale(2).toString() ;
@@ -72,10 +72,10 @@ for(x in seats) {
 	os['handle_fee'] = '0';
 	
 	if (new BigDecimal(each).compareTo(new BigDecimal(x['pub_fee'].toString())) >= 0 ) {
-		os['sale_fee'] = each;
+		os['sale_fee'] = new BigDecimal(each).divide(new BigDecimal(100)).setScale(2).toString() ;
 	} else {
 		// 价格除以100
-		os['sale_fee'] =new BigDecimal(x['pub_fee']).divide(new BigDecimal(100)).setScale(2).toString();
+		os['sale_fee'] =new BigDecimal(x['pub_fee']).divide(new BigDecimal(100)).setScale(2).toString() ;
 	}
 	o_seats.add(os);
 }
