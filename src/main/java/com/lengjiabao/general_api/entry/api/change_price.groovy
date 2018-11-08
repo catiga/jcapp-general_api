@@ -1,6 +1,9 @@
 package com.lengjiabao.general_api.entry.api
 
+import java.util.List
+
 import com.jeancoder.app.sdk.JC
+import com.jeancoder.core.power.CommunicationParam
 import com.jeancoder.core.result.Result
 import com.jeancoder.core.util.JackSonBeanMapper
 import com.lengjiabao.general_api.ready.common.SimpleAjax
@@ -23,7 +26,12 @@ def coupon_info = datas[1];
 
 aaaa['data'] = order_info;
 
-SimpleAjax pref_ajax = RemoteUtil.connect(SimpleAjax, 'trade', '/incall/ro_preferential', [tnum:tnum, unicode:unicode, ct:ct, coupons:coupons]);
+List<CommunicationParam> params  = new ArrayList<CommunicationParam> ();
+params.add(new CommunicationParam("tnum",tnum));
+params.add(new CommunicationParam("unicode",unicode));
+params.add(new CommunicationParam("ct",ct));
+params.add(new CommunicationParam("coupons",coupons));
+SimpleAjax pref_ajax = RemoteUtil.connect(SimpleAjax, 'trade', '/incall/ro_preferential', params);
 
 if(pref_ajax.available) {
 	aaaa['data']['pay_amount'] = pref_ajax.data[2];

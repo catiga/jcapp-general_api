@@ -34,7 +34,7 @@ def seats = ret_data.data[1];
 def ticket_data = [:];
 ticket_data['store_name'] = order['store_name'];
 ticket_data['hall_name'] = order['hall_name'];
-ticket_data['hall_name'] = '测试影厅';
+//ticket_data['hall_name'] = '测试影厅';
 
 ticket_data['plan_date'] = order['plan_date'];
 ticket_data['plan_time'] = order['plan_time'];
