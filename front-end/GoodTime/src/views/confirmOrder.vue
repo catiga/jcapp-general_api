@@ -514,6 +514,7 @@
              * @param {String} tnum - 交易编号
              * @param {String} unicode - 会员标识 
              * @param {String} coupons - 优惠券列表 (逗号分割)
+             * @param {String} order_no - 订单编号
              * 
              */
             changePrice(ct)  {
@@ -522,7 +523,7 @@
 
                 let unicode = this.CardData[0].card_code || "";
                 let coupon_id = this.o_c.id || "";
-                let url = '/general_api/api/change_price?tnum=' + this.tnum + "&ct=" + ct + "&unicode=" + unicode + "&coupons=" + coupon_id + '&ts='+Date.parse(new Date());
+                let url = '/general_api/api/change_price?tnum=' + this.tnum + "&order_no=" + this.on + "&ct=" + ct + "&unicode=" + unicode + "&coupons=" + coupon_id + '&ts='+Date.parse(new Date());
                 
                 fetch(url).then(r => r.json()).then(d => {
                     this.loading = false;

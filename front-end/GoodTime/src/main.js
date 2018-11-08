@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import iView from 'iview'
+// import iView from 'iview'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import {fetch as fetchPolyfill} from 'whatwg-fetch'
 
@@ -22,7 +22,7 @@ Object.keys(filters).forEach(key => {
 
 
 Vue.use(VueAwesomeSwiper)
-Vue.use(iView)
+// Vue.use(iView)
 
 
 Vue.config.productionTip = false
