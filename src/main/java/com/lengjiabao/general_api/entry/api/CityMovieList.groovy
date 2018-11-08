@@ -23,9 +23,7 @@ def sort_plans(def now_plans) {
 			date_sort_result += x;
 		} else {
 			def sort_index = 0;
-			def it = date_sort_result.iterator();
-			while(it.hasNext()) {
-				def y = it.next();
+			for(y in date_sort_result) {
 				if(x['startTime']>=y['startTime']) {
 					sort_index++;
 				} else {
@@ -34,6 +32,7 @@ def sort_plans(def now_plans) {
 					} else {
 						date_sort_result.add(x);
 					}
+					break;
 				}
 			}
 		}
@@ -69,18 +68,8 @@ try {
 		def date_sort_result = new LinkedList();
 		
 		for(x in date_list) {
-//			def sort_plans = sort_plans(x['plans']);
-//			x['plans'] = sort_plans;
-			Collections.sort(x['plans'], new Comparators() {
-				public int compare(def o1, def o2) {
-					// 升序
-					if(o1['startTime']>=o2['startTime']) {
-						return 1;
-					} else {
-						return -1;
-					}
-				}
-			});
+			def sort_plans = sort_plans(x['plans']);
+			x['plans'] = sort_plans;
 			
 			if(!date_sort_result) {
 				date_sort_result += x;
@@ -101,6 +90,7 @@ try {
 						} else {
 							date_sort_result.add(x);
 						}
+						break;
 					}
 				}
 			}
