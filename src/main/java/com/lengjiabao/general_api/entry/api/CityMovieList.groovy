@@ -13,10 +13,6 @@ import com.jeancoder.app.sdk.source.RequestSource
 //def date_sort_result = new LinkedList();
 //println date_sort_result.get(0);
 //return;
-def start = '2018-11-05';
-def end = '2018-11-06';
-println start < end;
-return;
 
 def cinema_id = JC.request.param('cinema_id');
 
@@ -35,7 +31,6 @@ try {
 		
 		for(x in date_list) {
 			x['plans'] = sort_plans(x['plans']);
-			println JackSonBeanMapper.toJson(x);
 			if(!date_sort_result) {
 				date_sort_result += x;
 			}
