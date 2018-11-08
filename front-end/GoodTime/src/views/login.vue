@@ -3,8 +3,7 @@
 		<div class="login-top">
 			<!-- <img class="login-top-logo" src="http://pe1s.static.pdr365.com/timg.jpeg" > -->
 			<div class="login-top-logo">
-				<!-- <img v-show="logo" :src="logo.logo" > -->
-				<img v-show="logo" src="http://pe1s.static.pdr365.com/timg.jpeg" alt="">
+				<img v-show="logo" :src="logo.logo" >
 			</div>
 			<p v-show="logo" class="login-top-title">{{logo.proj_name}}</p>	
 		</div>
