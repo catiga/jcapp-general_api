@@ -70,9 +70,7 @@ return result.setData(aaaa);
 
 def sort_plans(def now_plans) {
 	def date_sort_result = new LinkedList();
-	def it = now_plans.iterator();
-	while(it.hasNext()) {
-		def x = it.next();
+	for(x in now_plans) {
 		if(!date_sort_result) {
 			date_sort_result += x;
 		}
@@ -83,7 +81,9 @@ def sort_plans(def now_plans) {
 			date_sort_result += x;
 		} else {
 			def sort_index = 0;
-			for(y in date_sort_result) {
+			def it = date_sort_result.iterator();
+			while(it.hasNext()) {
+				def y = it.next();
 				if(x['startTime']>=y['startTime']) {
 					sort_index++;
 				} else {
