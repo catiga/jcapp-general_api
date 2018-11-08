@@ -10,6 +10,23 @@ import com.jeancoder.core.http.JCRequest
 import com.jeancoder.app.sdk.source.RequestSource
 
 
+def datas = '''[
+{"startTime":"2018-11-09 09:20:00"},
+{"startTime":"2018-11-09 11:20:00"},
+{"startTime":"2018-11-09 15:20:00"},
+{"startTime":"2018-11-09 14:20:00"},
+{"startTime":"2018-11-09 17:20:00"},
+{"startTime":"2018-11-09 16:20:00"},
+{"startTime":"2018-11-09 19:20:00"},
+{"startTime":"2018-11-09 18:20:00"},
+{"startTime":"2018-11-09 20:20:00"}
+]
+''';
+
+
+
+
+
 def sort_plans(def now_plans, def key) {
 	def date_sort_result = new LinkedList();
 	for(x in now_plans) {
@@ -21,7 +38,6 @@ def sort_plans(def now_plans, def key) {
 		def first_one = date_sort_result.getFirst();
 		
 		if(last_one[key]<=x[key]) {
-			println last_one[key] + '???' + x[key];
 			date_sort_result += x;
 		} else {
 			def sort_index = 0;
@@ -29,11 +45,7 @@ def sort_plans(def now_plans, def key) {
 				if(x[key]>=y[key]) {
 					sort_index++;
 				} else {
-					if(sort_index) {
-						date_sort_result.add(sort_index - 1, x);
-					} else {
-						date_sort_result.add(0, x);
-					}
+					date_sort_result.add(sort_index, x);
 					break;
 				}
 			}
@@ -42,12 +54,8 @@ def sort_plans(def now_plans, def key) {
 	return date_sort_result;
 }
 
-
 def cinema_id = JC.request.param('cinema_id');
-
 def aaaa = JC.internal.call('ticketingsys', '/api/movies', [cinema_id:cinema_id]);
-
-println aaaa;
 
 try {
 	aaaa = JackSonBeanMapper.jsonToMap(aaaa);
@@ -72,6 +80,10 @@ try {
 
 Result result = new Result();
 return result.setData(aaaa);
+
+
+
+
 
 
 
