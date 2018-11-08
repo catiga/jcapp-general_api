@@ -41,6 +41,7 @@ def sort_plans(def now_plans) {
 	return date_sort_result;
 }
 
+
 //def now_plans = [];
 //now_plans.add([start_Time:'2018-11-01', 'name':'你好']);
 //now_plans.add([start_Time:'2018-11-02', 'name':'你好']);
@@ -68,8 +69,14 @@ try {
 		def date_sort_result = new LinkedList();
 		
 		for(x in date_list) {
-			def sort_plans = sort_plans(x['plans']);
-			x['plans'] = sort_plans;
+//			def sort_plans = sort_plans(x['plans']);
+//			x['plans'] = sort_plans;
+			Collections.sort(x['plans'], new Comparators() {
+				public int compare(def o1, def o2) {
+					// 升序
+					 return o1['startTime'].compareTo(o2['startTime']);
+				}
+			});
 			
 			if(!date_sort_result) {
 				date_sort_result += x;
