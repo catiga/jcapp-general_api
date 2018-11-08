@@ -147,14 +147,6 @@
 		        page.login = false;
 			}
 		},
-		watch: {
-			logo() {
-				if(this.logo) {
-					console.log(this.logo);
-					this.logo_img = this.logo.logo;
-				}
-			}
-		}
 	}
 </script>
 <style>
