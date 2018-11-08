@@ -38,7 +38,7 @@ def sort_plans(def now_plans, def key) {
 
 def cinema_id = JC.request.param('cinema_id');
 def aaaa = JC.internal.call('ticketingsys', '/api/movies', [cinema_id:cinema_id]);
-
+println 'aaaa=' + aaaa;
 try {
 	aaaa = JackSonBeanMapper.jsonToMap(aaaa);
 	def aaaa_data = aaaa['data'];
