@@ -168,13 +168,14 @@ def sort_plans(def now_plans, def key) {
 	def date_sort_result = new LinkedList();
 	for(x in now_plans) {
 		if(!date_sort_result) {
+			println 'first_add=' + x[key] + ', and data=' + JackSonBeanMapper.toJson(x);
 			date_sort_result.add(x);
 			continue;
 		}
 		def last_one = date_sort_result.getLast();
-		def first_one = date_sort_result.getFirst();
 		
 		if(last_one[key]<=x[key]) {
+			println 'first_add=' + x[key] + ', and data=' + JackSonBeanMapper.toJson(x);
 			date_sort_result.add(x);
 		} else {
 			def sort_index = 0;
@@ -198,10 +199,11 @@ def sort_plans(def now_plans, def key) {
 
 def cinema_id = JC.request.param('cinema_id');
 def aaaa = JC.internal.call('ticketingsys', '/api/movies', [cinema_id:cinema_id]);
-println 'aaaa=' + aaaa;
+
 try {
 	aaaa = JackSonBeanMapper.jsonToMap(aaaa);
 	def aaaa_data = aaaa['data'];
+	println aaaa_data;
 	Iterator it = aaaa_data.iterator();
 	//针对结果日期进行排序
 	while(it.hasNext()) {
@@ -209,9 +211,9 @@ try {
 		def it_next = it.next();
 		def date_list = it_next['dates'];
 		
-		for(x in date_list) {
-			x['plans'] = sort_plans(x['plans'], 'startTime');
-		}
+//		for(x in date_list) {
+//			x['plans'] = sort_plans(x['plans'], 'startTime');
+//		}
 		it_next['dates'] = sort_plans(date_list, 'date');
 	}
 	//aaaa['data'] = aaaa_data;
@@ -219,13 +221,5 @@ try {
 	any.printStackTrace();
 }
 
-
 Result result = new Result();
 return result.setData(aaaa);
-
-
-
-
-
-
-
