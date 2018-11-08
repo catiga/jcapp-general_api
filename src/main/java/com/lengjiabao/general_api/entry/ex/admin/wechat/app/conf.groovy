@@ -48,7 +48,9 @@ index.user = ret.data['user']
 index.funcs = collect_admin;
 
 //获取系统门店列表
-SimpleAjax store_list = JC.internal.call(SimpleAjax, 'project', '/incall/mystore_stand', [pid:1]);
+//重新定义pid，取当前用户管理的门店
+def aim_pid = ret.data['user']['pid'];
+SimpleAjax store_list = JC.internal.call(SimpleAjax, 'project', '/incall/mystore_stand', [pid:aim_pid]);
 if(store_list.available) {
 	index.stores = store_list.data;
 }

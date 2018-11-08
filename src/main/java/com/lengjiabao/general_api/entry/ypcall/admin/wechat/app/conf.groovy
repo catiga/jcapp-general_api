@@ -2,6 +2,7 @@ package com.lengjiabao.general_api.entry.ypcall.admin.wechat.app
 
 import com.jeancoder.app.sdk.JC
 import com.lengjiabao.general_api.ready.common.SimpleAjax
+import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 
 class FunConf {
@@ -33,10 +34,12 @@ def f8 = new FunConf(['code':'108', 'icon':'20171110144917.png', 'name':'收银�
 //def collect_admin=[f1, f2, f3, f4, f5, f6, f7, f8, f9, f10];
 def collect_admin=[f3, f4, f5, f6, f8];
 
+def pid = GlobalHolder.pid;
+
 IndexFull index = new IndexFull();
 
 def token = JC.request.param('token');
-SimpleAjax ret = JC.internal.call(SimpleAjax, 'project', '/auth/check_token', [token:token,pid:1]);
+SimpleAjax ret = JC.internal.call(SimpleAjax, 'project', '/auth/check_token', [token:token,pid:pid]);
 if(!ret.available) {
 	return index;
 }
@@ -45,7 +48,7 @@ index.user = ret.data['user']
 index.funcs = collect_admin;
 
 //获取系统门店列表
-SimpleAjax store_list = JC.internal.call(SimpleAjax, 'project', '/incall/mystore_stand', [pid:1]);
+SimpleAjax store_list = JC.internal.call(SimpleAjax, 'project', '/incall/mystore_stand', [pid:pid]);
 if(store_list.available) {
 	index.stores = store_list.data;
 }
