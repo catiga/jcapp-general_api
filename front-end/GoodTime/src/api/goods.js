@@ -1,7 +1,4 @@
 import axios from 'axios'
-import {
-  Message
-} from 'iview'
 
 // 获取卖品分组
 export const groupListData = routeName => {
@@ -46,19 +43,12 @@ export const groupListData = routeName => {
       }
       */
     } else {
-      Message.error({
-        content: "暂无可用分组",
-        duration: 3
-      });
       return arr;
     }
   }).catch(e => {
     console.log(e);
     loading.hide();
-    Message.error({
-      content: "获取分组失败,请检查网络" + e,
-      duration: 3
-    });
+    weui.topTips('获取分组失败', 3000);
     return arr;
   });
 };
