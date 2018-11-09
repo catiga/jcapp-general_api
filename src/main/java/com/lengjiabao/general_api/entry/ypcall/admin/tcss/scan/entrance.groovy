@@ -51,12 +51,12 @@ ticket_data['a_time'] = order['a_time'];
 def each = MoneyUtil.divide(order['pay_amount'].toString(), order['ticket_sum'].toString());
 if (new BigDecimal(each).compareTo(new BigDecimal(seats[0]['pub_fee'].toString())) >= 0 ) {
 	// 价格正常
-	ticket_data['total_amount'] = new BigDecimal(each).setScale(2);
-	ticket_data['pay_amount'] = new BigDecimal(each).setScale(2);
+	ticket_data['total_amount'] = new BigDecimal(each).setScale(0);
+	ticket_data['pay_amount'] = new BigDecimal(each).setScale();
 } else {
 	// 价格除以100
-	ticket_data['total_amount'] = new BigDecimal(seats[0]['pub_fee']).setScale(2);
-	ticket_data['pay_amount'] = new BigDecimal(seats[0]['pub_fee']).setScale(2);
+	ticket_data['total_amount'] = new BigDecimal(seats[0]['pub_fee']).setScale();
+	ticket_data['pay_amount'] = new BigDecimal(seats[0]['pub_fee']).setScale();
 }
 
 def o_seats = [];
@@ -70,10 +70,10 @@ for(x in seats) {
 	os['handle_fee'] = '0';
 	
 	if (new BigDecimal(each).compareTo(new BigDecimal(x['pub_fee'].toString())) >= 0 ) {
-		os['sale_fee'] = new BigDecimal(each).setScale(2);
+		os['sale_fee'] = new BigDecimal(each).setScale(0);
 	} else {
 		// 价格除以100
-		os['sale_fee'] = new BigDecimal(x['pub_fee']).setScale(2);
+		os['sale_fee'] = new BigDecimal(x['pub_fee']).setScale(0);
 	}
 	o_seats.add(os);
 }
