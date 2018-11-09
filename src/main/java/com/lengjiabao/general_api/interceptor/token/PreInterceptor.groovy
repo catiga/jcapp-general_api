@@ -33,7 +33,6 @@ def token = null;
 JCCookie[] cookies = JC.request.get().getCookies();
 if(cookies!=null&&cookies.length>0) {
 	for(JCCookie c : cookies) {
-		println 'interceptor token cookie key======' + c.getName();
 		if(c.getName().equals("_lac_k_")) {
 			try {
 				token = URLDecoder.decode(c.getValue(), "utf-8");
@@ -44,7 +43,6 @@ if(cookies!=null&&cookies.length>0) {
 	}
 }
 
-println 'interceptor token=================' + token
 if (!token) {
 	token = JC.request.param('token');
 	if(!token) {
@@ -54,7 +52,6 @@ if (!token) {
 }
 def pid = GlobalHolder.pid;
 
-println 'interceptor token*****************' + token + ',,,,,,pid=' + pid;
 SimpleAjax simpleAjax = JC.internal.call(SimpleAjax, 'crm', '/h5/p/info', [token:token, pid:pid]);
 
 if (!simpleAjax.available ) {
