@@ -24,7 +24,7 @@ DataObj doo = new DataObj();
 doo.code = "0";
 doo.msg = "success";
 
-SimpleAjax ret_data = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketing/take_by_codes', [get_code:"584808",validate_code:"267740",pid:2]);
+SimpleAjax ret_data = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketing/take_by_codes', [get_code:tcode,validate_code:vcode,pid:pid]);
 if(!ret_data.available) {
 	doo.code = ret_data.messages[0];
 	doo.msg = ret_data.messages[1];
