@@ -52,11 +52,11 @@ def each = MoneyUtil.divide(order['pay_amount'].toString(), order['ticket_sum'].
 if (new BigDecimal(each).compareTo(new BigDecimal(seats[0]['pub_fee'].toString())) >= 0 ) {
 	// 价格正常
 	ticket_data['total_amount'] = new BigDecimal(each).setScale(0);
-	ticket_data['pay_amount'] = new BigDecimal(each).setScale();
+	ticket_data['pay_amount'] = new BigDecimal(each).setScale(0);
 } else {
 	// 价格除以100
-	ticket_data['total_amount'] = new BigDecimal(seats[0]['pub_fee']).setScale();
-	ticket_data['pay_amount'] = new BigDecimal(seats[0]['pub_fee']).setScale();
+	ticket_data['total_amount'] = new BigDecimal(seats[0]['pub_fee']).setScale(0);
+	ticket_data['pay_amount'] = new BigDecimal(seats[0]['pub_fee']).setScale(0);
 }
 
 def o_seats = [];
