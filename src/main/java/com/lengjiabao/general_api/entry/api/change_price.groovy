@@ -34,7 +34,7 @@ params.add(new CommunicationParam("coupons",coupons));
 SimpleAjax pref_ajax = RemoteUtil.connect(SimpleAjax, 'trade', '/incall/ro_preferential', params);
 
 if(pref_ajax.available) {
-	aaaa['data']['pay_amount'] = pref_ajax.data[2];
+	aaaa['data']['pay_amount'] = pref_ajax.data[0];
 }
 
 Result result = new Result();
