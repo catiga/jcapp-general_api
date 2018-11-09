@@ -17,6 +17,8 @@ def ab_ids = JC.request.param('ab_ids');
 def sp_date = JC.request.param('sp_date');
 def sp_time = JC.request.param('sp_time');
 
+def pid = GlobalHolder.pid;
+
 SimpleDateFormat _sdf_yyMMdd_ = new SimpleDateFormat('yyyyMMdd HH:mm:ss');
 //开始整理数据
 try {
@@ -31,7 +33,7 @@ try {
 	return GeneralPub.comfail('请选择正确的时间');
 }
 
-SimpleAjax order_info = JC.internal.call(SimpleAjax, 'reserve', '/sp/create_order', [pid:1,token:token,sp_id:sp_id,res_id:res_id,store_id:store_id,ab_ids:ab_ids,sp_date:sp_date,sp_time:sp_time,sp_items:sp_items]);
+SimpleAjax order_info = JC.internal.call(SimpleAjax, 'reserve', '/sp/create_order', [pid:pid,token:token,sp_id:sp_id,res_id:res_id,store_id:store_id,ab_ids:ab_ids,sp_date:sp_date,sp_time:sp_time,sp_items:sp_items]);
 if(!order_info.available) {
 	def error_code = order_info.messages[0];
 	def error_msg = order_info.messages.length>1?order_info.messages[1]:error_code;
