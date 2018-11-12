@@ -194,7 +194,7 @@
                         <p style="font-size: 15px;">微信支付</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input type="radio" name="radio1" class="weui-check" id="x20" :checked="pay_methods === '101001' ? true : false">
+                        <input type="radio" name="radio1" class="weui-check" id="x20" :checked="pay_methods === '201101' ? true : false">
                         <span class="weui-icon-checked" style="transform:scale(.8)"></span>
                     </div>
                 </label>
