@@ -1,4 +1,4 @@
-package com.lengjiabao.general_api.entry.api
+package com.lengjiabao.general_api.entry.api.auth
 
 import com.jeancoder.app.sdk.JC
 import com.jeancoder.core.power.CommunicationParam
@@ -15,7 +15,9 @@ def ct = JC.request.param('ct');
 def coupons = JC.request.param('coupons');
 def token = JC.request.param("token");
 
-def  accountInfo = JC.request.get().getAttribute("_user_");//获取用户信息
+def accountInfo = JC.request.get().getAttribute("_user_");//获取用户信息
+
+println JackSonBeanMapper.toJson(accountInfo);
 def ap_id = accountInfo['ap_id'];//获取用户信息
 
 def pid = GlobalHolder.pid;

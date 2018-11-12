@@ -1,4 +1,4 @@
-package com.lengjiabao.general_api.entry.api
+package com.lengjiabao.general_api.entry.api.auth
 
 import java.util.List
 
