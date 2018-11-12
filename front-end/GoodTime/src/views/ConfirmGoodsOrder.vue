@@ -77,21 +77,21 @@
             <!-- 会员卡结束 -->
             <!-- 选择支付方式  开始 -->
             <section class="myweui-cells weui-cells_checkbox" style="margin-top: .3rem;" v-else>
-                <label v-if="CardData" class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x10" style="background: #fff;">
+                <label v-if="CardData" class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x10" style="background: #fff;" @click.prevent="changePrice('101001')">
                     <div class="weui-cell__bd">
                         <p style="font-size: 15px;">会员余额支付（余额：{{CardData[0].balance/100}}元）</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input type="radio" class="weui-check" name="radio1" id="x10" checked="checked">
+                        <input type="radio" class="weui-check" name="radio1" id="x10" :ckecked="pay_methods === '101001' ? true : false">
                         <span class="weui-icon-checked" style="transform:scale(.8)"></span>
                     </div>
                 </label>
-                <label class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x20" style="background: #fff;">
+                <label class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x20" style="background: #fff;" @click.prevent="changePrice('201101')">
                     <div class="weui-cell__bd">
                         <p style="font-size: 15px;">微信支付</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input type="radio" name="radio1" class="weui-check" id="x20">
+                        <input type="radio" name="radio1" class="weui-check" id="x20" :checked="pay_methods === '201101' ? true : false">
                         <span class="weui-icon-checked" style="transform:scale(.8)"></span>
                     </div>
                 </label>
@@ -302,7 +302,8 @@
                 offer_amount: "", //优惠价格
                 trangle: false,
                 offer_show: false,
-                o_rem: ''
+                o_rem: '',
+                pay_methods: '101001'
             }
         },beforeRouteEnter:function(to, from, next){
             //当组件加载时自动调用此函数 函数结尾必须next();
@@ -584,7 +585,35 @@
                 let num = this.order_no;
                 let ScanGoods = this.ScanGoods;
                 this.$router.push({name: "couponsForGoods", params: {order_no:num,Goods:ScanGoods}});
-            }
+            },
+            /**
+             * changePrice - 选择支付方式修改价格
+             * 
+             * @param {String} ct - 支付方式  （会员卡支付 101001 , 微信支付 201101） 
+             * @param {String} tnum - 交易编号
+             * @param {String} unicode - 会员标识 
+             * @param {String} coupons - 优惠券列表 (逗号分割)
+             * @param {String} order_no - 订单编号
+             * 
+             */
+            changePrice(ct)  {
+                this.loading = true;
+                this.pay_methods = ct;
+
+                let unicode = ct === '101001' ? this.CardData[0].card_code : "";
+                let coupon_id = this.o_c_1000.id || "";
+                let url = '/general_api/api/change_price_goods?tnum=' + this.tnum + "&order_no=" + this.on + "&ct=" + ct + "&unicode=" + unicode + "&coupons=" + coupon_id + '&ts='+Date.parse(new Date());
+                
+                fetch(url).then(r => r.json()).then(d => {
+                    this.loading = false;
+                    if (d.available) {
+                        this.data = d.data;
+                        this.orderDetails = d.data.items;
+                    }
+                }).catch(e => {
+                    this.loading = false;
+                })
+            },
         }
     }
 </script>
