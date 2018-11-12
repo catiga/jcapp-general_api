@@ -82,7 +82,7 @@
                         <p style="font-size: 15px;">会员余额支付（余额：{{CardData[0].balance/100}}元）</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input type="radio" class="weui-check" name="radio1" id="x10" :ckecked="pay_methods === '101001' ? true : false">
+                        <input type="radio" class="weui-check" name="radio1" id="x10" :checked="pay_methods === '101001' ? true : false">
                         <span class="weui-icon-checked" style="transform:scale(.8)"></span>
                     </div>
                 </label>
