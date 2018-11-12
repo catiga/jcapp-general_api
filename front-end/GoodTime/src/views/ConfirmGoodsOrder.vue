@@ -180,21 +180,21 @@
             <!-- 会员卡结束 -->
             <!-- 选择支付方式  开始 -->
             <section class="myweui-cells weui-cells_checkbox" style="margin-top: .3rem;">
-                <label v-if="CardData" class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x10" style="background: #fff;">
+                <label v-if="CardData" class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x10" style="background: #fff;" @click.prevent="changePrice('101001')">
                     <div class="weui-cell__bd">
                         <p style="font-size: 15px;">会员余额支付（余额：{{CardData[0].balance/100}}元）</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input type="radio" class="weui-check" name="radio1" id="x10" checked="checked">
+                        <input type="radio" class="weui-check" name="radio1" id="x10" :ckecked="pay_methods === '101001' ? true : false">
                         <span class="weui-icon-checked" style="transform:scale(.8)"></span>
                     </div>
                 </label>
-                <label class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x20" style="background: #fff;">
+                <label class="weui-cell myweui-cell cell-height-88 weui-check__label" for="x20" style="background: #fff;" @click.prevent="changePrice('201101')">
                     <div class="weui-cell__bd">
                         <p style="font-size: 15px;">微信支付</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input type="radio" name="radio1" class="weui-check" id="x20">
+                        <input type="radio" name="radio1" class="weui-check" id="x20" :ckecked="pay_methods === '101001' ? true : false">
                         <span class="weui-icon-checked" style="transform:scale(.8)"></span>
                     </div>
                 </label>
