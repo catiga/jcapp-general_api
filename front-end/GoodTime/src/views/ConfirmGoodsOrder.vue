@@ -185,7 +185,7 @@
                         <p style="font-size: 15px;">会员余额支付（余额：{{CardData[0].balance/100}}元）</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input type="radio" class="weui-check" name="radio1" id="x10" :ckecked="pay_methods === '101001' ? true : false">
+                        <input type="radio" class="weui-check" name="radio1" id="x10" :checked="pay_methods === '101001' ? true : false">
                         <span class="weui-icon-checked" style="transform:scale(.8)"></span>
                     </div>
                 </label>
@@ -194,7 +194,7 @@
                         <p style="font-size: 15px;">微信支付</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input type="radio" name="radio1" class="weui-check" id="x20" :ckecked="pay_methods === '101001' ? true : false">
+                        <input type="radio" name="radio1" class="weui-check" id="x20" :checked="pay_methods === '101001' ? true : false">
                         <span class="weui-icon-checked" style="transform:scale(.8)"></span>
                     </div>
                 </label>
@@ -602,7 +602,7 @@
 
                 let unicode = ct === '101001' ? this.CardData[0].card_code : "";
                 let coupon_id = this.o_c_1000.id || "";
-                let url = '/general_api/api/change_price_goods?tnum=' + this.tnum + "&order_no=" + this.on + "&ct=" + ct + "&unicode=" + unicode + "&coupons=" + coupon_id + '&ts='+Date.parse(new Date());
+                let url = '/general_api/api/auth/change_price_goods?tnum=' + this.tnum + "&order_no=" + this.on + "&ct=" + ct + "&unicode=" + unicode + "&coupons=" + coupon_id + '&ts='+Date.parse(new Date());
                 
                 fetch(url).then(r => r.json()).then(d => {
                     this.loading = false;
