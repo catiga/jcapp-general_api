@@ -1,4 +1,4 @@
-package com.lengjiabao.general_api.entry.api
+package com.lengjiabao.general_api.entry.api.auth
 
 import com.jeancoder.app.sdk.JC
 import com.jeancoder.core.power.CommunicationParam
