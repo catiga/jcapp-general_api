@@ -604,7 +604,7 @@
                 this.pay_methods = ct;
 
                 let unicode = ct === '101001' ? this.CardData[0].card_code : "";
-                let coupon_id = this.o_c_1000.id || "";
+                let coupon_id = this.o_c_1000.id ? this.o_c_1000.id + ',' + this.o_c_1000.coupon_type : "";
                 let token = Cookies.get('_lac_k_');
                 let url = '/general_api/api/auth/change_price_goods?tnum=' + this.tnum + "&order_no=" + this.on + "&ct=" + ct + "&unicode=" + unicode + "&coupons=" + coupon_id + "&token=" + token + '&ts='+Date.parse(new Date());
                 
