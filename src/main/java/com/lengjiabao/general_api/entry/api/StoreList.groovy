@@ -7,33 +7,15 @@ import com.jeancoder.app.sdk.source.CommunicationSource
 import com.jeancoder.core.power.CommunicationParam
 import com.jeancoder.core.power.CommunicationPower
 import com.jeancoder.core.result.Result
+import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 import com.jeancoder.core.http.JCRequest
 import com.jeancoder.app.sdk.source.RequestSource
 
-/*
-private Long id;
-	
-	Long store_basic;
-	
-	private String store_no;
-	private String store_name;
-	private String province;
-	private String city;
-	private String zone;
-	private String address;
-	private String province_no;
-	private String city_no;
-	private String zone_no;
-	private Long config_id;
-	private String physics_name;
-	private def systemInfo;
-	private Date c_time;
-	
-	Long proj_id;
- */
+def pid = GlobalHolder.getPid();
+
 def city_no = JC.request.param('city_no');
-def aaaa = JC.internal.call('ticketingsys', '/api/city_cinemas', [city_no:city_no])
+def aaaa = JC.internal.call('ticketingsys', '/api/city_cinemas', [city_no:city_no,pid:pid])
 println aaaa;
 def aaaa_array = null;
 try {
@@ -81,6 +63,9 @@ if(sys_stores) {
 					break;
 				}
 			}
+		}
+		if(!store_model['cinema_id']) {
+			continue;
 		}
 		ret_stores.add(store_model);
 	}
