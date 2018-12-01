@@ -206,7 +206,7 @@
 					this.showTip("请设置6位数的密码~",1000);
 					return
 				}
-				var url = '/general_api/api/createCardRechargeOrder?mc_pwd='+ mc_pwd + '&h_id='+h_id+'&ts='+Date.parse(new Date());
+				var url = '/general_api/api/createCardRechargeOrder?mc_pwd='+ mc_pwd + '&h_id='+h_id + '&sid=' + this.sid +'&ts='+Date.parse(new Date());
 		        fetch(url).then(r => r.json()).then(d => {
 		        	console.log(d)
 		        	if (d.available) {
