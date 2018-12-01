@@ -180,6 +180,7 @@
 				other:'',
 				CardNm:'',//判断是充值还是开卡
 				CardNum:'',
+				sid: '', // 门店id
 			};
 		},beforeRouteEnter:function(to, from, next){
 			//当组件加载时自动调用此函数 函数结尾必须next();
@@ -190,6 +191,7 @@
 			this.Num = Cookies.get('CardNum');
 			this.CardNm = this.$route.params.CardNm;
 			this.GradeList();
+			this.sid = Cookies.get('s_id');
 		},methods:{
 			SshowNum:function(){
 				this.one = true;
@@ -230,7 +232,7 @@
 				page.loading = true;
 				// page.showlogin("请稍等~",1300);
                 var token = Cookies.get('_lac_k_');
-				var url = '/general_api/api/auth/createCardRechargeOrder?token='+token+'&mc_pwd='+ mc_pwd + '&h_id='+h_id+'&ts='+Date.parse(new Date());
+				var url = '/general_api/api/auth/createCardRechargeOrder?token='+token+'&mc_pwd='+ mc_pwd + '&h_id='+h_id + '&sid=' + this.sid +'&ts='+Date.parse(new Date());
 		        fetch(url).then(r => r.json()).then(d => {
 		        	// console.log(d)
 		        	if (d.available) {
@@ -459,7 +461,7 @@
 				var mc_num = page.Num;
 				var h_id = page.id;
 				page.loading = true;
-				var url = '/general_api/api/RechargeCard?mc_num='+ mc_num + '&h_id='+h_id+'&ts='+Date.parse(new Date());
+				var url = '/general_api/api/RechargeCard?mc_num='+ mc_num + '&h_id='+h_id + '&sid=' + this.sid+'&ts='+Date.parse(new Date());
 		        fetch(url).then(r => r.json()).then(d => {
 		        	if (d.available ) {
 		        		page.loading = false;
