@@ -2,6 +2,7 @@ package com.lengjiabao.general_api.entry.h5.wx
 
 import com.jeancoder.app.sdk.JC
 import com.jeancoder.app.sdk.source.ResponseSource
+import com.jeancoder.core.result.Result
 import com.lengjiabao.general_api.ready.common.SimpleAjax
 
 //授权类型
@@ -22,7 +23,8 @@ if(!supp_config.available) {
 }
 def app_id = supp_config.data['app_id'];
 def app_secret = supp_config.data['app_key'];
-def back_url = 'http://' + domain + '/general_api/h5/wx/check_code?type=' + type;
+def schema = JC.request.get().getSchema();
+def back_url = schema + domain + '/general_api/h5/wx/check_code?type=' + type;
 if(bu) {
 	back_url = back_url + '&bu=' + bu;
 }
@@ -36,7 +38,8 @@ back_url = URLEncoder.encode(back_url, "UTF-8");
 def scope = 'snsapi_userinfo';
 def redirect_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + app_id + '&redirect_uri=' + back_url + '&response_type=code&scope=' + scope + '&state=STATE#wechat_redirect';
 
-ResponseSource.getResponse().sendRedirect(redirect_url);
+//ResponseSource.getResponse().sendRedirect(redirect_url);
+return new Result().setRedirectResource(redirect_url);
 
 
 

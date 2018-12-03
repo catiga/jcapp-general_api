@@ -7,9 +7,6 @@ import com.jeancoder.app.sdk.source.ResponseSource
 import com.jeancoder.core.http.JCCookie
 import com.jeancoder.core.result.Result
 import com.lengjiabao.general_api.ready.common.SimpleAjax
-import com.lengjiabao.general_api.ready.dto.AccountInfo
-
-import groovy.json.JsonSlurper
 
 def domain = JC.request.get().getServerName();
 def code = JC.request.param('code')?.trim();
@@ -44,8 +41,8 @@ ResponseSource.getResponse().addCookie(new JCCookie(_apid_cookie_))
 
 if(!account_info['token']&&type=='account') {
 	//说明需要绑定手机号码
-	ResponseSource.getResponse().sendRedirect('/general_api/login');
-	return;
+	//ResponseSource.getResponse().sendRedirect('/general_api/login');
+	return new Result().setRedirectResource(JC.request.get().getSchema() + JC.request.get().getServerName() + '/general_api/login');
 }
 if(account_info['token']) {
 	Cookie cookie = new Cookie('_lac_k_', account_info['token']);
@@ -57,9 +54,11 @@ println 'ready back url===' + bu;
 
 if(bu) {
 	bu = URLDecoder.decode(bu, 'UTF-8');
-	ResponseSource.getResponse().sendRedirect(bu);
+//	ResponseSource.getResponse().sendRedirect(bu);
+	return new Result().setRedirectResource(bu);
 } else {
-	ResponseSource.getResponse().sendRedirect('/general_api/tcss/index');	//跳转回默认首页
+	//ResponseSource.getResponse().sendRedirect('/general_api/tcss/index');	//跳转回默认首页
+	return new Result().setRedirectResource(JC.request.get().getSchema() + JC.request.get().getServerName() + '/general_api/tcss/index');
 }
 
 
