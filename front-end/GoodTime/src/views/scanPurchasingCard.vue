@@ -147,7 +147,8 @@
 				S:'',//第一次输入的密码
 				one: false,
 				two: false,
-				other:''
+				other:'',
+				sid: '', //门店id
 			};
 		},beforeRouteEnter:function(to, from, next){
 			//当组件加载时自动调用此函数 函数结尾必须next();
@@ -156,6 +157,7 @@
 		},created:function(){
 			//组件加载完成会自动调用此方法
 			this.GradeList();
+			this.sid = Cookies.get('s_id');
 		},methods:{
 			SshowNum:function(){
 				this.one = true;
@@ -204,7 +206,7 @@
 					this.showTip("请设置6位数的密码~",1000);
 					return
 				}
-				var url = '/general_api/api/createCardRechargeOrder?mc_pwd='+ mc_pwd + '&h_id='+h_id+'&ts='+Date.parse(new Date());
+				var url = '/general_api/api/createCardRechargeOrder?mc_pwd='+ mc_pwd + '&h_id='+h_id + '&sid=' + this.sid +'&ts='+Date.parse(new Date());
 		        fetch(url).then(r => r.json()).then(d => {
 		        	console.log(d)
 		        	if (d.available) {

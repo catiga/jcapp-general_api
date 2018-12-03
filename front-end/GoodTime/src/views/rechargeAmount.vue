@@ -57,7 +57,8 @@
 				id:'',//等级id
 				HId:'',//选中id
 				Num:'',//卡号
-				other:''//支付信息
+				other:'',//支付信息
+				sid: ''
 			};
 		},beforeRouteEnter:function(to, from, next){
 			//当组件加载时自动调用此函数 函数结尾必须next();
@@ -67,6 +68,7 @@
 			//组件加载完成会自动调用此方法
 			this.GradeList();
 			this.Num = this.$route.params.CardNm;
+			this.sid = Cookies.get('s_id');
 		},methods:{
 			back:function(){
 				//自定义返回上一页函数
@@ -104,7 +106,7 @@
 				var mc_num = page.Num;
 				var h_id = page.id;
 				page.loading = true;
-				var url = '/general_api/api/RechargeCard?mc_num='+ mc_num + '&h_id='+h_id+'&ts='+Date.parse(new Date());
+				var url = '/general_api/api/RechargeCard?mc_num='+ mc_num + '&h_id='+h_id + '&sid=' + this.sid +'&ts='+Date.parse(new Date());
 		        fetch(url).then(r => r.json()).then(d => {
 		        	if (d.available ) {
                 		var token = Cookies.get('_lac_k_');
