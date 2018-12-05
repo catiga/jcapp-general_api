@@ -36,11 +36,11 @@ try {
 	if (!simpleAjax.available ) {
 		result.setData(GeneralPub.comfail("user_no_login"));
 		ResultSource.setResult(result);
-		return false;
+		return result;
 	}
 	if (simpleAjax.data == null ) {
 		ResultSource.setResult(result.setData(GeneralPub.comfail("user_no_login")));
-		return false;
+		return result;
 	}
 	request.setAttribute("_user_", simpleAjax.data);
 //	AccountInfo  accountInfo = request.getAttribute("_user_")
@@ -48,5 +48,5 @@ try {
 } catch (Exception e) {
 	Logger.error("",e);
 	ResultSource.setResult(result.setData(GeneralPub.comfail("user_no_login")));
-	return false;
+	return result.setData(GeneralPub.comfail("user_no_login"));
 }

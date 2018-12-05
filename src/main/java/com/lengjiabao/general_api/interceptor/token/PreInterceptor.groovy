@@ -47,7 +47,7 @@ if (!token) {
 	token = JC.request.param('token');
 	if(!token) {
 		ResultSource.setResult(result.setData(AvailabilityStatus.notAvailable("user_no_login")));
-		return false;
+		return result.setData(AvailabilityStatus.notAvailable("user_no_login"));
 	}
 }
 def pid = GlobalHolder.pid;
@@ -57,11 +57,11 @@ SimpleAjax simpleAjax = JC.internal.call(SimpleAjax, 'crm', '/h5/p/info', [token
 if (!simpleAjax.available ) {
 	result.setData(AvailabilityStatus.notAvailable("user_no_login"));
 	ResultSource.setResult(result);
-	return false;
+	return result;
 }
 if (simpleAjax.data == null ) {
 	ResultSource.setResult(result.setData(AvailabilityStatus.notAvailable("user_no_login")));
-	return false;
+	return result.setData(AvailabilityStatus.notAvailable("user_no_login"));
 }
 GlobalHolder.setToken(token);
 request.setAttribute("_user_", simpleAjax.data);
