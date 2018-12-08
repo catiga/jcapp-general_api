@@ -20,7 +20,7 @@
                                 <template v-for="(seat,j) in row.seats">
                                 <a href="javascript:" class="seat disabled" v-if="seat.seatState == 0 || seat.seatState == 1 || seat.seatState == 2 || seat.seatState == 6 || seat.seatState == 8">
                                 </a>
-                                <a href="javascript:" :name="seat.seatRow+'-'+seat.seatCol" class="seat active" v-else-if="seat.seatState == 4" v-on:click="seatnum(seat.cineSeatId, seat.seatRow, seat.seatCol, seat.graphCol)">
+                                <a href="javascript:" :name="seat.seatRow+'-'+seat.seatCol" :love="seat.loveseats" :sid="seat.cineSeatId" :row="seat.seatRow" :col="seat.seatCol" class="seat active" v-else-if="seat.seatState == 4" v-on:click="seatnum(seat.cineSeatId, seat.seatRow, seat.seatCol, seat.graphCol, seat.loveseats)">
                                 </a>
                                 <span class="seat" v-else></span>
                                 </template>
@@ -252,14 +252,24 @@
                     }, ts)
                 }
             },
-            seatnum: function (sid, row, col, gc) {
+            seatnum: function (sid, row, col, gc, loveseats) {
                 var page = this;
                 var key = row + "-" + col;
                 page.seats = key;
                 if (page.select_seat_meta[key]) {
                     //反选
-                    delete page.select_seat_meta[key];
                     $("a[name=" + key + "]").removeClass("selected").addClass("active");
+                    if(loveseats) {
+                        let loveseatsDom = $("a[love=" + loveseats + "]");
+                        loveseatsDom.each(function() {
+                            $(this).removeClass("selected").addClass("active");
+                            let key = $(this).attr("name");
+                            delete page.select_seat_meta[key];
+                        });
+
+                    } else {
+                        delete page.select_seat_meta[key];
+                    }
                 } else {
                     //选中
                     if (page.select_seat.length + 1 > page.max) {
@@ -267,12 +277,28 @@
                         return;
                     }
 
-                    page.select_seat_meta[key] = {
-                        "sid": sid,
-                        "row": row,
-                        "col": col
-                    };
+                    
                     $("a[name=" + key + "]").removeClass("active").addClass("selected");
+                    if(loveseats) {
+                        let loveseatsDom = $("a[love=" + loveseats + "]");
+                        loveseatsDom.each(function() {
+                            $(this).removeClass("active").addClass("selected");
+                            let key = $(this).attr("name");
+                            
+                            page.select_seat_meta[key] = {
+                                sid : $(this).attr("sid"),
+                                row : $(this).attr("row"),
+                                col : $(this).attr("col")
+                            };
+                        });
+
+                    } else {
+                        page.select_seat_meta[key] = {
+                            "sid": sid,
+                            "row": row,
+                            "col": col
+                        };
+                    }
                 }
 
                 var select_seat = [];
