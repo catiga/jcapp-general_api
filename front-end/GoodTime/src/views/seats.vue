@@ -20,7 +20,7 @@
                                 <template v-for="(seat,j) in row.seats">
                                 <a href="javascript:" class="seat disabled" v-if="seat.seatState == 0 || seat.seatState == 1 || seat.seatState == 2 || seat.seatState == 6 || seat.seatState == 8">
                                 </a>
-                                <a href="javascript:" :name="seat.seatRow+'-'+seat.seatCol" class="seat active" v-else-if="seat.seatState == 4" v-on:click="seatnum(seat.cineSeatId, seat.seatRow, seat.seatCol, seat.graphCol)">
+                                <a href="javascript:" :name="seat.seatRow+'-'+seat.seatCol" :love="seat.loveseats" class="seat active" v-else-if="seat.seatState == 4" v-on:click="seatnum(seat.cineSeatId, seat.seatRow, seat.seatCol, seat.graphCol, seat.loveseats)">
                                 </a>
                                 <span class="seat" v-else></span>
                                 </template>
@@ -252,7 +252,7 @@
                     }, ts)
                 }
             },
-            seatnum: function (sid, row, col, gc) {
+            seatnum: function (sid, row, col, gc, loveseats) {
                 var page = this;
                 var key = row + "-" + col;
                 page.seats = key;
@@ -260,6 +260,9 @@
                     //反选
                     delete page.select_seat_meta[key];
                     $("a[name=" + key + "]").removeClass("selected").addClass("active");
+                    if(loveseats) {
+                        $("a[love=" + loveseats + "]").removeClass("active").addClass("selected");
+                    }
                 } else {
                     //选中
                     if (page.select_seat.length + 1 > page.max) {
@@ -273,6 +276,9 @@
                         "col": col
                     };
                     $("a[name=" + key + "]").removeClass("active").addClass("selected");
+                    if(loveseats) {
+                        $("a[love=" + loveseats + "]").removeClass("active").addClass("selected");
+                    }
                 }
 
                 var select_seat = [];
