@@ -13,7 +13,7 @@ def token = JC.request.param('token');
 
 def  accountInfo = JC.request.get().getAttribute("_user_");
 def ap_id = accountInfo['ap_id'];
-
+def mobile = accountInfo['mobile'];
 Result result = new Result();
 //获取pid
 def domain = JC.request.get().getServerName();
@@ -25,7 +25,7 @@ if(!proj_obj.available) {
 }
 def pid = proj_obj.data['id'];
 
-def param_dic = [cinema_id:cinema_id,plan_date:plan_date,plan_id:plan_id,last_update_time:last_update_time,seat_ids:seat_ids,token:token,apid:ap_id, pid:pid];
+def param_dic = [cinema_id:cinema_id,plan_date:plan_date,plan_id:plan_id,last_update_time:last_update_time,seat_ids:seat_ids,token:token,apid:ap_id, pid:pid,mobile:mobile];
 def aaaa = JC.internal.call('ticketingsys', '/api/genorder', param_dic);
 
 return result.setData(aaaa);
