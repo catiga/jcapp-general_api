@@ -271,6 +271,7 @@
 						}
 						page.encodeUnicodeAdd(add);
 						page.encodeUnicodeName(d.data[0].physics_name);
+						this.GetMovie();
 		        	}
 		        	page.loading = false;
 		        });
