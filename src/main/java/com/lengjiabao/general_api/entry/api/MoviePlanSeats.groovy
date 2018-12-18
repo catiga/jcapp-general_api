@@ -25,6 +25,14 @@ CommunicationParam param2 = new CommunicationParam("plan_id", plan_id);
 CommunicationParam param3 = new CommunicationParam("last_update_time", last_update_time);
 CommunicationParam param4 = new CommunicationParam("hall_id", hall_id);
 
+println "cinema_id_" + cinema_id;
+println "cinema_id_" + plan_id;
+println "cinema_id_" + last_update_time;
+println "cinema_id_" + hall_id;
+
+
+
+
 params.add(param1);
 params.add(param2);
 params.add(param3);
