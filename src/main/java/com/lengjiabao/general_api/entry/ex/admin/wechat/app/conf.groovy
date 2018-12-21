@@ -1,9 +1,14 @@
 package com.lengjiabao.general_api.entry.ex.admin.wechat.app
 
 import com.jeancoder.app.sdk.JC
+import com.jeancoder.app.sdk.source.LoggerSource
+import com.jeancoder.core.log.JCLogger
 import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
+import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 import com.lengjiabao.general_api.ready.ypcall.GeneralPub
+
+JCLogger LOGGER = LoggerSource.getLogger("admin_wechat_conf:");
 
 class FunConf {
 def code;
@@ -50,7 +55,12 @@ index.funcs = collect_admin;
 //获取系统门店列表
 //重新定义pid，取当前用户管理的门店
 def aim_pid = ret.data['user']['pid'];
+
+LOGGER.info("aim_pid======" + aim_pid);
+
 SimpleAjax store_list = JC.internal.call(SimpleAjax, 'project', '/incall/mystore_stand', [pid:aim_pid]);
+
+LOGGER.info(JackSonBeanMapper.toJson(store_list));
 if(store_list.available) {
 	index.stores = store_list.data;
 }
