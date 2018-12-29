@@ -992,6 +992,7 @@
     height:  .37rem;
 }
 
+// 赠品列表 开始
 .gift-box {
 	margin-top: .6rem;
 	padding-right: .6rem;
@@ -1042,4 +1043,5 @@
 		}
 	}
 }
+// 赠品列表 结束
 </style>
