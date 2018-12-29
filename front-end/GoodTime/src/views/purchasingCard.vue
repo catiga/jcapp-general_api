@@ -23,6 +23,36 @@
 					<div class="vertical2"></div>
 				</div>
 			</div>
+
+
+			<!-- 赠品列表 开始 -->
+			<div class="purchasingcard-bot" style="display:none;">
+				<div class="purchasingcard-bot-title">
+					选择赠品
+				</div>
+					<div class="gift-box">
+						<div class="content">
+							<div class="head">选项一</div>
+							<p class="title">充值¥1000</p>
+							<p class="info"><span class="status">赠</span>宠物精美礼包</p>
+							<p class="info"><span class="status">赠</span>洗澡代金券1张+SPA代金券1张</p>
+							<p class="info"><span class="status">赠</span>充值1000元送100元</p>
+							<i class="icon weui-icon-success weui-icon_msg" style="font-size: .4rem;margin-right: .3rem;"></i>
+						</div>
+					</div>
+					<div class="gift-box">
+						<div class="content">
+							<div class="head">选项二</div>
+							<p class="title">充值¥1000</p>
+							<p class="info"><span class="status">赠</span>宠物精美礼包</p>
+							<p class="info"><span class="status">赠</span>洗澡代金券1张+SPA代金券1张</p>
+							<p class="info"><span class="status">赠</span>充值1000元送100元</p>
+							<i class="icon weui-icon-circle weui-icon_msg" style="font-size: .4rem;margin-right: .3rem;"></i>
+						</div>
+					</div>
+			</div>
+			<!-- 赠品列表 结束 -->
+
 			<div class="purchasingcard-bot">
 				<div class="purchasingcard-bot-title">
 					支付方式
@@ -123,6 +153,37 @@
 					</li>
 				</ul>
 			</div>
+
+
+			<!-- 赠品列表 开始 -->
+			<div class="purchasingcard-bot" style="display:none;">
+				<div class="purchasingcard-bot-title">
+					选择赠品
+				</div>
+					<div class="gift-box">
+						<div class="content">
+							<div class="head">选项一</div>
+							<p class="title">充值¥1000</p>
+							<p class="info"><span class="status">赠</span>宠物精美礼包</p>
+							<p class="info"><span class="status">赠</span>洗澡代金券1张+SPA代金券1张</p>
+							<p class="info"><span class="status">赠</span>充值1000元送100元</p>
+							<i class="icon weui-icon-success weui-icon_msg" style="font-size: .4rem;margin-right: .3rem;"></i>
+						</div>
+					</div>
+					<div class="gift-box">
+						<div class="content">
+							<div class="head">选项二</div>
+							<p class="title">充值¥1000</p>
+							<p class="info"><span class="status">赠</span>宠物精美礼包</p>
+							<p class="info"><span class="status">赠</span>洗澡代金券1张+SPA代金券1张</p>
+							<p class="info"><span class="status">赠</span>充值1000元送100元</p>
+							<i class="icon weui-icon-circle weui-icon_msg" style="font-size: .4rem;margin-right: .3rem;"></i>
+						</div>
+					</div>
+			</div>
+			<!-- 赠品列表 结束 -->
+
+
 			<div class="purchasingcard-bot">
 				<div class="purchasingcard-bot-title">
 					支付方式
@@ -929,5 +990,56 @@
     right: -.01rem;
     width:  .4rem;
     height:  .37rem;
+}
+
+.gift-box {
+	margin-top: .6rem;
+	padding-right: .6rem;
+	.content {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		padding-top: .5rem;
+		border-radius: .1rem;
+		background: #F6F7F8;
+		.head {
+			position: absolute;
+			top: -0.2rem;
+			background: #2BBB08;
+			color: #fff;
+			border-radius: .06rem;
+			font-size: .2rem;
+			padding: .06rem .1rem;
+			margin-left: .5rem;
+			box-shadow: 0px 5px 12px 1px #B8E8B8;
+		}
+		.title {
+			font-size: .3rem;
+			margin-left: .5rem;
+			margin-bottom: .1rem;
+		}
+		.info {
+			font-size: .2rem;
+			margin-left: .5rem;
+			margin-bottom: .05rem;
+			color: #7D7E7F;
+			.status {
+				border-radius: .06rem;
+				border: 1px solid #F9C1A3;
+				color: #F9C1A3;
+				margin-right: .1rem;
+				padding: 0 .03rem;
+			}
+		}
+		.icon {
+			position: absolute;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto 0;
+			height: 1rem;
+			line-height: 1rem;
+		}
+	}
 }
 </style>
