@@ -28,6 +28,7 @@ def app_id = supp_config.data['app_id'];
 def app_secret = supp_config.data['app_key'];
 def schema = JC.request.get().getSchema();
 def back_url = schema + domain + '/general_api/h5/wx/check_code?type=' + type;
+Logger.info("back_url_" +back_url)
 if(bu) {
 	back_url = back_url + '&bu=' + bu;
 }
