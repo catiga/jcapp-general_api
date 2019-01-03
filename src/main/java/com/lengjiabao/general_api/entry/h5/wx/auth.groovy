@@ -1,7 +1,9 @@
 package com.lengjiabao.general_api.entry.h5.wx
 
 import com.jeancoder.app.sdk.JC
+import com.jeancoder.app.sdk.source.LoggerSource
 import com.jeancoder.app.sdk.source.ResponseSource
+import com.jeancoder.core.log.JCLogger
 import com.jeancoder.core.result.Result
 import com.lengjiabao.general_api.ready.common.SimpleAjax
 
@@ -10,6 +12,7 @@ import com.lengjiabao.general_api.ready.common.SimpleAjax
  * base:
  * account:
  */
+JCLogger  Logger = LoggerSource.getLogger();
 def type = JC.request.param('type');
 def bu = JC.request.param('bu'); 
 if(!type) {
@@ -37,7 +40,7 @@ back_url = URLEncoder.encode(back_url, "UTF-8");
 
 def scope = 'snsapi_userinfo';
 def redirect_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + app_id + '&redirect_uri=' + back_url + '&response_type=code&scope=' + scope + '&state=STATE#wechat_redirect';
-
+Logger.info("redirect_url_" +redirect_url)
 //ResponseSource.getResponse().sendRedirect(redirect_url);
 return new Result().setRedirectResource(redirect_url);
 
