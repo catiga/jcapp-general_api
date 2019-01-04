@@ -32,12 +32,12 @@ if(new_pwd.trim().length()!=6) {
 	return GeneralPub.comfail('请输入六位数字');
 }
 
-//SimpleAjax result = JC.internal.call(SimpleAjax, 'crm', '/h5/mc/createRechargeAmountOrder', [pid:aim_pid,mc_num:mc_num,h_id:mch_id,r_amount:r_amount,op_user_id:op_user_id,op_user_name:op_user_name]);
-//
-//if(!result.available) {
-//	def err_code = result.messages[0];
-//	def err_msg = result.messages[1];
-//	return GeneralPub.fail(err_code, err_msg, null);
-//}
+SimpleAjax result = JC.internal.call(SimpleAjax, 'crm', '/mc/modify_pwd', [pid:aim_pid,acmid:id,new_pwd:new_pwd]);
+
+if(!result.available) {
+	def err_code = result.messages[0];
+	def err_msg = result.messages[1];
+	return GeneralPub.fail(err_code, err_msg, null);
+}
 
 return GeneralPub.success(new_pwd);
