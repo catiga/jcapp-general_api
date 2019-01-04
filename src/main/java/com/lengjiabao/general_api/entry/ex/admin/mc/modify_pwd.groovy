@@ -40,4 +40,4 @@ if(new_pwd.trim().length()!=6) {
 //	return GeneralPub.fail(err_code, err_msg, null);
 //}
 
-return GeneralPub.success();
+return GeneralPub.success(new_pwd);
