@@ -87,7 +87,7 @@ orderRemote['ticket_flag2'] = vcode;
 ticket_data['orderRemote'] = orderRemote;
 
 //增加二维码
-ticket_data['qrcode'] = 'Vm0wd2QyUXlWa2hWV0doVllteEtWMVl3WkRSWFJteFZVMnhPV0Zac2JETlhhMUpUVmpBeFdHVkliRmhoTWsweFZqQmFTMlJIVmtkWGJGcE9ZV3RGZUZkV1pEUlRNazE0V2toV2FGSnRVbFJVVkVwdlZWWmtWMWRzV214U2JHdzBWa2MxVDJGV1NuTlhia0pXWWxob00xWldXbXRXTVdSelYyMTRVMkpXU2twV2JURXdZekpHVjFOdVZsSmlSMmhZV1d4U1YxSkdXbGRYYlhSWFRWWndNRlZ0ZUZOaFZscHlWMVJHVjJFeVVYZFhWbVJIVmpGT2RWWnNTbWhsYlhoWVYxWmtNR1F5VW5OWGExcFlZa1p3YzFacVJtRlRSbHBJWlVaa1ZXSkdjRnBWVjNoVFZtc3hkV0ZHVWxkU1JWcE1WbTB4VDFJeFduTldiV2hPVm14YWVsWkdVa05WYTNCVlZHdFZKVE5F';
+ticket_data['qrcode'] = '43013001qquut3gjev1aXHRYrH7W8UGzsDkN8UHgROKJTE4d0x7TdQze2Ta/v1F7/oNUe0G4W7senII6/McWjH55G0+FH/7ffvcEjX/itPOnvWSTRu6uJJCULD4RqKHc/PBZbb0StWTnYbdBgarTx0MJ2G3kKDtssR3IsAfEyBuhjNE2+r8=';
 //增加票号
 ticket_data['tknum'] = order.order_no;
 //增加票类
