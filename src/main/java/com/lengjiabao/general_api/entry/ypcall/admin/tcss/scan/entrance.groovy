@@ -29,7 +29,7 @@ if(!ret_data.available) {
 //	doo.code = ret_data.messages[0];
 //	doo.msg = ret_data.messages[1];
 //	return doo;
-	return GeneralPub.comfail(ret_data.messages[0] + ',' + ret_data.messages[1]);
+	return GeneralPub.fail(ret_data.messages[0], ret_data.messages[1], null);
 }
 def order = ret_data.data[0];
 def seats = ret_data.data[1];
