@@ -85,6 +85,13 @@ orderRemote['ticket_flag2'] = vcode;
 
 ticket_data['orderRemote'] = orderRemote;
 
+//增加二维码
+ticket_data['qrcode'] = 'Vm0wd2QyUXlWa2hWV0doVllteEtWMVl3WkRSWFJteFZVMnhPV0Zac2JETlhhMUpUVmpBeFdHVkliRmhoTWsweFZqQmFTMlJIVmtkWGJGcE9ZV3RGZUZkV1pEUlRNazE0V2toV2FGSnRVbFJVVkVwdlZWWmtWMWRzV214U2JHdzBWa2MxVDJGV1NuTlhia0pXWWxob00xWldXbXRXTVdSelYyMTRVMkpXU2twV2JURXdZekpHVjFOdVZsSmlSMmhZV1d4U1YxSkdXbGRYYlhSWFRWWndNRlZ0ZUZOaFZscHlWMVJHVjJFeVVYZFhWbVJIVmpGT2RWWnNTbWhsYlhoWVYxWmtNR1F5VW5OWGExcFlZa1p3YzFacVJtRlRSbHBJWlVaa1ZXSkdjRnBWVjNoVFZtc3hkV0ZHVWxkU1JWcE1WbTB4VDFJeFduTldiV2hPVm14YWVsWkdVa05WYTNCVlZHdFZKVE5F';
+//增加票号
+ticket_data['tknum'] = order.order_no;
+//增加票类
+ticket_data['tkcat'] = "标准票";
+
 doo.data = ticket_data;
 
 return GeneralPub.success(doo);
