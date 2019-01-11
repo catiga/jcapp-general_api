@@ -28,8 +28,8 @@ SimpleAjax ret_data = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketing/t
 if(!ret_data.available) {
 	doo.code = ret_data.messages[0];
 	doo.msg = ret_data.messages[1];
-	//return doo;
-	return GeneralPub.comfail(doo);
+	return doo;
+	//return GeneralPub.comfail(doo);
 }
 def order = ret_data.data[0];
 def seats = ret_data.data[1];
