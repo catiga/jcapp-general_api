@@ -26,10 +26,10 @@ doo.msg = "success";
 
 SimpleAjax ret_data = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketing/take_by_codes', [get_code:tcode,validate_code:vcode,pid:pid]);
 if(!ret_data.available) {
-	doo.code = ret_data.messages[0];
-	doo.msg = ret_data.messages[1];
-	return doo;
-	//return GeneralPub.comfail(doo);
+//	doo.code = ret_data.messages[0];
+//	doo.msg = ret_data.messages[1];
+//	return doo;
+	return GeneralPub.comfail(ret_data.messages[0], ret_data.messages[1]);
 }
 def order = ret_data.data[0];
 def seats = ret_data.data[1];
