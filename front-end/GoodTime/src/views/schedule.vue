@@ -47,9 +47,9 @@
 
 
         <!-- 影片日期 开始 -->
-        <div class="wrapper">
-            <ul class="scroller">
-                <li :class="date_index === index ? 'choose-current-date' : ''" v-for="(item, index) in date_list" :key="index" @click="clickDate(index)">{{item.date}}</li>
+        <div class="wrapper" ref="dateListWrapper">
+            <ul style="position: absolute; left: 0; top: 0;height: 100%; white-space: nowrap; z-index: 2;">
+                <li :class="date_index === index ? 'choose-current-date' : ''" v-for="(item, index) in date_list" :key="index" @click="clickDate(index)"  style="display: inline-block; line-height: .91rem; width: 1.87rem; height: 100%; text-align: center; font-size: .26rem; color: #828282; padding: 0 .25rem; box-sizing: border-box;">{{item.date}}</li>
             </ul>
         </div>
         <!-- 影片日期 结束 -->
@@ -149,6 +149,7 @@
 	</div>
 </template>
 <script>
+    import BScroll from 'better-scroll'
     export default {
         data() {
             var self = this;
@@ -174,6 +175,7 @@
                 storeAdd:'',
                 storeName:'',
                 index:'',
+                dateListScroll: {},
                 swiperOption: {
                     slidesPerView: 4,
                     spaceBetween: 10,
@@ -194,6 +196,7 @@
                             self.properties = self.movie_list[page.clickedIndex].properties;
                             self.actorList = self.movie_list[page.clickedIndex].celebritys;
                             page.slideTo(page.clickedIndex);
+                            self.dateListScroll.scrollTo(0,0,700,'bounce');
                         }
                     }
                 }
@@ -219,6 +222,7 @@
         },
         mounted: function () {
             this.fetchMovieData();
+            this.dateListScroll = new BScroll(this.$refs.dateListWrapper, {click: true, eventPassthrough: true, scrollX: true, scrollY: false, preventDefault: false})
         },
         methods: {
             //门店名称转码
