@@ -47,6 +47,7 @@
 					</div>
 				</div>
 				<div class="myCards-bot">
+					<div class="myCards-bot-go" v-on:click="goBindCard">无会员卡立即绑定</div>
 					<div class="myCards-bot-go" v-on:click="godo_paycard">立即开通</div>
 					<!-- <div class="myCards-top-bind" v-on:click="godo_bindcard">立即绑定</div> -->
 				</div>
@@ -149,6 +150,10 @@
 			},godo_recharge:function(Num){
 				document.cookie = "CardNum="+Num;
 				location.href="/general_api/tcss/index/?#/purchasingCard/recharge";
+			},
+			// 跳转会员卡绑定界面
+			goBindCard() {
+				this.$router.push({name: 'bindCard'});
 			}
 		}
 	}
