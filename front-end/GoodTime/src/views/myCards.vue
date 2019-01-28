@@ -8,7 +8,8 @@
 					<div class="ed-myCards-top-box">
 						<div class="ed-myCards-top">
 							<div class="ed-myCards-top-logo">
-								<img src="http://pe1s.static.pdr365.com/timg.jpeg" />
+								<!-- <img src="http://pe1s.static.pdr365.com/timg.jpeg" /> -->
+								<img :src="logo.domain + '/img_server/' + logo.logo" />
 								<p>{{item.rule.title}}</p>
 							</div>
 							<p class="ed-myCards-top-num">{{item.mc_num}}</p>
@@ -47,7 +48,7 @@
 					</div>
 				</div>
 				<div class="myCards-bot">
-					<div class="myCards-bot-go" v-on:click="goBindCard">无会员卡立即绑定</div>
+					<div class="myCards-bot-go" v-on:click="goBindCard">已有会员卡,立即绑定</div>
 					<div class="myCards-bot-go" v-on:click="godo_paycard">立即开通</div>
 					<!-- <div class="myCards-top-bind" v-on:click="godo_bindcard">立即绑定</div> -->
 				</div>
@@ -90,7 +91,8 @@
 	</div>
 </template>
 <script>
-	import Cookies from 'js-cookie'
+	import Cookies from 'js-cookie';
+	import {mapState} from 'vuex';
 	export default {
 		data(){
 			return {
@@ -102,7 +104,11 @@
 				CardData:'',
 				Codesrc:'',
 			};
-		},beforeRouteEnter:function(to, from, next){
+		},
+		computed: {
+			...mapState(['logo']),
+		},
+		beforeRouteEnter:function(to, from, next){
 			//当组件加载时自动调用此函数 函数结尾必须next();
 			document.title="会员卡";
 			next();
