@@ -9,6 +9,6 @@ def ret_data = JC.internal.call('project', '/incall/project_by_id', [pid:GlobalH
 ret_data = JackSonBeanMapper.jsonToMap(ret_data);
 
 def schema = JC.request.get().getSchema();
-ret_data['domain'] = schema + '://' + ret_data['domain'];
+ret_data['domain'] = schema + ret_data['domain'];
 
 return ret_data;
