@@ -54,6 +54,7 @@
 				// this.$router.push({name: 'purchasingCard'})
 			},do_bind:function() {
 				let page = this;
+				let token = Cookies.get('_lac_k_');
 				let card_num = this.card_num;
 				let card_pwd = this.card_pwd;
 				let card_store = this.card_store;
@@ -72,7 +73,7 @@
 				
 				let loading = weui.loading('加载中');
 				
-				var url = '/general_api/api/auth/bind_my_card?mc_num='+card_num+'&mc_pwd='+card_pwd+'&s_id='+card_store+'&'+new Date().getTime();
+				var url = '/general_api/api/auth/bind_my_card?token=' + token + '&mc_num='+card_num+'&mc_pwd='+card_pwd+'&s_id='+card_store+'&'+new Date().getTime();
 		        fetch(url).then(r => r.json()).then(d => {
 		        	loading.hide();
 		        	if (d.available) {
