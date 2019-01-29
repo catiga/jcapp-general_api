@@ -53,6 +53,7 @@
 				location.href="/general_api/tcss/index#/purchasingCard/purchasing"
 				// this.$router.push({name: 'purchasingCard'})
 			},do_bind:function() {
+				let page = this;
 				let card_num = this.card_num;
 				let card_pwd = this.card_pwd;
 				if(!card_num || !card_pwd) {
