@@ -6,7 +6,7 @@
 				<div class="bindCard-top">
 					<label class="kahao">门店/影城</label>
 					<select v-model="card_store" id="select" class="kahao_d" style="width: 60%;">
-						<option value="4">测试影城</option>
+						<option value="400">测试影城</option>
 					</select>
 				</div>
 				<div class="bindCard-bot">
