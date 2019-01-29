@@ -28,7 +28,8 @@ List<CommunicationParam> params = new ArrayList<CommunicationParam>();
 
 def  accountInfo = JC.request.get().getAttribute("_user_");//获取用户信息
 def ap_id = accountInfo['ap_id'];//获取用户信息
+def mobile = accountInfo['mobile'];//获取用户信息
 
-String ret = JC.internal.call('crm', '/h5/user/get_account_mcs', [apid:ap_id.toString(),pid:GlobalHolder.pid.toString()]);
+String ret = JC.internal.call('crm', '/h5/user/get_account_mcs', [apid:ap_id.toString(),pid:GlobalHolder.pid.toString(),mobile:mobile]);
 return new Result().setData(ret);
 
