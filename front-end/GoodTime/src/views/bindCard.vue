@@ -29,6 +29,9 @@
 	</div>
 </template>
 <script>
+	import Cookies from 'js-cookie'
+	import {mapState,mapActions} from 'vuex'
+	
 	export default {
 		data(){
 			return {
