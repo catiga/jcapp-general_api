@@ -20,5 +20,5 @@ def mobile = accountInfo['mobile'];
 
 logger.info("bind_my_card_" + s_id + "_" +mc_num+ "_" +mc_pwd);
 
-SimpleAjax ajax =  JC.internal.call(SimpleAjax,"crm", "h5/user/bind_my_card", [s_id:s_id,mc_num:mc_num,mc_pwd:mc_pwd,ap_id:ap_id,mobile:mobile]);
+SimpleAjax ajax =  JC.internal.call(SimpleAjax,"crm", "h5/user/bind_my_card", [pid:GlobalHolder.pid.toString(),s_id:s_id,mc_num:mc_num,mc_pwd:mc_pwd,ap_id:ap_id,mobile:mobile]);
 return ajax;
