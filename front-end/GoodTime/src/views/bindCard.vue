@@ -58,7 +58,15 @@
 				let card_pwd = this.card_pwd;
 				let card_store = this.card_store;
 				if(!card_num || !card_pwd) {
-					page.showTip('请输入会员卡号和密码');
+					weui.dialog({
+    					content: '请输入会员卡号和密码',
+    					className: 'custom-classname',
+					    buttons: [{
+					        label: '确定',
+					        type: 'primary',
+					        onClick: function () { }
+					    }]
+					});
 					return;
 				}
 				
@@ -68,10 +76,27 @@
 		        fetch(url).then(r => r.json()).then(d => {
 		        	loading.hide();
 		        	if (d.available) {
-		        		page.showlogin("会员卡绑定成功",1000);
-		        		location.reload();
+		        		//page.showlogin("会员卡绑定成功",1000);
+		        		weui.dialog({
+	    					content: '请输入会员卡号和密码',
+	    					className: 'custom-classname',
+						    buttons: [{
+						        label: '确定',
+						        type: 'primary',
+						        onClick: function () {location.reload(); }
+						    }]
+						});
+		        		
 		        	}else{
-		        		page.showTip(d.messages[0]);
+		        		weui.dialog({
+	    					content: d.messages[0],
+	    					className: 'custom-classname',
+						    buttons: [{
+						        label: '确定',
+						        type: 'primary',
+						        onClick: function () { }
+						    }]
+						});
 		        	}
 		        });
 			}
