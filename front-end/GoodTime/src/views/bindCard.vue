@@ -56,6 +56,7 @@
 				let page = this;
 				let card_num = this.card_num;
 				let card_pwd = this.card_pwd;
+				let card_store = this.card_store;
 				if(!card_num || !card_pwd) {
 					page.showTip('请输入会员卡号和密码');
 					return;
