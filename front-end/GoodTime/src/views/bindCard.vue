@@ -5,24 +5,24 @@
 			<form>
 				<div class="bindCard-top">
 					<label class="kahao">门店/影城</label>
-					<select id="select" class="kahao_d" style="width: 60%;">
-						<option value="34">ayingcheng</option>
+					<select v-model="card_store" id="select" class="kahao_d" style="width: 60%;">
+						<option value="4">测试影城</option>
 					</select>
 				</div>
 				<div class="bindCard-bot">
 					<label class="kahao">卡号</label> 
-					<input class="bindCard-bot-input" id="Kpassword" type="text" name="Kpassword" placeholder="请填写会员卡号">
+					<input class="bindCard-bot-input" v-model="card_num" id="Kpassword" type="text" name="Kpassword" placeholder="请填写会员卡号">
 				</div>
 				<div class="bindCard-bot">
 					<label class="kahao">密码</label> 
-					<input class="bindCard-bot-input" id="Kpassword" type="text" name="Kpassword" placeholder="请填写正确的密码">
+					<input class="bindCard-bot-input" v-model="card_pwd" id="Kpassword" type="text" name="Kpassword" placeholder="请填写正确的密码">
 				</div>
 			</form>
 		</div>
 		
 		
 		<div class="bindCard-bind">
-			<div><p class="bind-bd">绑定</p></div>
+			<div v-on:click="do_bind"><p class="bind-bd">绑定</p></div>
 			<p class="bind-hint">注：测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</p>
 		</div>
 			
@@ -34,7 +34,10 @@
 			return {
 				loading:true,
 				synopsis:'synopsis-none',
-				showBtn:'showBtn'
+				showBtn:'showBtn',
+				card_num: '',
+				card_pwd: '',
+				card_store: ''
 			};
 		},beforeRouteEnter:function(to, from, next){
 			//当组件加载时自动调用此函数 函数结尾必须next();
@@ -49,6 +52,26 @@
 			},godo_paycard:function(){
 				location.href="/general_api/tcss/index#/purchasingCard/purchasing"
 				// this.$router.push({name: 'purchasingCard'})
+			},do_bind:function() {
+				let card_num = this.card_num;
+				let card_pwd = this.card_pwd;
+				if(!card_num || !card_pwd) {
+					page.showTip('请输入会员卡号和密码');
+					return;
+				}
+				
+				let loading = weui.loading('加载中');
+				
+				var url = '/general_api/api/auth/bind_my_card?mc_num='+card_num+'&mc_pwd='+card_pwd+'&s_id='+card_store+'&'+new Date().getTime();
+		        fetch(url).then(r => r.json()).then(d => {
+		        	loading.hide();
+		        	if (d.available) {
+		        		page.showlogin("会员卡绑定成功",1000);
+		        		location.reload();
+		        	}else{
+		        		page.showTip(d.messages[0]);
+		        	}
+		        });
 			}
 		}
 	}
