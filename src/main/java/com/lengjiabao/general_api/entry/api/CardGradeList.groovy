@@ -24,7 +24,7 @@ if (simpleAjax == null || !simpleAjax.available || simpleAjax.data == null ) {
 def ap_id = simpleAjax.data['ap_id'];//获取用户信息
 def mobile = simpleAjax.data['mobile'];//获取用户信息
 AvailabilityStatus status = JC.internal.call(AvailabilityStatus,'crm', '/h5/user/get_account_mcs', [apid:ap_id.toString(),pid:GlobalHolder.pid.toString(),mobile:mobile]);
-logger.info("CardGradeList__" + JackSonBeanMapper.toJson(status))
+logger.info("CardGradeList__" + JackSonBeanMapper.toJson(status) + "__"+ap_id + "__"+mobile)
 if (status.data != null && status.data.size() != 0 && !"0".equals(status.data.get(0).outer_type)) {
 	try {
 		def mc = status.data.get(0);
