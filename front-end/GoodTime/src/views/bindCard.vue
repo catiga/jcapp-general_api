@@ -64,7 +64,6 @@
 				if(!card_num || !card_pwd) {
 					weui.dialog({
     					content: '请输入会员卡号和密码',
-    					className: 'custom-classname',
 					    buttons: [{
 					        label: '确定',
 					        type: 'primary',
@@ -80,21 +79,18 @@
 		        fetch(url).then(r => r.json()).then(d => {
 		        	loading.hide();
 		        	if (d.available) {
-		        		//page.showlogin("会员卡绑定成功",1000);
 		        		weui.dialog({
-	    					content: '请输入会员卡号和密码',
-	    					className: 'custom-classname',
+	    					content: '会员卡绑定成功',
 						    buttons: [{
 						        label: '确定',
 						        type: 'primary',
-						        onClick: function () {location.reload(); }
+						        onClick: function () {page.$router.go(-1); }
 						    }]
 						});
 		        		
 		        	}else{
 		        		weui.dialog({
 	    					content: d.messages[0],
-	    					className: 'custom-classname',
 						    buttons: [{
 						        label: '确定',
 						        type: 'primary',
