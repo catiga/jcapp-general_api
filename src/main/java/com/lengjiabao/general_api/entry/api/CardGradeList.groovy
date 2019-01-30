@@ -9,6 +9,7 @@ import com.jeancoder.core.result.Result
 import com.lengjiabao.general_api.ready.common.AvailabilityStatus
 import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
+import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 import com.jeancoder.core.http.JCRequest
 import com.jeancoder.core.log.JCLogger
 import com.jeancoder.app.sdk.source.RequestSource
@@ -22,8 +23,8 @@ if (simpleAjax == null || !simpleAjax.available || simpleAjax.data == null ) {
 }
 def ap_id = simpleAjax.data['ap_id'];//获取用户信息
 def mobile = simpleAjax.data['mobile'];//获取用户信息
-
 AvailabilityStatus status = JC.internal.call(AvailabilityStatus,'crm', '/h5/user/get_account_mcs', [apid:ap_id.toString(),pid:GlobalHolder.pid.toString(),mobile:mobile]);
+logger.info("CardGradeList__" + JackSonBeanMapper.toJson(status))
 if (status.data != null && status.data.size() != 0 && !"0".equals(status.data.get(0).outer_type)) {
 	try {
 		def mc = status.data.get(0);
@@ -33,6 +34,7 @@ if (status.data != null && status.data.size() != 0 && !"0".equals(status.data.ge
 		}
 		def item = status.data.get(0);
 		item.getpay =  item.least_recharge;
+		logger.info("CardGradeList__" + JackSonBeanMapper.toJson(avai))
 		return avai;
 	} catch (any) {
 		logger.info("",any);
