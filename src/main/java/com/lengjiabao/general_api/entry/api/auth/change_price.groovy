@@ -31,7 +31,8 @@ params.add(new CommunicationParam("tnum",tnum));
 params.add(new CommunicationParam("unicode",unicode));
 params.add(new CommunicationParam("ct",ct));
 params.add(new CommunicationParam("coupons",coupons));
-SimpleAjax pref_ajax = RemoteUtil.connect(SimpleAjax, 'trade', '/incall/ro_preferential', params);
+//SimpleAjax pref_ajax = RemoteUtil.connect(SimpleAjax, 'trade', '/incall/ro_preferential', params);
+SimpleAjax pref_ajax = JC.internal.call(SimpleAjax, 'trade', '/incall/ro_preferential', params);
 
 if(pref_ajax.available) {
 	aaaa['data']['pay_amount'] = pref_ajax.data[0];
