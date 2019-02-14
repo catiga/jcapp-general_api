@@ -525,7 +525,7 @@
                 this.pay_methods = ct;
 
                 let unicode = ct === '101001' ? this.CardData[0].card_code : "";
-                let coupon_id = this.o_c.id ? this.o_c.id + ',' + this.o_c.coupon_type : "";
+                let coupon_id = this.o_c.id ? this.o_c.id + ',' + this.o_c.crapp : "";
                 let token = Cookies.get('_lac_k_');
                 let url = '/general_api/api/auth/change_price?tnum=' + this.tnum + "&order_no=" + this.on + "&ct=" + ct + "&unicode=" + unicode + "&coupons=" + coupon_id + "&token=" + token + '&ts='+Date.parse(new Date());
                 
