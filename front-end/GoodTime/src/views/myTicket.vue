@@ -61,7 +61,7 @@
 			<div v-show="active === 1" class="weui-tab__panel" style="padding-top:50px;padding-bottom:50px;">
 				<div class="my-ticket-box">
 					<!--小吃-->
-					<div class="cardWrap" v-for="(item,index) in OrderList" v-if="item.oss!='0000'" v-on:click="godo_goodscode(item.order_no,index)">
+					<div class="cardWrap" v-for="(item,index) in OrderList" v-if="item.oss!='0000' && item.oss!='9000'" v-on:click="godo_goodscode(item.order_no,index)">
 						<div class="card cardtop">
 							<p>{{logo.proj_name}}</p>
 							<img v-if="item.oss=='1000'" class="cardtop-flag" src="http://pe1s.static.pdr365.com/dailingqu.png" />
