@@ -8,11 +8,5 @@ class McAvailabilityStatus implements Serializable {
 	
 	 String[] messages;
 	
-	 RetObj obj = new RetObj() {
-		
-		@Override
-		public Object getObj() {
-			return null;
-		}
-	};
+	 Object obj ;
 }
