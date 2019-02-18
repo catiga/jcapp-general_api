@@ -9,29 +9,29 @@ class McAvailabilityStatus implements Serializable {
 	
 	 Object obj ;
 	 
-	 private static final AvailabilityStatus AVAILABLE_INSTANCE = new AvailabilityStatus(true, new String[0]);
+	 private static final McAvailabilityStatus AVAILABLE_INSTANCE = new McAvailabilityStatus(true, new String[0]);
 	 
 	 
-	 public static AvailabilityStatus available(String[] messages) {
-		 return new AvailabilityStatus(true, messages);
+	 public static McAvailabilityStatus available(String[] messages) {
+		 return new McAvailabilityStatus(true, messages);
 	 }
 	 
-	 public static AvailabilityStatus available(String[] messages, RetObj obj) {
-		 return new AvailabilityStatus(true, messages, obj);
+	 public static McAvailabilityStatus available(String[] messages, RetObj obj) {
+		 return new McAvailabilityStatus(true, messages, obj);
 	 }
 	 
 	 
-	 public static AvailabilityStatus available() {
+	 public static McAvailabilityStatus available() {
 		 return AVAILABLE_INSTANCE;
 	 }
 	 
-	 public static AvailabilityStatus available(RetObj obj) {
-		 return new AvailabilityStatus(true, [""] as String[], obj);
+	 public static McAvailabilityStatus available(RetObj obj) {
+		 return new McAvailabilityStatus(true, [""] as String[], obj);
 	 }
 	 
-	 public static AvailabilityStatus available(Object obj) {
+	 public static McAvailabilityStatus available(Object obj) {
 		 
-		 return new AvailabilityStatus(true, [""] as String[], new RetObj() {
+		 return new McAvailabilityStatus(true, [""] as String[], new RetObj() {
 			 @Override
 			 public Object getObj() {
 				 return obj;
