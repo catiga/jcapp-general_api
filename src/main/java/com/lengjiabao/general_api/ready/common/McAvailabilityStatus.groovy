@@ -38,4 +38,9 @@ class McAvailabilityStatus implements Serializable {
 			 }
 		 });
 	 }
+	 
+	 private McAvailabilityStatus(boolean available, String[] messages) {
+		 this.available = available;
+		 this.messages = messages;
+	 }
 }
