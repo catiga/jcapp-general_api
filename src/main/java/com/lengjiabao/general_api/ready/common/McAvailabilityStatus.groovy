@@ -3,7 +3,6 @@ package com.lengjiabao.general_api.ready.common
 import java.io.Serializable
 
 
-
 public final class McAvailabilityStatus implements Serializable {
 	
 	private boolean available;

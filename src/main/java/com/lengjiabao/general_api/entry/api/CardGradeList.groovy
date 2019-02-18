@@ -25,6 +25,7 @@ if (simpleAjax == null || !simpleAjax.available || simpleAjax.data == null ) {
 def ap_id = simpleAjax.data['ap_id'];//获取用户信息
 def mobile = simpleAjax.data['mobile'];//获取用户信息
 McAvailabilityStatus status = JC.internal.call(McAvailabilityStatus,'crm', '/h5/user/get_account_mcs', [apid:ap_id.toString(),pid:GlobalHolder.pid.toString(),mobile:mobile]);
+logger.info("CardGradeList__status__:" + JackSonBeanMapper.toJson(status))
 if (status.obj != null && status.obj.size() != 0 && !"0".equals(status.obj.get(0).outer_type)) {
 	// 如果是外部会员卡
 	try {
