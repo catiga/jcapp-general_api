@@ -4,11 +4,11 @@ import java.io.Serializable
 
 
 class McAvailabilityStatus implements Serializable {
-	private boolean available;
+	 boolean available;
 	
-	private String[] messages;
+	 String[] messages;
 	
-	private RetObj obj = new RetObj() {
+	 RetObj obj = new RetObj() {
 		
 		@Override
 		public Object getObj() {
