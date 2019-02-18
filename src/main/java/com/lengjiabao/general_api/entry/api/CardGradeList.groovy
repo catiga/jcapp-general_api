@@ -25,16 +25,16 @@ if (simpleAjax == null || !simpleAjax.available || simpleAjax.data == null ) {
 def ap_id = simpleAjax.data['ap_id'];//获取用户信息
 def mobile = simpleAjax.data['mobile'];//获取用户信息
 McAvailabilityStatus status = JC.internal.call(McAvailabilityStatus,'crm', '/h5/user/get_account_mcs', [apid:ap_id.toString(),pid:GlobalHolder.pid.toString(),mobile:mobile]);
-logger.info("CardGradeList__" + JackSonBeanMapper.toJson(status) + "__"+ap_id + "__"+mobile)
 if (status.obj != null && status.obj.size() != 0 && !"0".equals(status.obj.get(0).outer_type)) {
 	// 如果是外部会员卡
 	try {
 		def mc = status.obj.get(0);
 		AvailabilityStatus  avai = JC.internal.call(AvailabilityStatus, 'crm', '/h5/mc/get_hierarchy', [mch_id:mc.mch_id]);
+		logger.info("CardGradeList__tl:" + JackSonBeanMapper.toJson(avai))
 		if (!avai.available) {
 			return avai;
 		}
-		def item = status.obj.get(0);
+		def item = avai.data.get(0);
 		item.getpay =  item.least_recharge;
 		def list =  [];
 		list.add(item);
