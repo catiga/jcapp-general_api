@@ -2,6 +2,7 @@ package com.lengjiabao.general_api.ready.common
 
 import java.io.Serializable
 
+
 class McAvailabilityStatus implements Serializable {
 	 boolean available;
 	
@@ -42,5 +43,11 @@ class McAvailabilityStatus implements Serializable {
 	 private McAvailabilityStatus(boolean available, String[] messages) {
 		 this.available = available;
 		 this.messages = messages;
+	 }
+	 
+	 private McAvailabilityStatus(boolean available, String[] messages, RetObj obj) {
+		 this.available = available;
+		 this.messages = messages;
+		 this.obj = obj;
 	 }
 }
