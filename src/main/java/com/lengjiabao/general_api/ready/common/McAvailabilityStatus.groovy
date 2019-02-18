@@ -4,50 +4,63 @@ import java.io.Serializable
 
 
 class McAvailabilityStatus implements Serializable {
+	
 	 boolean available;
 	
 	 String[] messages;
 	
 	 Object obj ;
 	 
-	 private static final McAvailabilityStatus AVAILABLE_INSTANCE = new McAvailabilityStatus(true, new String[0]);
+	 public McAvailabilityStatus() {}
 	 
+	 
+	 private McAvailabilityStatus(boolean result, String[] msgs, Object data) {
+		 this.available = result;
+		 this.messages = msgs;
+		 this.data = data;
+	 }
+ 
+	 public boolean isAvailable() {
+		 return available;
+	 }
+ 
+	 public void setAvailable(boolean available) {
+		 this.available = available;
+	 }
+ 
+	 public String[] getMessages() {
+		 return messages;
+	 }
+ 
+	 public void setMessages(String[] messages) {
+		 this.messages = messages;
+	 }
+ 
+	 public Object getData() {
+		 return data;
+	 }
+ 
+	 public void setData(Object data) {
+		 this.data = data;
+	 }
+ 
+	 public static McAvailabilityStatus available() {
+		 return new McAvailabilityStatus(true, [] as String[], []);
+	 }
 	 
 	 public static McAvailabilityStatus available(String[] messages) {
-		 return new McAvailabilityStatus(true, messages);
+		 return new McAvailabilityStatus(true, messages, null);
 	 }
 	 
-	 public static McAvailabilityStatus available(String[] messages, RetObj obj) {
-		 return new McAvailabilityStatus(true, messages, obj);
+	 public static McAvailabilityStatus available(String[] messages, Object data) {
+		 return new McAvailabilityStatus(true, messages, data);
 	 }
 	 
-	 
-	 public static McAvailabilityStatus available() {
-		 return AVAILABLE_INSTANCE;
+	 public static McAvailabilityStatus notAvailable(String[] messages) {
+		 return new McAvailabilityStatus(false, messages, null);
 	 }
 	 
-	 public static McAvailabilityStatus available(RetObj obj) {
-		 return new McAvailabilityStatus(true, [""] as String[], obj);
-	 }
-	 
-	 public static McAvailabilityStatus available(Object obj) {
-		 
-		 return new McAvailabilityStatus(true, [""] as String[], new RetObj() {
-			 @Override
-			 public Object getObj() {
-				 return obj;
-			 }
-		 });
-	 }
-	 
-	 private McAvailabilityStatus(boolean available, String[] messages) {
-		 this.available = available;
-		 this.messages = messages;
-	 }
-	 
-	 private McAvailabilityStatus(boolean available, String[] messages, RetObj obj) {
-		 this.available = available;
-		 this.messages = messages;
-		 this.obj = obj;
+	 public static McAvailabilityStatus notAvailable(String[] messages, Object data) {
+		 return new McAvailabilityStatus(false, messages, data);
 	 }
 }
