@@ -39,7 +39,7 @@ if (status.obj != null && status.obj.size() != 0 && !"0".equals(status.obj.get(0
 		item.getpay =  item.least_recharge;
 		def list =  [];
 		list.add(item);
-		avai = AvailabilityStatus.available(null, list);
+		avai = McAvailabilityStatus.available(list);
 		logger.info("CardGradeList__" + JackSonBeanMapper.toJson(avai))
 		return avai;
 	} catch (any) {
