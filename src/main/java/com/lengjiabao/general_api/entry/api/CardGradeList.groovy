@@ -30,7 +30,7 @@ if (status.obj != null && status.obj.size() != 0 && !"0".equals(status.obj.get(0
 	try {
 		def mc = status.obj.get(0);
 		logger.info("CardGradeList__status:" + JackSonBeanMapper.toJson(mc))
-		McAvailabilityStatus  avai = JC.internal.call(McAvailabilityStatus, 'crm', '/h5/mc/get_hierarchy', [mch_id:mc.mch_id]);
+		def  avai = JC.internal.call(McAvailabilityStatus, 'crm', '/h5/mc/get_hierarchy', [mch_id:mc.mch_id]);
 		logger.info("CardGradeList__tl:" + JackSonBeanMapper.toJson(avai))
 		if (!avai.available) {
 			return avai;
