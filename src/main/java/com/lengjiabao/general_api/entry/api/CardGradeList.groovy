@@ -7,6 +7,7 @@ import com.jeancoder.core.power.CommunicationParam
 import com.jeancoder.core.power.CommunicationPower
 import com.jeancoder.core.result.Result
 import com.lengjiabao.general_api.ready.common.AvailabilityStatus
+import com.lengjiabao.general_api.ready.common.McAvailabilityStatus
 import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
@@ -23,7 +24,7 @@ if (simpleAjax == null || !simpleAjax.available || simpleAjax.data == null ) {
 }
 def ap_id = simpleAjax.data['ap_id'];//获取用户信息
 def mobile = simpleAjax.data['mobile'];//获取用户信息
-AvailabilityStatus status = JC.internal.call(AvailabilityStatus,'crm', '/h5/user/get_account_mcs', [apid:ap_id.toString(),pid:GlobalHolder.pid.toString(),mobile:mobile]);
+McAvailabilityStatus status = JC.internal.call(McAvailabilityStatus,'crm', '/h5/user/get_account_mcs', [apid:ap_id.toString(),pid:GlobalHolder.pid.toString(),mobile:mobile]);
 logger.info("CardGradeList__" + JackSonBeanMapper.toJson(status) + "__"+ap_id + "__"+mobile)
 if (status.data != null && status.data.size() != 0 && !"0".equals(status.data.get(0).outer_type)) {
 	// 如果是外部会员卡
