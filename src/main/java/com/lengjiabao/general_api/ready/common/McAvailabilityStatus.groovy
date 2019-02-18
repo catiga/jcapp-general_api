@@ -36,12 +36,13 @@ public final class McAvailabilityStatus implements Serializable {
 		this.messages = messages;
 	}
 
-	public Object getData() {
+
+	public Object getObj() {
 		return obj;
 	}
 
-	public void setData(Object data) {
-		this.data = data;
+	public void setObj(Object obj) {
+		this.obj = obj;
 	}
 
 	public static McAvailabilityStatus available() {
