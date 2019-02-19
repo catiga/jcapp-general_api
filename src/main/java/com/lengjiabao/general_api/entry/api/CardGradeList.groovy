@@ -28,20 +28,20 @@ McAvailabilityStatus status = JC.internal.call(McAvailabilityStatus,'crm', '/h5/
 logger.info("CardGradeList__status__:" + JackSonBeanMapper.toJson(status))
 if (status.obj != null && status.obj.size() != 0 && !"0".equals(status.obj.get(0).outer_type)) {
 	// 如果是外部会员卡
-	try {
+	try { 
 		def mc = status.obj.get(0);
 		logger.info("CardGradeList__status:" + JackSonBeanMapper.toJson(mc))
 		def  avai = JC.internal.call(McAvailabilityStatus, 'crm', '/h5/mc/get_hierarchy', [mch_id:mc.mch_id]);
-		logger.info("CardGradeList__tl:" + JackSonBeanMapper.toJson(avai))
-		if (!avai.available) {
-			return avai;
-		}
-		def item = avai.obj.get(0);
-		item.getpay =  item.least_recharge;
-		def list =  [];
-		list.add(item);
-		avai =  McAvailabilityStatus.available(null, list);
-		logger.info("CardGradeList__" + JackSonBeanMapper.toJson(avai))
+//		logger.info("CardGradeList__tl:" + JackSonBeanMapper.toJson(avai))
+//		if (!avai.available) {
+//			return avai;
+//		}
+//		def item = avai.obj.get(0);
+//		item.getpay =  item.least_recharge;
+//		def list =  [];
+//		list.add(item);
+//		avai =  McAvailabilityStatus.available(null, list);
+//		logger.info("CardGradeList__" + JackSonBeanMapper.toJson(avai))
 		return avai;
 	} catch (any) {
 		logger.info("",any);
