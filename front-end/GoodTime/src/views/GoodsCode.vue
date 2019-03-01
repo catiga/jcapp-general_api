@@ -53,7 +53,7 @@
 			    <div class="my-card my-cardbot my-module-2">
 		    		<p class="my-module-2-num">1张小食券</p>
 		    		<p class="my-module-2-hint">请到影院卖品柜台像员工出示以下信息取小食</p>
-		    		<img class="my-module-2-codeimg" :src="'http://qr.liantu.com/api.php?text=' + OrderList.order_no"/>
+		    		<img class="my-module-2-codeimg" :src="'https://tool.kd128.com/qrcode?text=' + OrderList.order_no"/>
 		    		<p class="my-module-2-code">
 		    			提示：
 		    			<span>请向工作人员出示二维码</span>
