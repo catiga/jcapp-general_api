@@ -233,6 +233,7 @@
 												
 											} else {
 												//不一致
+												/*
 												let is_supp_city = false;
 												if(page.city_list) {
 													page.city_list.forEach(item => {
@@ -241,11 +242,16 @@
 														}
 													})
 												}
-												page.confirmLocate(str, true);
+												if(is_supp_city) {
+													//是系统支持的城市
+												} else {
+												}
+												*/
+												this.$router.push({name: 'cinemaList', params: { mid: '2' }})
 											}
 										} else {
 											//没有存储过城市，需要弹出提示当前城市，并支持选择城市框
-											
+											page.confirmLocate(str, true);
 										}
 			    			        }else{
 										//page.reqLocate("1","1","","");
