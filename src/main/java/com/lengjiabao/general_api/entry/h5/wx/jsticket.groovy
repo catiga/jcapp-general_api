@@ -72,7 +72,6 @@ ret_data['timestamp'] = timestamp;
 ret_data['noncestr'] = noncestr;
 ret_data['sign_str'] = sign_str;
 
-logger.info('ret_data=' + JackSonBeanMapper.mapToJson(ret_data));
 return GeneralPub.success(ret_data);
 
 //SysProjectInfo curr_project = this.getSysProj();
