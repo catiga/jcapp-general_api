@@ -249,7 +249,7 @@
 												} else {
 												}
 												*/
-												page.confirmLocate(str + '，与您选择城市不一致，请选择', false);
+												page.confirmAndChooseLocate(str + '，请确认');
 											}
 										} else {
 											//没有存储过城市，需要弹出提示当前城市，并支持选择城市框
@@ -283,12 +283,33 @@
 				weui.dialog({
 					content: msg,
 					buttons: [{
-						label: '确定',
+						label: '选择城市',
 						type: 'primary',
 						onClick: function () { 
 							if(!status) {
 								_this.$router.push({name: 'cinemaList', params: { mid: '2' }})
 							}
+						}
+					} 
+					]
+				});
+			},
+			confirmAndChooseLocate(msg) {
+				let _this = this;
+				weui.dialog({
+					content: msg,
+					buttons: [
+					{
+						label: '确认',
+						type: 'default',
+						onClick: function () { 
+						}
+					} ,
+					{
+						label: '选择城市',
+						type: 'primary',
+						onClick: function () { 
+							_this.$router.push({name: 'cinemaList', params: { mid: '2' }})
 						}
 					} 
 					]
