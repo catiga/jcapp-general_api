@@ -40,9 +40,6 @@ _access_token_ = _access_token_.replace("{APP_ID}", app_id);
 _access_token_ = _access_token_.replace("{APP_KEY}", app_key);
 def json = JC.remote.http_call(_access_token_, null);
 
-logger.info('app_id:' + GlobalHolder.pid + ":" + _access_token_);
-logger.info(json);
-
 def jsonSlurper = new JsonSlurper();
 
 //获取到的是Map对象
@@ -54,6 +51,8 @@ if(!map['access_token']) {
 def _jsapi_ticket_ = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token={ACCESS_TOKEN}&type=jsapi";
 _jsapi_ticket_ = _jsapi_ticket_.replace('{ACCESS_TOKEN}', map['access_token']);
 json = JC.remote.http_call(_jsapi_ticket_, null);
+
+logger.info(json);
 
 map = jsonSlurper.parseText(json);
 if(map['errcode']!='0'&&map['errcode']!=0) {
