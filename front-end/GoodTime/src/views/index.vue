@@ -217,7 +217,7 @@
 			    			// var longitude = msg.coords.longitude;
 			    			// var latitude = msg.coords.latitude;
 			    			AMap.service('AMap.Geocoder',function(){
-			    			    geocoder = new AMap.Geocoder({});
+			    			    let geocoder = new AMap.Geocoder({});
 			    			    geocoder.getAddress([longitude,latitude], function(status, result) {
 			    			        if (status === 'complete' && result.info === 'OK') {
 			    			           window.location_msg = result;
