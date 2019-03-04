@@ -233,8 +233,14 @@
 												
 											} else {
 												//不一致
-												let is_supp_city = true;
-												
+												let is_supp_city = false;
+												if(page.city_list) {
+													page.city_list.forEach(item => {
+														if(item.city_name.indexOf(loc_city.substring(0, loc_city.length - 1))>-1) {
+															is_supp_city = true;
+														}
+													})
+												}
 												page.confirmLocate(str, true);
 											}
 										} else {
