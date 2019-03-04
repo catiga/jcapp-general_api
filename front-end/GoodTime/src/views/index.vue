@@ -228,12 +228,11 @@
 										let str = '当前定位城市:' + loc_city;
 										let cookie_city = Cookies.get('city_name');
 										
-										alert(cookie_city + '===' + loc_city);
 										if(cookie_city) {
 											//已经存储过城市
 											if(cookie_city.indexOf(loc_city.substring(0, loc_city.length - 1))>-1) {
 												//说明当前城市与之前选择的城市一致，不用做处理
-												
+												page.confirmLocate(str, true);
 											} else {
 												//不一致
 												/*
@@ -250,8 +249,7 @@
 												} else {
 												}
 												*/
-												page.confirmLocate(str + '，与您选择城市不一致，请选择', true);
-												//page.$router.push({name: 'cinemaList', params: { mid: '2' }})
+												page.confirmLocate(str + '，与您选择城市不一致，请选择', false);
 											}
 										} else {
 											//没有存储过城市，需要弹出提示当前城市，并支持选择城市框
