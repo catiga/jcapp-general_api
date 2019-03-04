@@ -224,7 +224,7 @@
 			    			        if (status === 'complete' && result.info === 'OK') {
 			    			           window.location_msg = result;
 									//    page.reqLocate(longitude,latitude,result.regeocode.addressComponent.province,result.regeocode.addressComponent.city);
-										let loc_city = result.regeocode.addressComponent.city;
+										let loc_city = result.regeocode.addressComponent.city?result.regeocode.addressComponent.city:result.regeocode.addressComponent.province;
 										let str = '当前定位城市:' + loc_city;
 										let cookie_city = Cookies.get('city_name');
 										
