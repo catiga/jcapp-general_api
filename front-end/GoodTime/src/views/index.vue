@@ -250,7 +250,7 @@
 												} else {
 												}
 												*/
-												this.$router.push({name: 'cinemaList', params: { mid: '2' }})
+												page.$router.push({name: 'cinemaList', params: { mid: '2' }})
 											}
 										} else {
 											//没有存储过城市，需要弹出提示当前城市，并支持选择城市框
