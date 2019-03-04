@@ -40,7 +40,7 @@ _access_token_ = _access_token_.replace("{APP_ID}", app_id);
 _access_token_ = _access_token_.replace("{APP_KEY}", app_key);
 def json = JC.remote.http_call(_access_token_, null);
 
-logger.info('app_id:' + _access_token_);
+logger.info('app_id:' + GlobalHolder.pid + ":" + _access_token_);
 logger.info(json);
 
 def jsonSlurper = new JsonSlurper();
