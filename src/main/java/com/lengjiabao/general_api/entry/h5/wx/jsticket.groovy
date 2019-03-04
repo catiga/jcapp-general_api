@@ -1,6 +1,8 @@
 package com.lengjiabao.general_api.entry.h5.wx
 
 import com.jeancoder.app.sdk.JC
+import com.jeancoder.app.sdk.source.LoggerSource
+import com.jeancoder.core.log.JCLogger
 import com.lengjiabao.general_api.ready.Sha1
 import com.lengjiabao.general_api.ready.dto.ProjectFrontConfig
 import com.lengjiabao.general_api.ready.util.GlobalHolder
@@ -9,6 +11,8 @@ import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 import com.milepai.core.utils.security.MD5Utils
 
 import groovy.json.JsonSlurper
+
+JCLogger logger = LoggerSource.getLogger();
 
 def cu = JC.request.param('cu');
 
@@ -35,6 +39,9 @@ def _access_token_ = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_
 _access_token_ = _access_token_.replace("{APP_ID}", app_id);
 _access_token_ = _access_token_.replace("{APP_KEY}", app_key);
 def json = JC.remote.http_call(_access_token_, null);
+
+logger.info('app_id:' + _access_token_);
+logger.info(json);
 
 def jsonSlurper = new JsonSlurper();
 
