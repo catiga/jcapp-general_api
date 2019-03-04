@@ -144,6 +144,7 @@
 				MovieNum:'',
 				ComeList:'',
 				cinemaId: 0,
+				city_list: '',
 				city_name: '',
 				city_no:'',
 				cinemanm:'',
@@ -222,9 +223,24 @@
 			    			        if (status === 'complete' && result.info === 'OK') {
 			    			           window.location_msg = result;
 									//    page.reqLocate(longitude,latitude,result.regeocode.addressComponent.province,result.regeocode.addressComponent.city);
-										let str = '当前定位城市:' + result.regeocode.addressComponent.province + result.regeocode.addressComponent.city;
-										page.confirmLocate(str, true);
-										
+										let loc_city = result.regeocode.addressComponent.city;
+										let str = '当前定位城市:' + loc_city;
+										let cookie_city = Cookies.get('city_name');
+										if(cookie_city) {
+											//已经存储过城市
+											if(cookie_city.indexOf(loc_city.substring(0, loc_city.length - 1))>-1) {
+												//说明当前城市与之前选择的城市一致，不用做处理
+												
+											} else {
+												//不一致
+												let is_supp_city = true;
+												
+												page.confirmLocate(str, true);
+											}
+										} else {
+											//没有存储过城市，需要弹出提示当前城市，并支持选择城市框
+											
+										}
 			    			        }else{
 										//page.reqLocate("1","1","","");
 										page.confirmLocate('定位失败，请重新选择城市', false);
@@ -301,6 +317,7 @@
 			        fetch(url).then(r => r.json()).then(d => {
 			        	console.log(d);
 			        	if (d.code == '0' && d.data && d.data.length>0) {
+			        		page.city_list = d.data;
 			        		Cookies.set('city_no', d.data[0].city_no);
 			        		// this.city = d.data;
 			        		page.city_name = d.data[0].city_name;
