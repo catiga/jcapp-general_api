@@ -6,6 +6,10 @@ import com.jeancoder.core.result.Result
 def schema = JC.request.get().getSchema();
 def domain = JC.request.get().getServerName();
 
+if(domain=='lzglxz.piaodaren.com') {
+	domain = 'lzadmin.mt.ex.piaodaren.com';
+}
+
 def redirect_url = schema + domain + '/general_api/tcss/index';
 
 return new Result().setRedirectResource(redirect_url);
