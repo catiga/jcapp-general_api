@@ -55,6 +55,7 @@ json = JC.remote.http_call(_jsapi_ticket_, null);
 logger.info(json);
 
 map = jsonSlurper.parseText(json);
+logger.info('test======' + JackSonBeanMapper.mapToJson(map));
 if(map['errcode']!='0'&&map['errcode']!=0) {
 	return GeneralPub.fail('wx_remote_error', '微信获取jsticket失败', null);
 }
