@@ -7,8 +7,8 @@ import com.lengjiabao.general_api.ready.Sha1
 import com.lengjiabao.general_api.ready.dto.ProjectFrontConfig
 import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
+import com.lengjiabao.general_api.ready.util.MD5Util
 import com.lengjiabao.general_api.ready.ypcall.GeneralPub
-import com.milepai.core.utils.security.MD5Utils
 
 import groovy.json.JsonSlurper
 
@@ -52,16 +52,14 @@ def _jsapi_ticket_ = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_
 _jsapi_ticket_ = _jsapi_ticket_.replace('{ACCESS_TOKEN}', map['access_token']);
 json = JC.remote.http_call(_jsapi_ticket_, null);
 
-logger.info(json);
-
 map = jsonSlurper.parseText(json);
 logger.info('test======' + JackSonBeanMapper.mapToJson(map));
 if(map['errcode']!='0'&&map['errcode']!=0) {
-	return GeneralPub.fail('wx_remote_error', '微信获取jsticket失败', null);
+	return GeneralPub.fail('wx_remote_error:' + map['errcode'], '微信获取jsticket失败', null);
 }
 
 def jsapi_ticket = map['ticket'];
-def noncestr = MD5Utils.getMD5(new Random().nextFloat() + "");
+def noncestr = MD5Util.getMD5(new Random().nextFloat() + "");
 def timestamp = System.currentTimeMillis()/1000 + "";
 def url = cu;
 
