@@ -163,7 +163,8 @@
 		},created:function(){
 			//组件加载完成会自动调用此方法
 			// this.GetStore();//获取影城列表
-
+			this.wxinit();
+			this.wxlocate();
 			this.CheckLogin();
 			this.ComeingMovie();//即将上映
 			this.cityList();//获取城市列表
@@ -177,6 +178,71 @@
 			}
 		},
 		methods:{
+			wxinit:function(){
+				let page = this;
+				let token = $.cookie(appset.token_cookie_key);
+	
+				let param = "cu=/general_api/tcss/index";
+	            let url = "/general_api/h5/wx/jsticket/?"+ param;
+	            
+		        fetch(url).then(r => r.json()).then(d => {
+		        	console.log(d);
+		        	if (d.ret_code == '0000') {
+		        		wx.config({
+						    debug: false,
+						    appId: data.data.appid, // 必填，公众号的唯一标识
+						    timestamp: data.data.timestamp, // 必填，生成签名的时间戳
+						    nonceStr: data.data.noncestr, // 必填，生成签名的随机串
+						    signature: data.data.sign_str,// 必填，签名，见附录1
+						    jsApiList: ['startRecord','translateVoice', 'stopRecord', 'onVoiceRecordEnd', 'playVoice', 
+						                'pauseVoice', 'stopVoice', 'onVoicePlayEnd', 'uploadVoice', 'downloadVoice', 
+						                'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 
+						                'translateVoice', 'getNetworkType', 'onMenuShareTimeline', 'onMenuShareAppMessage','getLocation','openLocation'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+						});
+		        	}
+		        });
+			},
+			wxlocate:function(){
+				let page = this;
+	    		wx.ready(function(){
+		    		wx.getLocation({
+						type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+						success: function (res) {
+						    var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+					        var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+					        var speed = res.speed; // 速度，以米/每秒计
+					        var accuracy = res.accuracy; // 位置精度
+	
+			    			// navigator.geolocation.getCurrentPosition(function(msg){
+	
+			    			// var longitude = msg.coords.longitude;
+			    			// var latitude = msg.coords.latitude;
+			    			AMap.service('AMap.Geocoder',function(){
+			    			    geocoder = new AMap.Geocoder({});
+			    			    geocoder.getAddress([longitude,latitude], function(status, result) {
+			    			        if (status === 'complete' && result.info === 'OK') {
+			    			           window.location_msg = result;
+			    			           page.reqLocate(longitude,latitude,result.regeocode.addressComponent.province,result.regeocode.addressComponent.city);
+			    			        }else{
+			    			        	//page.reqLocate("1","1","","");
+			    			        }
+			    			    });  
+			    			});
+			    		},fail:function(msg){
+		 					page.city_forbid = true;
+			    			//page.reqLocate("1","1","","");
+			    		},cancel:function(msg){
+			    			page.city_fail = true;
+			    			//page.reqLocate("1","1","","");
+					        // enableHighAcuracy: true,
+					        // timeout: 10000,
+					        // maximumAge: 3000
+					    }
+		    		});
+				});
+			},
+			
+			
 			//门店名称转码
             decodeUnicode:function (str) {
                 str = str.replace(/\\/g, "%");
