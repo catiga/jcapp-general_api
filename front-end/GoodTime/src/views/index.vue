@@ -221,23 +221,46 @@
 			    			    geocoder.getAddress([longitude,latitude], function(status, result) {
 			    			        if (status === 'complete' && result.info === 'OK') {
 			    			           window.location_msg = result;
-			    			           page.reqLocate(longitude,latitude,result.regeocode.addressComponent.province,result.regeocode.addressComponent.city);
+									//    page.reqLocate(longitude,latitude,result.regeocode.addressComponent.province,result.regeocode.addressComponent.city);
+										let str = '当前定位城市:' + result.regeocode.addressComponent.province + result.regeocode.addressComponent.city;
+										page.confirmLocate(str, true);
+										
 			    			        }else{
-			    			        	//page.reqLocate("1","1","","");
+										//page.reqLocate("1","1","","");
+										page.confirmLocate('定位失败，请重新选择城市', false);
 			    			        }
 			    			    });  
 			    			});
 			    		},fail:function(msg){
 		 					page.city_forbid = true;
-			    			//page.reqLocate("1","1","","");
+							//page.reqLocate("1","1","","");
+							page.confirmLocate('定位失败，请重新选择城市', false);
 			    		},cancel:function(msg){
-			    			page.city_fail = true;
+							page.city_fail = true;
+							page.confirmLocate('定位失败，请重新选择城市', false);
 			    			//page.reqLocate("1","1","","");
 					        // enableHighAcuracy: true,
 					        // timeout: 10000,
 					        // maximumAge: 3000
 					    }
 		    		});
+				});
+			},
+
+			// 定位确认弹窗
+			confirmLocate(msg, status) {
+				weui.dialog({
+					content: msg,
+					buttons: [{
+						label: '确定',
+						type: 'primary',
+						onClick: function () { 
+							if(!status) {
+								this.$router.push({name: 'cinemaList', params: { mid: '2' }})
+							}
+						}
+					} 
+					]
 				});
 			},
 			
