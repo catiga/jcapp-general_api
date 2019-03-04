@@ -208,22 +208,16 @@
 		    		wx.getLocation({
 						type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
 						success: function (res) {
-						    var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
-					        var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
-					        var speed = res.speed; // 速度，以米/每秒计
-					        var accuracy = res.accuracy; // 位置精度
+						    let latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+					        let longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+					        let speed = res.speed; // 速度，以米/每秒计
+					        let accuracy = res.accuracy; // 位置精度
 	
-			    			// navigator.geolocation.getCurrentPosition(function(msg){
-	
-			    			// var longitude = msg.coords.longitude;
-			    			// var latitude = msg.coords.latitude;
 			    			AMap.service('AMap.Geocoder',function(){
 			    			    let geocoder = new AMap.Geocoder({});
 			    			    geocoder.getAddress([longitude,latitude], function(status, result) {
-			    			    	console.log(result);
 			    			        if (status === 'complete' && result.info === 'OK') {
 			    			           window.location_msg = result;
-									//    page.reqLocate(longitude,latitude,result.regeocode.addressComponent.province,result.regeocode.addressComponent.city);
 										let loc_city = result.regeocode.addressComponent.city?result.regeocode.addressComponent.city:result.regeocode.addressComponent.province;
 										let str = '当前定位城市:' + loc_city;
 										let cookie_city = Cookies.get('city_name');
@@ -256,22 +250,25 @@
 											page.confirmLocate(str, true);
 										}
 			    			        }else{
-										//page.reqLocate("1","1","","");
-										page.confirmLocate('定位失败，请重新选择城市', false);
+			    			        	let cookie_city = Cookies.get('city_name');
+			    			        	if(!cookie_city) {
+			    			        		page.confirmLocate('定位失败，请重新选择城市', false);
+			    			        	}
 			    			        }
 			    			    });  
 			    			});
 			    		},fail:function(msg){
 		 					page.city_forbid = true;
-							//page.reqLocate("1","1","","");
-							page.confirmLocate('定位失败，请重新选择城市', false);
+							let cookie_city = Cookies.get('city_name');
+    			        	if(!cookie_city) {
+    			        		page.confirmLocate('定位失败，请重新选择城市', false);
+    			        	}
 			    		},cancel:function(msg){
 							page.city_fail = true;
-							page.confirmLocate('定位失败，请重新选择城市', false);
-			    			//page.reqLocate("1","1","","");
-					        // enableHighAcuracy: true,
-					        // timeout: 10000,
-					        // maximumAge: 3000
+							let cookie_city = Cookies.get('city_name');
+    			        	if(!cookie_city) {
+    			        		page.confirmLocate('定位失败，请重新选择城市', false);
+    			        	}
 					    }
 		    		});
 				});
