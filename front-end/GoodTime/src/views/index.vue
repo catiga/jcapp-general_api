@@ -281,6 +281,7 @@
 
 			// 定位确认弹窗
 			confirmLocate(msg, status) {
+				let _this = this;
 				weui.dialog({
 					content: msg,
 					buttons: [{
@@ -288,7 +289,7 @@
 						type: 'primary',
 						onClick: function () { 
 							if(!status) {
-								this.$router.push({name: 'cinemaList', params: { mid: '2' }})
+								_this.$router.push({name: 'cinemaList', params: { mid: '2' }})
 							}
 						}
 					} 
