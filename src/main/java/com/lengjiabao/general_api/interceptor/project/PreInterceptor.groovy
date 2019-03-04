@@ -2,15 +2,20 @@ package com.lengjiabao.general_api.interceptor.project
 
 import com.jeancoder.annotation.urlmapped
 import com.jeancoder.app.sdk.JC
+import com.jeancoder.app.sdk.source.LoggerSource
+import com.jeancoder.core.log.JCLogger
 import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
+import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 
 
 @urlmapped("/")
 
+JCLogger logger = LoggerSource.getLogger();
+
 def domain = JC.request.get().getServerName();
 SimpleAjax ret = JC.internal.call(SimpleAjax, 'project', '/incall/project_stand', [domain:domain]);
-
+logger.info('domain:' + JackSonBeanMapper.toJson(ret));
 def pid = 1;
 if(ret.available) {
 	pid = ret.data['id'];
