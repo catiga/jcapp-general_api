@@ -220,6 +220,7 @@
 			    			AMap.service('AMap.Geocoder',function(){
 			    			    let geocoder = new AMap.Geocoder({});
 			    			    geocoder.getAddress([longitude,latitude], function(status, result) {
+			    			    	console.log(result);
 			    			        if (status === 'complete' && result.info === 'OK') {
 			    			           window.location_msg = result;
 									//    page.reqLocate(longitude,latitude,result.regeocode.addressComponent.province,result.regeocode.addressComponent.city);
