@@ -22,7 +22,7 @@ def domain = schema + ret_data['domain'];
 cu = domain + cu;
 
 //获取微信公众号
-ProjectFrontConfig supp_config = JC.internal.call(ProjectFrontConfig, 'project', '/incall/frontconfig', [app_type:'20',pid:pid]);
+ProjectFrontConfig supp_config = JC.internal.call(ProjectFrontConfig, 'project', '/incall/frontconfig', [app_type:'20',pid:GlobalHolder.pid]);
 if(supp_config==null||supp_config.app_id==null) {
 	//以后统一的返回格式
 	return GeneralPub.fail('pay_config_error', '系统配置错误，请稍后再试', null);
