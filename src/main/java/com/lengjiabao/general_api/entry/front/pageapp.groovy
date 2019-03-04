@@ -1,0 +1,11 @@
+package com.lengjiabao.general_api.entry.front
+
+import com.jeancoder.app.sdk.JC
+import com.jeancoder.core.result.Result
+
+def schema = JC.request.get().getSchema();
+def domain = JC.request.get().getServerName();
+
+def redirect_url = schema + domain + '/general_api/tcss/index';
+
+return new Result().setRedirectResource(redirect_url);
