@@ -180,7 +180,6 @@
 		methods:{
 			wxinit:function(){
 				let page = this;
-				let token = $.cookie(appset.token_cookie_key);
 	
 				let param = "cu=/general_api/tcss/index";
 	            let url = "/general_api/h5/wx/jsticket/?"+ param;
