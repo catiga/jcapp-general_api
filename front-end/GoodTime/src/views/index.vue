@@ -189,10 +189,10 @@
 		        	if (d.ret_code == '0000') {
 		        		wx.config({
 						    debug: false,
-						    appId: data.data.appid, // 必填，公众号的唯一标识
-						    timestamp: data.data.timestamp, // 必填，生成签名的时间戳
-						    nonceStr: data.data.noncestr, // 必填，生成签名的随机串
-						    signature: data.data.sign_str,// 必填，签名，见附录1
+						    appId: d.data.appid, // 必填，公众号的唯一标识
+						    timestamp: d.data.timestamp, // 必填，生成签名的时间戳
+						    nonceStr: d.data.noncestr, // 必填，生成签名的随机串
+						    signature: d.data.sign_str,// 必填，签名，见附录1
 						    jsApiList: ['startRecord','translateVoice', 'stopRecord', 'onVoiceRecordEnd', 'playVoice', 
 						                'pauseVoice', 'stopVoice', 'onVoicePlayEnd', 'uploadVoice', 'downloadVoice', 
 						                'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 
