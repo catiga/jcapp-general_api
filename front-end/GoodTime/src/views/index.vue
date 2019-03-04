@@ -250,7 +250,8 @@
 												} else {
 												}
 												*/
-												page.$router.push({name: 'cinemaList', params: { mid: '2' }})
+												page.confirmLocate(str + '，与您选择城市不一致，请选择', true);
+												//page.$router.push({name: 'cinemaList', params: { mid: '2' }})
 											}
 										} else {
 											//没有存储过城市，需要弹出提示当前城市，并支持选择城市框
