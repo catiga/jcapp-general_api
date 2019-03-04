@@ -284,7 +284,8 @@
 						type: 'primary',
 						onClick: function () { 
 							if(!status) {
-								_this.$router.push({name: 'cinemaList', params: { mid: '2' }})
+								//_this.$router.push({name: 'cinemaList', params: { mid: '2' }})
+								_this.$router.push({name: 'cityList'})
 							}
 						}
 					} 
@@ -306,7 +307,8 @@
 						label: '选择城市',
 						type: 'primary',
 						onClick: function () { 
-							_this.$router.push({name: 'cinemaList', params: { mid: '2' }})
+							//_this.$router.push({name: 'cinemaList', params: { mid: '2' }})
+							_this.$router.push({name: 'cityList'})
 						}
 					} 
 					]
