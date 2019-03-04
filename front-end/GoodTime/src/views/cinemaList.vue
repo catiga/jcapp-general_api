@@ -133,7 +133,7 @@
 				}
 				this.encodeUnicodeAdd(add);
 				this.encodeUnicodeName(store_name);
-				this.$router.push({name: 'storeList' ,params: {}})
+				this.$router.push({name: 'index' ,params: {}})
 				//this.$router.go(-1);	//不指定，为返回
 			},
 			encodeUnicodeAdd: function(str) {
