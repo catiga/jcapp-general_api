@@ -226,6 +226,8 @@
 										let loc_city = result.regeocode.addressComponent.city;
 										let str = '当前定位城市:' + loc_city;
 										let cookie_city = Cookies.get('city_name');
+										
+										alert(cookie_city + '===' + loc_city);
 										if(cookie_city) {
 											//已经存储过城市
 											if(cookie_city.indexOf(loc_city.substring(0, loc_city.length - 1))>-1) {
