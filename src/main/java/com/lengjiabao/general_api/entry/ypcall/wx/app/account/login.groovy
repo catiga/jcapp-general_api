@@ -2,6 +2,7 @@ package com.lengjiabao.general_api.entry.ypcall.wx.app.account
 
 import com.jeancoder.app.sdk.JC
 import com.lengjiabao.general_api.ready.common.SimpleAjax
+import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 
 class DataObj {
@@ -13,7 +14,7 @@ class DataObj {
 DataObj doo = new DataObj();
 
 def code = JC.request.param('code')?.trim();
-SimpleAjax ret_result = JC.internal.call(SimpleAjax, 'crm', '/wechat/app/check_code', [pid:1,code:code]);
+SimpleAjax ret_result = JC.internal.call(SimpleAjax, 'crm', '/wechat/app/check_code', [pid:GlobalHolder.pid,code:code]);
 
 if(!ret_result.available) {
 	//失败的情况

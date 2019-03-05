@@ -73,18 +73,3 @@ ret_data['noncestr'] = noncestr;
 ret_data['sign_str'] = sign_str;
 
 return GeneralPub.success(ret_data);
-
-//SysProjectInfo curr_project = this.getSysProj();
-//String app_id = get_wx_service_app_id(curr_project);
-//String app_key = get_wx_service_app_key(curr_project);
-//
-//String jsapi_ticket = WxUtil.getInstance().get_jsapi_ticket(curr_project.getId().toString(), app_id, app_key);
-//String noncestr = MD5Utils.getMD5(new Random().nextFloat() + "");
-//String timestamp = System.currentTimeMillis()/1000 + "";
-//String url = cu;
-//String original_str = "jsapi_ticket=" + jsapi_ticket + "&noncestr=" + noncestr + "&timestamp=" + timestamp + "&url=" + url;
-//String sign_str = EncodeUtils.SHA1(original_str);
-//log.info(original_str + "===" + sign_str);
-//
-//WxJsObj js_obj = new WxJsObj(app_id, timestamp, noncestr, sign_str);
-//return ApiResponseFactory.generateResponse(ApiCodeConstants._success_, "success", js_obj);

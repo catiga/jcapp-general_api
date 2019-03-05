@@ -15,7 +15,7 @@ import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 
 
-@urlmapped(['/ypcall/account'])
+@urlmapped(['/ypcall/account', '/h5/wx/card/create_cb'])
 @urlpassed('/ypcall/account/token/get')
 JCRequest request = RequestSource.getRequest();
 JCLogger Logger =  LoggerSource.getLogger(this.getClass().getName())

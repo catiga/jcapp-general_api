@@ -1,33 +1,24 @@
 package com.lengjiabao.general_api.entry.h5.wx.card
 
 import com.jeancoder.app.sdk.JC
-import com.lengjiabao.general_api.ready.dto.ProjectFrontConfig
+import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 
-import groovy.json.JsonSlurper
+//获取参数
+def code_id = JC.request.param('code_id');
 
-def _create_ticket_ = "https://api.weixin.qq.com/card/create?access_token={ACCESS_TOKEN}";
-def _access_token_ = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={APP_ID}&secret={APP_KEY}";
+def accountInfo = JC.request.get().getAttribute("_user_");//获取用户信息
+def ap_id = accountInfo['ap_id'];//获取用户信息
+def mobile = accountInfo['mobile'];
+def part_id = accountInfo['part_id'];
 
-//获取微信公众号
-ProjectFrontConfig supp_config = JC.internal.call(ProjectFrontConfig, 'project', '/incall/frontconfig', [app_type:'20',pid:GlobalHolder.pid]);
-if(supp_config==null||supp_config.app_id==null) {
-	//以后统一的返回格式
-	return GeneralPub.fail('pay_config_error', '系统配置错误，请稍后再试', null);
+//验证code
+SimpleAjax code_data = JC.internal.call(SimpleAjax, 'market', '/wx/create_cb', [pid:GlobalHolder.pid, code_id:code_id, part_id:part_id]);
+if(!code_data.available) {
+	return GeneralPub.fail(code_data.messages[0], code_data.messages[1], null);
 }
 
-def app_id = supp_config.app_id;
-def app_key = supp_config.app_key;
-//获取access_token
-_access_token_ = _access_token_.replace("{APP_ID}", app_id);
-_access_token_ = _access_token_.replace("{APP_KEY}", app_key);
-def json = JC.remote.http_call(_access_token_, null);
+return GeneralPub.success(code_data.data);
 
-def jsonSlurper = new JsonSlurper();
 
-//获取到的是Map对象
-def map = jsonSlurper.parseText(json)
-if(!map['access_token']) {
-	return GeneralPub.fail('wx_remote_error', '微信获取access_token失败', null);
-}
