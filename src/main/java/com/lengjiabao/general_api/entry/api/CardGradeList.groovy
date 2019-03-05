@@ -11,13 +11,37 @@ import com.lengjiabao.general_api.ready.common.McAvailabilityStatus
 import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
+import com.jeancoder.core.http.JCCookie
 import com.jeancoder.core.http.JCRequest
 import com.jeancoder.core.log.JCLogger
 import com.jeancoder.app.sdk.source.RequestSource
 // println '1211'
 
 JCLogger logger = LoggerSource.getLogger();
-SimpleAjax simpleAjax = JC.internal.call(SimpleAjax, 'crm', '/h5/p/info', [token:GlobalHolder.getToken(), pid:GlobalHolder.pid]);
+
+def token = null;
+JCCookie[] cookies = JC.request.get().getCookies();
+logger.info("cookie :" + JackSonBeanMapper.toJson(cookies))
+if(cookies!=null&&cookies.length>0) {
+	for(JCCookie c : cookies) {
+		if(c.getName().equals("_lac_k_")) {
+			try {
+				token = URLDecoder.decode(c.getValue(), "utf-8");
+			}catch(Exception e){
+			}
+			break;
+		}
+	}
+}
+
+if (!token) {
+	token = JC.request.param('token');
+	if(!token) {
+		return AvailabilityStatus.notAvailable("user_no_login");
+	}
+}
+
+SimpleAjax simpleAjax = JC.internal.call(SimpleAjax, 'crm', '/h5/p/info', [token:token, pid:GlobalHolder.pid]);
 
 if (simpleAjax == null || !simpleAjax.available || simpleAjax.data == null ) {
 	return AvailabilityStatus.notAvailable("user_no_login");

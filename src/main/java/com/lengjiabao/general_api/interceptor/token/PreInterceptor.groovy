@@ -42,14 +42,17 @@ if(cookies!=null&&cookies.length>0) {
 		}
 	}
 }
+Logger.info("cookie :" + token)
 
 if (!token) {
 	token = JC.request.param('token');
+	Logger.info("request :" + token)
 	if(!token) {
 		ResultSource.setResult(result.setData(AvailabilityStatus.notAvailable("user_no_login")));
 		return result.setData(AvailabilityStatus.notAvailable("user_no_login"));
 	}
 }
+Logger.info("cookieemd :" + token)
 def pid = GlobalHolder.pid;
 
 SimpleAjax simpleAjax = JC.internal.call(SimpleAjax, 'crm', '/h5/p/info', [token:token, pid:pid]);

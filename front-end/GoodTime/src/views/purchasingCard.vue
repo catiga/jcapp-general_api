@@ -265,7 +265,8 @@
 				}
 			},GradeList:function () {
 				var page = this;
-		        var url = '/general_api/api/CardGradeList?ts='+Date.parse(new Date());
+				var token = Cookies.get('_lac_k_');
+		        var url = '/general_api/api/CardGradeList?ts='+Date.parse(new Date()) + '&token=' + token;
 		        fetch(url).then(r => r.json()).then(d => {
 		        	if(d.available) {
 		        		page.RechargeData = d.obj;
