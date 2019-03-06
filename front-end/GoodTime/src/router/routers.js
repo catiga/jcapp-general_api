@@ -31,6 +31,7 @@ import GoodsCode from '@/views/GoodsCode.vue'
 import modifiedData from '@/views/modifiedData.vue'
 import couponsForOrder from '@/views/couponsForOrder.vue'
 import couponsForGoods from '@/views/couponsForGoods.vue'
+import goodsDetails from '@/views/goodsDetails.vue'
 
 export default [
       { path: '/',name: 'index', component: index },
@@ -66,6 +67,7 @@ export default [
       { path: '/modifiedData',name: 'modifiedData',component: modifiedData },
       { path: '/couponsForOrder/:order_no',name: 'couponsForOrder',component: couponsForOrder },
       { path: '/couponsForGoods/:order_no',name: 'couponsForGoods',component: couponsForGoods },
+      { path: '/goodsDetails',name: 'goodsDetails',component: goodsDetails },
     ]
 
 
