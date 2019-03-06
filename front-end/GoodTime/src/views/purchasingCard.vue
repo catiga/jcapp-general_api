@@ -7,7 +7,7 @@
 			</div>
 			<div class="purchasingcard-mid">
 				<ul class="purchasingcard-mid-ul">
-					<li v-if="RechargeData != -1" v-for="(item,index) in RechargeData" :class=" HId == item.id ? 'purchasingcard-mid-li-true' : 'purchasingcard-mid-li' " v-on:click="godo_choose(item.id,index)">
+					<li v-if="RechargeData != -1" v-for="(item,index) in RechargeData" :class=" HId == item.id ? 'purchasingcard-mid-li-true' : 'purchasingcard-mid-li' " v-on:click="godo_choose(item.id,index,item.getpay)">
 						<p :class=" HId == item.id ? 'purchasingcard-mid-li-grade-true' : 'purchasingcard-mid-li-grade' " style="height: .35rem;line-height: .35rem;">{{item.h_name}}</p>
 						<p  :class=" HId == item.id ? 'purchasingcard-mid-li-introduce-true' : 'purchasingcard-mid-li-introduce' ">{{item.cr_type_desc}}</p>
 						<p style="margin-top: .1rem;" :class=" HId == item.id ? 'purchasingcard-mid-li-price-true' : 'purchasingcard-mid-li-price'">¥{{item.getpay/100}}</p>
@@ -146,7 +146,7 @@
 			</div>
 			<div class="purchasingcard-mid">
 				<ul class="purchasingcard-mid-ul"> 
-					<li v-if="RechargeData != -1" v-for="(item,index) in RechargeData" :data-index="index" :class=" HId == item.id ? 'purchasingcard-mid-li-true' : 'purchasingcard-mid-li' " v-on:click="godo_choose(item.id,index)">
+					<li v-if="RechargeData != -1" v-for="(item,index) in RechargeData" :data-index="index" :class=" HId == item.id ? 'purchasingcard-mid-li-true' : 'purchasingcard-mid-li' " v-on:click="godo_choose(item.id,index,item.getpay)">
 						<p :data-index="index" :class=" HId == item.id ? 'purchasingcard-mid-li-price-true' : 'purchasingcard-mid-li-price' ">¥{{item.getpay /100}}</p>
 						<p :data-index="index" :class=" HId == item.id ? 'purchasingcard-mid-li-introduce-true' : 'purchasingcard-mid-li-introduce' ">{{item.cr_type_desc}}</p>
 						<img :data-index="index" v-if=" HId == item.id " class="purchasingcard-mid-li-true-img" src="http://pe1s.static.pdr365.com/tencent/icon/dot_icon.png" />
@@ -242,6 +242,7 @@
 				CardNm:'',//判断是充值还是开卡
 				CardNum:'',
 				sid: '', // 门店id
+				getpay: '', // 会员卡充值等级金额
 			};
 		},beforeRouteEnter:function(to, from, next){
 			//当组件加载时自动调用此函数 函数结尾必须next();
@@ -251,8 +252,8 @@
 			//组件加载完成会自动调用此方法
 			this.Num = Cookies.get('CardNum');
 			this.CardNm = this.$route.params.CardNm;
-			this.GradeList();
 			this.sid = Cookies.get('s_id');
+			this.GradeList();
 		},methods:{
 			SshowNum:function(){
 				this.one = true;
@@ -266,7 +267,7 @@
 			},GradeList:function () {
 				var page = this;
 				var token = Cookies.get('_lac_k_');
-		        var url = '/general_api/api/CardGradeList?ts='+Date.parse(new Date()) + '&token=' + token;
+		        var url = '/general_api/api/CardGradeList?ts='+Date.parse(new Date()) + '&sid=' + this.sid + '&token=' + token;
 		        fetch(url).then(r => r.json()).then(d => {
 		        	if(d.available) {
 		        		page.RechargeData = d.obj;
@@ -277,7 +278,7 @@
 		        	}
 		        	page.loading = false;
 		        });
-			},godo_choose:function(id,index){
+			},godo_choose:function(id,index,getpay){
 				var page = this;
 				var list = page.RechargeData;
 				for (var i = 0; i < list.length; i++) {
@@ -285,7 +286,8 @@
 	                	page.HId = list[index].id;
 	                }
 	            }
-	            page.id = id;
+							page.id = id;
+							this.getpay = getpay / 100;
 			},godo_purchasing:function(){
 				var page = this;
 				var mc_pwd = page.pwd;
@@ -531,7 +533,7 @@
 				var mc_num = page.Num;
 				var h_id = page.id;
 				page.loading = true;
-				var url = '/general_api/api/RechargeCard?mc_num='+ mc_num + '&h_id='+h_id + '&sid=' + this.sid +'&ts='+Date.parse(new Date());
+				var url = '/general_api/api/RechargeCard?mc_num='+ mc_num + '&h_id='+h_id + '&sid=' + this.sid + '&getpay=' + this.getpay + '&ts='+Date.parse(new Date());
 		        fetch(url).then(r => r.json()).then(d => {
 		        	if (d.available ) {
 		        		page.loading = false;
