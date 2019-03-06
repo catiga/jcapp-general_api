@@ -32,6 +32,7 @@ import modifiedData from '@/views/modifiedData.vue'
 import couponsForOrder from '@/views/couponsForOrder.vue'
 import couponsForGoods from '@/views/couponsForGoods.vue'
 import goodsDetails from '@/views/goodsDetails.vue'
+import QRcode from '@/views/QRcode.vue'
 
 export default [
       { path: '/',name: 'index', component: index },
@@ -68,6 +69,7 @@ export default [
       { path: '/couponsForOrder/:order_no',name: 'couponsForOrder',component: couponsForOrder },
       { path: '/couponsForGoods/:order_no',name: 'couponsForGoods',component: couponsForGoods },
       { path: '/goodsDetails',name: 'goodsDetails',component: goodsDetails },
+      { path: '/QRcode', name: 'QRcode', component: QRcode},
     ]
 
 
