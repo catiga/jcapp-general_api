@@ -11,6 +11,7 @@ import com.lengjiabao.general_api.ready.common.McAvailabilityStatus
 import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
+import com.lengjiabao.general_api.ready.util.StringUtil
 import com.jeancoder.core.http.JCCookie
 import com.jeancoder.core.http.JCRequest
 import com.jeancoder.core.log.JCLogger
@@ -18,6 +19,11 @@ import com.jeancoder.app.sdk.source.RequestSource
 // println '1211'
 
 JCLogger logger = LoggerSource.getLogger();
+def sid = JC.request.param("sid");
+if (StringUtil.isEmpty(sid)) {
+	return AvailabilityStatus.notAvailable("请选择门店");
+}
+
 
 def token = null;
 JCCookie[] cookies = JC.request.get().getCookies();
@@ -49,23 +55,11 @@ if (simpleAjax == null || !simpleAjax.available || simpleAjax.data == null ) {
 def ap_id = simpleAjax.data['ap_id'];//获取用户信息
 def mobile = simpleAjax.data['mobile'];//获取用户信息
 McAvailabilityStatus status = JC.internal.call(McAvailabilityStatus,'crm', '/h5/user/get_account_mcs', [apid:ap_id.toString(),pid:GlobalHolder.pid.toString(),mobile:mobile]);
-logger.info("CardGradeList__status__:" + JackSonBeanMapper.toJson(status))
 if (status.obj != null && status.obj.size() != 0 && !"0".equals(status.obj.get(0).outer_type)) {
 	// 如果是外部会员卡
 	try { 
 		def mc = status.obj.get(0);
-		logger.info("CardGradeList__status:" + JackSonBeanMapper.toJson(mc))
-		def  avai = JC.internal.call(McAvailabilityStatus, 'crm', '/h5/mc/get_hierarchy', [mch_id:mc.mch_id]);
-//		logger.info("CardGradeList__tl:" + JackSonBeanMapper.toJson(avai))
-//		if (!avai.available) {
-//			return avai;
-//		}
-//		def item = avai.obj.get(0);
-//		item.getpay =  item.least_recharge;
-//		def list =  [];
-//		list.add(item);
-//		avai =  McAvailabilityStatus.available(null, list);
-//		logger.info("CardGradeList__" + JackSonBeanMapper.toJson(avai))
+		def  avai = JC.internal.call(McAvailabilityStatus, 'crm', '/h5/mc/get_hierarchy', [mch_id:mc.mch_id,sid:sid,pid:GlobalHolder.pid.toString()]);
 		return avai;
 	} catch (any) {
 		logger.info("",any);
