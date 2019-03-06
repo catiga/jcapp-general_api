@@ -242,7 +242,7 @@
 				CardNm:'',//判断是充值还是开卡
 				CardNum:'',
 				sid: '', // 门店id
-				getpay: '', // 会员卡充值等级金额
+				getpay: 0, // 会员卡充值等级金额
 			};
 		},beforeRouteEnter:function(to, from, next){
 			//当组件加载时自动调用此函数 函数结尾必须next();
@@ -287,7 +287,7 @@
 	                }
 	            }
 							page.id = id;
-							this.getpay = getpay / 100;
+							this.getpay = Number(getpay) / 100;
 			},godo_purchasing:function(){
 				var page = this;
 				var mc_pwd = page.pwd;
