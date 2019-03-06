@@ -17,7 +17,7 @@
                         <div class="goods-item-box">
                             <div class="goods-img">
                                 <span v-if="item[0].stock == null || item[0].stock == '0' " style="padding: 2px 4px;background: #CC6666;position: absolute;color: #fff;z-index: 1;">售罄</span>
-                                <img :src="item[0].sku_img !== 'http://pe1s.static.pdr365.com/null' ? item[0].sku_img : ''" alt="">
+                                <img :src="item[0].sku_img !== 'http://pe1s.static.pdr365.com/null' ? item[0].sku_img : ''" alt="" @click="goDetails(item)">
                             </div>
                             <div class="goods-item">
                                 <div class="goods-item-title">
@@ -300,6 +300,9 @@
             haun_cards:function(sid){
                 this.sid = sid;
                 //用第选中门店ID掉获取分组接口 然后获取商品
+            },
+            goDetails(item) {
+                this.$router.push({name: 'goodsDetails', params:{goods:item}});
             }
         },
         watch: {

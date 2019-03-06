@@ -31,20 +31,63 @@
         </span>
       </p>
     </div>
-    <div class="service" style="display:flex;padding-left">
-      <p>服务</p>
-      <p>
-        <span>正品保障</span>
-        <span>无忧售后</span>
-        <span>极速退款</span>
-        <span>退换货特别提示</span>
+    <div
+      class="service"
+      style="display:flex;margin-left:.3rem;border-top:1px solid #A2A2A2;padding-top:.3rem;"
+    >
+      <p style="width:6em;display:flex;align-items:center;">
+        <span>服务</span>
       </p>
+      <p>
+        <span class="item">
+          <i class="iconfont icon-duigou"></i>正品保障
+        </span>
+        <span class="item">
+          <i class="iconfont icon-duigou"></i>无忧售后
+        </span>
+        <span class="item">
+          <i class="iconfont icon-duigou"></i>极速退款
+        </span>
+        <span class="item">退换货特别提示</span>
+        <span class="item">退换货特别提示</span>
+      </p>
+    </div>
+    <div class="content-tab">
+      <p style="display:flex;text-align:center;justify-content:center;font-size:1.2em;">
+        <span :class="tab_name === 'details' ? 'active' : ''" @click="tab_name = 'details'">图文详情</span>
+        <span :class="tab_name === 'params' ? 'active' : ''" @click="tab_name = 'params'">商品参数</span>
+      </p>
+    </div>
+    <div class="content">
+      <div class="content-html" v-show="tab_name === 'details'" v-html="content_html"></div>
+      <div class="content-params" v-show="tab_name === 'params'">
+        <p>
+          <span>规格</span>
+          <span>默认款式</span>
+        </p>
+        <p>
+          <span>颜色</span>
+          <span>默认款式</span>
+        </p>
+        <p>
+          <span>功效</span>
+          <span></span>
+        </p>
+        <p>
+          <span>商品简介</span>
+          <span>价值¥1520，优惠价¥760。套餐内涵：新精华肌底液30ml，新精华肌底液7ml*4，心精华肌底液1ml*2。</span>
+        </p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  beforeRouteEnter: function(to, from, next) {
+    document.title = "商品详情";
+    next();
+  },
   data() {
     return {
       swiperOption: {
@@ -54,8 +97,14 @@ export default {
         },
         autoplay: true,
         loop: true
-      }
+      },
+      tab_name: "details",
+      content_html: "",
+      goods_info:"" 
     };
+  },
+  mounted() {
+    this.goods_info = this.$route.params.goods;
   }
 };
 </script>
@@ -66,5 +115,40 @@ export default {
 }
 .info {
   padding: 0.3rem;
+}
+.iconfont {
+  color: #b11b0f;
+  font-size: 1em;
+}
+.item {
+  margin-right: 0.1rem;
+}
+.content {
+  margin-bottom: 2rem;
+  &-tab {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    p {
+      span {
+        margin: 0 2em;
+        padding-bottom: 0.5em;
+      }
+      .active {
+        color: #b11b0f;
+        border-bottom: 2px solid #b11b0f;
+      }
+    }
+  }
+  &-params {
+    padding: 0 0.3rem;
+    p {
+      padding: 0.1rem 0;
+      border-top: 1px solid #a2a2a2;
+      display: flex;
+      span:first-of-type {
+        margin-right: 4em;
+      }
+    }
+  }
 }
 </style>
