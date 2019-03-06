@@ -252,8 +252,8 @@
 			//组件加载完成会自动调用此方法
 			this.Num = Cookies.get('CardNum');
 			this.CardNm = this.$route.params.CardNm;
-			this.GradeList();
 			this.sid = Cookies.get('s_id');
+			this.GradeList();
 		},methods:{
 			SshowNum:function(){
 				this.one = true;
@@ -287,7 +287,7 @@
 	                }
 	            }
 							page.id = id;
-							this.getpay = getpay;
+							this.getpay = getpay / 100;
 			},godo_purchasing:function(){
 				var page = this;
 				var mc_pwd = page.pwd;
