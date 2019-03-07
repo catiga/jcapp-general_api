@@ -59,6 +59,7 @@ if (status.obj != null && status.obj.size() != 0 && !"0".equals(status.obj.get(0
 	// 如果是外部会员卡
 	try { 
 		def mc = status.obj.get(0);
+		logger.info("CardGradeList___mch_id" + mc.mch_id + " sid=" + mobile+ " sid=" + mobile)
 		def  avai = JC.internal.call(McAvailabilityStatus, 'crm', '/h5/mc/get_hierarchy', [mch_id:mc.mch_id,sid:sid,pid:GlobalHolder.pid.toString()]);
 		return avai;
 	} catch (any) {
