@@ -24,9 +24,9 @@
 						<p class="my-coupons-list-mid-info">券码：<span>{{item.code}}</span></p>
 					</div>
 					<!--<div class="my-coupons-list-pay" v-if="item.coupon_type == 2000">购票</div>-->
-          <div>
-            <div class="my-coupons-list-pay"  v-if="item.coupon_type != 2000" v-on:click="go_use">使用</div>
-            <div class="my-coupons-list-pay" @click="addToWeChatCard">加入卡包</div>
+          <div style="width: 2.12rem;height: 100%; position: absolute;right: 0;display: flex; flex-direction: column; justify-content: center;">
+            <div class="my-coupons-list-pay-button"  v-if="item.coupon_type != 2000" v-on:click="go_use">使用</div>
+            <div class="my-coupons-list-pay-button" @click="addToWeChatCard">加入卡包</div>
 
           </div>
 				</div>
@@ -238,7 +238,7 @@ export default {
   border: 1px solid #1aad19;
   color: #1aad19;
 } */
-.my-coupons-list-pay {
+.my-coupons-list-pay-button {
   margin: auto 0;
   width: 1.12rem;
   text-align: center;
