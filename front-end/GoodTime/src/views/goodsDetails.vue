@@ -107,6 +107,19 @@ export default {
   mounted() {
     this.gid = this.$route.params.gid;
     this.skuid = this.$route.params.skuid;
+    this.getGoodsInfo();
+  },
+  methods: {
+    // 获取商品详情
+    getGoodsInfo() {
+      let token = Cookies.get("_lac_k_");
+      let url = "/general_api/api/auth/getGoodsDetails?gid=" + this.gid + "&skuid=" + this.skuid + "&token=" + token + "&ts=" + Date.parse(new Date());
+      fetch(url)
+        .then(r => r.json())
+        .then(d => {
+          console.log(d)
+        });
+    },
   }
 };
 </script>
