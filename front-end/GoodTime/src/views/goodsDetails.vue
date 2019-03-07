@@ -19,7 +19,7 @@
       </swiper>
     </div>
     <div class="info">
-      <p style="font-size:1.4em;margin-bottom: .1rem;">兰蔻明星小黑瓶礼盒一人限购一个超出自动取消</p>
+      <p style="font-size:1.4em;margin-bottom: .1rem;">{{goods_info.goods_name}}</p>
       <p>
         <span style="color:#B11B0F;margin-right:1em;">
           ¥
@@ -104,6 +104,8 @@ export default {
       content_html: "",
       gid: "", // 商品ID
       skuid: "", // 商品skuID
+      goods_info: null,
+      goods_imgs: null
     };
   },
   mounted() {
@@ -138,13 +140,29 @@ export default {
 	},
     // 获取商品详情
     getGoodsInfo() {
+      let page = this;
       let token = Cookies.get("_lac_k_");
       let url = "/general_api/api/goods_detail?gid=" + this.gid + "&skuid=" + this.skuid + "&token=" + token + "&ts=" + Date.parse(new Date());
       let loading = weui.loading("加载中");
       fetch(url)
         .then(r => r.json())
         .then(d => {
-          console.log(d)
+        	loading.hide();
+        	if(d.ret_code=='0000') {
+        		page.goods_info = d.data[0];
+        		page.goods_imgs = d.data[1];
+        	} else {
+        		weui.dialog({
+          			content: "内容",
+          			buttons: [
+            		{
+              		label: "确定",
+              		type: "primary",
+              		onClick: function() {}
+            		}
+          		]
+        		});
+        	}
         });
     },
   }
