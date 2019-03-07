@@ -302,7 +302,7 @@
                 //用第选中门店ID掉获取分组接口 然后获取商品
             },
             goDetails(item) {
-                this.$router.push({name: 'goodsDetails', params:{goods:item}});
+                this.$router.push({name: 'goodsDetails', params:{gid:item[1].id,skuid:item[0}.id});
             }
         },
         watch: {
