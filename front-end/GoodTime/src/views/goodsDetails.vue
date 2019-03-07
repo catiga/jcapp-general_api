@@ -3,9 +3,6 @@
     <div class="head-pic">
       <!-- swiper -->
       <swiper :options="swiperOption" style="height:100%;background:#ccc;">
-      	<swiper-slide>
-          <img src="http://img.bimg.126.net/photo/31kQlCGP44-34Q5yxvoqmw==/5770237022569104952.jpg" alt>
-        </swiper-slide>
         <swiper-slide v-for="(item,index) in goods_imgs">
           <img src="http://m.mt.ex.piaodaren.com/img_server/{{item.img_url}}" alt>
         </swiper-slide>
@@ -51,7 +48,7 @@
       </p>
     </div>
     <div class="content">
-      <div class="content-html" v-show="tab_name === 'details'" v-html="content_html"></div>
+      <div class="content-html" v-show="tab_name === 'details'" v-html="content_html">{{goods_content.content}}</div>
       <div class="content-params" v-show="tab_name === 'params'">
         <p>
           <span>规格</span>
@@ -67,7 +64,7 @@
         </p>
         <p>
           <span>商品简介</span>
-          <span>价值¥1520，优惠价¥760。套餐内涵：新精华肌底液30ml，新精华肌底液7ml*4，心精华肌底液1ml*2。</span>
+          <span>{{goods_content.content}}</span>
         </p>
       </div>
     </div>
@@ -97,7 +94,8 @@ export default {
       gid: "", // 商品ID
       skuid: "", // 商品skuID
       goods_info: null,
-      goods_imgs: null
+      goods_imgs: null,
+      goods_content: null
     };
   },
   mounted() {
@@ -143,6 +141,7 @@ export default {
         	if(d.ret_code=='0000') {
         		page.goods_info = d.data[0];
         		page.goods_imgs = d.data[1];
+        		page.goods_content = d.data[2];
         	} else {
         		weui.dialog({
           			content: "内容",
