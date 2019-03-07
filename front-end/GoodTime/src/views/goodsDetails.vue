@@ -19,7 +19,7 @@
       </swiper>
     </div>
     <div class="info">
-      <p style="font-size:1.4em;margin-bottom: .1rem;">兰蔻明星小黑瓶礼盒一人限购一个超出自动取消</p>
+      <p style="font-size:1.4em;margin-bottom: .1rem;">{{goods_info.goods_name}}</p>
       <p>
         <span style="color:#B11B0F;margin-right:1em;">
           ¥
@@ -83,6 +83,8 @@
 </template>
 
 <script>
+import Cookies from 'js-cookie'
+
 export default {
   beforeRouteEnter: function(to, from, next) {
     document.title = "商品详情";
@@ -100,11 +102,69 @@ export default {
       },
       tab_name: "details",
       content_html: "",
-      goods_info:"" 
+      gid: "", // 商品ID
+      skuid: "", // 商品skuID
+      goods_info: null,
+      goods_imgs: null
     };
   },
   mounted() {
-    this.goods_info = this.$route.params.goods;
+    this.gid = this.$route.params.gid;
+    this.skuid = this.$route.params.skuid;
+    this.wxinit();
+    this.getGoodsInfo();
+  },
+  methods: {
+  	wxinit:function(){
+		let page = this;
+
+		let param = "cu=/general_api/tcss/index";
+        let url = "/general_api/h5/wx/jsticket/?"+ param;
+        
+        fetch(url).then(r => r.json()).then(d => {
+        	console.log(d);
+        	if (d.ret_code == '0000') {
+        		wx.config({
+				    debug: false,
+				    appId: d.data.appid, // 必填，公众号的唯一标识
+				    timestamp: d.data.timestamp, // 必填，生成签名的时间戳
+				    nonceStr: d.data.noncestr, // 必填，生成签名的随机串
+				    signature: d.data.sign_str,// 必填，签名，见附录1
+				    jsApiList: ['startRecord','translateVoice', 'stopRecord', 'onVoiceRecordEnd', 'playVoice', 
+				                'pauseVoice', 'stopVoice', 'onVoicePlayEnd', 'uploadVoice', 'downloadVoice', 
+				                'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 
+				                'translateVoice', 'getNetworkType', 'onMenuShareTimeline', 'onMenuShareAppMessage','getLocation','openLocation'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+				});
+        	}
+        });
+	},
+    // 获取商品详情
+    getGoodsInfo() {
+      let page = this;
+      let token = Cookies.get("_lac_k_");
+      let url = "/general_api/api/goods_detail?gid=" + this.gid + "&skuid=" + this.skuid + "&token=" + token + "&ts=" + Date.parse(new Date());
+      let loading = weui.loading("加载中");
+      fetch(url)
+        .then(r => r.json())
+        .then(d => {
+        	loading.hide();
+        	if(d.ret_code=='0000') {
+        		page.goods_info = d.data[0];
+        		page.goods_imgs = d.data[1];
+        	} else {
+        		weui.dialog({
+          			content: "内容",
+          			buttons: [
+            		{
+              		label: "确定",
+              		type: "primary",
+              		onClick: function() {}
+            		}
+          		]
+        		});
+        	}
+        });
+    },
   }
 };
 </script>

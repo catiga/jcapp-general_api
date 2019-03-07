@@ -68,7 +68,7 @@ export default [
       { path: '/modifiedData',name: 'modifiedData',component: modifiedData },
       { path: '/couponsForOrder/:order_no',name: 'couponsForOrder',component: couponsForOrder },
       { path: '/couponsForGoods/:order_no',name: 'couponsForGoods',component: couponsForGoods },
-      { path: '/goodsDetails',name: 'goodsDetails',component: goodsDetails },
+      { path: '/goodsDetails/:gid/:skuid?',name: 'goodsDetails',component: goodsDetails },
       { path: '/QRcode', name: 'QRcode', component: QRcode},
     ]
 
