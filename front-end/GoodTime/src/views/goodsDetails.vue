@@ -83,6 +83,8 @@
 </template>
 
 <script>
+import Cookies from 'js-cookie'
+
 export default {
   beforeRouteEnter: function(to, from, next) {
     document.title = "商品详情";
