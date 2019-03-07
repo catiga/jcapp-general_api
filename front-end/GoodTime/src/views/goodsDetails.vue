@@ -100,11 +100,13 @@ export default {
       },
       tab_name: "details",
       content_html: "",
-      goods_info:"" 
+      gid: "", // 商品ID
+      skuid: "", // 商品skuID
     };
   },
   mounted() {
-    this.goods_info = this.$route.params.goods;
+    this.gid = this.$route.params.gid;
+    this.skuid = this.$route.params.skuid;
   }
 };
 </script>
