@@ -26,7 +26,7 @@
 					<!--<div class="my-coupons-list-pay" v-if="item.coupon_type == 2000">购票</div>-->
           <div style="width: 2.12rem;height: 100%; position: absolute;right: 0;display: flex; flex-direction: column; justify-content: center;">
             <div class="my-coupons-list-pay-button"  v-if="item.coupon_type != 2000" v-on:click="go_use">使用</div>
-            <div class="my-coupons-list-pay-button" @click="addToWeChatCard">加入卡包</div>
+            <div class="my-coupons-list-pay-button" @click="addToWeChatCard(item.id)">加入卡包</div>
 
           </div>
 				</div>
@@ -115,8 +115,13 @@ export default {
         });
     },
     // 加入微信卡包
-    addToWeChatCard() {
-      console.log('加入卡包');
+    addToWeChatCard(code_id) {
+      var url = "/general_api/h5/wx/card/create_cb?code_id=" + code_id + "&ts=" + Date.parse(new Date());
+      fetch(url)
+        .then(r => r.json())
+        .then(d => {
+          console.log(d)
+        });
     }
   }
 };
@@ -239,7 +244,7 @@ export default {
   color: #1aad19;
 } */
 .my-coupons-list-pay-button {
-  margin: auto 0;
+  margin: 0 auto;
   width: 1.12rem;
   text-align: center;
   height: 0.56rem;
