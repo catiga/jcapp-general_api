@@ -116,7 +116,8 @@ export default {
     },
     // 加入微信卡包
     addToWeChatCard(code_id) {
-      var url = "/general_api/h5/wx/card/create_cb?code_id=" + code_id + "&ts=" + Date.parse(new Date());
+      var token = Cookies.get("_lac_k_");
+      var url = "/general_api/h5/wx/card/create_cb?code_id=" + code_id + '&token=' + token + "&ts=" + Date.parse(new Date());
       fetch(url)
         .then(r => r.json())
         .then(d => {
