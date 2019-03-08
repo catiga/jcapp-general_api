@@ -34,6 +34,9 @@ while ((line = br.readLine()) != null) {
 }
 String str = sb.toString();
 logger.info('wx_notify_msg:' + str);
+if(!str) {
+	return 'empty';
+}
 XMLUtil xml_util = new XMLUtil();
 Map<String, String> requestMap = xml_util.to_map(str);
 
