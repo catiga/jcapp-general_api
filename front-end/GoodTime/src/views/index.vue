@@ -197,7 +197,7 @@
 						    jsApiList: ['startRecord','translateVoice', 'stopRecord', 'onVoiceRecordEnd', 'playVoice', 
 						                'pauseVoice', 'stopVoice', 'onVoicePlayEnd', 'uploadVoice', 'downloadVoice', 
 						                'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 
-						                'translateVoice', 'getNetworkType', 'onMenuShareTimeline', 'onMenuShareAppMessage','getLocation','openLocation'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+						                'translateVoice', 'getNetworkType', 'onMenuShareTimeline', 'onMenuShareAppMessage','getLocation','openLocation', 'addCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 						});
 		        	}
 		        });
