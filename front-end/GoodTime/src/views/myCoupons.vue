@@ -221,6 +221,14 @@ export default {
                 success: function(res) {
                   var cardList = res.cardList; // 添加的卡券列表信息
                   console.log(res);
+                },
+                fail: function(msg) {
+                  console.log('========fail=======');
+                  console.log(msg);
+                },
+                cancel: function(msg) {
+                  console.log('=========cancel========');
+                  console.log(msg);
                 }
               });
             });
