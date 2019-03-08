@@ -10,7 +10,8 @@
         <div class="my-coupons-list stamp02" v-for="(item,j) in Coupons">
           <div class="my-coupons-list-left">
             <!-- <p class="my-coupons-list-left-num" v-if="item.coupon_type == '1000' ">¥ <span> {{item.rule_value/100}}</span></p> -->
-            <p class="my-coupons-list-left-num" v-if="item.coupon_type == '1000' ">¥
+            <p class="my-coupons-list-left-num" v-if="item.coupon_type == '1000' ">
+              ¥
               <span>{{item.rule_value/100}}</span>
             </p>
             <p class="my-coupons-list-left-num" v-else-if="item.coupon_type == '3000' ">
@@ -36,7 +37,8 @@
               <span v-for="info in item.rule">{{info}}</span>
             </p>
             <p class="my-coupons-list-mid-info">有效期：{{timelist[j]}}</p>
-            <p class="my-coupons-list-mid-info">券码：
+            <p class="my-coupons-list-mid-info">
+              券码：
               <span>{{item.code}}</span>
             </p>
           </div>
@@ -153,29 +155,33 @@ export default {
       fetch(url)
         .then(r => r.json())
         .then(d => {
-          wx.addCard({
-            cardList: [
-              {
-                cardId: data.obj.carddata.cardId,
-                cardExt:
-                  '{"code":"' +
-                  data.obj.carddata.cardExt.code +
-                  '","openid":"' +
-                  data.obj.carddata.cardExt.openid +
-                  '","nonce_str":"' +
-                  data.obj.carddata.cardExt.nonce_str +
-                  '","timestamp":"' +
-                  data.obj.carddata.cardExt.timestamp +
-                  '","signature":"' +
-                  data.obj.carddata.cardExt.signature +
-                  '"}'
+          if (d.ret_code === "0000") {
+            wx.addCard({
+              cardList: [
+                {
+                  cardId: d.data.cardId,
+                  cardExt:
+                    '{"code":"' +
+                    d.data.cardExt.code +
+                    '","openid":"' +
+                    d.data.cardExt.openid +
+                    '","nonce_str":"' +
+                    d.data.cardExt.nonce_str +
+                    '","timestamp":"' +
+                    d.data.cardExt.timestamp +
+                    '","signature":"' +
+                    d.data.cardExt.signature +
+                    '"}'
+                }
+              ], // 需要添加的卡券列表
+              success: function(res) {
+                var cardList = res.cardList; // 添加的卡券列表信息
+                console.log(res);
               }
-            ], // 需要添加的卡券列表
-            success: function(res) {
-              var cardList = res.cardList; // 添加的卡券列表信息
-              console.log(res);
-            }
-          });
+            });
+          } else {
+            console.log('添加到卡包失败');
+          }
         });
     }
   }
