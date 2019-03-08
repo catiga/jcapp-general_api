@@ -152,6 +152,8 @@ export default {
         .then(r => r.json())
         .then(d => {
           if (d.ret_code == "0000") {
+            console.log('-------jsticket res');
+            console.log(d);
             wx.config({
               debug: false,
               appId: d.data.appid, // 必填，公众号的唯一标识
@@ -200,34 +202,34 @@ export default {
         .then(d => {
           if (d.ret_code === "0000") {
             wx.ready(function() {
+              let obj = {
+                cardId: d.data.cardId,
+                cardExt:
+                  '{"code":"' +
+                  d.data.cardExt.code +
+                  '","openid":"' +
+                  d.data.cardExt.openid +
+                  '","nonce_str":"' +
+                  d.data.cardExt.nonce_str +
+                  '","timestamp":"' +
+                  d.data.cardExt.timestamp +
+                  '","signature":"' +
+                  d.data.cardExt.signature +
+                  '"}'
+              };
               wx.addCard({
-                cardList: [
-                  {
-                    cardId: d.data.cardId,
-                    cardExt:
-                      '{"code":"' +
-                      d.data.cardExt.code +
-                      '","openid":"' +
-                      d.data.cardExt.openid +
-                      '","nonce_str":"' +
-                      d.data.cardExt.nonce_str +
-                      '","timestamp":"' +
-                      d.data.cardExt.timestamp +
-                      '","signature":"' +
-                      d.data.cardExt.signature +
-                      '"}'
-                  }
-                ], // 需要添加的卡券列表
+                cardList: [obj], // 需要添加的卡券列表
                 success: function(res) {
                   var cardList = res.cardList; // 添加的卡券列表信息
+                  console.log("======success======");
                   console.log(res);
                 },
                 fail: function(msg) {
-                  console.log('========fail=======');
+                  console.log("========fail=======");
                   console.log(msg);
                 },
                 cancel: function(msg) {
-                  console.log('=========cancel========');
+                  console.log("=========cancel========");
                   console.log(msg);
                 }
               });
