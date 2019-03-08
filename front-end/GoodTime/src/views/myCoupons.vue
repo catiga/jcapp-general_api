@@ -88,6 +88,7 @@ export default {
   },
   created: function() {
     //组件加载完成会自动调用此方法
+    this.wxinit();
     this.GetCoupons();
   },
   methods: {
@@ -142,6 +143,48 @@ export default {
           }
         });
     },
+    // 初始化微信js-sdk
+    wxinit() {
+      let param = "cu=/general_api/tcss/index";
+      let url = "/general_api/h5/wx/jsticket/?" + param;
+
+      fetch(url)
+        .then(r => r.json())
+        .then(d => {
+          if (d.ret_code == "0000") {
+            wx.config({
+              debug: false,
+              appId: d.data.appid, // 必填，公众号的唯一标识
+              timestamp: d.data.timestamp, // 必填，生成签名的时间戳
+              nonceStr: d.data.noncestr, // 必填，生成签名的随机串
+              signature: d.data.sign_str, // 必填，签名，见附录1
+              jsApiList: [
+                "startRecord",
+                "translateVoice",
+                "stopRecord",
+                "onVoiceRecordEnd",
+                "playVoice",
+                "pauseVoice",
+                "stopVoice",
+                "onVoicePlayEnd",
+                "uploadVoice",
+                "downloadVoice",
+                "chooseImage",
+                "previewImage",
+                "uploadImage",
+                "downloadImage",
+                "translateVoice",
+                "getNetworkType",
+                "onMenuShareTimeline",
+                "onMenuShareAppMessage",
+                "getLocation",
+                "openLocation",
+                "addCard"
+              ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+            });
+          }
+        });
+    },
     // 加入微信卡包
     addToWeChatCard(code_id) {
       var token = Cookies.get("_lac_k_");
@@ -156,31 +199,33 @@ export default {
         .then(r => r.json())
         .then(d => {
           if (d.ret_code === "0000") {
-            wx.addCard({
-              cardList: [
-                {
-                  cardId: d.data.cardId,
-                  cardExt:
-                    '{"code":"' +
-                    d.data.cardExt.code +
-                    '","openid":"' +
-                    d.data.cardExt.openid +
-                    '","nonce_str":"' +
-                    d.data.cardExt.nonce_str +
-                    '","timestamp":"' +
-                    d.data.cardExt.timestamp +
-                    '","signature":"' +
-                    d.data.cardExt.signature +
-                    '"}'
+            wx.ready(function() {
+              wx.addCard({
+                cardList: [
+                  {
+                    cardId: d.data.cardId,
+                    cardExt:
+                      '{"code":"' +
+                      d.data.cardExt.code +
+                      '","openid":"' +
+                      d.data.cardExt.openid +
+                      '","nonce_str":"' +
+                      d.data.cardExt.nonce_str +
+                      '","timestamp":"' +
+                      d.data.cardExt.timestamp +
+                      '","signature":"' +
+                      d.data.cardExt.signature +
+                      '"}'
+                  }
+                ], // 需要添加的卡券列表
+                success: function(res) {
+                  var cardList = res.cardList; // 添加的卡券列表信息
+                  console.log(res);
                 }
-              ], // 需要添加的卡券列表
-              success: function(res) {
-                var cardList = res.cardList; // 添加的卡券列表信息
-                console.log(res);
-              }
+              });
             });
           } else {
-            console.log('添加到卡包失败');
+            console.log("添加到卡包失败");
           }
         });
     }
