@@ -1,51 +1,73 @@
 <template>
-	<div><!-- 固定 容器-->
-		<div class="details-bg"></div>
-		<!--无优惠券-->
-		<div>
-			
-		</div>
-		<!--有优惠券-->
-		<div class="my-coupons-box">
-			<div class="my-coupons" v-if="Coupons.length > 0">
-				<div class="my-coupons-list stamp02" v-for="(item,j) in Coupons">
-					<div class="my-coupons-list-left">
-						<!-- <p class="my-coupons-list-left-num" v-if="item.coupon_type == '1000' ">¥ <span> {{item.rule_value/100}}</span></p> -->
-						<p class="my-coupons-list-left-num" v-if="item.coupon_type == '1000' ">¥ <span> {{item.rule_value/100}}</span></p>
-						<p class="my-coupons-list-left-num" v-else-if="item.coupon_type == '3000' "> <span> {{item.rule_value | toSlice}}折</span></p>
-						<p class="my-coupons-list-left-num" style="margin:auto;line-height:2.2rem;" v-else-if="item.coupon_type == '2000' "> <span style="font-size:.4rem;"> 兑换券 </span></p>
-						<p class="my-coupons-list-left-type">{{item.coupon_type == '1000' ? '代金券' : item.coupon_type == '3000' ? '折扣券' : '' }}</p>
-					</div>
-					<div class="my-coupons-list-mid">
-						<p class="my-coupons-list-mid-title">{{item.batch_title}}</p>
-						<p class="my-coupons-list-mid-info" v-if="item.coupon_type == '2000'"> <span>仅限到店使用</span> </p>
-						<p class="my-coupons-list-mid-info" v-else> <span v-for="info in item.rule"> {{info}} </span> </p>
-						<p class="my-coupons-list-mid-info">有效期：{{timelist[j]}}</p>
-						<p class="my-coupons-list-mid-info">券码：<span>{{item.code}}</span></p>
-					</div>
-					<!--<div class="my-coupons-list-pay" v-if="item.coupon_type == 2000">购票</div>-->
-          <div style="width: 2.12rem;height: 100%; position: absolute;right: 0;display: flex; flex-direction: column; justify-content: center;">
-            <div class="my-coupons-list-pay-button"  v-if="item.coupon_type != 2000" v-on:click="go_use">使用</div>
-            <div class="my-coupons-list-pay-button" @click="addToWeChatCard(item.id)">加入卡包</div>
-
+  <div>
+    <!-- 固定 容器-->
+    <div class="details-bg"></div>
+    <!--无优惠券-->
+    <div></div>
+    <!--有优惠券-->
+    <div class="my-coupons-box">
+      <div class="my-coupons" v-if="Coupons.length > 0">
+        <div class="my-coupons-list stamp02" v-for="(item,j) in Coupons">
+          <div class="my-coupons-list-left">
+            <!-- <p class="my-coupons-list-left-num" v-if="item.coupon_type == '1000' ">¥ <span> {{item.rule_value/100}}</span></p> -->
+            <p class="my-coupons-list-left-num" v-if="item.coupon_type == '1000' ">¥
+              <span>{{item.rule_value/100}}</span>
+            </p>
+            <p class="my-coupons-list-left-num" v-else-if="item.coupon_type == '3000' ">
+              <span>{{item.rule_value | toSlice}}折</span>
+            </p>
+            <p
+              class="my-coupons-list-left-num"
+              style="margin:auto;line-height:2.2rem;"
+              v-else-if="item.coupon_type == '2000' "
+            >
+              <span style="font-size:.4rem;">兑换券</span>
+            </p>
+            <p
+              class="my-coupons-list-left-type"
+            >{{item.coupon_type == '1000' ? '代金券' : item.coupon_type == '3000' ? '折扣券' : '' }}</p>
           </div>
-				</div>
-			</div>
-			<div class="my-coupons" v-else>
-				<div class="NoCoupons">
-					<img src="http://pe1s.static.pdr365.com/Nocoupons.png">
-					<p>您还没有优惠券呢～</p>
-				</div>
-			</div>
-		</div>
-		<div id="loadingToast" v-if="loading">
-            <div class="weui-mask_transparent"></div>
-            <div class="weui-toast">
-                <i class="weui-loading weui-icon_toast"></i>
-                <p class="weui-toast__content">加载中</p>
-            </div>
+          <div class="my-coupons-list-mid">
+            <p class="my-coupons-list-mid-title">{{item.batch_title}}</p>
+            <p class="my-coupons-list-mid-info" v-if="item.coupon_type == '2000'">
+              <span>仅限到店使用</span>
+            </p>
+            <p class="my-coupons-list-mid-info" v-else>
+              <span v-for="info in item.rule">{{info}}</span>
+            </p>
+            <p class="my-coupons-list-mid-info">有效期：{{timelist[j]}}</p>
+            <p class="my-coupons-list-mid-info">券码：
+              <span>{{item.code}}</span>
+            </p>
+          </div>
+          <!--<div class="my-coupons-list-pay" v-if="item.coupon_type == 2000">购票</div>-->
+          <div
+            style="width: 2.12rem;height: 100%; position: absolute;right: 0;display: flex; flex-direction: column; justify-content: center;"
+          >
+            <div
+              class="my-coupons-list-pay-button"
+              v-if="item.coupon_type != 2000"
+              v-on:click="go_use"
+            >使用</div>
+            <div class="my-coupons-list-pay-button" @click="addToWeChatCard(item.id)">加入卡包</div>
+          </div>
         </div>
-	</div>
+      </div>
+      <div class="my-coupons" v-else>
+        <div class="NoCoupons">
+          <img src="http://pe1s.static.pdr365.com/Nocoupons.png">
+          <p>您还没有优惠券呢～</p>
+        </div>
+      </div>
+    </div>
+    <div id="loadingToast" v-if="loading">
+      <div class="weui-mask_transparent"></div>
+      <div class="weui-toast">
+        <i class="weui-loading weui-icon_toast"></i>
+        <p class="weui-toast__content">加载中</p>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 import Cookies from "js-cookie";
@@ -68,7 +90,7 @@ export default {
   },
   methods: {
     go_use: function() {
-    	this.$router.push({name: 'index', params: {}})
+      this.$router.push({ name: "index", params: {} });
     },
     back: function() {
       //自定义返回上一页函数 可以copy到每一个组件中方便使用
@@ -103,13 +125,17 @@ export default {
           } else {
             page.loading = false;
             let auth_type = Cookies.get("_lac_ap_");
-            let auth_key = Cookies.get('_lac_k_');
+            let auth_key = Cookies.get("_lac_k_");
             if (!auth_type) {
-              	location.href = "/general_api/h5/wx/auth?type=base&" + new Date().getTime(); //online should be
+              location.href =
+                "/general_api/h5/wx/auth?type=base&" + new Date().getTime(); //online should be
             } else {
-            	if(!auth_key) {
-            		this.$router.push({name: 'login', params: {apid:auth_type}});
-            	}
+              if (!auth_key) {
+                this.$router.push({
+                  name: "login",
+                  params: { apid: auth_type }
+                });
+              }
             }
           }
         });
@@ -117,11 +143,39 @@ export default {
     // 加入微信卡包
     addToWeChatCard(code_id) {
       var token = Cookies.get("_lac_k_");
-      var url = "/general_api/h5/wx/card/create_cb?code_id=" + code_id + '&token=' + token + "&ts=" + Date.parse(new Date());
+      var url =
+        "/general_api/h5/wx/card/create_cb?code_id=" +
+        code_id +
+        "&token=" +
+        token +
+        "&ts=" +
+        Date.parse(new Date());
       fetch(url)
         .then(r => r.json())
         .then(d => {
-          console.log(d)
+          wx.addCard({
+            cardList: [
+              {
+                cardId: data.obj.carddata.cardId,
+                cardExt:
+                  '{"code":"' +
+                  data.obj.carddata.cardExt.code +
+                  '","openid":"' +
+                  data.obj.carddata.cardExt.openid +
+                  '","nonce_str":"' +
+                  data.obj.carddata.cardExt.nonce_str +
+                  '","timestamp":"' +
+                  data.obj.carddata.cardExt.timestamp +
+                  '","signature":"' +
+                  data.obj.carddata.cardExt.signature +
+                  '"}'
+              }
+            ], // 需要添加的卡券列表
+            success: function(res) {
+              var cardList = res.cardList; // 添加的卡券列表信息
+              console.log(res);
+            }
+          });
         });
     }
   }
@@ -253,7 +307,7 @@ export default {
   border-radius: 0.08rem;
   border: 1px solid #1aad19;
   color: #1aad19;
-  margin-bottom: .18rem;
+  margin-bottom: 0.18rem;
 }
 .my-coupons-list-code {
   position: absolute;
