@@ -1,13 +1,16 @@
 package com.lengjiabao.general_api.entry.api.auth
 
 import com.jeancoder.app.sdk.source.CommunicationSource
+import com.jeancoder.app.sdk.source.LoggerSource
 import com.jeancoder.app.sdk.source.RequestSource
 import com.jeancoder.core.http.JCRequest
+import com.jeancoder.core.log.JCLogger
 import com.jeancoder.core.power.CommunicationParam
 import com.jeancoder.core.power.CommunicationPower
 import com.jeancoder.core.result.Result
-import com.jeancoder.core.util.JackSonBeanMapper
+import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 
+JCLogger logger = LoggerSource.getLogger();
 String point = "market";
 String address = "/coupon/get_available_coupon_list";
 List<CommunicationParam> params = new ArrayList<CommunicationParam>();
@@ -25,6 +28,7 @@ params.add(param2);
 
 CommunicationPower systemCaller = CommunicationSource.getCommunicatorNative(point);
 def ret = systemCaller.doworkAsString(address, params);
+logger.info('get account coupons:' + ret);
 ret = JackSonBeanMapper.jsonToMap(ret);
 
 def ret_code = ret['code'];
