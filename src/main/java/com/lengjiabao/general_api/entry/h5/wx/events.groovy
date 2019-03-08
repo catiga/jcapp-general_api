@@ -33,7 +33,7 @@ while ((line = br.readLine()) != null) {
     sb.append(line);
 }
 String str = sb.toString();
-
+logger.info('wx_notify_msg:' + str);
 XMLUtil xml_util = new XMLUtil();
 Map<String, String> requestMap = xml_util.to_map(str);
 
