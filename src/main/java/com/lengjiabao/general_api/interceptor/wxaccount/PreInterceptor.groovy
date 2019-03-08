@@ -29,7 +29,7 @@ try {
 		return false;
 	} 
 	
-//	String point = "crm"; 
+//	String point = "crm";  
 //	String address = "/h5/p/info"
 //	List<CommunicationParam> params = new ArrayList<CommunicationParam>();
 //	params.add(new CommunicationParam("token", token));
