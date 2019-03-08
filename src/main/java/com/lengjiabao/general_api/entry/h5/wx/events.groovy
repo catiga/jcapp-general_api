@@ -34,8 +34,6 @@ while ((line = br.readLine()) != null) {
 }
 String str = sb.toString();
 
-logger.info('wx notify======' + str);
-
 XMLUtil xml_util = new XMLUtil();
 Map<String, String> requestMap = xml_util.to_map(str);
 
@@ -64,6 +62,7 @@ if (msgType.equals('event')) {
 	} else if (eventType.equals('LOCATION')) {
 		//上报地理位置事件
 	} else if(eventType.equals('user_get_card')){
+		logger.info('wx get coupon notify======' + str);
 		//用户领取卡券
 		logger.info("user_get_card"+JackSonBeanMapper.toJson(requestMap));
 		try{
@@ -74,7 +73,7 @@ if (msgType.equals('event')) {
 			logger.info('card_id=' + cardId + ', card_code=' + userCardCode);
 			
 			//通知market重置卡券归属
-			
+			//JC.internal.call('market', '', []);
 		}catch(Exception e){
 			logger.error("update wx card code info error",e);
 		}
