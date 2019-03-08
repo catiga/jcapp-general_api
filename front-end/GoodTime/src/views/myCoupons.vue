@@ -199,52 +199,46 @@ export default {
         .then(r => r.json())
         .then(d => {
           if (d.ret_code === "0000") {
-            this.initAddCard(d);
+            wx.ready(d => {
+              console.log('------wx ready d');
+              console.log(d);
+              wx.addCard({
+                cardList: [
+                  {
+                    cardId: d.data.cardId,
+                    cardExt:
+                      '{"code":"' +
+                      d.data.cardExt.code +
+                      '","openid":"' +
+                      d.data.cardExt.openid +
+                      '","nonce_str":"' +
+                      d.data.cardExt.nonce_str +
+                      '","timestamp":"' +
+                      d.data.cardExt.timestamp +
+                      '","signature":"' +
+                      d.data.cardExt.signature +
+                      '"}'
+                  }
+                ], // 需要添加的卡券列表
+                success: function(res) {
+                  var cardList = res.cardList; // 添加的卡券列表信息
+                  console.log(res);
+                },
+                fail: function(msg) {
+                  console.log("========fail=======");
+                  console.log(msg);
+                },
+                cancel: function(msg) {
+                  console.log("=========cancel========");
+                  console.log(msg);
+                }
+              });
+            });
           } else {
             console.log("添加到卡包失败");
           }
         });
     },
-    // js-sdk加入卡包
-    initAddCard(d) {
-      console.log('>>>>>>this is d');
-      console.log(d);
-      wx.ready(function(d) {
-        console.log('---------wx ready d');
-        console.log(d);
-        wx.addCard({
-          cardList: [
-            {
-              cardId: d.data.cardId,
-              cardExt:
-                '{"code":"' +
-                d.data.cardExt.code +
-                '","openid":"' +
-                d.data.cardExt.openid +
-                '","nonce_str":"' +
-                d.data.cardExt.nonce_str +
-                '","timestamp":"' +
-                d.data.cardExt.timestamp +
-                '","signature":"' +
-                d.data.cardExt.signature +
-                '"}'
-            }
-          ], // 需要添加的卡券列表
-          success: function(res) {
-            var cardList = res.cardList; // 添加的卡券列表信息
-            console.log(res);
-          },
-          fail: function(msg) {
-            console.log("========fail=======");
-            console.log(msg);
-          },
-          cancel: function(msg) {
-            console.log("=========cancel========");
-            console.log(msg);
-          }
-        });
-      });
-    }
   }
 };
 </script>
