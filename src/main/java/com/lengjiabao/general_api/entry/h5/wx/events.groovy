@@ -18,7 +18,7 @@ String echostr = JC.request.param("echostr");
 
 if(signature && timestamp && nonce && echostr) {
 	logger.info('return success');
-	return;
+	return echostr;
 }
 
 //处理post请求
