@@ -199,9 +199,24 @@ export default {
         .then(r => r.json())
         .then(d => {
           if (d.ret_code === "0000") {
-            wx.ready(d => {
-              console.log('------wx ready d');
-              console.log(d);
+            wx.ready(function() {
+              let obj = {
+                cardId: d.data.cardId,
+                cardExt:
+                  '{"code":"' +
+                  d.data.cardExt.code +
+                  '","openid":"' +
+                  d.data.cardExt.openid +
+                  '","nonce_str":"' +
+                  d.data.cardExt.nonce_str +
+                  '","timestamp":"' +
+                  d.data.cardExt.timestamp +
+                  '","signature":"' +
+                  d.data.cardExt.signature +
+                  '"}'
+              };
+              console.log('-------- wx ready obj');
+              console.log(obj);
               wx.addCard({
                 cardList: [
                   {
@@ -222,6 +237,7 @@ export default {
                 ], // 需要添加的卡券列表
                 success: function(res) {
                   var cardList = res.cardList; // 添加的卡券列表信息
+                  console.log('======success======');
                   console.log(res);
                 },
                 fail: function(msg) {
@@ -238,7 +254,7 @@ export default {
             console.log("添加到卡包失败");
           }
         });
-    },
+    }
   }
 };
 </script>
