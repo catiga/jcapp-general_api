@@ -3,6 +3,7 @@ package com.lengjiabao.general_api.entry.h5.wx
 import com.jeancoder.app.sdk.JC
 import com.jeancoder.app.sdk.source.LoggerSource
 import com.jeancoder.core.log.JCLogger
+import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 import com.lengjiabao.general_api.ready.util.XMLUtil
 
@@ -65,21 +66,27 @@ if (msgType.equals('event')) {
 	} else if (eventType.equals('LOCATION')) {
 		//上报地理位置事件
 	} else if(eventType.equals('user_get_card')){
-		logger.info('wx get coupon notify======' + str);
-		//用户领取卡券
-		logger.info("user_get_card"+JackSonBeanMapper.toJson(requestMap));
+		//用户领取券，服务器收到的通知
+		logger.info("wx:user_get_card:"+JackSonBeanMapper.toJson(requestMap));
 		try{
-			String openid = requestMap.get("FromUserName");
-			String cardId = requestMap.get("CardId");				//wx_card_id
-			String userCardCode = requestMap.get("UserCardCode");	//coupon_code
+			String openid = requestMap.get("FromUserName");				//领用人的openid
+			String card_id = requestMap.get("CardId");					//wx_card_id
+			String userCardCode = requestMap.get("UserCardCode");		//coupon_code
+			String IsGiveByFriend = requestMap.get('IsGiveByFriend');	//是否为转赠领取，1代表是，0代表否。
+			String FriendUserName = requestMap.get('FriendUserName');	//当IsGiveByFriend为1时填入的字段，表示发起转赠用户的openid
 			
-			logger.info('card_id=' + cardId + ', card_code=' + userCardCode);
+			logger.info('card_id=' + card_id + ', card_code=' + userCardCode);
 			
 			//通知market重置卡券归属
-			//JC.internal.call('market', '', []);
+			JC.internal.call('market', '/wx/trans_cb', [wx_card_id:card_id, card_code:userCardCode, get_partid:openid, from_partid:FriendUserName, pid:GlobalHolder.pid]);
 		}catch(Exception e){
 			logger.error("update wx card code info error",e);
 		}
+	} else if(eventType.equals('user_gifting_card')) {
+		//用户产生赠送券给朋友，服务器收到的通知
+		logger.info("user_gifting_card:"+JackSonBeanMapper.toJson(requestMap));
+		//转增行为不需要处理
+		
 	}
 }
 
