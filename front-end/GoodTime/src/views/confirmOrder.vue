@@ -390,14 +390,16 @@
                         page.Pwd_tip = false;
                         page.showTip(d.other[0].err_code_desc);
                         page.Pwd = '';
-                    }else if(d.available == false && d.messages[0] == 'user_no_login') {
+                    } else if(!d.available) {
                         page.Pwd_tip = false;
                         page.Pwd = '';
-                        page.showTip('用户未登录');
-                    }else if (d.available == false && d.messages[0] == 'trade_status_invalid') {
-                        page.Pwd_tip = false;
-                        page.Pwd = '';
-                        page.showTip('请勿重复支付');
+                        if(d.messages[0] == 'user_no_login') {
+                            page.showTip('用户未登录');
+                        } else if(d.messages[0] == 'trade_status_invalid') {
+                            page.showTip('请勿重复支付');
+                        } else {
+                            page.showTip(d.messages[1] || d.messages[0]);
+                        }
                     }
                 }); 
             },
