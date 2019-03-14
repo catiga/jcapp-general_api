@@ -37,7 +37,8 @@ SimpleAjax pref_ajax = JC.internal.call(SimpleAjax, 'trade', '/incall/ro_prefere
 if(pref_ajax.available) {
 	aaaa['data']['pay_amount'] = pref_ajax.data[0];
 } else {
-	return pref_ajax;
+	aaaa['code'] = 0001
+	aaaa['msg'] = pref_ajax.messages[0];
 }
 
 Result result = new Result();
