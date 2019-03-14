@@ -4,24 +4,6 @@ import com.jeancoder.app.sdk.JC
 import com.jeancoder.core.result.Result
 import com.jeancoder.core.util.JackSonBeanMapper
 
-
-//返回非list数据
-//Result result = new Result();
-//List<CommunicationParam> params = new ArrayList<CommunicationParam>();
-//JCRequest reques = RequestSource.getRequest();
-//def order_no = reques.getParameter("order_no");
-//
-//CommunicationParam param1 = new CommunicationParam("order_no", order_no);
-//
-//params.add(param1);
-//
-//CommunicationPower caller = CommunicationSource.getCommunicator("ticketingsys");
-//def aaaa = caller.doworkAsString("/api/order_detail", params);
-//
-//
-//return result.setData(aaaa);
-
-
 def order_no = JC.request.param("order_no");
 def coupon_id = JC.request.param('coupon_id');
 def aaaa = JC.internal.call("ticketingsys", "/api/order_detail", [order_no:order_no,coupon_id:coupon_id]);
