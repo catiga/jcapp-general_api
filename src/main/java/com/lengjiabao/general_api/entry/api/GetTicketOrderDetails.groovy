@@ -40,7 +40,12 @@ if(!coupon_id) {
 	}
 }
 
-logger.info('general_api order_data:' + JackSonBeanMapper.toJson(aaaa));
+if(aaaa['handle_fee']==null) {
+	aaaa['handle_fee'] = new BigDecimal(0);
+}
+if(aaaa['service_fee']==null) {
+	aaaa['service_fee'] = new BigDecimal(0);
+}
 Result result = new Result();
 
 return result.setData(aaaa);
