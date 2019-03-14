@@ -228,6 +228,14 @@
                             <span>原价票</span>
                             <span>{{movieDetails.total_amount/movieDetails.ticket_sum/100}}元 X {{movieDetails.ticket_sum}}</span>
                         </p>
+                        <p class="color-a9">
+                            <span>手续费</span>
+                            <span>{{movieDetails.handle_fee/movieDetails.ticket_sum/100}}元 X {{movieDetails.ticket_sum}}</span>
+                        </p>
+                        <p class="color-a9">
+                            <span>服务费</span>
+                            <span>{{movieDetails.service_fee/movieDetails.ticket_sum/100}}元 X {{movieDetails.ticket_sum}}</span>
+                        </p>
                         <p class="color-a9" v-if="offer_show">
                             <span>优惠券</span>
                             <span>减：{{offer_amount}}元</span>
