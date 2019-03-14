@@ -534,6 +534,8 @@
                     console.log(d);
                     if (d.code == 0) {
                         this.movieDetails = d.data;
+                    } else {
+                        weui.topTips(d.msg, 5000);
                     }
                 }).catch(e => {
                     this.loading = false;
