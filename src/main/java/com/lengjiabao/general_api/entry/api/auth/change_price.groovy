@@ -38,7 +38,13 @@ if(pref_ajax.available) {
 	aaaa['data']['pay_amount'] = pref_ajax.data[0];
 } else {
 	aaaa['code'] = 0001
-	aaaa['msg'] = pref_ajax.messages[0];
+	def msg = '';
+	if (pref_ajax.messages.length == 2) {
+		msg = pref_ajax.messages[1];
+	} else {
+		msg = pref_ajax.messages[0];
+	}
+	aaaa['msg'] = msg;
 }
 
 Result result = new Result();
