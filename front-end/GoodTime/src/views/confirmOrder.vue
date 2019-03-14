@@ -48,7 +48,21 @@
                 <div class="weui-cell__bd">
                     <p style="font-size: .3rem;">票价总计</p>
                 </div>
-                <div class="weui-cell__ft" style="color: #00c203;font-size: .3rem;">{{movieDetails.total_amount/100}}元</div>
+                <div class="weui-cell__ft" style="color: #00c203;font-size: .3rem;">{{(movieDetails.total_amount + movieDetails.handle_fee + movieDetails.service_fee)/100}}元</div>
+            </div>
+            
+            <div class="weui-cell myweui-cell cell-height-88">
+                <div class="weui-cell__bd">
+                    <p style="font-size: .3rem;">手续费</p>
+                </div>
+                <div class="weui-cell__ft" style="color: #00c203;font-size: .3rem;">{{(movieDetails.handle_fee)/100}}元</div>
+            </div>
+            
+            <div class="weui-cell myweui-cell cell-height-88">
+                <div class="weui-cell__bd">
+                    <p style="font-size: .3rem;">服务费</p>
+                </div>
+                <div class="weui-cell__ft" style="color: #00c203;font-size: .3rem;">{{(movieDetails.service_fee)/100}}元</div>
             </div>
         </section>
 
@@ -189,7 +203,7 @@
                 <div class="confirm-btn-total-price" @click="isShow">
                     <p>
                         <span>合计:</span>
-                        <span style="color: #00c203">{{movieDetails.pay_amount/100}}元</span>
+                        <span style="color: #00c203">{{(movieDetails.pay_amount + movieDetails.handle_fee + movieDetails.service_fee)/100}}元</span>
                         <span class="iconfont icon-triangle-up" :class="trangle ? 'trangle-down' : 'trangle-up'" style="font-size:.26rem;color:#BCBEC1;"></span>
                     </p>
                 </div>

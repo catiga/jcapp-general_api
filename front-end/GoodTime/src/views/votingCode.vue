@@ -57,7 +57,7 @@
 			    </div>
 			    <!--订单信息-->
 			    <div class="my-card my-cardbot4 my-module-4">
-			    		<p class="my-module-4-nm">实付金额<span>{{movieDetails.pay_amount/100}}元</span></p>
+			    		<p class="my-module-4-nm">实付金额<span>{{(movieDetails.pay_amount + movieDetails.handle_fee + movieDetails.service_fee)/100}}元</span></p>
 			    		<p class="my-module-4-info">订单号<span>{{movieDetails.order_no}}</span></p>
 			    </div>
 			    
