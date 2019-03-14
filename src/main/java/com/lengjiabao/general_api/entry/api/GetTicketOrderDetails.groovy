@@ -4,7 +4,7 @@ import com.jeancoder.app.sdk.JC
 import com.jeancoder.app.sdk.source.LoggerSource
 import com.jeancoder.core.log.JCLogger
 import com.jeancoder.core.result.Result
-import com.jeancoder.core.util.JackSonBeanMapper
+import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 
 def order_no = JC.request.param("order_no");
 def coupon_id = JC.request.param('coupon_id');
@@ -15,23 +15,11 @@ aaaa = JackSonBeanMapper.jsonToMap(aaaa);
 def datas = aaaa['data'];
 
 JCLogger logger = LoggerSource.getLogger();
-logger.info('general_api order_data:' + datas);
 
 def order_info = datas[0];
 def coupon_info = datas[1];
 
 aaaa['data'] = order_info;
-
-
-
-//构造测试数据
-//if(coupon_info) {
-//	coupon_info['available'] = true;
-//	coupon_info['data'] = [:];
-//	coupon_info['data']['offerAmount'] = '500';
-//	coupon_info['data']['totalAmount'] = '2000';
-//}
-
 
 if(!coupon_id) {
 	aaaa['pref_coupon'] = null;
@@ -52,6 +40,7 @@ if(!coupon_id) {
 	}
 }
 
+logger.info('general_api order_data:' + JackSonBeanMapper.toJson(aaaa));
 Result result = new Result();
 
 return result.setData(aaaa);
