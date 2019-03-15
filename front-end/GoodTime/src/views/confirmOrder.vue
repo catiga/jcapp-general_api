@@ -66,6 +66,8 @@
             </div>
         </section>
 
+        <p class="little-tip"><span class="color-e6">* </span>服务费与手续费不参与优惠</p>
+
         <section class="vip-card" v-if="CardData == '-1' || CardData == null ">
             <div class="weui-cells myweui-cells" style="margin-top: .3rem;" @click="GoKaika">
                 <a class="weui-cell myweui-cell vip-cell weui-cell_access" href="javascript:;">
@@ -874,6 +876,9 @@
 .color-a9 {
     color: #a9a9a9;
 }
+.color-e6 {
+    color: #e64340;
+}
 .ml-2 {
     margin-left: .5em;
 }
@@ -895,5 +900,8 @@
 }
 .vip-cell-con span {
     color: #00c203;
+}
+.little-tip {
+    padding: 10px 15px 0 15px;
 }
 </style>
