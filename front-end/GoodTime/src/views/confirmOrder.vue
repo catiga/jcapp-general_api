@@ -48,7 +48,7 @@
                 <div class="weui-cell__bd">
                     <p style="font-size: .3rem;">票价总计</p>
                 </div>
-                <div class="weui-cell__ft" style="color: #00c203;font-size: .3rem;">{{(movieDetails.total_amount/100 + movieDetails.handle_fee/100 + movieDetails.service_fee/100)}}元</div>
+                <div class="weui-cell__ft" style="color: #00c203;font-size: .3rem;">{{(movieDetails.total_amount/100)}}元</div>
             </div>
             
             <div class="weui-cell myweui-cell cell-height-88">

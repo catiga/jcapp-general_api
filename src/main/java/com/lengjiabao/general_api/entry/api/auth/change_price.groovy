@@ -40,12 +40,25 @@ logger.info("change_price__" + pref_ajax.messages.length);
 if(pref_ajax.available) {
 	aaaa['data']['pay_amount'] = pref_ajax.data[0];
 } else {
-	aaaa['code'] = 0001
+	aaaa['code'] = '0001';	//通用错误
 	def msg = '';
 	if (pref_ajax.messages.length == 2) {
 		msg = pref_ajax.messages[1];
 	} else {
 		msg = pref_ajax.messages[0];
+	}
+	def ret_obj = pref_ajax.data;
+	if(ret_obj) {
+		//ret_obj 为 trade 对象
+		if(ret_obj.tss.startsWith('9')) {
+			msg = '该交易已经超时关闭，请重新下单';
+			aaaa['code'] = '9000';
+		} else {
+			if(!ret_obj.tss.startsWith('0')) {
+				msg = '该交易已经付款成功，请到个人中心查看';
+				aaaa['code'] = '1000';
+			}
+		}
 	}
 	aaaa['msg'] = msg;
 }
