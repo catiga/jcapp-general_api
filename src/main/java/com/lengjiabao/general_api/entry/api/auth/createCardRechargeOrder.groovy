@@ -37,6 +37,6 @@ def mobile = accountInfo['mobile'];//获取用户手机号
 //CommunicationPower caller = CommunicationSource.getCommunicator("crm");
 //def aaaa = caller.doworkAsString("/h5/user/create_card_recharge_order", params);
 
-def aaaa = JC.internal.call('crm', "/h5/user/create_card_recharge_order", [h_id:h_id, mc_pwd:mc_pwd, apid:apid, mobile:mobile, sid:sid, pid:GlobalHolder.pid]);
+def aaaa = JC.internal.call('crm', "/h5/user/create_card_recharge_order", [h_id:h_id, mc_pwd:mc_pwd, apid:ap_id, mobile:mobile, sid:sid, pid:GlobalHolder.pid]);
 
 return result.setData(aaaa);
