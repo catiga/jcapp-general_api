@@ -10,17 +10,13 @@ import com.jeancoder.core.result.Result
 import com.jeancoder.core.http.JCRequest
 import com.jeancoder.app.sdk.source.RequestSource
 
-
-
-
-
 String point = "crm";  //访问的是哪个app的名称
 //String address = "/incall/cashier/catalog";  //访问的是哪个app路径
 String address = "/h5/p/info"
 List<CommunicationParam> params = new ArrayList<CommunicationParam>();  // == def params = [];
 
- JCRequest reques = RequestSource.getRequest();
- def token = reques.getParameter("token");
+JCRequest reques = RequestSource.getRequest();
+def token = reques.getParameter("token");
 
 CommunicationParam param1 = new CommunicationParam("token", token);
 
@@ -29,14 +25,7 @@ params.add(param1);
 CommunicationPower systemCaller = CommunicationSource.getCommunicator(point);
 def ret = systemCaller.doworkAsString( address, params); 
 
-// println ret  //输入ret到日志
-
-// JCRequest reques = RequestSource.getRequest();
-// def name = reques.getParameter("name");
-
-
 Result result = new Result();
 result.setData(ret);
-
 
 return result;

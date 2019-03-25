@@ -38,15 +38,10 @@ params.add(param2);
 params.add(param3);
 params.add(param4);
 
-
 CommunicationPower systemCaller = CommunicationSource.getCommunicator(point);
 def ret = systemCaller.doworkAsString( address, params); 
 
-// println ret  //输入ret到日志
-
-
 Result result = new Result();
 result.setData(ret);
-
 
 return result;

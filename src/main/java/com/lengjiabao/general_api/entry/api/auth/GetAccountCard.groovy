@@ -6,23 +6,6 @@ import com.jeancoder.core.result.Result
 import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 
-//String point = "crm";
-//String address = "/h5/user/get_account_mcs";
-//List<CommunicationParam> params = new ArrayList<CommunicationParam>();
-//
-//JCRequest reques = RequestSource.getRequest();
-//
-//def  accountInfo = reques.getAttribute("_user_");//获取用户信息
-//def ap_id = accountInfo['ap_id'];//获取用户信息
-//
-//CommunicationParam param1 = new CommunicationParam("apid", ap_id);//获取用户信息
-//
-//params.add(param1);
-//
-//CommunicationPower systemCaller = CommunicationSource.getCommunicator(point);
-//String ret = systemCaller.doworkAsString(address, params);
-//return new Result().setData(ret);
-
 String point = "crm";
 String address = "/h5/user/get_account_mcs";
 List<CommunicationParam> params = new ArrayList<CommunicationParam>();

@@ -9,10 +9,6 @@ import com.jeancoder.core.result.Result
 import com.jeancoder.core.http.JCRequest
 import com.jeancoder.app.sdk.source.RequestSource
 
-
-
-
-
 String point = "scm";  //访问的是哪个app的名称
 //String address = "/incall/cashier/catalog";  //访问的是哪个app路径
 String address = "/incall/h5/create_order"
@@ -38,14 +34,7 @@ params.add(param4);
 CommunicationPower systemCaller = CommunicationSource.getCommunicator(point);
 def ret = systemCaller.doworkAsString( address, params); 
 
-// println ret  //输入ret到日志
-
-// JCRequest reques = RequestSource.getRequest();
-// def name = reques.getParameter("name");
-
-
 Result result = new Result();
 result.setData(ret);
-
 
 return result;
