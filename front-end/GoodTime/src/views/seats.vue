@@ -163,7 +163,6 @@
                     bounce: true,
                     mouseWheel: true,
                     wheelAction: 'zoom',
-                    click: true
                 });
                 this.myScroll = myScroll;
                 
