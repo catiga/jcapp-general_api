@@ -1107,7 +1107,7 @@ input[type=button] {
     position: absolute;
     left: 0;
     top: 0;
-    width: 140%;
+    /* width: 140%; */
     padding: 0 23px;
 }
 
