@@ -53,7 +53,7 @@ export default [
       { path: '/integrationRule/',name: 'integrationRule', component: integrationRule },
       { path: '/cityList/',name: 'cityList', component: cityList },
       { path: '/schedule/:cinemaId/:mid/:index', name: 'schedule',component: schedule },
-      { path: '/seats/:planId/:lastUpdateTime/:hallId/:cinemaId/:plan_date', name: 'seats', component: seats },
+      { path: '/seats/:planId/:lastUpdateTime/:hallId/:cinemaId/:plan_date/:tipShow', name: 'seats', component: seats },
       { path: '/confirmOrder/:tnum', name: 'confirmOrder', component: confirmOrder },
       { path: '/storeOrder/:tnum', name: 'storeOrder', component: storeOrder },
       { path: '/rechargeAmount/:CardNm', name: 'rechargeAmount', component: rechargeAmount },

@@ -309,7 +309,7 @@
             	if(!lastUpdateTime) {
             		lastUpdateTime = '0';
             	}
-                this.$router.push({name: 'seats', params: { planId: planId, lastUpdateTime: lastUpdateTime, hallId: hallId,cinemaId: this.cinemaId, plan_date : plan_date}})
+                this.$router.push({name: 'seats', params: { planId: planId, lastUpdateTime: lastUpdateTime, hallId: hallId,cinemaId: this.cinemaId, plan_date : plan_date, tipShow: true}})
             },
             godo_cinemas:function(){
                 this.$router.push({name: 'cinemaList', params: { mid: '2' }})
