@@ -126,7 +126,7 @@
                 planId:'',
                 myScroll: '',
                 code:'',
-                router_tip_show: '', // 判断从首页跳转过来的展示提示信息
+                s_tip: '', // 判断从首页跳转过来
             };
         },
         beforeRouteEnter: function (to, from, next) {
@@ -139,7 +139,7 @@
             this.hallId = this.$route.params.hallId;
             this.cinemaId = this.$route.params.cinemaId;
             this.plan_date = this.$route.params.plan_date;
-            this.router_tip_show = this.$route.params.tipShow;
+            this.s_tip = Cookies.get('s_tip');
             this.fetchSeatData(this.plan_date,this.planId,this.lastUpdateTime,this.hallId,this.cinemaId);
         },
         mounted: function () {
@@ -188,7 +188,7 @@
                     if (msg.data.seat.rows.length > 11) {
                         page.standard = "main main-small";
                     }
-                    if(recent_order && this.router_tip_show) {
+                    if(recent_order && this.s_tip === '1') {
                         //当前场次的未支付订单
                     	this.city_tip = true;
                     	this.order_obj = recent_order;

@@ -150,6 +150,8 @@
 </template>
 <script>
     import BScroll from 'better-scroll'
+    import Cookies from 'js-cookie'
+
     export default {
         data() {
             var self = this;
@@ -309,7 +311,8 @@
             	if(!lastUpdateTime) {
             		lastUpdateTime = '0';
             	}
-                this.$router.push({name: 'seats', params: { planId: planId, lastUpdateTime: lastUpdateTime, hallId: hallId,cinemaId: this.cinemaId, plan_date : plan_date, tipShow: true}})
+                this.$router.push({name: 'seats', params: { planId: planId, lastUpdateTime: lastUpdateTime, hallId: hallId,cinemaId: this.cinemaId, plan_date : plan_date}})
+                Cookies.set('s_tip', '1');
             },
             godo_cinemas:function(){
                 this.$router.push({name: 'cinemaList', params: { mid: '2' }})
