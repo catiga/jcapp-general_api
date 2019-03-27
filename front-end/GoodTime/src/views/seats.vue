@@ -18,10 +18,8 @@
                             </div>
                             <p v-for="(row,i) in seat_data.rows" id="seat_scroll">
                                 <template v-for="(seat,j) in row.seats">
-                                <a href="javascript:" class="seat disabled" v-if="seat.seatState == 0 || seat.seatState == 1 || seat.seatState == 2 || seat.seatState == 6 || seat.seatState == 8">
-                                </a>
-                                <a href="javascript:" :name="seat.seatRow+'-'+seat.seatCol" :love="seat.loveseats" :sid="seat.cineSeatId" :row="seat.seatRow" :col="seat.seatCol" class="seat active" v-else-if="seat.seatState == 4" v-on:click="seatnum(seat.cineSeatId, seat.seatRow, seat.seatCol, seat.graphCol, seat.loveseats)">
-                                </a>
+                                <a v-if="seat.seatState == 0 || seat.seatState == 1 || seat.seatState == 2 || seat.seatState == 6 || seat.seatState == 8" href="javascript:" class="seat disabled"></a>
+                                <a v-else-if="seat.seatState == 4" href="javascript:" :name="seat.seatRow+'-'+seat.seatCol" :love="seat.loveseats" :sid="seat.cineSeatId" :row="seat.seatRow" :col="seat.seatCol" class="seat active" v-on:click="seatnum(seat.cineSeatId, seat.seatRow, seat.seatCol, seat.graphCol, seat.loveseats)"></a>
                                 <span class="seat" v-else></span>
                                 </template>
                             </p>
