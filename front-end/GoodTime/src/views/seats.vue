@@ -1107,6 +1107,7 @@ input[type=button] {
     top: 0;
     /* width: 140%; */
     padding: 0 23px;
+    padding-bottom: .6rem;
 }
 
 #seats .main-big .seat {
