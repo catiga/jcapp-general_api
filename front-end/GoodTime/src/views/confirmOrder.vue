@@ -323,6 +323,7 @@
 			...mapState(['logo']),
 		},
         mounted: function () {
+            Cookies.remove('s_tip'); // 删除从首页跳转的标志
             this.on = Cookies.get('orderNo');
             this.tnum = this.$route.params.tnum;
             this.GetAccountCard();
