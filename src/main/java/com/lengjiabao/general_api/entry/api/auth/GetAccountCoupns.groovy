@@ -19,12 +19,15 @@ JCRequest reques = RequestSource.getRequest();
 def  accountInfo = reques.getAttribute("_user_");//获取用户信息
 def mobile = accountInfo['mobile'];//获取用户信息
 def pid = accountInfo['pid'];//获取用户信息
+def ap_id = accountInfo['ap_id'];
 
 CommunicationParam param1 = new CommunicationParam("mobile", mobile);//获取用户信息
 CommunicationParam param2 = new CommunicationParam("pid", pid);//获取用户信息
+CommunicationParam param3 = new CommunicationParam("ap_id", ap_id);//获取用户信息
 
 params.add(param1);
 params.add(param2);
+params.add(param3);
 
 CommunicationPower systemCaller = CommunicationSource.getCommunicatorNative(point);
 def ret = systemCaller.doworkAsString(address, params);

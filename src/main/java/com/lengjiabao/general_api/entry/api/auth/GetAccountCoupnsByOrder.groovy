@@ -10,11 +10,12 @@ JCRequest reques = RequestSource.getRequest();
 def  accountInfo = reques.getAttribute("_user_");//获取用户信息
 def mobile = accountInfo['mobile'];//获取用户信息
 def pid = accountInfo['pid'];//获取用户信息
+def ap_id = accountInfo['ap_id'];
 
 def order_id = JC.request.param('order_id');
 def order_oc = JC.request.param('oc');
 
-def ret = JC.internal.call('market', '/coupon/get_available_coupon_list', [mobile:mobile,pid:pid]);
+def ret = JC.internal.call('market', '/coupon/get_available_coupon_list', [mobile:mobile,pid:pid, ap_id:ap_id]);
 ret = JackSonBeanMapper.jsonToMap(ret);
 
 def ret_code = ret['code'];
