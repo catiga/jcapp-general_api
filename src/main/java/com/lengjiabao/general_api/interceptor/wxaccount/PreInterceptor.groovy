@@ -19,21 +19,18 @@ import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 
 @urlmapped(['/ypcall/account', '/h5/wx/card/create_cb'])
 @urlpassed('/ypcall/account/token/get')
-JCRequest request = RequestSource.getRequest();
+
 JCLogger Logger =  LoggerSource.getLogger(this.getClass().getName())
 Result result = new Result();
+
+Logger.info(JC.request.get().getRequestURI() + ':entry interceptor');
 try {
-	def token = request.getParameter("token");
+	def token = JC.request.param("token");
 	if (token == null || token.equals("")) {
 		ResultSource.setResult(result.setData(GeneralPub.comfail("user_no_login")));
 		return false;
 	} 
-	
-//	String point = "crm";  
-//	String address = "/h5/p/info"
-//	List<CommunicationParam> params = new ArrayList<CommunicationParam>();
-//	params.add(new CommunicationParam("token", token));
-//	def ret = CommunicationSource.getCommunicator(point).doworkAsString( address, params);
+
 	def ret = JC.internal.call("crm", "/h5/p/info", ['token':token,'pid':GlobalHolder.pid]);
 	SimpleAjax simpleAjax = JackSonBeanMapper.fromJson(ret, SimpleAjax.class);
 	if (!simpleAjax.available ) {
@@ -45,7 +42,7 @@ try {
 		ResultSource.setResult(result.setData(GeneralPub.comfail("user_no_login")));
 		return result;
 	}
-	request.setAttribute("_user_", simpleAjax.data);
+	JC.request.get().setAttribute("_user_", simpleAjax.data);
 //	AccountInfo  accountInfo = request.getAttribute("_user_")
 	return true;
 } catch (Exception e) {
