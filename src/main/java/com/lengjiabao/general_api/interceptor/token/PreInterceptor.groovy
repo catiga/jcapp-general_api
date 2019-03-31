@@ -20,7 +20,7 @@ import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 
-@urlmapped(["/api/auth", '/ypcall/account'])
+@urlmapped(["/api/auth", '/ypcall/account', '/ex/call/auth'])
 @urlpassed('/ypcall/account/token/get')
 
 JCRequest request = RequestSource.getRequest();

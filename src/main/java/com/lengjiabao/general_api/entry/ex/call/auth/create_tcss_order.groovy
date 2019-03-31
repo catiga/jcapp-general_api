@@ -1,4 +1,4 @@
-package com.lengjiabao.general_api.entry.ex.call
+package com.lengjiabao.general_api.entry.ex.call.auth
 
 import com.jeancoder.app.sdk.JC
 import com.jeancoder.core.result.Result
