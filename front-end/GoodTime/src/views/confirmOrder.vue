@@ -359,7 +359,11 @@
                         }else if (d.code == 0) {
                             page.loading = false;
                             page.other = d.other;
-                            page.onBridgeReady();
+                            if(!d.other) {
+                                location.href="/general_api/tcss/index#/myTicket"
+                            } else {
+                                page.onBridgeReady();
+                            }
                         }else if(d.available == false && d.messages[0] == 'user_no_login') {
                             page.showTip('用户未登录');
                         }
@@ -376,7 +380,11 @@
                             }else if (d.code == 0) {
                                 page.loading = false;
                                 page.other = d.other;
-                                page.onBridgeReady();
+                                if(!d.other) {
+                                    location.href="/general_api/tcss/index#/myTicket"
+                                } else {
+                                    page.onBridgeReady();
+                                }
                             }else if(d.available == false && d.messages[0] == 'user_no_login') {
                                 page.showTip('用户未登录');
                             }
