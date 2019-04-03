@@ -410,7 +410,8 @@
                         } else if (d.code == 0) {
                             page.loading = false;
                             page.other = d.other;
-                            if (!d.other.appId) {
+                            let flag = d.other.appId || '';
+                            if (!flag) {
                                 if(page.ScanGoods == 'tcssGoods') {
                                     location.href="/general_api/tcss/index#/myTicket"
                                 } else {
@@ -442,7 +443,8 @@
                             }else if (d.code == 0) {
                                 page.loading = false;
                                 page.other = d.other;
-                                if (!d.other.appId) {
+                                let flag = d.other.appId || '';
+                                if (!flag) {
                                     if(page.ScanGoods == 'tcssGoods') {
                                         location.href="/general_api/tcss/index#/myTicket"
                                     } else {
@@ -521,7 +523,8 @@
                         } else if (d.code == 0) {
                             page.loading = false;
                             page.other = d.other;
-                            if (!d.other.appId) {
+                            let flag = d.other.appId || '';
+                            if (!flag) {
                                 if(page.ScanGoods == 'tcssGoods') {
                                     location.href="/general_api/tcss/index#/myTicket"
                                 } else {
@@ -548,7 +551,8 @@
                             }else if (d.code == 0) {
                                 page.loading = false;
                                 page.other = d.other;
-                                if (!d.other.appId) {
+                                let flag = d.other.appId || '';
+                                if (!flag) {
                                     if(page.ScanGoods == 'tcssGoods') {
                                         location.href="/general_api/tcss/index#/myTicket"
                                     } else {
