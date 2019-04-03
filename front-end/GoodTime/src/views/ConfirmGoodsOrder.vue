@@ -410,7 +410,7 @@
                         } else if (d.code == 0) {
                             page.loading = false;
                             page.other = d.other;
-                            if (!d.other) {
+                            if (!d.other.appId) {
                                 if(page.ScanGoods == 'tcssGoods') {
                                     location.href="/general_api/tcss/index#/myTicket"
                                 } else {
@@ -442,7 +442,7 @@
                             }else if (d.code == 0) {
                                 page.loading = false;
                                 page.other = d.other;
-                                if (!d.other) {
+                                if (!d.other.appId) {
                                     if(page.ScanGoods == 'tcssGoods') {
                                         location.href="/general_api/tcss/index#/myTicket"
                                     } else {
@@ -521,7 +521,7 @@
                         } else if (d.code == 0) {
                             page.loading = false;
                             page.other = d.other;
-                            if (!d.other) {
+                            if (!d.other.appId) {
                                 if(page.ScanGoods == 'tcssGoods') {
                                     location.href="/general_api/tcss/index#/myTicket"
                                 } else {
@@ -548,7 +548,7 @@
                             }else if (d.code == 0) {
                                 page.loading = false;
                                 page.other = d.other;
-                                if (!d.other) {
+                                if (!d.other.appId) {
                                     if(page.ScanGoods == 'tcssGoods') {
                                         location.href="/general_api/tcss/index#/myTicket"
                                     } else {
