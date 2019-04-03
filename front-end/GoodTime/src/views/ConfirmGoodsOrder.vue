@@ -410,15 +410,22 @@
                         } else if (d.code == 0) {
                             page.loading = false;
                             page.other = d.other;
-                            let flag = d.other.appId || '';
-                            if (!flag) {
+                            if(!d.other) {
                                 if(page.ScanGoods == 'tcssGoods') {
                                     location.href="/general_api/tcss/index#/myTicket"
                                 } else {
                                     location.href="/general_api/tcss/index#/ScanGoodsOrder/"+page.on+"/"+page.tableNum 
                                 }
                             } else {
-                                page.onBridgeReady();
+                                if(d.other instanceof Object && d.other.appId) {
+                                    page.onBridgeReady();
+                                } else {
+                                    if(page.ScanGoods == 'tcssGoods') {
+                                        location.href="/general_api/tcss/index#/myTicket"
+                                    } else {
+                                        location.href="/general_api/tcss/index#/ScanGoodsOrder/"+page.on+"/"+page.tableNum 
+                                    }
+                                }
                             }
                             this.ClearCart();
                         }else if (d.available == false && d.messages[0] == 'user_no_login') {
@@ -443,15 +450,22 @@
                             }else if (d.code == 0) {
                                 page.loading = false;
                                 page.other = d.other;
-                                let flag = d.other.appId || '';
-                                if (!flag) {
+                                if(!d.other) {
                                     if(page.ScanGoods == 'tcssGoods') {
                                         location.href="/general_api/tcss/index#/myTicket"
                                     } else {
                                         location.href="/general_api/tcss/index#/ScanGoodsOrder/"+page.on+"/"+page.tableNum 
                                     }
                                 } else {
-                                    page.onBridgeReady();
+                                    if(d.other instanceof Object && d.other.appId) {
+                                        page.onBridgeReady();
+                                    } else {
+                                        if(page.ScanGoods == 'tcssGoods') {
+                                            location.href="/general_api/tcss/index#/myTicket"
+                                        } else {
+                                            location.href="/general_api/tcss/index#/ScanGoodsOrder/"+page.on+"/"+page.tableNum 
+                                        }
+                                    }
                                 }
                             }else if(d.available == false && d.messages[0] == 'user_no_login') {
                                 page.showTip('用户未登录');
@@ -523,15 +537,22 @@
                         } else if (d.code == 0) {
                             page.loading = false;
                             page.other = d.other;
-                            let flag = d.other.appId || '';
-                            if (!flag) {
+                            if(!d.other) {
                                 if(page.ScanGoods == 'tcssGoods') {
                                     location.href="/general_api/tcss/index#/myTicket"
                                 } else {
                                     location.href="/general_api/tcss/index#/ScanGoodsOrder/"+page.on+"/"+page.tableNum 
                                 }
                             } else {
-                                page.onBridgeReady();
+                                if(d.other instanceof Object && d.other.appId) {
+                                    page.onBridgeReady();
+                                } else {
+                                    if(page.ScanGoods == 'tcssGoods') {
+                                        location.href="/general_api/tcss/index#/myTicket"
+                                    } else {
+                                        location.href="/general_api/tcss/index#/ScanGoodsOrder/"+page.on+"/"+page.tableNum 
+                                    }
+                                }
                             }
                             this.ClearCart();
                         }else if (d.available == false && d.messages[0] == 'user_no_login') {
@@ -551,15 +572,22 @@
                             }else if (d.code == 0) {
                                 page.loading = false;
                                 page.other = d.other;
-                                let flag = d.other.appId || '';
-                                if (!flag) {
+                                if(!d.other) {
                                     if(page.ScanGoods == 'tcssGoods') {
                                         location.href="/general_api/tcss/index#/myTicket"
                                     } else {
                                         location.href="/general_api/tcss/index#/ScanGoodsOrder/"+page.on+"/"+page.tableNum 
                                     }
                                 } else {
-                                    page.onBridgeReady();
+                                    if(d.other instanceof Object && d.other.appId) {
+                                        page.onBridgeReady();
+                                    } else {
+                                        if(page.ScanGoods == 'tcssGoods') {
+                                            location.href="/general_api/tcss/index#/myTicket"
+                                        } else {
+                                            location.href="/general_api/tcss/index#/ScanGoodsOrder/"+page.on+"/"+page.tableNum 
+                                        }
+                                    }
                                 }
                             }else if(d.available == false && d.messages[0] == 'user_no_login') {
                                 page.showTip('用户未登录');
