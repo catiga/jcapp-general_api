@@ -39,6 +39,7 @@ def _access_token_ = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_
 _access_token_ = _access_token_.replace("{APP_ID}", app_id);
 _access_token_ = _access_token_.replace("{APP_KEY}", app_key);
 def json = JC.remote.http_call(_access_token_, null);
+logger.info('get_wx_access_token_result:' + json);
 
 def jsonSlurper = new JsonSlurper();
 
