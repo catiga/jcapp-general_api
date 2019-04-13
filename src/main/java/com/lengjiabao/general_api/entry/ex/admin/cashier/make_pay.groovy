@@ -12,8 +12,7 @@ import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 String point = "trade";
 String address = "/incall/uni_code_pay";
 
-JCRequest reques = RequestSource.getRequest();
-def unicode = reques.getParameter("unicode");
+def unicode = JC.request.param("unicode");
 def ct = JC.request.param("ct");
 def tnum = JC.request.param("tnum");
 def pwd = JC.request.param("pwd");
