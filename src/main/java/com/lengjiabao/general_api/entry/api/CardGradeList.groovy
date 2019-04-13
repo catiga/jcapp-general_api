@@ -60,7 +60,8 @@ if (status.obj != null && status.obj.size() != 0 && !"0".equals(status.obj.get(0
 	}
 }
 String point = "crm";
-String address = "/h5/mc/get_hierarchy_list";
+//String address = "/h5/mc/get_hierarchy_list";
+String address = "/api/hy/get_hierarchy_list";
 //List<CommunicationParam> params = new ArrayList<CommunicationParam>();
 ////params.add(param);
 //CommunicationPower systemCaller = CommunicationSource.getCommunicator(point);
