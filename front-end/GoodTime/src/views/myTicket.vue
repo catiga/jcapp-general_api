@@ -207,10 +207,11 @@
 			var page = this;
 			var token = Cookies.get('_lac_k_');
             var url = '/general_api/api/auth/GetTicketList?apid='+apid+'&token='+token+'&ts='+Date.parse(new Date());
+            let loading = weui.loading("加载中");
             fetch(url)
             .then(r => r.json())
             .then(d => {
-            	page.loading = false;
+            	loading.hide();
                 if (d.code == 0) {
                     page.TicketList = d.data;
                     // var timelist = [];
