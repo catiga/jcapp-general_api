@@ -2,54 +2,49 @@
 package com.lengjiabao.general_api.entry.ex.admin.cashier
 
 import com.jeancoder.app.sdk.JC
-import com.jeancoder.app.sdk.source.CommunicationSource
 import com.jeancoder.app.sdk.source.RequestSource
 import com.jeancoder.core.http.JCRequest
-import com.jeancoder.core.power.CommunicationParam
-import com.jeancoder.core.power.CommunicationPower
 import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 import com.lengjiabao.general_api.ready.wx.WxMsg
 import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 
-
-
-String point = "trade";  //访问的是哪个app的名称
-//String address = "/incall/cashier/catalog";  //访问的是哪个app路径
-String address = "/incall/uni_code_pay"
-List<CommunicationParam> params = new ArrayList<CommunicationParam>();  // == def params = [];
+String point = "trade";
+String address = "/incall/uni_code_pay";
 
 JCRequest reques = RequestSource.getRequest();
- def unicode = reques.getParameter("unicode");
- def ct = JC.request.param("ct");
- def tnum = JC.request.param("tnum");
- def pwd = JC.request.param("pwd");
- def mp = JC.request.param("mp");
- def mpv = JC.request.param("mpv");
- def mpc = JC.request.param("mpc");
- def coupons = JC.request.param("coupons");
+def unicode = reques.getParameter("unicode");
+def ct = JC.request.param("ct");
+def tnum = JC.request.param("tnum");
+def pwd = JC.request.param("pwd");
+def mp = JC.request.param("mp");
+def mpv = JC.request.param("mpv");
+def mpc = JC.request.param("mpc");
+def coupons = JC.request.param("coupons");
+
+//List<CommunicationParam> params = new ArrayList<CommunicationParam>();  // == def params = [];
+//CommunicationParam param1 = new CommunicationParam("unicode", unicode);
+//CommunicationParam param2 = new CommunicationParam("ct", ct);
+//CommunicationParam param3 = new CommunicationParam("tnum", tnum);
+//CommunicationParam param4 = new CommunicationParam("pwd", pwd);
+//CommunicationParam param5 = new CommunicationParam("mp", mp);
+//CommunicationParam param6 = new CommunicationParam("mpv", mpv);
+//CommunicationParam param7 = new CommunicationParam("mpc", mpc);
+//CommunicationParam param8 = new CommunicationParam("coupons", coupons);
+//params.add(param1);
+//params.add(param2);
+//params.add(param3);
+//params.add(param4);
+//params.add(param5);
+//params.add(param6);
+//params.add(param7);
+//params.add(param8);
+//CommunicationPower systemCaller = CommunicationSource.getCommunicator(point);
+//def ret = systemCaller.doworkAsString( address, params); 
 
 
-CommunicationParam param1 = new CommunicationParam("unicode", unicode);
-CommunicationParam param2 = new CommunicationParam("ct", ct);
-CommunicationParam param3 = new CommunicationParam("tnum", tnum);
-CommunicationParam param4 = new CommunicationParam("pwd", pwd);
-CommunicationParam param5 = new CommunicationParam("mp", mp);
-CommunicationParam param6 = new CommunicationParam("mpv", mpv);
-CommunicationParam param7 = new CommunicationParam("mpc", mpc);
-CommunicationParam param8 = new CommunicationParam("coupons", coupons);
+def ret = JC.internal.call('trade', '/incall/uni_code_pay', [unicode:unicode,ct:ct,tnum:tnum,pwd:pwd,mp:mp,mpv:mpv,mpc:mpc,coupons:coupons]);
 
-params.add(param1);
-params.add(param2);
-params.add(param3);
-params.add(param4);
-params.add(param5);
-params.add(param6);
-params.add(param7);
-params.add(param8);
-
-CommunicationPower systemCaller = CommunicationSource.getCommunicator(point);
-def ret = systemCaller.doworkAsString( address, params); 
 
 def result = JackSonBeanMapper.jsonToMap(ret);
 if(result['code']=='0') {
