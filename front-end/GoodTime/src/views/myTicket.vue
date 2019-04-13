@@ -171,7 +171,7 @@
 		MyOrder:function(apid){
 			var page = this;
 			var token = Cookies.get('_lac_k_');	
-            var url = '/general_api/api/OrderList?apid='+apid+'&ds=&token='+token+'&oss=1&ts='+Date.parse(new Date());
+            var url = '/general_api/api/auth/OrderList?apid='+apid+'&ds=&token='+token+'&oss=1&ts='+Date.parse(new Date());
             fetch(url)
             .then(r => r.json())
             .then(d => {
@@ -206,7 +206,7 @@
 		MyTiketOrder:function(apid){
 			var page = this;
 			var token = Cookies.get('_lac_k_');
-            var url = '/general_api/api/GetTicketList?apid='+apid+'&token='+token+'&ts='+Date.parse(new Date());
+            var url = '/general_api/api/auth/GetTicketList?apid='+apid+'&token='+token+'&ts='+Date.parse(new Date());
             fetch(url)
             .then(r => r.json())
             .then(d => {
