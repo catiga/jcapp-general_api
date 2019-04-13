@@ -16,16 +16,6 @@ if(accountInfo==null || ap_id==null) {
 	return result;
 }
 
-//List<CommunicationParam> params = new ArrayList<CommunicationParam>();
-//CommunicationParam param1 = new CommunicationParam("token", token);
-//CommunicationParam param2 = new CommunicationParam("apid", ap_id);
-//
-//params.add(param1);
-//params.add(param2);
-//
-//CommunicationPower caller = CommunicationSource.getCommunicator("ticketingsys");
-//def aaaa = caller.doworkAsString("/api/orders", params);
-
 def pid = GlobalHolder.pid;
 def aaaa = JC.internal.call('ticketingsys', '/api/orders', ['apid':ap_id,'token':token, 'pid':pid]);
 
