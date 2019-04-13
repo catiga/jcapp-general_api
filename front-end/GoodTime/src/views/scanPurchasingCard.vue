@@ -212,7 +212,7 @@
 		        	if (d.available) {
 		        		console.log(d)
 		        		page.showlogin("创建成功~",1300);
-		        		var url = '/general_api/api/GetWxObj?ct=201101&tnum='+ d.obj.data.tnum;
+		        		var url = '/general_api/api/auth/GetWxObj?ct=201101&tnum='+ d.obj.data.tnum;
 				        fetch(url).then(r => r.json()).then(d => {
 				        	console.log(d)
 				        	if (d.code == -1) {

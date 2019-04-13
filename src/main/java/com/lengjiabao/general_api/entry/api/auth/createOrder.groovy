@@ -2,8 +2,6 @@ package com.lengjiabao.general_api.entry.api.auth
 
 import com.jeancoder.app.sdk.JC
 import com.jeancoder.app.sdk.source.CommunicationSource
-import com.jeancoder.core.power.CommunicationParam
-import com.jeancoder.core.power.CommunicationPower
 import com.jeancoder.core.result.Result
 import com.jeancoder.core.http.JCRequest
 import com.jeancoder.app.sdk.source.RequestSource

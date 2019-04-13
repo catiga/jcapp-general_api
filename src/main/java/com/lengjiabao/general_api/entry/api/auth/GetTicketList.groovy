@@ -1,34 +1,33 @@
 package com.lengjiabao.general_api.entry.api.auth
 
-import com.jeancoder.app.sdk.source.CommunicationSource
-import com.jeancoder.core.power.CommunicationParam
-import com.jeancoder.core.power.CommunicationPower
+import com.jeancoder.app.sdk.JC
 import com.jeancoder.core.result.Result
-import com.jeancoder.core.http.JCRequest
-import com.jeancoder.app.sdk.source.RequestSource
+import com.lengjiabao.general_api.ready.common.SimpleAjax
+import com.lengjiabao.general_api.ready.util.GlobalHolder
 
-import com.lengjiabao.general_api.ready.dto.AccountInfo //获取用户信息
-
-
-//返回非list数据
 Result result = new Result();
-List<CommunicationParam> params = new ArrayList<CommunicationParam>();
-JCRequest reques = RequestSource.getRequest();
 
-def token = reques.getParameter("token");
+def token = JC.request.param("token");
 
-def  accountInfo = reques.getAttribute("_user_");//获取用户信息
+def  accountInfo = JC.request.get().getAttribute("_user_");//获取用户信息
 def ap_id = accountInfo['ap_id'];//获取用户信息
+if(accountInfo==null || ap_id==null) {
+	result.setData(SimpleAjax.notAvailable('token_invalid,请登录'));
+	return result;
+}
 
-CommunicationParam param1 = new CommunicationParam("token", token);
-CommunicationParam param2 = new CommunicationParam("apid", ap_id);
+//List<CommunicationParam> params = new ArrayList<CommunicationParam>();
+//CommunicationParam param1 = new CommunicationParam("token", token);
+//CommunicationParam param2 = new CommunicationParam("apid", ap_id);
+//
+//params.add(param1);
+//params.add(param2);
+//
+//CommunicationPower caller = CommunicationSource.getCommunicator("ticketingsys");
+//def aaaa = caller.doworkAsString("/api/orders", params);
 
-params.add(param1);
-params.add(param2);
-
-CommunicationPower caller = CommunicationSource.getCommunicator("ticketingsys");
-def aaaa = caller.doworkAsString("/api/orders", params);
-
+def pid = GlobalHolder.pid;
+def aaaa = JC.internal.call('ticketingsys', '/api/orders', ['apid':ap_id,'token':token, 'pid':pid]);
 
 return result.setData(aaaa);
 

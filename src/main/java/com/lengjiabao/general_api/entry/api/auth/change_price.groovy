@@ -29,11 +29,11 @@ def coupon_info = datas[1];
 
 aaaa['data'] = order_info;
 
-List<CommunicationParam> params  = new ArrayList<CommunicationParam> ();
-params.add(new CommunicationParam("tnum",tnum));
-params.add(new CommunicationParam("unicode",unicode));
-params.add(new CommunicationParam("ct",ct));
-params.add(new CommunicationParam("coupons",coupons));
+//List<CommunicationParam> params  = new ArrayList<CommunicationParam> ();
+//params.add(new CommunicationParam("tnum",tnum));
+//params.add(new CommunicationParam("unicode",unicode));
+//params.add(new CommunicationParam("ct",ct));
+//params.add(new CommunicationParam("coupons",coupons));
 //SimpleAjax pref_ajax = RemoteUtil.connect(SimpleAjax, 'trade', '/incall/ro_preferential', params);
 SimpleAjax pref_ajax = JC.internal.call(SimpleAjax, 'trade', '/incall/ro_preferential', [tnum:tnum,unicode:unicode,ct:ct,coupons:coupons]);
 logger.info("change_price__" + pref_ajax.messages.length);

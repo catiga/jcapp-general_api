@@ -1,10 +1,9 @@
 package com.lengjiabao.general_api.entry.api
 
 import com.jeancoder.app.sdk.JC
-import com.jeancoder.app.sdk.source.CommunicationSource
 import com.jeancoder.app.sdk.source.LoggerSource
-import com.jeancoder.core.power.CommunicationParam
-import com.jeancoder.core.power.CommunicationPower
+import com.jeancoder.core.http.JCCookie
+import com.jeancoder.core.log.JCLogger
 import com.jeancoder.core.result.Result
 import com.lengjiabao.general_api.ready.common.AvailabilityStatus
 import com.lengjiabao.general_api.ready.common.McAvailabilityStatus
@@ -12,10 +11,6 @@ import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 import com.lengjiabao.general_api.ready.util.StringUtil
-import com.jeancoder.core.http.JCCookie
-import com.jeancoder.core.http.JCRequest
-import com.jeancoder.core.log.JCLogger
-import com.jeancoder.app.sdk.source.RequestSource
 
 JCLogger logger = LoggerSource.getLogger();
 def sid = JC.request.param("sid");
@@ -66,11 +61,12 @@ if (status.obj != null && status.obj.size() != 0 && !"0".equals(status.obj.get(0
 }
 String point = "crm";
 String address = "/h5/mc/get_hierarchy_list";
-List<CommunicationParam> params = new ArrayList<CommunicationParam>();
-//CommunicationParam param = new CommunicationParam("key", "value");
-//params.add(param);
-CommunicationPower systemCaller = CommunicationSource.getCommunicator(point);
-String ret = systemCaller.doworkAsString(address, params);
-// println ret //输入ret到日志
+//List<CommunicationParam> params = new ArrayList<CommunicationParam>();
+////params.add(param);
+//CommunicationPower systemCaller = CommunicationSource.getCommunicator(point);
+//String ret = systemCaller.doworkAsString(address, params);
+
+def ret = JC.internal.call(point, address, [pid:GlobalHolder.pid]);
+
 return new Result().setData(ret);
 

@@ -1,14 +1,12 @@
 package com.lengjiabao.general_api.entry.api.auth
 
 import com.jeancoder.app.sdk.JC
-import com.jeancoder.core.power.CommunicationParam
 import com.jeancoder.core.result.Result
 import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 
 String point = "crm";
 String address = "/h5/user/get_account_mcs";
-List<CommunicationParam> params = new ArrayList<CommunicationParam>();
 
 def  accountInfo = JC.request.get().getAttribute("_user_");//获取用户信息
 def ap_id = accountInfo['ap_id'];//获取用户信息

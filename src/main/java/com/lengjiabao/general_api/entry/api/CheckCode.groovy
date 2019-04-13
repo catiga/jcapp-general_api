@@ -3,13 +3,8 @@ package com.lengjiabao.general_api.entry.api
 import javax.servlet.http.Cookie
 
 import com.jeancoder.app.sdk.JC
-import com.jeancoder.app.sdk.source.CommunicationSource
-import com.jeancoder.app.sdk.source.RequestSource
 import com.jeancoder.app.sdk.source.ResponseSource
 import com.jeancoder.core.http.JCCookie
-import com.jeancoder.core.http.JCRequest
-import com.jeancoder.core.power.CommunicationParam
-import com.jeancoder.core.power.CommunicationPower
 import com.jeancoder.core.result.Result
 import com.lengjiabao.general_api.ready.common.SimpleAjax
 

@@ -1,5 +1,6 @@
 package com.lengjiabao.general_api.entry.api.auth
 
+import com.jeancoder.app.sdk.JC
 import com.jeancoder.app.sdk.source.CommunicationSource
 import com.jeancoder.core.power.CommunicationParam
 import com.jeancoder.core.power.CommunicationPower
@@ -16,30 +17,28 @@ import com.lengjiabao.general_api.ready.dto.AccountInfo //获取用户信息
 
 
 String point = "scm";  //访问的是哪个app的名称
-//String address = "/incall/cashier/catalog";  //访问的是哪个app路径
 String address = "/incall/h5/list_order"
-List<CommunicationParam> params = new ArrayList<CommunicationParam>();  // == def params = [];
 
- JCRequest reques = RequestSource.getRequest();
- def ds = reques.getParameter("ds");
- def oss = reques.getParameter("oss");
- def token = reques.getParameter("token");
+def ds = JC.request.param("ds");
+def oss = JC.request.param("oss");
+def token = JC.request.param("token");
 
- def  accountInfo = reques.getAttribute("_user_");//获取用户信息
- def ap_id = accountInfo['ap_id'];//获取用户信息
+def  accountInfo = JC.request.get().getAttribute("_user_");//获取用户信息
+def ap_id = accountInfo['ap_id'];//获取用户信息
 
-CommunicationParam param1 = new CommunicationParam("apid", ap_id);
-CommunicationParam param2 = new CommunicationParam("ds", ds);
-CommunicationParam param3 = new CommunicationParam("oss", oss);
-CommunicationParam param4 = new CommunicationParam("token", token);
+//List<CommunicationParam> params = new ArrayList<CommunicationParam>();  // == def params = [];
+//CommunicationParam param1 = new CommunicationParam("apid", ap_id);
+//CommunicationParam param2 = new CommunicationParam("ds", ds);
+//CommunicationParam param3 = new CommunicationParam("oss", oss);
+//CommunicationParam param4 = new CommunicationParam("token", token);
+//params.add(param1);
+//params.add(param2);
+//params.add(param3);
+//params.add(param4);
+//CommunicationPower systemCaller = CommunicationSource.getCommunicator(point);
+//def ret = systemCaller.doworkAsString( address, params); 
 
-params.add(param1);
-params.add(param2);
-params.add(param3);
-params.add(param4);
-
-CommunicationPower systemCaller = CommunicationSource.getCommunicator(point);
-def ret = systemCaller.doworkAsString( address, params); 
+def ret = JC.internal.call('scm', '/incall/h5/list_order', [apid:ap_id,ds:ds,oss:oss,token:token]);
 
 Result result = new Result();
 result.setData(ret);

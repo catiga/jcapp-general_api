@@ -3,22 +3,16 @@ package com.lengjiabao.general_api.interceptor.token
 import com.jeancoder.annotation.urlmapped
 import com.jeancoder.annotation.urlpassed
 import com.jeancoder.app.sdk.JC
-import com.jeancoder.app.sdk.source.CommunicationSource
 import com.jeancoder.app.sdk.source.LoggerSource
 import com.jeancoder.app.sdk.source.RequestSource
-import com.jeancoder.app.sdk.source.ResponseSource
 import com.jeancoder.app.sdk.source.ResultSource
 import com.jeancoder.core.http.JCCookie
 import com.jeancoder.core.http.JCRequest
-import com.jeancoder.core.http.JCResponse
 import com.jeancoder.core.log.JCLogger
-import com.jeancoder.core.power.CommunicationParam
-import com.jeancoder.core.power.CommunicationPower
 import com.jeancoder.core.result.Result
 import com.lengjiabao.general_api.ready.common.AvailabilityStatus
 import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
-import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 
 @urlmapped(["/api/auth", '/ypcall/account', '/ex/call/auth'])
 @urlpassed('/ypcall/account/token/get')

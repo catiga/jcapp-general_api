@@ -3,19 +3,14 @@ package com.lengjiabao.general_api.interceptor.wxaccount
 import com.jeancoder.annotation.urlmapped
 import com.jeancoder.annotation.urlpassed
 import com.jeancoder.app.sdk.JC
-import com.jeancoder.app.sdk.source.CommunicationSource
 import com.jeancoder.app.sdk.source.LoggerSource
-import com.jeancoder.app.sdk.source.RequestSource
 import com.jeancoder.app.sdk.source.ResultSource
-import com.jeancoder.core.http.JCRequest
 import com.jeancoder.core.log.JCLogger
-import com.jeancoder.core.power.CommunicationParam
 import com.jeancoder.core.result.Result
 import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 import com.lengjiabao.general_api.ready.ypcall.GeneralPub
-
 
 @urlmapped(['/ypcall/account', '/h5/wx/card/create_cb', '/ex/call/auth'])
 @urlpassed('/ypcall/account/token/get')

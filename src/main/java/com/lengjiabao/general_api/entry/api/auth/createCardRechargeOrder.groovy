@@ -1,15 +1,11 @@
 package com.lengjiabao.general_api.entry.api.auth
 
 import com.jeancoder.app.sdk.JC
-import com.jeancoder.core.power.CommunicationParam
 import com.jeancoder.core.result.Result
 import com.lengjiabao.general_api.ready.util.GlobalHolder
 
-
 //处理接口
-
 Result result = new Result();
-List<CommunicationParam> params = new ArrayList<CommunicationParam>();
 
 def h_id = JC.request.param("h_id");
 def mc_pwd = JC.request.param("mc_pwd");
