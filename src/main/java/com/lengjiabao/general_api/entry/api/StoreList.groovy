@@ -53,6 +53,8 @@ if(sys_stores) {
 		store_model['physics_name'] = x['store_name'];
 		store_model['c_time'] = x['c_time'];
 		store_model['proj_id'] = x['proj_id'];
+		store_model['latitude'] = x['latitude'];
+		store_model['longitude'] = x['longitude'];
 		
 		if(aaaa_array) {
 			for(y in aaaa_array) {
