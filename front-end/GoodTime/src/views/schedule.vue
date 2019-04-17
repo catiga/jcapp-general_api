@@ -495,7 +495,7 @@
     box-sizing: border-box;
 }
 
-.scroller .choose-current-date {
+.choose-current-date {
     border-bottom: 2px solid #1aad19;
     color: #1aad19;
 }
