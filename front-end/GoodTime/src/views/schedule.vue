@@ -317,8 +317,14 @@
             godo_cinemas:function(){
                 this.$router.push({name: 'cinemaList', params: { mid: '2' }})
             },goMap:function(){
-                // location.href="https://3gimg.qq.com/lightmap/v1/marker/index.html?marker=coord:21.21055,110.4016;title:%E6%B9%9B%E6%B1%9F%E4%B8%AD%E5%BD%B1%E6%98%9F%E7%BE%8EIMAX%E5%9B%BD%E9%99%85%E5%BD%B1%E5%9F%8E;addr:%E6%B9%9B%E6%B1%9F%E5%B8%82%E6%B9%9B%E6%B1%9F%E5%B8%82%E9%9C%9E%E5%B1%B1%E5%8C%BA%E4%BA%BA%E6%B0%91%E5%A4%A7%E9%81%93%E5%8D%97116%E5%8F%B7%E9%BC%8E%E7%9B%9B%E5%B9%BF%E5%9C%BA%E5%9B%9B%E6%A5%BCfrom=canary&key=OEIBZ-NBO3J-JL2FM-KYSH3-NP5O3-MDBYO&referer=wepiao&ch=uri-api&ADTAG=uri-api.wepiao#"
-                location.href="https://3gimg.qq.com/lightmap/v1/marker/index.html?marker=coord:40.680960,109.842720;title:包头MZC全景影城;addr:内蒙古自治区包头市青山区阿尔丁北大街泊景湾商务楼3楼;from=canary&key=OEIBZ-NBO3J-JL2FM-KYSH3-NP5O3-MDBYO&referer=wepiao&ch=uri-api&ADTAG=uri-api.wepiao#"
+                let store_name = this.storeName;
+                let store_address = this.storeAdd;
+                let x_lab = Cookies.get('s_latitude');
+                let y_lab = Cookies.get('s_longitude');
+                
+                location.href="https://3gimg.qq.com/lightmap/v1/marker/index.html?marker=coord:" + x_lab + "," + y_lab + ";title:" + store_name + ";addr:" + store_address + ";from=canary&key=OEIBZ-NBO3J-JL2FM-KYSH3-NP5O3-MDBYO&referer=wepiao&ch=uri-api&ADTAG=uri-api.wepiao#"
+                
+                //location.href="https://3gimg.qq.com/lightmap/v1/marker/index.html?marker=coord:40.680960,109.842720;title:包头MZC全景影城;addr:内蒙古自治区包头市青山区阿尔丁北大街泊景湾商务楼3楼;from=canary&key=OEIBZ-NBO3J-JL2FM-KYSH3-NP5O3-MDBYO&referer=wepiao&ch=uri-api&ADTAG=uri-api.wepiao#"
             },
             godo_goods:function(){
                 location.href="/general_api/tcss/index#/storeList"

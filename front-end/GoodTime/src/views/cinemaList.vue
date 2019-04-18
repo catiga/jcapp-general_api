@@ -17,7 +17,7 @@
 		<!--影城列表-->
 		<div class="cinema-box">
 			<ul class="cinema-ul">
-				<li class="cinema-li" v-for="item in cinemaList" v-on:click="godo_choose(item.cinema_id,item.id, item.store_name,item.city,item.zone,item.address,)">
+				<li class="cinema-li" v-for="item in cinemaList" v-on:click="godo_choose(item.cinema_id,item.id, item.store_name,item.city,item.zone,item.address, item.latitude, item.longitude)">
 					<div class="cinema-li-top">
 						<p class="cinema-li-nm">{{item.store_name}}</p>
 						<p class="cinema-li-price">29.8<span>元起</span></p>
@@ -118,12 +118,17 @@
             },back:function(){
 				//自定义返回上一页函数 可以copy到每一个组件中方便使用
 				this.$router.go(-1);
-			},godo_choose:function(cinema_id, id, store_name, city, zone, address){
+			},godo_choose:function(cinema_id, id, store_name, city, zone, address, latitude, longitude){
 				//document.cookie = "cinemaId=" + id;
 				document.cookie = "cinemaId=" + cinema_id + ";path=/";
 				document.cookie = "s_id=" + id + ";path=/";
-				// document.cookie = "storeName=" + store_name;
-				// document.cookie = "storeAdd=" + city+zone+address;
+				
+				//20190417新增，设置坐标
+        		if(latitude && longitude) {
+        			Cookies.set('s_latitude', latitude);
+        			Cookies.set('s_longitude', longitude);
+        		}
+        		
 				let add = city;
 				if(zone) {
 					add = add + zone;

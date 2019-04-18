@@ -401,6 +401,13 @@
 		        		console.log('set cinemaId default cookie======' + page.cinemaId);
 		        		Cookies.set('cinemaId', page.cinemaId);
 		        		Cookies.set('s_id', d.data[0].store_basic);	//一定有
+		        		//20190417新增，设置坐标
+		        		let latitude = d.data[0].latitude;
+		        		let longitude = d.data[0].longitude;
+		        		if(latitude && longitude) {
+		        			Cookies.set('s_latitude', latitude);
+		        			Cookies.set('s_longitude', longitude);
+		        		}
 		        		//var add = d.data[0].city + d.data[0].zone + d.data[0].address
 		        		let add = d.data[0].city;
 						if(d.data[0].zone) {
