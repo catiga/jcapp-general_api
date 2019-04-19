@@ -327,6 +327,12 @@
             	let au_type = Cookies.get('_lac_ated_');
             	let part_id = Cookies.get('_lac_op_');
             	let apid = Cookies.get('_lac_ap_');
+            	let cinemaId = Cookies.get('cinemaId');
+            	if(cinemaId=='5') {
+            		//包头暂停售票
+            		 page.showTip("系统维护中，请到影城前台购票", 5000);
+            		 return;
+            	}
             	if(token) {
             		page.GoPayTicket();
             	} else {
