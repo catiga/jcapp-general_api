@@ -135,8 +135,12 @@ export default {
               ]
             });
           } else {
+          	let err_msg = d.messages[0];
+            if(err_msg=='user_no_login') {
+            	err_msg = '您还未登录，请尝试从公众号进入个人中心绑卡操作';
+            }
             weui.dialog({
-              content: d.messages[0],
+              content: err_msg,
               buttons: [
                 {
                   label: "确定",
