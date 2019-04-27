@@ -39,7 +39,7 @@ def end = System.currentTimeMillis();
 
 JCLogger logger  = LoggerSource.getLogger(this.class);
 
-logger.info('CITYMOVIELIST:::CINEMA_ID=' + cinema_id + ' timeexhausted=' + (end - start)/1000);
+logger.info('CITYMOVIELIST:::CINEMA_ID=' + cinema_id + ' exhausted_time=' + (end - start)/1000);
 
 try {
 	aaaa = JackSonBeanMapper.jsonToMap(aaaa);
@@ -61,7 +61,7 @@ try {
 }
 def end_2 = System.currentTimeMillis();
 
-logger.info('CITYMOVIELIST:::SORT_DATA=' + cinema_id + ' timeexhausted=' + (end_2 - end)/1000);
+logger.info('CITYMOVIELIST:::SORT_DATA=' + cinema_id + ' exhausted_time=' + (end_2 - end)/1000);
 
 Result result = new Result();
 return result.setData(aaaa);
