@@ -32,9 +32,15 @@ def sort_plans(def now_plans, def key) {
 	return date_sort_result;
 }
 
+def start = System.currentTimeMillis();
 def cinema_id = JC.request.param('cinema_id');
 def aaaa = JC.internal.call('ticketingsys', '/api/movies', [cinema_id:cinema_id]);
+def end = System.currentTimeMillis();
+
 JCLogger logger  = LoggerSource.getLogger(this.class);
+
+logger.info('CITYMOVIELIST:::CINEMA_ID=' + cinema_id + ' timeexhausted=' + (end - start)/1000);
+
 try {
 	aaaa = JackSonBeanMapper.jsonToMap(aaaa);
 	def aaaa_data = aaaa['data'];
@@ -53,6 +59,9 @@ try {
 }catch(any) {
 	any.printStackTrace();
 }
+def end_2 = System.currentTimeMillis();
+
+logger.info('CITYMOVIELIST:::SORT_DATA=' + cinema_id + ' timeexhausted=' + (end_2 - end)/1000);
 
 Result result = new Result();
 return result.setData(aaaa);
