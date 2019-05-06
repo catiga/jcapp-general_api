@@ -28,8 +28,17 @@ try {
 	}
 } catch(any) {}
 
-String ret = JC.internal.call('crm', '/h5/user/get_account_mcs', [apid:ap_id.toString(),pid:GlobalHolder.pid.toString()]);
-//return new Result().setData(ret);
-return GeneralPub.success(JackSonBeanMapper.jsonToMap(ret));
+def cards = [];
+def ret = JC.internal.call('crm', '/h5/user/get_account_mcs', [apid:ap_id.toString(),pid:GlobalHolder.pid.toString()]);
+if(ret!=null) {
+	try {
+		ret = JackSonBeanMapper.jsonToMap(ret);
+		if(ret['available']) {
+			cards = ret['obj'];
+		}
+	} catch(any) {
+	}
+}
+return GeneralPub.success(cards);
 
 
