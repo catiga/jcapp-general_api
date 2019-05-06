@@ -9,7 +9,7 @@ import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 String point = "crm";
 String address = "/h5/user/get_account_mcs";
 
-def  accountInfo = JC.request.get().getAttribute("_user_");//获取用户信息
+def accountInfo = JC.request.get().getAttribute("_user_");//获取用户信息
 
 if(accountInfo==null) {
 	return GeneralPub.comfail('请登录');
