@@ -1037,15 +1037,15 @@ input[type=button] {
 }
 
 #seats .active {
-    background-image: url("http://pe1s.static.pdr365.com/seat_no_choose.png");
+    background-image: url("https://ex.piaodaren.com/img_server/_common/icon/seat_no_choose.png");
 }
 
 #seats .disabled {
-    background-image: url("http://pe1s.static.pdr365.com/seat_locked.png");
+    background-image: url("https://ex.piaodaren.com/img_server/_common/icon/seat_locked.png");
 }
 
 #seats .selected {
-    background-image: url("http://pe1s.static.pdr365.com/seat_select.png");
+    background-image: url("https://ex.piaodaren.com/img_server/_common/icon/seat_select.png");
 }
 
 #seats .main {
