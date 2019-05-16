@@ -30,7 +30,7 @@ class IndexFull {
 //def f2 = new FunConf(['code':'102', 'icon':'pingjia.png', 'name':'我的评价','info':'查看我的评价信息']);
 def f3 = new FunConf(['code':'103', 'icon':'3_hori_lines.png', 'name':'购票查询','info':'查询用户购票订单', method:'order/tcss/index']);
 def f4 = new FunConf(['code':'104', 'icon':'card.png', 'name':'会员查询','info':'查询会员信息', method:'mc/index']);
-//def f5 = new FunConf(['code':'105', 'icon':'gd.png', 'name':'商品管理','info':'商品管理', method:'goods/manage/index']);
+def f5 = new FunConf(['code':'105', 'icon':'gd.png', 'name':'影讯缓存','info':'影讯缓存', method:'tcsscache/index']);
 //def f6 = new FunConf(['code':'106', 'icon':'pandian.png', 'name':'库存盘点','info':'商品库存盘点', method:'goods/inventory/index']);
 //def f7 = new FunConf(['code':'107', 'icon':'20171110145038.png', 'name':'员工管理','info':'门店员工管理']);
 //def f8 = new FunConf(['code':'108', 'icon':'20171110144917.png', 'name':'收银台','info':'收银台', method:'cashier/index']);
@@ -40,7 +40,7 @@ def f4 = new FunConf(['code':'104', 'icon':'card.png', 'name':'会员查询','in
 //def f11 = new FunConf(['code':'111', 'icon':'card.png', 'name':'修改会员卡信息','info':'修改会员卡信息']);
 
 //def collect_admin=[f1, f2, f3, f4, f5, f6, f7, f8, f9, f10];
-def collect_admin=[f3, f4];
+def collect_admin=[f3, f4, f5];
 
 IndexFull index = new IndexFull();
 
