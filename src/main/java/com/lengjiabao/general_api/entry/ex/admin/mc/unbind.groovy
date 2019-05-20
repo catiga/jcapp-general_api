@@ -5,10 +5,20 @@ import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 
-def id = JC.request.param('id');
 def pid = GlobalHolder.pid;
 
-SimpleAjax avret = JC.internal.call(SimpleAjax, 'crm', '/mc/unbind_mc', [apmc_id:id, pid:pid]);
+def token = JC.request.param('token');
+SimpleAjax ret = JC.internal.call(SimpleAjax, 'project', '/auth/check_token_with_pid', [token:token,pid:pid]);
+if(!ret.available) {
+	return GeneralPub.comfail('no_login');
+}
+
+//重新定义pid，取当前用户管理归属项目
+def aim_pid = ret.data['user']['pid'];
+
+def id = JC.request.param('id');
+
+SimpleAjax avret = JC.internal.call(SimpleAjax, 'crm', '/mc/unbind_mc', [apmc_id:id, pid:aim_pid]);
 if(avret.available) {
 	return GeneralPub.success();
 }
