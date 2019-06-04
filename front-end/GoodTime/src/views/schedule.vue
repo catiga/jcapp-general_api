@@ -11,7 +11,7 @@
             </div>
             <!-- 影城地图 开始 -->
             <div class="map-icon" style="text-align: center;" @click="goMap">
-                    <img style="width: .4rem;display: inline-block;" src="http://pe1s.static.pdr365.com/location_icon.png">
+                    <img style="width: .4rem;display: inline-block;" src="https://ex.piaodaren.com/img_server/_common/icon/location_icon.png">
                     <p style="color: #a9a9a9;">地图</p>
             </div>
             <!-- 影城地图 结束 -->
@@ -61,8 +61,8 @@
                    <!-- <router-link :to="{name: 'seats', params: { pid: item.planId }}"> -->
                        <div class="choose-item-wrapper">
                             <div class="choose-time-logo">
-                                <img v-if="item.time_flag === 1" src="http://pe1s.static.pdr365.com/sun.png">
-                                <img v-if="item.time_flag === 2" src="http://pe1s.static.pdr365.com/moon.png">
+                                <img v-if="item.time_flag === 1" src="https://ex.piaodaren.com/img_server/_common/icon/sun.png">
+                                <img v-if="item.time_flag === 2" src="https://ex.piaodaren.com/img_server/_common/icon/moon.png">
                             </div>
                             <div class="choose-time">
                                 <p>{{item.startClock}}</p>
