@@ -76,7 +76,7 @@
 		</div> -->
 		<div class="my-coupons">
 			<div class="NoCoupons">
-				<img src="http://pe1s.static.pdr365.com/Nointegrl.png">
+				<img src="https://ex.piaodaren.com/img_server/_common/icon/Nointegrl.png">
 				<p>您还没有积分呢～</p>
 			</div>
 		</div>

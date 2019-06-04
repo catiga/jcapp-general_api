@@ -11,11 +11,11 @@
 					<!-- <div class="cardWrap">
 						<div class="card cardtop">
 							<p>华联国际影城</p>
-							<img class="cardtop-flag" src="http://pe1s.static.pdr365.com/tencent/icon/t_no_get.png" />
+							<img class="cardtop-flag" src="https://ex.piaodaren.com/img_server/_common/icon/t_no_get.png" />
 						</div>
 						<div class="card cardbot">
 								<div class="cardbot-top" v-on:click="godo_code">
-									<div class="cardbot-img" style="background: url(http://pe1d.static.pdr365.com/FhodjILxWCZtSVkdtxJuEnhpCDk6) 0% 0% / cover no-repeat;"></div>
+									<div class="cardbot-img" style="background: url(https://ex.piaodaren.com/img_server/_common/icon/FhodjILxWCZtSVkdtxJuEnhpCDk6.jpg) 0% 0% / cover no-repeat;"></div>
 									<div class="cardbot-mid">
 										<p class="cardbot-mid-title">邪不压正<span>2张</span></p>
 										<p class="cardbot-mid-time">购票日期：2018-06-27 14:30</p>
@@ -24,7 +24,7 @@
 									</div>
 								</div>
 								<div class="cardbot-bot">
-									<div class="cardbot-img" style="background: url(http://pe1d.static.pdr365.com/FhodjILxWCZtSVkdtxJuEnhpCDk6) 0% 0% / cover no-repeat;"></div>
+									<div class="cardbot-img" style="background: url(https://ex.piaodaren.com/img_server/_common/icon/FhodjILxWCZtSVkdtxJuEnhpCDk6.jpg) 0% 0% / cover no-repeat;"></div>
 									<div class="cardbot-mid">
 										<p class="cardbot-mid-title" style="margin-top: .4rem;">双人套餐</p>
 										<p class="cardbot-mid-time" style="margin-top: .25rem;">大爆+机打可乐</p>
@@ -37,13 +37,13 @@
 					<div class="cardWrap" v-for="item in TicketList" v-on:click="godo_code(item.order_no)">
 						<div class="card cardtop">
 							<p>{{logo.proj_name}}</p>
-							<img v-if="item.order_status=='2000' || item.order_status=='2900' || item.order_status=='2901'" class="cardtop-flag" src="http://pe1s.static.pdr365.com/tencent/icon/t_no_get.png" />
-							<img v-else class="cardtop-flag" src="http://pe1s.static.pdr365.com/tencent/icon/t_done.png" />
+							<img v-if="item.order_status=='2000' || item.order_status=='2900' || item.order_status=='2901'" class="cardtop-flag" src="https://ex.piaodaren.com/img_server/_common/icon/t_no_get.png" />
+							<img v-else class="cardtop-flag" src="https://ex.piaodaren.com/img_server/_common/icon/t_done.png" />
 						</div>
 						<div class="card cardbot">
 							<div class="cardbot-top">
 								<div class="cardbot-img">
-									<img style="width: 100%;height: 100%;" src="http://pe1d.static.pdr365.com/FhodjILxWCZtSVkdtxJuEnhpCDk6">
+									<img style="width: 100%;height: 100%;" src="https://ex.piaodaren.com/img_server/_common/icon/FhodjILxWCZtSVkdtxJuEnhpCDk6.jpg">
 								</div>
 								<div class="cardbot-mid">
 									<p class="cardbot-mid-title">{{item.film_name}}<span>{{item.seats.length}}张</span></p>
@@ -64,11 +64,11 @@
 					<div class="cardWrap" v-for="(item,index) in OrderList" v-if="item.oss!='0000' && item.oss!='9000'" v-on:click="godo_goodscode(item.order_no,index)">
 						<div class="card cardtop">
 							<p>{{logo.proj_name}}</p>
-							<img v-if="item.oss=='1000'" class="cardtop-flag" src="http://pe1s.static.pdr365.com/dailingqu.png" />
-							<img v-if="item.oss=='1010'" class="cardtop-flag" src="http://pe1s.static.pdr365.com/dailingqu.png" />
-							<img v-if="item.oss=='1020'" class="cardtop-flag" src="http://pe1s.static.pdr365.com/dailingqu.png" />
-							<img v-if="item.oss=='2000'" class="cardtop-flag" src="http://pe1s.static.pdr365.com/dailingqu.png" />
-							<img v-if="item.oss=='3000'" class="cardtop-flag" src="http://pe1s.static.pdr365.com/tencent/icon/t_done.png" />
+							<img v-if="item.oss=='1000'" class="cardtop-flag" src="https://ex.piaodaren.com/img_server/_common/icon/dailingqu.png" />
+							<img v-if="item.oss=='1010'" class="cardtop-flag" src="https://ex.piaodaren.com/img_server/_common/icon/dailingqu.png" />
+							<img v-if="item.oss=='1020'" class="cardtop-flag" src="https://ex.piaodaren.com/img_server/_common/icon/dailingqu.png" />
+							<img v-if="item.oss=='2000'" class="cardtop-flag" src="https://ex.piaodaren.com/img_server/_common/icon/dailingqu.png" />
+							<img v-if="item.oss=='3000'" class="cardtop-flag" src="https://ex.piaodaren.com/img_server/_common/icon/t_done.png" />
 						</div>
 						<div class="card cardbot">
 							<div class="cardbot-bot" v-for="(goods,j) in item.items">

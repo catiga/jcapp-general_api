@@ -10,7 +10,7 @@
 					<p :class=" HId == item.id ? 'purchasingcard-mid-li-grade-true' : 'purchasingcard-mid-li-grade' ">{{item.h_name}}</p>
 					<p  :class=" HId == item.id ? 'purchasingcard-mid-li-introduce-true' : 'purchasingcard-mid-li-introduce' ">{{item.cr_type_desc}}</p>
 					<p :class=" HId == item.id ? 'purchasingcard-mid-li-price-true' : 'purchasingcard-mid-li-price'">¥{{item.getpay/100}}</p>
-					<img v-if=" HId == item.id " class="purchasingcard-mid-li-true-img"  src="http://pe1s.static.pdr365.com/tencent/icon/dot_icon.png" />
+					<img v-if=" HId == item.id " class="purchasingcard-mid-li-true-img"  src="https://ex.piaodaren.com/img_server/_common/icon/dot_icon.png" />
 				</li>
 				
 			</ul>
@@ -29,7 +29,7 @@
 			</div>
 			<div class="purchasingcard-bot-pay">
 				<div>
-					<img src="http://pe1s.static.pdr365.com/tencent/icon/wechat_pay_icon.png" />
+					<img src="https://ex.piaodaren.com/img_server/_common/icon/wechat_pay_icon.png" />
 					<p>微信支付</p>
 				</div>
 				<i class="weui-icon-success weui-icon_msg" style="font-size: .4rem;margin-right: .3rem;"></i>
@@ -42,7 +42,7 @@
 			<div class="purchasing-num-bgc" v-on:click="one=false"></div>
 			<div class="purchasing-num">
 				<div class="purchasing-num-top">
-					<img v-on:click="one=false" style="float: left;display: inline-block;width: .4rem;margin-left: .2rem;margin-top: .15rem;" src="http://pe1s.static.pdr365.com/chahao.png">
+					<img v-on:click="one=false" style="float: left;display: inline-block;width: .4rem;margin-left: .2rem;margin-top: .15rem;" src="https://ex.piaodaren.com/img_server/_common/icon/chahao.png">
 					<p>设置会员卡支付密码</p>
 				</div>
 				<input class="purchasing-num-input" v-model="Ticket_one" type="num" placeholder="请输入6位数字密码" readonly="readonly" maxlength="6" clearable>
@@ -78,7 +78,7 @@
 			<div class="purchasing-num-bgc" v-on:click="two=false"></div>
 			<div class="purchasing-num">
 				<div class="purchasing-num-top">
-					<img v-on:click="two=false" style="float: left;display: inline-block;width: .4rem;margin-left: .2rem;margin-top: .15rem;" src="http://pe1s.static.pdr365.com/chahao.png">
+					<img v-on:click="two=false" style="float: left;display: inline-block;width: .4rem;margin-left: .2rem;margin-top: .15rem;" src="https://ex.piaodaren.com/img_server/_common/icon/chahao.png">
 					<p>确认会员卡支付密码</p>
 				</div>
 				<input class="purchasing-num-input" v-model="Ticket_two" type="num" placeholder="请输入6位数字密码" readonly="readonly" maxlength="6" clearable>

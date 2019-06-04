@@ -4,11 +4,11 @@
 		<div class="mine-top-box">
 			<div class="mine-top">
 				<div class="mine-top-img">
-					<img :src="account.head == '' || account.head == null ? 'http://pe1s.static.pdr365.com/touxiang.png' : account.head" style="border:.04rem solid #f2f2f2;" />
+					<img :src="account.head == '' || account.head == null ? 'https://ex.piaodaren.com/img_server/_common/icon/touxiang.png' : account.head" style="border:.04rem solid #f2f2f2;" />
 				</div>
 				<div class="mine-top-nm">
 					<p>{{account.nickname == '' || account.nickname == null ? '默认昵称' : account.nickname}}</p>
-					<!-- <img src="http://pe1s.static.pdr365.com/tencent/icon/level_1.png" /> -->
+					<!-- <img src="https://ex.piaodaren.com/img_server/_common/icon/level_1.png" /> -->
 				</div>
 				<div class="mine-top-material" v-on:click="godo_modified">资料</div>
 			</div>
@@ -32,14 +32,14 @@
 		<div class="mine-mid-menu">
 			<div class="mine-mid-menu-top">
 				<div class="mine-mid-menu-top-list" v-on:click="godo_myCards">
-					<img src="http://pe1s.static.pdr365.com/tencent/icon/card_icon.png" style="height: .4rem;margin-top: .25rem;" />
+					<img src="https://ex.piaodaren.com/img_server/_common/icon/card_icon.png" style="height: .4rem;margin-top: .25rem;" />
 					<p>会员卡</p>
 					<div class="bm-list-arrow">
 						<span class="bm-icon arrow vertical"></span>
 					</div>
 				</div>
 				<div class="mine-mid-menu-top-list" v-on:click="godo_myTicket">
-					<img src="http://pe1s.static.pdr365.com/tencent/icon/order_icon.png" style="width: 0.37rem;height: 0.4rem;margin-top: .25rem;" />
+					<img src="https://ex.piaodaren.com/img_server/_common/icon/order_icon.png" style="width: 0.37rem;height: 0.4rem;margin-top: .25rem;" />
 					<p>订单中心</p>
 					<div class="bm-list-arrow">
 						<span class="bm-icon arrow vertical"></span>
@@ -49,7 +49,7 @@
 			
 			<!-- <div class="mine-mid-menu-bot">
 				<div class="mine-mid-menu-bot-list">
-					<img src="http://pe1s.static.pdr365.com/tencent/icon/set_icon.png" style="width: .4rem;height: .4rem;" />
+					<img src="https://ex.piaodaren.com/img_server/_common/icon/set_icon.png" style="width: .4rem;height: .4rem;" />
 					<p>设置</p>
 					<div class="bm-list-arrow">
 						<span class="bm-icon arrow vertical"></span>
@@ -203,7 +203,7 @@
 	text-align: center;
 	height: 3.5rem;
 	position: relative;
-	background: url(http://pe1s.static.pdr365.com/tencent/icon/user_bg_new.png) 0% 0% / cover no-repeat;
+	background: url(https://ex.piaodaren.com/img_server/_common/icon/user_bg_new.png) 0% 0% / cover no-repeat;
 }
 .mine-top-img{
 	display: inline-block;

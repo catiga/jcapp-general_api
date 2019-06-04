@@ -22,7 +22,7 @@
 			</div>
 			<div class="my-coupons" v-else>
 				<div class="NoCoupons">
-					<img src="http://pe1s.static.pdr365.com/Nocoupons.png">
+					<img src="https://ex.piaodaren.com/img_server/_common/icon/Nocoupons.png">
 					<p>您还没有优惠券呢～</p>
 				</div>
 			</div>

@@ -2,7 +2,7 @@
 	<div>
 		<!-- <div class="details-bg"></div> -->
 		<div class="kaitong">
-			<img src="http://pe1s.static.pdr365.com/1536575795599.jpg">
+			<img src="https://ex.piaodaren.com/img_server/_common/icon/kaika_success.jpg">
 			<p>开通成功</p>
 		</div>
 		<div class="goOk" v-on:click="godo_index">完成</div>

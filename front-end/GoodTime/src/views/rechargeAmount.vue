@@ -9,7 +9,7 @@
 				<li v-if="RechargeData != -1" v-for="(item,index) in RechargeData" :data-index="index" :class=" HId == item.id ? 'purchasingcard-mid-li-true' : 'purchasingcard-mid-li' " v-on:click="godo_choose(item.id,index)">
 					<p :data-index="index" :class=" HId == item.id ? 'purchasingcard-mid-li-price-true' : 'purchasingcard-mid-li-price' ">¥{{item.getpay /100}}</p>
 					<p :data-index="index" :class=" HId == item.id ? 'purchasingcard-mid-li-introduce-true' : 'purchasingcard-mid-li-introduce' ">{{item.cr_type_desc}}</p>
-					<img :data-index="index" v-if=" HId == item.id " class="purchasingcard-mid-li-true-img" src="http://pe1s.static.pdr365.com/tencent/icon/dot_icon.png" />
+					<img :data-index="index" v-if=" HId == item.id " class="purchasingcard-mid-li-true-img" src="https://ex.piaodaren.com/img_server/_common/icon/dot_icon.png" />
 				</li>
 			</ul>
 		</div>
@@ -19,7 +19,7 @@
 			</div>
 			<div class="purchasingcard-bot-pay">
 				<div>
-					<img src="http://pe1s.static.pdr365.com/tencent/icon/wechat_pay_icon.png" />
+					<img src="https://ex.piaodaren.com/img_server/_common/icon/wechat_pay_icon.png" />
 					<p>微信支付</p>
 				</div>
 				<i class="weui-icon-success weui-icon_msg" style="font-size: .4rem;margin-right: .3rem;"></i>

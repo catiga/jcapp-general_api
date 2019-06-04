@@ -2,7 +2,7 @@
     <div>
         <div class="bg"></div>
         <div class="ScanOrder-top">
-            <img style="width: 100%; height: auto;" src="http://pe1s.static.pdr365.com/1535373165177.jpg">
+            <img style="width: 100%; height: auto;" src="https://ex.piaodaren.com/img_server/_common/icon/scan_order_process.jpg">
         </div>
         <div class="confirmGoodsO-top">当前桌号 <span>{{tableNum}}</span></div>
         <div class="store-weui-panel weui-panel weui-panel_access" style="width: 100%;margin-top: .2rem;">
@@ -34,7 +34,7 @@
             <input type="text" placeholder="口味、偏好等要求" name="">
         </div> -->
         <div class="erCode">
-            <img src="http://pe1s.static.pdr365.com/WechatIMG7459.jpeg">
+            <img src="https://ex.piaodaren.com/img_server/_common/icon/yp_qrcode.jpeg">
             <p>关注"好时光部落"公众号领取更多优惠</p>
         </div>
         

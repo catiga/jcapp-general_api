@@ -6,7 +6,7 @@
 				<div class="MD_top_n">
 					<div class="MD_top_img">
 						<span>头像</span>
-						<img :src=" img == '' ? account.head == '' || account.head == null ? 'http://pe1s.static.pdr365.com/touxiang.png' : account.head : img ">
+						<img :src=" img == '' ? account.head == '' || account.head == null ? 'https://ex.piaodaren.com/img_server/_common/icon/touxiang.png' : account.head : img ">
 						<input @change="upPIC" type="file" class="form-control" id="HeadImg">
 					</div>
 

@@ -8,17 +8,16 @@
 					<div class="ed-myCards-top-box">
 						<div class="ed-myCards-top">
 							<div class="ed-myCards-top-logo">
-								<!-- <img src="http://pe1s.static.pdr365.com/timg.jpeg" /> -->
 								<img :src="logo.domain + '/img_server/' + logo.logo" />
 								<p>{{item.rule.title}}</p>
 							</div>
 							<p class="ed-myCards-top-num">{{item.mc_num}}</p>
 							<div class="ed-myCards-top-hint">
 								<div>
-									<img class="ed-myCards-top-hint-img" src="http://pe1s.static.pdr365.com/tencent/icon/info_icon.png" />
+									<img class="ed-myCards-top-hint-img" src="https://ex.piaodaren.com/img_server/_common/icon/info_icon.png" />
 								<p>不可退换</p>
 								</div>
-								<img @click.stop="godo_cardCode(item.card_code)" class="ed-myCards-top-hint-code" src="http://pe1s.static.pdr365.com/tencent/icon/qrcode_icon.png" />
+								<img @click.stop="godo_cardCode(item.card_code)" class="ed-myCards-top-hint-code" src="https://ex.piaodaren.com/img_server/_common/icon/qrcode_icon.png" />
 							</div>
 						</div>
 					</div>
@@ -254,7 +253,7 @@
 	height: 3rem;
 	border-radius: .1rem;
     background-size: 100%;
-	background: url(http://pe1s.static.pdr365.com/cardBg.png);
+	background: url(https://ex.piaodaren.com/img_server/_common/icon/cardBg.png);
 }
 .ed-myCards-top-logo{
 	width: 100%;

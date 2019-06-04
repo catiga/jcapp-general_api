@@ -38,7 +38,7 @@
                     <label>
                         <div class="paylist">
                             <div class="paylist-l">
-                                <img src="http://pe1s.static.pdr365.com/1536323856539.jpg">
+                                <img src="https://ex.piaodaren.com/img_server/_common/icon/wxpay.jpg">
                                 <div class="paylist-content">
                                     <p class="paylist-nm">微信支付</p>
                                 </div>

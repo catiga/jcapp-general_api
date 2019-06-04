@@ -6,7 +6,6 @@
 			<div class="ed-myCards-top-box">
 				<div class="ed-myCards-top">
 					<div class="ed-myCards-top-logo">
-						<!-- <img src="http://pe1s.static.pdr365.com/timg.jpeg">  -->
 						<img :src="logo.domain + '/img_server/' + logo.logo"> 
 						<p>{{CardDetails.mcname}}</p>
 					</div>

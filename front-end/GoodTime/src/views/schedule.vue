@@ -23,7 +23,7 @@
             <swiper :options="swiperOption" ref="mySwiper" class="swiper" style="margin-top: .25rem;">
                 <swiper-slide v-for="(item, index) in movie_list" :key="index" :data-index="index">
                     <input type="hidden" :value="item.id"> 
-                    <img style="display:block;width:100%;height:100%;border-radius:.1rem;" :src="item.img == '' || item.img == null  ? 'http://pe1s.static.pdr365.com/default_movie_pic.jpg' : item.img ">
+                    <img style="display:block;width:100%;height:100%;border-radius:.1rem;" :src="item.img == '' || item.img == null  ? 'https://ex.piaodaren.com/img_server/_common/icon/default_movie_pic.jpg' : item.img ">
                 </swiper-slide>
             </swiper>
             <!-- 电影轮播 结束 -->

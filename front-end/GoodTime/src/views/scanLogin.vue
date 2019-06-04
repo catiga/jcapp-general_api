@@ -3,7 +3,7 @@
         <!-- 固定 容器-->
         <div class="login-top">
             <img class="login-top-logo" src="http://pe1s.static.pdr365.com/timg.jpeg">
-            <p class="login-top-title">欢迎来到腾讯好时光</p>
+            <p class="login-top-title">欢迎光临</p>
         </div>
         <div class="login-mid">
             <form autocomplete="off" method="POST" class="form-wrapper" id="login-formWrapper">

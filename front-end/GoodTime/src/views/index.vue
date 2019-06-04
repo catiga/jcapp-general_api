@@ -46,7 +46,7 @@
 					<div class="wrapper" style="height:auto;position:absolute;left:0;top:0;height:100%;" ref="movieWrapper">
 						<ul :style="movieListWidth">
 							<li v-for="(item,index) in MovieList">
-								<img :src="item.img == null ? 'http://pe1s.static.pdr365.com/default_movie_pic.jpg' : item.img " @click="videoDetails(item.properties.id,index)" />
+								<img :src="item.img == null ? 'https://ex.piaodaren.com/img_server/_common/icon/default_movie_pic.jpg' : item.img " @click="videoDetails(item.properties.id,index)" />
 								<p style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{item.name}}</p>
 								<div @click="godo_buy(item.properties.id,index)">购票</div>
 							</li>
@@ -70,11 +70,9 @@
 					<div class="wrapper" style="height:auto;position:absolute;left:0;top:0;height:100%;" ref="comingWrapper">
 						<ul :style="comingListWidth">
 							<li v-for="(item,index) in ComeList">
-								<img :src="item.img == null ? 'http://pe1s.static.pdr365.com/default_movie_pic.jpg' : item.img " v-on:click="GoIngvideoDetails(item.id,index)" />
-								<!-- <img :src="item.img == null ? 'http://pe1s.static.pdr365.com/default_movie_pic.jpg' : item.img " /> -->
+								<img :src="item.img == null ? 'https://ex.piaodaren.com/img_server/_common/icon/default_movie_pic.jpg' : item.img " v-on:click="GoIngvideoDetails(item.id,index)" />
 								<p style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{item.nm}}</p>
 								<span>{{item.rt}}</span>
-								<!-- <div v-on:click="godo_buy(item.properties.id,index)">购票</div> -->
 							</li>	
 						</ul>
 					</div>
@@ -735,13 +733,13 @@
     padding-top: .6vmin;
 }
 .bottom-tab .store .icon {
-    background-image: url(http://pe1s.static.pdr365.com/tencent/icon/goods_f.png);
+    background-image: url(https://ex.piaodaren.com/img_server/_common/icon/goods_f.png);
     background-position: center center;
     background-size: cover;
 }
 
 .bottom-tab .store[data-status=active] .icon {
-    background-image: url(http://pe1s.static.pdr365.com/tencent/icon/goods_b.png);
+    background-image: url(https://ex.piaodaren.com/img_server/_common/icon/goods_b.png);
     background-position: center center;
     background-size: cover;
 }
@@ -753,22 +751,22 @@
     padding-top: .6vmin;
 }
 .bottom-tab .movie[data-status=active] .icon{
-	background-image: url(http://pe1s.static.pdr365.com/tencent/icon/movie_b.png);
+	background-image: url(https://ex.piaodaren.com/img_server/_common/icon/movie_b.png);
     background-position: center center;
     background-size: cover;
 }
 .bottom-tab .movie .icon{
-	background-image: url(http://pe1s.static.pdr365.com/tencent/icon/movie_f.png);
+	background-image: url(https://ex.piaodaren.com/img_server/_common/icon/movie_f.png);
     background-position: center center;
     background-size: cover;
 }
 .bottom-tab .cinema .icon {
-    background-image: url(http://pe1s.static.pdr365.com/tencent/icon/cinema_f.png);
+    background-image: url(https://ex.piaodaren.com/img_server/_common/icon/cinema_f.png);
     background-position: center center;
     background-size: cover;
 }
 .bottom-tab .cinema[data-status=active] .icon {
-    background-image: url(http://pe1s.static.pdr365.com/tencent/icon/cinema_b.png);
+    background-image: url(https://ex.piaodaren.com/img_server/_common/icon/cinema_b.png);
     background-position: center center;
     background-size: cover;
 }
@@ -780,12 +778,12 @@
     padding-top: .6vmin;
 }
 .bottom-tab .mine .icon {
-    background-image: url(http://pe1s.static.pdr365.com/tencent/icon/user_f.png);
+    background-image: url(https://ex.piaodaren.com/img_server/_common/icon/user_f.png);
     background-position: center center;
     background-size: cover;
 }
 .bottom-tab .mine[data-status=active] .icon {
-    background-image: url(http://pe1s.static.pdr365.com/tencent/icon/user_b.png);
+    background-image: url(https://ex.piaodaren.com/img_server/_common/icon/user_b.png);
     background-position: center center;
     background-size: cover;
 }

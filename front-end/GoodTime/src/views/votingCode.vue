@@ -5,7 +5,7 @@
 			<div class="my-cardWrap">
 				<!--影票信息-->
 				<div class="my-card my-cardtop my-module-1">
-					<img class="my-module-1-img" src="http://pe1s.static.pdr365.com/default_movie_pic.jpg" />
+					<img class="my-module-1-img" src="https://ex.piaodaren.com/img_server/_common/icon/default_movie_pic.jpg" />
 					<div class="my-module-1-right">
 						<p class="my-module-1-r-nm">{{movieDetails.film_name}}</p>
 						<p class="my-module-1-r-cinema">

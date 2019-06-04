@@ -4,11 +4,11 @@
 		<!--电影信息-->
 		<div class="video-details-content-box">
 			<div class="video-details-content-bj">
-				<img :src=" MovieD.pic_entry == null ? 'http://pe1s.static.pdr365.com/default_movie_pic.jpg' : MovieD.pic_entry ">
+				<img :src=" MovieD.pic_entry == null ? 'https://ex.piaodaren.com/img_server/_common/icon/default_movie_pic.jpg' : MovieD.pic_entry ">
 			</div>
 			<div class="video-details-content">
 				<div class="video-details-content-img">
-					<img :src=" MovieD.pic_entry == null ? 'http://pe1s.static.pdr365.com/default_movie_pic.jpg' : MovieD.pic_entry ">
+					<img :src=" MovieD.pic_entry == null ? 'https://ex.piaodaren.com/img_server/_common/icon/default_movie_pic.jpg' : MovieD.pic_entry ">
 				</div>
 				<div class="video-details-content-right">
 					<div class="video-details-content-right-title">

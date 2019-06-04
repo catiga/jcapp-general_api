@@ -111,7 +111,7 @@
             <div class="weui-panel__bd">
                 <div class="weui-media-box weui-media-box_appmsg">
                     <div class="weui-media-box__hd">
-                        <img class="weui-media-box__thumb" src="http://pe1s.static.pdr365.com/tencent/icon/baomihua.png" alt="">
+                        <img class="weui-media-box__thumb" src="https://ex.piaodaren.com/img_server/_common/icon/baomihua.png" alt="">
                     </div>
                     <div class="weui-media-box__bd">
                         <div class="select-goods-info">
@@ -134,7 +134,7 @@
                 </div>
                 <div class="weui-media-box weui-media-box_appmsg">
                     <div class="weui-media-box__hd">
-                        <img class="weui-media-box__thumb" src="http://pe1s.static.pdr365.com/tencent/icon/baomihua.png" alt="">
+                        <img class="weui-media-box__thumb" src="https://ex.piaodaren.com/img_server/_common/icon/baomihua.png" alt="">
                     </div>
                     <div class="weui-media-box__bd">
                         <div class="select-goods-info">
@@ -157,7 +157,7 @@
                 </div>
                 <div class="weui-media-box weui-media-box_appmsg">
                     <div class="weui-media-box__hd">
-                        <img class="weui-media-box__thumb" src="http://pe1s.static.pdr365.com/tencent/icon/baomihua.png" alt="">
+                        <img class="weui-media-box__thumb" src="https://ex.piaodaren.com/img_server/_common/icon/baomihua.png" alt="">
                     </div>
                     <div class="weui-media-box__bd">
                         <div class="select-goods-info">
