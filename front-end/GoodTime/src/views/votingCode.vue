@@ -30,7 +30,7 @@
 			    <div class="my-card my-cardbot my-module-2">
 			    		<p class="my-module-2-num">{{ticket_num}}张电影票</p>
 			    		<p class="my-module-2-hint">在取票机扫码或输入取票码取电影票</p>
-			    		<img class="my-module-2-codeimg" :src="'https://tool.kd128.com/qrcode?text='+movieDetails.ticket.ticket_flag_1+movieDetails.ticket.ticket_flag_2" />
+			    		<img class="my-module-2-codeimg" :src="'http://qr.topscan.com/api.php?text='+movieDetails.ticket.ticket_flag_1+movieDetails.ticket.ticket_flag_2" />
 			    		<p class="my-module-2-code">
 			    			序列号：
 			    			<span>{{movieDetails.ticket.ticket_flag_1}}</span>
