@@ -73,7 +73,7 @@
 	        <div class="weui-dialog" style="border-radius: 0.2rem;">
 				<div class="code-bot">
 					<div class="code-img-box">
-						<img class="weui-img" style="margin-top: .5rem;width: 70%;display: inline-block;" :src="'https://tool.kd128.com/qrcode?text='+ Codesrc " alt="">
+						<img class="weui-img" style="margin-top: .5rem;width: 70%;display: inline-block;" :src="'http://qr.topscan.com/api.php?text='+ Codesrc " alt="">
 					</div>
                   <p class="code-p">扫描二维码进行会员卡支付</p>
                   <div class="code-true" v-on:click="img_tip=false">确定</div>
