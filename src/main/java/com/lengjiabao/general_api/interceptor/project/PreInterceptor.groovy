@@ -25,4 +25,8 @@ if(ret.available) {
 
 GlobalHolder.setPid(pid);
 
+if(ret.data['proj_status']!='10') {
+	//说明已经停止服务
+	return SimpleAjax.notAvailable('proj_stoped');
+}
 return true;
