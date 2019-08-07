@@ -110,9 +110,13 @@
 		},
 		methods:{
 			GetAccount:function(){
-	        	var page = this;
-	        	var token = Cookies.get('_lac_k_');
-	            var url = '/general_api/api/auth/GetAccount?token='+token+'&ts='+Date.parse(new Date());
+	        	let page = this;
+	        	let token = Cookies.get('_lac_k_');
+	        	if(!token) {
+	        		location.href = '/general_api/h5/wx/auth?type=base&' + new Date().getTime();
+	        		return;
+	        	}
+	            let url = '/general_api/api/auth/GetAccount?token=' + token + '&' + new Date().getTime();
 	            fetch(url).then(r => r.json()).then(d => {
 	            	console.log(d);
 	            	console.log('token=' + token);

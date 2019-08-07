@@ -118,13 +118,13 @@
 
         .movie {
              &.icon {
-                background-image: url(http://pe1s.static.pdr365.com/tencent/icon/movie_f.png);
+                background-image: url(https://ex.piaodaren.com/img_server/_common/icon/movie_f.png);
                 background-position: center center;
                 background-size: cover;
             }
 
             &[data-status=active] .icon {
-                background-image: url(http://pe1s.static.pdr365.com/tencent/icon/movie_b.png);
+                background-image: url(https://ex.piaodaren.com/img_server/_common/icon/movie_b.png);
                     background-position: center center;
                 background-size: cover;
             }
@@ -141,13 +141,13 @@
 
         .store {
             &.icon {
-                background-image: url(http://pe1s.static.pdr365.com/tencent/icon/goods_f.png);
+                background-image: url(https://ex.piaodaren.com/img_server/_common/icon/goods_f.png);
                     background-position: center center;
                 background-size: cover;
             }
 
             &[data-status=active] .icon {
-                background-image: url(http://pe1s.static.pdr365.com/tencent/icon/goods_b.png);
+                background-image: url(https://ex.piaodaren.com/img_server/_common/icon/goods_b.png);
                     background-position: center center;
                 background-size: cover;
             }
@@ -162,13 +162,13 @@
         }
         .cinema {
             .icon {
-                background-image: url(http://pe1s.static.pdr365.com/tencent/icon/cinema_f.png);
+                background-image: url(https://ex.piaodaren.com/img_server/_common/icon/cinema_f.png);
                     background-position: center center;
                 background-size: cover;
             }
 
             &[data-status=active] .icon {
-                background-image: url(http://pe1s.static.pdr365.com/tencent/icon/cinema_b.png);
+                background-image: url(https://ex.piaodaren.com/img_server/_common/icon/cinema_b.png);
                     background-position: center center;
                 background-size: cover;
             }
@@ -186,13 +186,13 @@
 
         .mine {
             .icon {
-                background-image: url(http://pe1s.static.pdr365.com/tencent/icon/user_f.png);
+                background-image: url(https://ex.piaodaren.com/img_server/_common/icon/user_f.png);
                     background-position: center center;
                 background-size: cover;
             }
 
             &[data-status=active] .icon {
-                background-image: url(http://pe1s.static.pdr365.com/tencent/icon/user_b.png);
+                background-image: url(https://ex.piaodaren.com/img_server/_common/icon/user_b.png);
                     background-position: center center;
                 background-size: cover;
             }
