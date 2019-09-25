@@ -14,6 +14,10 @@ def unicode = JC.request.param('unicode');
 def ct = JC.request.param('ct');
 def coupons = JC.request.param('coupons');
 
+def  accountInfo = JC.request.get().getAttribute("_user_");
+def ap_id = accountInfo['ap_id'];
+def mobile = accountInfo['mobile'];
+
 def aaaa = JC.internal.call("ticketingsys", "/api/order_detail", [order_no:order_no,coupon_id:'']);
 
 aaaa = JackSonBeanMapper.jsonToMap(aaaa);
@@ -25,7 +29,7 @@ def coupon_info = datas[1];
 
 aaaa['data'] = order_info;
 
-SimpleAjax pref_ajax = JC.internal.call(SimpleAjax, 'trade', '/incall/ro_preferential', [tnum:tnum,unicode:unicode,ct:ct,coupons:coupons]);
+SimpleAjax pref_ajax = JC.internal.call(SimpleAjax, 'trade', '/incall/ro_preferential', [tnum:tnum,unicode:unicode,ct:ct,coupons:coupons, mobile:mobile]);
 
 if(pref_ajax.available) {
 	aaaa['data']['pay_amount'] = pref_ajax.data[0];
