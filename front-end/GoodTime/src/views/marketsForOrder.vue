@@ -23,7 +23,7 @@
 			<div class="my-coupons" v-else>
 				<div class="NoCoupons">
 					<img src="https://ex.piaodaren.com/img_server/_common/icon/Nocoupons.png">
-					<p>您还没有优惠券呢～</p>
+					<p>暂时没有可用活动～</p>
 				</div>
 			</div>
 		</div>
@@ -35,7 +35,7 @@
             </div>
         </div>
         <div style="position:fixed;bottom:0;width:100%;padding:20px .3rem;background:#efeff4">
-        	<a href="javascript:;" class="weui-btn weui-btn_primary" style="font-size:0.34rem;color: #fff;" @click="goBack">不使用优惠券</a>
+        	<a href="javascript:;" class="weui-btn weui-btn_primary" style="font-size:0.34rem;color: #fff;" @click="goBack">不参加活动</a>
         </div>
 	</div>
 </template>
@@ -85,11 +85,9 @@ export default {
         "&oc=2000" +
         "&ts=" +
         new Date().getTime();
-      fetch(url)
-        .then(r => r.json())
-        .then(d => {
-          // console.log(d)
-          if (d.code == "0") {
+      fetch(url).then(r => r.json()).then(d => {
+      	  console.log(d);
+          if (d.available) {
             page.loading = false;
             page.Coupons = d.list;
             var timelist = [];
@@ -115,7 +113,7 @@ export default {
           }
         });
     },
-    //选择优惠券
+    //选择活动
     choose(item) {
         let data = JSON.stringify(item || {});
         sessionStorage.setItem("o_c", data);
