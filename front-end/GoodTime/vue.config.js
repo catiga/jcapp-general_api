@@ -49,7 +49,7 @@ module.exports = {
 	  disableHostCheck: true ,
     proxy: {
       '/api': {
-        target: 'http://e.local:8096',
+        target: 'http://wap.hengdianfilm.com',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/'

@@ -37,6 +37,15 @@
         </div>
 
         <section class="myweui-cells weui-cells" style="margin-top: .3rem;">
+        	<a class="weui-cell myweui-cell cell-height-88 weui-cell_access" href="javascript:;" @click="goMarkets">
+                <div class="weui-cell__bd">
+                    <p style="font-size: .3rem;color: #2c3e50;">活动专区</p>
+                </div>
+                <div v-if="o_c" class="weui-cell__ft" style="font-size: .3rem;">{{o_c.batch_title}}</div>
+                <div v-else class="weui-cell__ft" style="font-size: .3rem;">点击选择</div>
+            </a>
+            
+            
             <a class="weui-cell myweui-cell cell-height-88 weui-cell_access" href="javascript:;" @click="goCoupons">
                 <div class="weui-cell__bd">
                     <p style="font-size: .3rem;color: #2c3e50;">优惠券</p>
@@ -545,6 +554,13 @@
                     $iosMask.fadeOut(200);
                     $iosCard.slideUp(400);
                 }
+            },
+            
+            // 前往选择活动
+            goMarkets() {
+                let num = this.order_no;
+                let t_num = this.tnum;
+                this.$router.push({name: "marketsForOrder", params: {order_no:num,tnum:t_num}});
             },
 
             // 前往选择优惠券

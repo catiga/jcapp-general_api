@@ -34,6 +34,8 @@ import couponsForGoods from '@/views/couponsForGoods.vue'
 import goodsDetails from '@/views/goodsDetails.vue'
 import QRcode from '@/views/QRcode.vue'
 
+import marketsForOrder from '@/views/marketsForOrder.vue'
+
 export default [
       { path: '/',name: 'index', component: index },
       { path: '/index', name: 'storeList', component: storeList },
@@ -70,6 +72,8 @@ export default [
       { path: '/couponsForGoods/:order_no',name: 'couponsForGoods',component: couponsForGoods },
       { path: '/goodsDetails/:gid/:skuid?',name: 'goodsDetails',component: goodsDetails },
       { path: '/QRcode', name: 'QRcode', component: QRcode},
+      
+      { path: '/marketsForOrder/:order_no',name: 'marketsForOrder',component: marketsForOrder },
     ]
 
 
