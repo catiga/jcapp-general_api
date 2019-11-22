@@ -89,27 +89,23 @@ export default {
       	  console.log(d);
           if (d.available) {
             page.loading = false;
-            page.Coupons = d.list;
+            page.Coupons = d.data;
             var timelist = [];
             for (var i = 0; i < d.data.length; i++) {
+            /*
               var TimeE = d.data[i].validate_end;
               var time = new Date(TimeE);
               var Y = time.getFullYear();
               var M = time.getMonth() + 1;
               var D = time.getDate();
               var times = Y + "-" + M + "-" + D;
-              timelist.push(times);
+            */
+              timelist.push(d.data[i]);
             }
             page.timelist = timelist;
           } else {
             page.loading = false;
             let auth_type = Cookies.get("_lac_ap_");
-            // if (!auth_type) {
-            //   location.href =
-            //     "/general_api/h5/wx/auth?type=base&" + new Date().getTime(); //online should be
-            // } else {
-            //   this.$router.push({ name: "login", params: { apid: auth_type } });
-            // }
           }
         });
     },
