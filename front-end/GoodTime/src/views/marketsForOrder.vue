@@ -91,8 +91,8 @@ export default {
             page.loading = false;
             page.Coupons = d.list;
             var timelist = [];
-            for (var i = 0; i < d.list.length; i++) {
-              var TimeE = d.list[i].validate_end;
+            for (var i = 0; i < d.data.length; i++) {
+              var TimeE = d.data[i].validate_end;
               var time = new Date(TimeE);
               var Y = time.getFullYear();
               var M = time.getMonth() + 1;
