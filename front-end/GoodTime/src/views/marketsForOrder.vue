@@ -111,6 +111,9 @@ export default {
     	console.log(item);
     	let url = '/general_api/api/auth/join_market?tnum=' + this.tnum + '&order_no=' + this.order_no + '&mrid=' + item.id;
     	
+    	fetch(url).then(r => r.json()).then(d => {
+    		console.log(d);
+    	})
     	
         //let data = JSON.stringify(item || {});
         //sessionStorage.setItem("o_c", data);
