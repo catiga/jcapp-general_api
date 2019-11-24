@@ -110,9 +110,15 @@ export default {
     	//这里需要判断一下是否可以使用，当前用户
     	let token = Cookies.get("_lac_k_");
     	let url = '/general_api/api/auth/join_market?tnum=' + this.tnum + '&order_no=' + this.order_no + '&mrid=' + item.id + '&token=' + token;
-    	
+    	let loading = weui.loading('加载中');
     	fetch(url).then(r => r.json()).then(d => {
     		console.log(d);
+    		loading.hide();
+    		if(d.ret_code=='0000') {
+    			
+    		} else {
+    			weui.topTips(d.ret_msg + d.ret_code, 5000);
+    		}
     	})
     	
         //let data = JSON.stringify(item || {});
