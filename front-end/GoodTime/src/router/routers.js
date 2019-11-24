@@ -73,7 +73,7 @@ export default [
       { path: '/goodsDetails/:gid/:skuid?',name: 'goodsDetails',component: goodsDetails },
       { path: '/QRcode', name: 'QRcode', component: QRcode},
       
-      { path: '/marketsForOrder/:order_no',name: 'marketsForOrder',component: marketsForOrder },
+      { path: '/marketsForOrder/:order_no/:tnum',name: 'marketsForOrder',component: marketsForOrder },
     ]
 
 
