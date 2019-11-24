@@ -8,7 +8,9 @@ import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 
 def order_no = JC.request.param("order_no");
 def coupon_id = JC.request.param('coupon_id');
-def aaaa = JC.internal.call("ticketingsys", "/api/order_detail", [order_no:order_no,coupon_id:coupon_id]);
+def market_id = JC.request.param('market_id');
+
+def aaaa = JC.internal.call("ticketingsys", "/api/order_detail", [order_no:order_no,coupon_id:coupon_id, market_id:market_id]);
 
 aaaa = JackSonBeanMapper.jsonToMap(aaaa);
 
