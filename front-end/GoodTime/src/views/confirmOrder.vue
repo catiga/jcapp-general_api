@@ -384,7 +384,7 @@
                 }else{
                     if (document.getElementById("x12").checked) {
                         let coupon_id = page.o_c.id || "";
-                        var url = '/general_api/api/auth/GetWxObj?ct=201101&token='+token+"&coupon_id=" + coupon_id + '&tnum='+ tnum+'&ts='+Date.parse(new Date());
+                        var url = '/general_api/api/auth/GetWxObj?ct=201101&token='+token+"&coupon_id=" + coupon_id + '&tnum='+ tnum+'&ts='+new Date().getTime();
                         fetch(url).then(r => r.json()).then(d => {
                             console.log(d)
                             if (d.code == -1) {

@@ -109,6 +109,7 @@ export default {
     choose(item) {
     	//这里需要判断一下是否可以使用，当前用户
     	console.log(item);
+    	let url = '/general_api/api/auth/join_market?tnum=' + this.tnum + '&order_no=' + this.order_no + '&mrid=' + item.id;
     	
     	
         //let data = JSON.stringify(item || {});

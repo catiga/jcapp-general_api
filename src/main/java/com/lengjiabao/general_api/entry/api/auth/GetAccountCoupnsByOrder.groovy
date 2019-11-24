@@ -7,7 +7,7 @@ import com.jeancoder.core.result.Result
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 
 JCRequest reques = RequestSource.getRequest();
-def  accountInfo = reques.getAttribute("_user_");//获取用户信息
+def accountInfo = reques.getAttribute("_user_");//获取用户信息
 def mobile = accountInfo['mobile'];//获取用户信息
 def pid = accountInfo['pid'];//获取用户信息
 def ap_id = accountInfo['ap_id'];
