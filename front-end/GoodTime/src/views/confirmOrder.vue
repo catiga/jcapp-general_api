@@ -528,9 +528,10 @@
             GetOrderDetails:function(){
                 var page = this;
                 let coupon_id = this.o_c.id || "";
-                let market_rule_id = this.market_rule.id;
-                let market_id = this.market_rule.market_id;
-                var url = '/general_api/api/GetTicketOrderDetails?order_no='+page.on+ "&coupon_id=" + coupon_id + '&market_id=' + market_id + '&' + new Date().getTime();
+                let market_rule_id = this.market_rule.id || '';
+                let market_id = this.market_rule.market_id || '';
+                let token = Cookies.get('_lac_k_');
+                var url = '/general_api/api/auth/GetTicketOrderDetails?order_no='+page.on+ "&coupon_id=" + coupon_id + '&market_id=' + market_id + '&token=' + token + '&' + new Date().getTime();
                 fetch(url).then(r => r.json()).then(d => {
                     if (d.code == 0) {
                         page.movieDetails = d.data;

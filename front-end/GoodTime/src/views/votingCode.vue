@@ -95,7 +95,8 @@
 				router.go(-1);
 			},GetOrderDetails:function(){
                 var page = this;
-                var url = '/general_api/api/GetTicketOrderDetails?order_no='+page.on+'&ts='+Date.parse(new Date());
+                let token = Cookies.get('_lac_k_');
+                var url = '/general_api/api/auth/GetTicketOrderDetails?order_no=' + page.on + '&token=' + token + '&' + new Date().getTime();
                 fetch(url).then(r => r.json()).then(d => {
                     if (d.code == 0) {
                         page.movieDetails = d.data;
