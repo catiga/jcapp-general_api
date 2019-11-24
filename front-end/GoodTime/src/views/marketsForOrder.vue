@@ -5,16 +5,12 @@
 			<div class="my-coupons" v-if="Coupons.length > 0">
 				<div class="my-coupons-list stamp02" v-for="(item,j) in Coupons">
 					<div class="my-coupons-list-left">
-            			<p class="my-coupons-list-left-num" v-if="item.coupon_type == '1000' ">¥ <span> {{item.rule_value/100}}</span></p>
-            			<p class="my-coupons-list-left-num" v-else-if="item.coupon_type == '3000' "> <span> {{item.rule_value | toSlice}}折</span></p>
-						<p class="my-coupons-list-left-num" style="margin:auto;line-height:2.2rem;" v-else-if="item.coupon_type == '2000' "> <span style="font-size:.4rem;"> 兑换券 </span></p>
-						<p class="my-coupons-list-left-type">选座活动</p>
+						<p class="my-coupons-list-left-num" style="margin:auto;line-height:2.2rem;"> <span style="font-size:.4rem;"> 在线选座 </span></p>
+						<p class="my-coupons-list-left-type">优惠活动</p>
 					</div>
 					<div class="my-coupons-list-mid">
 						<p class="my-coupons-list-mid-title">{{item.title}}</p>
-            			<p class="my-coupons-list-mid-info" v-if="item.coupon_type == '2000'"> <span>仅限到店使用</span> </p>
-						<p class="my-coupons-list-mid-info" v-else> <span v-for="info in item.rule"> {{item.info}} </span> </p>
-						<p class="my-coupons-list-mid-info">优惠规则：{{item.price_policy}}</p>
+						<p class="my-coupons-list-mid-info">{{item.info}}</p>
 						<p class="my-coupons-list-mid-info">购买规则：<span>{{item.number_policy}}</span></p>
 					</div>
 					<div class="my-coupons-list-pay" @click="choose(item)">选择</div>
@@ -111,9 +107,13 @@ export default {
     },
     //选择活动
     choose(item) {
-        let data = JSON.stringify(item || {});
-        sessionStorage.setItem("o_c", data);
-        this.$router.push({name: "confirmOrder",params: {tnum:this.tnum}});
+    	//这里需要判断一下是否可以使用，当前用户
+    	console.log(item);
+    	
+    	
+        //let data = JSON.stringify(item || {});
+        //sessionStorage.setItem("o_c", data);
+        //this.$router.push({name: "confirmOrder",params: {tnum:this.tnum}});
     },
     goBack() {
         sessionStorage.removeItem("o_c");
