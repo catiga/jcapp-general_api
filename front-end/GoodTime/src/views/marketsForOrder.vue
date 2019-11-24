@@ -107,15 +107,21 @@ export default {
     },
     //选择活动
     choose(item) {
+    	let market_id = item.market_id;
+    	let item_id = item.id;
     	//这里需要判断一下是否可以使用，当前用户
     	let token = Cookies.get("_lac_k_");
-    	let url = '/general_api/api/auth/join_market?tnum=' + this.tnum + '&order_no=' + this.order_no + '&mrid=' + item.id + '&token=' + token;
+    	let url = '/general_api/api/auth/join_market?tnum=' + this.tnum + '&order_no=' + this.order_no + '&mrid=' + item_id + '&market_id=' + market_id + '&token=' + token;
     	let loading = weui.loading('加载中');
     	fetch(url).then(r => r.json()).then(d => {
     		console.log(d);
     		loading.hide();
     		if(d.ret_code=='0000') {
-    			
+    			//用户可以使用，初步检查通过，现在开始将参数返回
+    			let data = JSON.stringify(item || {});
+    			console.log(data);
+    			sessionStorage.setItem("market_rule", data);
+        		this.$router.push({name: "confirmOrder",params: {tnum:this.tnum}});
     		} else {
     			weui.topTips(d.ret_msg + d.ret_code, 5000);
     		}
@@ -126,7 +132,7 @@ export default {
         //this.$router.push({name: "confirmOrder",params: {tnum:this.tnum}});
     },
     goBack() {
-        sessionStorage.removeItem("o_c");
+        sessionStorage.removeItem("market_rule");
         this.$router.push({name: "confirmOrder",params: {tnum:this.tnum}});
     }
   }

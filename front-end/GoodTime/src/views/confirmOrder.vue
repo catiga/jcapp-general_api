@@ -312,7 +312,8 @@
                 tip_msg:"",
                 Pwd:'',
                 order_no: "", //订单id,
-                o_c: "",
+                o_c: "",	//选择的优惠券
+                market_rule: '', //选择的营销活动
                 offer_amount: "", //优惠价格
                 offer_show: false,
                 pay_methods: '101001'
@@ -327,6 +328,11 @@
             if(o_c_str) {
             	this.o_c = JSON.parse(o_c_str);
             }
+            let market_rule_str = sessionStorage.getItem('market_rule');
+            if(market_rule_str) {
+            	this.market_rule = JSON.parse(market_rule_str);
+            }
+            console.log(this.market_rule);
         },
         computed: {
 			...mapState(['logo']),
