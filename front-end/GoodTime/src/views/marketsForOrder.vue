@@ -108,8 +108,8 @@ export default {
     //选择活动
     choose(item) {
     	//这里需要判断一下是否可以使用，当前用户
-    	console.log(item);
-    	let url = '/general_api/api/auth/join_market?tnum=' + this.tnum + '&order_no=' + this.order_no + '&mrid=' + item.id;
+    	let token = Cookies.get("_lac_k_");
+    	let url = '/general_api/api/auth/join_market?tnum=' + this.tnum + '&order_no=' + this.order_no + '&mrid=' + item.id + '&token=' + token;
     	
     	fetch(url).then(r => r.json()).then(d => {
     		console.log(d);
