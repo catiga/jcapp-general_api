@@ -163,7 +163,10 @@
 			//组件加载完成会自动调用此方法
 			// this.GetStore();//获取影城列表
 			this.wxinit();
-			this.wxlocate();
+			
+			//暂时去掉定位
+			//this.wxlocate();
+			
 			this.CheckLogin();
 			this.ComeingMovie();//即将上映
 			this.cityList();//获取城市列表
