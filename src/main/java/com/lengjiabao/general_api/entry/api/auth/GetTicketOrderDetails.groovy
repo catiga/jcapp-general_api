@@ -18,9 +18,9 @@ def order_no = JC.request.param("order_no");
 def coupon_id = JC.request.param('coupon_id');
 def market_id = JC.request.param('market_id');
 
-logger.info('market_id=' + market_id + ', mobile=' + mobile);
 def aaaa = JC.internal.call("ticketingsys", "/api/order_detail", [order_no:order_no,coupon_id:coupon_id, market_id:market_id, mobile:mobile, ap_id:ap_id]);
-
+logger.info('market_id=' + market_id + ', mobile=' + mobile);
+logger.info('market_result=' + aaaa);
 aaaa = JackSonBeanMapper.jsonToMap(aaaa);
 
 def datas = aaaa['data'];
