@@ -5,13 +5,13 @@
 			<div class="my-coupons" v-if="Coupons.length > 0">
 				<div class="my-coupons-list stamp02" v-for="(item,j) in Coupons">
 					<div class="my-coupons-list-left">
-						<p class="my-coupons-list-left-num" style="margin:auto;line-height:2.2rem;"> <span style="font-size:.4rem;"> 在线选座 </span></p>
-						<p class="my-coupons-list-left-type">优惠活动</p>
+						<p class="my-coupons-list-left-num" style="margin:auto;line-height:2.2rem;"> <span style="font-size:.4rem;"> 选座 </span></p>
+						<p class="my-coupons-list-left-type">活动</p>
 					</div>
 					<div class="my-coupons-list-mid">
 						<p class="my-coupons-list-mid-title">{{item.title}}</p>
 						<p class="my-coupons-list-mid-info">{{item.info}}</p>
-						<p class="my-coupons-list-mid-info">购买规则：<span>{{item.number_policy}}</span></p>
+						<p class="my-coupons-list-mid-info">购买规则：<span>{{item.policy_str}}</span></p>
 					</div>
 					<div class="my-coupons-list-pay" @click="choose(item)">选择</div>
 				</div>
