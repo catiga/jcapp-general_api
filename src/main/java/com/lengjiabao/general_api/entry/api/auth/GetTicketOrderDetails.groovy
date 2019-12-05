@@ -30,6 +30,7 @@ def coupon_info = datas[1];
 
 aaaa['data'] = order_info;
 
+/*
 if(!coupon_id) {
 	aaaa['pref_coupon'] = null;
 } else {
@@ -47,6 +48,22 @@ if(!coupon_id) {
 	} else {
 		aaaa['pref_coupon'] = '';
 	}
+}
+//代码替换成下面部分做下测试，还得测试劵是否正常
+*/
+if(coupon_info&&coupon_info['available']) {
+	def coupon_data = coupon_info['data']['other'];
+	aaaa['pref_coupon'] = coupon_data;
+	//开始改数据
+	BigDecimal pay_amount = new BigDecimal(order_info['pay_amount'] + '');
+	BigDecimal pref_amount = new BigDecimal(coupon_data['prep_amount'] + '');
+	def real_pay_amount = pay_amount.subtract(pref_amount);
+	if(real_pay_amount<0) {
+		real_pay_amount = new BigDecimal(0);
+	}
+	aaaa['data']['pay_amount'] = real_pay_amount.setScale(2);
+} else {
+	aaaa['pref_coupon'] = '';
 }
 
 if(aaaa['handle_fee']==null) {
