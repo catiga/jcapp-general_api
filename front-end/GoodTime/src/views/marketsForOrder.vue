@@ -6,7 +6,7 @@
 				<div class="my-coupons-list stamp02" v-for="(item,j) in Coupons">
 					<div class="my-coupons-list-left">
 						<p class="my-coupons-list-left-num" style="margin:auto;line-height:2.2rem;"> <span style="font-size:.4rem;"> 选座 </span></p>
-						<p class="my-coupons-list-left-type">活动</p>
+						<p class="my-coupons-list-left-type"> </p>
 					</div>
 					<div class="my-coupons-list-mid">
 						<p class="my-coupons-list-mid-title">{{item.title}}</p>

@@ -38,7 +38,7 @@ if(ret && ret.available) {
 				} else if(arr_num_pol[1]=='d') {
 					total_pin = '每天';
 				}
-				policy_str = total_pin + '限购' + arr_num_pol;
+				policy_str = total_pin + '限购' + total_num;
 			} catch(any) {
 			}
 			x['policy_str'] = policy_str;
