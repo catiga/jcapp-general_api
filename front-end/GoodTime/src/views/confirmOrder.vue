@@ -363,9 +363,11 @@
                 var tnum = page.tnum;
                 page.loading = true;
                 var token = Cookies.get('_lac_k_');
+                let market_id = this.market_rule.market_id || '';
                 if (page.CardData == '-1' || page.CardData == null ) {
                     let coupon_id = page.o_c.id || "";
-                    var url = '/general_api/api/auth/GetWxObj?ct=201101&token='+token+'&tnum='+ tnum + "&coupon_id=" + coupon_id +'&ts='+Date.parse(new Date());
+                    
+                    var url = '/general_api/api/auth/GetWxObj?ct=201101&token='+token+'&tnum='+ tnum + "&coupon_id=" + coupon_id + '&market_id=' + market_id + '&' + new Date().getTime();
                     fetch(url).then(r => r.json()).then(d => {
                         console.log(d)
                         if (d.code == -1) {
@@ -390,7 +392,7 @@
                 }else{
                     if (document.getElementById("x12").checked) {
                         let coupon_id = page.o_c.id || "";
-                        var url = '/general_api/api/auth/GetWxObj?ct=201101&token='+token+"&coupon_id=" + coupon_id + '&tnum='+ tnum+'&ts='+new Date().getTime();
+                        var url = '/general_api/api/auth/GetWxObj?ct=201101&token='+token+"&coupon_id=" + coupon_id + '&market_id=' + market_id + '&tnum='+ tnum + '&' + new Date().getTime();
                         fetch(url).then(r => r.json()).then(d => {
                             console.log(d)
                             if (d.code == -1) {
@@ -594,8 +596,9 @@
 
                 let unicode = ct === '101001' ? this.CardData[0].card_code : "";
                 let coupon_id = this.o_c.id ? this.o_c.id + ',' + this.o_c.crapp : "";
+                let market_id = this.market_rule.market_id || '';
                 let token = Cookies.get('_lac_k_');
-                let url = '/general_api/api/auth/change_price?tnum=' + this.tnum + "&order_no=" + this.on + "&ct=" + ct + "&unicode=" + unicode + "&coupons=" + coupon_id + "&token=" + token + '&ts='+Date.parse(new Date());
+                let url = '/general_api/api/auth/change_price?tnum=' + this.tnum + "&order_no=" + this.on + "&ct=" + ct + "&unicode=" + unicode + "&coupons=" + coupon_id + '&market_id=' + market_id + "&token=" + token + '&' + new Date().getTime();
                 
                 fetch(url).then(r => r.json()).then(d => {
                     this.loading = false;

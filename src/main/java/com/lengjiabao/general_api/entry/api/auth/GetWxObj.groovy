@@ -22,7 +22,8 @@ if (ct.equals("101001")) {
 def ap_id = accountInfo['ap_id'];//获取用户信息
 
 def coupon_id = JC.request.param('coupon_id');
+def market_id = JC.request.param('market_id');
 
-def aaaa = JC.internal.call("trade", "/incall/ro_code_pay", [tnum:tnum,ct:ct,pwd:pwd,unicode:unicode,o_rem:o_rem,coupon_id:coupon_id,domain:domain,ap_id:ap_id])
+def aaaa = JC.internal.call("trade", "/incall/ro_code_pay", [tnum:tnum,ct:ct,pwd:pwd,unicode:unicode,o_rem:o_rem,coupon_id:coupon_id,market_id:market_id,domain:domain,ap_id:ap_id])
 return result.setData(aaaa);
 
