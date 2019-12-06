@@ -63,7 +63,11 @@ if(coupon_info&&coupon_info['available']) {
 	}
 	aaaa['data']['pay_amount'] = real_pay_amount.setScale(2);
 } else {
-	aaaa['pref_coupon'] = '';
+	if(coupon_id) {
+		aaaa['pref_coupon'] = '';
+	} else {
+		aaaa['pref_coupon'] = null;
+	}
 }
 
 if(aaaa['handle_fee']==null) {
