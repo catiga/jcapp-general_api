@@ -41,7 +41,7 @@
                 <div class="weui-cell__bd">
                     <p style="font-size: .3rem;color: #2c3e50;">活动专区</p>
                 </div>
-                <div v-if="o_c" class="weui-cell__ft" style="font-size: .3rem;">{{market_rule.title}}</div>
+                <div v-if="market_rule" class="weui-cell__ft" style="font-size: .3rem;">{{market_rule.title}}</div>
                 <div v-else class="weui-cell__ft" style="font-size: .3rem;">点击选择</div>
             </a>
             
