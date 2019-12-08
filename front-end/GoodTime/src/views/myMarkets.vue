@@ -35,7 +35,7 @@
 			<div>
 				<div class="myCards-top-box">
 					<div class="myCards-top">
-						<p class="myCards-top-hint-top">咨询电话 <a href="tel">0812-3306789</a></p>
+						<p class="myCards-top-hint-top">咨询电话 <a href="tel:08123306789">0812-3306789</a></p>
 						<p class="myCards-top-hint">请在工作时间拨打</p>
 					</div>
 				</div>
