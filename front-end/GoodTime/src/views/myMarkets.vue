@@ -30,6 +30,19 @@
                 <p class="weui-toast__content">加载中</p>
             </div>
         </div>
+        
+        <div class="myCards" v-if="CardData == null " >
+			<div>
+				<div class="myCards-top-box">
+					<div class="myCards-top">
+						<p class="myCards-top-hint-top">咨询电话 <a href="tel">0812-3306789</a></p>
+						<p class="myCards-top-hint">请在工作时间拨打</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
         <div style="position:fixed;bottom:0;width:100%;padding:20px .3rem;background:#efeff4">
         	<a href="javascript:;" class="weui-btn weui-btn_primary" style="font-size:0.34rem;color: #fff;" @click="goBack">返回</a>
         </div>
@@ -258,5 +271,56 @@ export default {
 .my-coupons-list-mid-title-ed,
 .my-coupons-list-mid-info-ed span {
   color: #a9a9a9;
+}
+
+
+
+/*无会员卡，盗用提示信息*/
+.myCards{
+	width: 100%;
+	height: auto;
+}
+.myCards-top-box{
+	width: auto;
+	height: auto;
+	padding: .7rem .3rem 0rem .3rem;
+}
+.myCards-top{
+	width: 100%;
+	text-align: center;
+	height: 3rem;
+	background: #f4f4f4;
+	border-radius: .1rem;
+}
+.myCards-top-title{
+	width: 100%;
+	font-size: .4rem;
+	color: #000000;
+	padding-top: .82rem;
+}
+.myCards-top-hint{
+	width: 100%;
+	font-size: .28rem;
+	color: #888888;
+	padding-top: .35rem;
+}
+.myCards-bot{
+	width: auto;
+	text-align: center;
+	height: auto;
+	padding: 1.6rem .3rem 0rem .3rem;
+}
+.myCards-bot-go{
+	margin-bottom: .32rem;
+}
+.myCards-bot-go , .myCards-top-bind{
+	width: 100%;
+	height: .88rem;
+	line-height: .88rem;
+	border: 1px solid #029400;
+	border-radius: .1rem;
+	background: #09BB07;
+	color: #FFFFFF;
+	font-size: .36rem;
 }
 </style>
