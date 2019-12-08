@@ -20,7 +20,7 @@ def market_id = JC.request.param('market_id');
 JCLogger logger = JCLoggerFactory.getLogger('margin_market');
 logger.info('mrid=' + mrid);
 
-SimpleAjax ret = JC.internal.call(SimpleAjax, 'market', '/market/judge_market', [mobile:mobile,pid:pid, ap_id:ap_id, market_id:market_id, market_rule_id:mrid, tnum:tnum, order_no:order_no]);
+SimpleAjax ret = JC.internal.call(SimpleAjax, 'market', '/market/judge_market', [mobile:mobile,pid:pid, ap_id:ap_id, market_id:market_id, market_rule_id:mrid]);
 if(!ret.available) {
 	def err_code = ret.messages[0];
 	def err_msg = ret.messages[1];
