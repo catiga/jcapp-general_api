@@ -46,8 +46,8 @@
 					</div>
 				</div>
 				<div class="mine-mid-menu-top-list" v-on:click="godo_myMarkets">
-					<img src="https://ex.piaodaren.com/img_server/_common/icon/info_icon.png" style="width: 0.37rem;height: 0.4rem;margin-top: .25rem;" />
-					<p>订单中心</p>
+					<img src="https://ex.piaodaren.com/img_server/_common/icon/102.png" style="width: 0.37rem;height: 0.4rem;margin-top: .25rem;" />
+					<p>活动信息</p>
 					<div class="bm-list-arrow">
 						<span class="bm-icon arrow vertical"></span>
 					</div>

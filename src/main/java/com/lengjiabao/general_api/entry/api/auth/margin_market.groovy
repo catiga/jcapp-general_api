@@ -14,21 +14,21 @@ def mobile = accountInfo['mobile'];//获取用户信息
 def pid = accountInfo['pid'];//获取用户信息
 def ap_id = accountInfo['ap_id'];
 
-def tnum = JC.request.param('tnum');
-def order_no = JC.request.param('order_no');
 def mrid = JC.request.param('mrid');
 def market_id = JC.request.param('market_id');
 
-JCLogger logger = JCLoggerFactory.getLogger('join_market');
-logger.info('tnum=' + tnum);
-logger.info('order_no=' + order_no);
+JCLogger logger = JCLoggerFactory.getLogger('margin_market');
 logger.info('mrid=' + mrid);
 
 SimpleAjax ret = JC.internal.call(SimpleAjax, 'market', '/market/judge_market', [mobile:mobile,pid:pid, ap_id:ap_id, market_id:market_id, market_rule_id:mrid, tnum:tnum, order_no:order_no]);
 if(!ret.available) {
 	def err_code = ret.messages[0];
 	def err_msg = ret.messages[1];
+	if(err_code=='repeat_join_forbid') {
+		//说明活动次数超限
+		
+	}
 	return GeneralPub.fail(err_code, err_msg, null);
 }
 
-return GeneralPub.success();
+return GeneralPub.success('剩余可享优惠次数', ret.data);

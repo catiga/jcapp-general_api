@@ -13,13 +13,13 @@
 						<p class="my-coupons-list-mid-info">{{item.info}}</p>
 						<p class="my-coupons-list-mid-info">购买规则：<span>{{item.policy_str}}</span></p>
 					</div>
-					<div class="my-coupons-list-pay" @click="choose(item)">选择</div>
+					<div class="my-coupons-list-pay" @click="choose(item)">查看余量</div>
 				</div>
 			</div>
 			<div class="my-coupons" v-else>
 				<div class="NoCoupons">
 					<img src="https://ex.piaodaren.com/img_server/_common/icon/Nocoupons.png">
-					<p>暂时没有可用活动～</p>
+					<p>暂时没有活动～</p>
 				</div>
 			</div>
 		</div>
