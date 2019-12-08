@@ -35,6 +35,7 @@ import goodsDetails from '@/views/goodsDetails.vue'
 import QRcode from '@/views/QRcode.vue'
 
 import marketsForOrder from '@/views/marketsForOrder.vue'
+import myMarkets from '@/views/myMarkets.vue'
 
 export default [
       { path: '/',name: 'index', component: index },
