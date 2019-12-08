@@ -74,6 +74,7 @@ export default [
       { path: '/QRcode', name: 'QRcode', component: QRcode},
       
       { path: '/marketsForOrder/:order_no/:tnum',name: 'marketsForOrder',component: marketsForOrder },
+      { path: '/myMarkets',name: 'myMarkets',component: myMarkets },
     ]
 
 

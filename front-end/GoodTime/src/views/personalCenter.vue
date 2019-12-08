@@ -45,6 +45,13 @@
 						<span class="bm-icon arrow vertical"></span>
 					</div>
 				</div>
+				<div class="mine-mid-menu-top-list" v-on:click="godo_myMarkets">
+					<img src="https://ex.piaodaren.com/img_server/_common/icon/info_icon.png" style="width: 0.37rem;height: 0.4rem;margin-top: .25rem;" />
+					<p>订单中心</p>
+					<div class="bm-list-arrow">
+						<span class="bm-icon arrow vertical"></span>
+					</div>
+				</div>
 			</div>
 			
 			<!-- <div class="mine-mid-menu-bot">
@@ -156,7 +163,7 @@
 			GetCoupons:function(){
 				var page = this;
 	        	var token = Cookies.get('_lac_k_');
-	            var url = '/general_api/api/auth/GetAccountCoupns?token='+token+'&ts='+Date.parse(new Date());
+	            var url = '/general_api/api/auth/GetAccountCoupns?token=' + token + '&' + new Date().getTime();
 	            fetch(url).then(r => r.json()).then(d => {
 	                console.log(d)
 	                if (d.code == '0') {
@@ -184,6 +191,9 @@
 			},godo_cinemas:function(){
 				this.$router.push({name: 'cinemaList', params: { mid: '2' }})
 			},
+			godo_myMarkets() {
+                this.$router.push({name: "myMarkets", params: {}});
+            },
 			godo_goods:function(){
 				location.href="/general_api/tcss/index#/storeList"
 			},godo_index:function(){
