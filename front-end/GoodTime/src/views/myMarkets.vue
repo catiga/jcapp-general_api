@@ -114,7 +114,6 @@ export default {
     		loading.hide();
     		if(d.ret_code=='0000') {
     			//用户可以使用，初步检查通过，现在开始将参数返回
-    			console.log(data);
     			weui.topTips(d.ret_msg + d.data, 5000);
     		} else {
     			weui.topTips(d.ret_msg + d.ret_code, 5000);
