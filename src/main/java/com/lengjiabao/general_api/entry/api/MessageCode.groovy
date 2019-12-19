@@ -5,6 +5,7 @@ import com.jeancoder.app.sdk.source.CommunicationSource
 import com.jeancoder.core.power.CommunicationParam
 import com.jeancoder.core.power.CommunicationPower
 import com.jeancoder.core.result.Result
+import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.jeancoder.core.http.JCRequest
 import com.jeancoder.app.sdk.source.RequestSource
 
@@ -31,8 +32,10 @@ import java.util.List;//list集合
 //
 //return result.setData(aaaa);
 
+def pid = GlobalHolder.pid;
+
 def p = JC.request.param('p');
-def aaaa = JC.internal.call('crm', "/h5/sys/sms_code", [p:p]);
+def aaaa = JC.internal.call('crm', "/h5/sys/sms_code", [p:p, pid:pid]);
 
 Result result = new Result();
 return result.setData(aaaa);
