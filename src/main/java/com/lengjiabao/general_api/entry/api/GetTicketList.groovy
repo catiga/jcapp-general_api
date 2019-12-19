@@ -21,9 +21,13 @@ CommunicationParam param1 = new CommunicationParam("token", token);
 
 params.add(param1);
 
-CommunicationPower caller = CommunicationSource.getCommunicator("ticketingsys");
-//def aaaa = caller.doworkAsString("/api/orders", params);
-def aaaa =  JC.internal.call("ticketingsys",'/api/orders' , ['token':token,pid:GlobalHolder.pid]);
-return result.setData(aaaa);
+try {
+	CommunicationPower caller = CommunicationSource.getCommunicator("ticketingsys");
+	//def aaaa = caller.doworkAsString("/api/orders", params);
+	def aaaa =  JC.internal.call("ticketingsys",'/api/orders' , ['token':token,pid:GlobalHolder.pid]);
+	return result.setData(aaaa);
+}catch(any) {
+	return result;
+}
 
 
