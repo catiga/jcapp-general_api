@@ -569,6 +569,12 @@
             
             // 前往选择活动
             goMarkets() {
+            	let hall_id = this.movieDetails.hall_id;
+            	//判断横店vip厅不能参加活动
+            	if(hall_id=='1263') {
+            		weui.topTips('VIP厅不参加优惠活动', 5000);
+            		return;
+            	}
                 let num = this.order_no;
                 let t_num = this.tnum;
                 this.$router.push({name: "marketsForOrder", params: {order_no:num,tnum:t_num}});
