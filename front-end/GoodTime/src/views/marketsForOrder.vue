@@ -83,24 +83,17 @@ export default {
         new Date().getTime();
       fetch(url).then(r => r.json()).then(d => {
       	  console.log(d);
+      	  page.loading = false;
           if (d.available) {
-            page.loading = false;
-            page.Coupons = d.data;
-            var timelist = [];
-            for (var i = 0; i < d.data.length; i++) {
-            /*
-              var TimeE = d.data[i].validate_end;
-              var time = new Date(TimeE);
-              var Y = time.getFullYear();
-              var M = time.getMonth() + 1;
-              var D = time.getDate();
-              var times = Y + "-" + M + "-" + D;
-            */
-              timelist.push(d.data[i]);
-            }
-            page.timelist = timelist;
+          	if(d.data) {
+          		page.Coupons = d.data;
+	            var timelist = [];
+	            for (var i = 0; i < d.data.length; i++) {
+	              timelist.push(d.data[i]);
+	            }
+	            page.timelist = timelist;
+          	}
           } else {
-            page.loading = false;
             let auth_type = Cookies.get("_lac_ap_");
           }
         });
