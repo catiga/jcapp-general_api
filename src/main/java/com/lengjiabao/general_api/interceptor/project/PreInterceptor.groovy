@@ -16,7 +16,7 @@ JCLogger logger = LoggerSource.getLogger();
 def domain = JC.request.get().getServerName();
 SimpleAjax ret = JC.internal.call(SimpleAjax, 'project', '/incall/project_stand', [domain:domain]);
 
-//logger.info('project_stand: domain=' + domain + ', and ret=' + JackSonBeanMapper.toJson(ret));
+logger.info('project_stand: domain=' + domain + ', and ret=' + JackSonBeanMapper.toJson(ret));
 def pid = 1;
 if(ret.available) {
 	pid = ret.data['id'];
