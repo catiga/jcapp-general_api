@@ -13,6 +13,7 @@ import com.jeancoder.core.result.Result
 import com.lengjiabao.general_api.ready.common.AvailabilityStatus
 import com.lengjiabao.general_api.ready.common.SimpleAjax
 import com.lengjiabao.general_api.ready.util.GlobalHolder
+import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 
 @urlmapped(["/api/auth", '/ypcall/account', '/ex/call/auth'])
 @urlpassed('/ypcall/account/token/get')
@@ -50,7 +51,7 @@ Logger.info("cookieemd :" + token)
 def pid = GlobalHolder.pid;
 
 SimpleAjax simpleAjax = JC.internal.call(SimpleAjax, 'crm', '/h5/p/info', [token:token, pid:pid]);
-
+Logger.info("crm_p_info output: {}", JackSonBeanMapper.toJson(simpleAjax))
 if (!simpleAjax.available ) {
 	result.setData(AvailabilityStatus.notAvailable("user_no_login"));
 	ResultSource.setResult(result);
