@@ -39,8 +39,10 @@ def f5 = new FunConf(['code':'105', 'icon':'gd.png', 'name':'影讯缓存','info
 //def f10 = new FunConf(['code':'110', 'icon':'heyan.png', 'name':'业绩查询','info':'业绩查询']);
 //def f11 = new FunConf(['code':'111', 'icon':'card.png', 'name':'修改会员卡信息','info':'修改会员卡信息']);
 
+def f12 = new FunConf(['code':'112', 'icon':'gd.png', 'name':'扫码验票','info':'验证电子票', method:'tcss/verify']);
+
 //def collect_admin=[f1, f2, f3, f4, f5, f6, f7, f8, f9, f10];
-def collect_admin=[f3, f4, f5];
+def collect_admin=[f3, f4, f5, f12];
 
 IndexFull index = new IndexFull();
 
