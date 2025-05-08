@@ -15,7 +15,7 @@ def qk = JC.request.param('qk');
 def token = JC.request.param('token');
 
 SimpleAjax ret = JC.internal.call(SimpleAjax, 'project', '/auth/check_token_with_pid', [token:token,pid:pid]);
-if(!ret.available) {
+if(ret == null || !ret.available) {
 	return GeneralPub.fail('user_not_login', '请登录后操作', null);
 }
 
