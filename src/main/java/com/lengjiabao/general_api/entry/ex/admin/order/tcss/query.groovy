@@ -72,13 +72,13 @@ if(user_info_obj!=null) {
 	if(qk.length()>8) {
 		def startymd = qk.substring(0, 8);
 		SimpleDateFormat _sdf_ymd_ = new SimpleDateFormat('yyyyMMdd');
-		logger.info("query ticket judge order: {}", startymd);
-		try {
-			_sdf_ymd_.parse(startymd);
-			logger.info("query ticket judge order result passed, but why?");
-			is_order = true;
-		} catch(not_order) {
-			
+		if (startymd.startsWith("20")) {
+			try {
+				_sdf_ymd_.parse(startymd);
+				is_order = true;
+			} catch(not_order) {
+
+			}
 		}
 	}
 	logger.info("query ticket by flag is_order: {}, qk: {}", is_order, qk);
