@@ -1,5 +1,8 @@
 package com.lengjiabao.general_api.entry.ex.admin.order.tcss
 
+import com.jeancoder.core.log.JCLogger
+import com.jeancoder.core.log.JCLoggerFactory
+
 import java.text.SimpleDateFormat
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -13,6 +16,8 @@ import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 def pid = GlobalHolder.pid;
 def qk = JC.request.param('qk');
 def token = JC.request.param('token');
+
+JCLogger logger = JCLoggerFactory.getLogger("query ticket:");
 
 SimpleAjax ret = JC.internal.call(SimpleAjax, 'project', '/auth/check_token_with_pid', [token:token,pid:pid]);
 if(ret == null || !ret.available) {
@@ -74,6 +79,7 @@ if(user_info_obj!=null) {
 			
 		}
 	}
+	logger.info("query ticket by flag is_order: {}, qk: {}", is_order, qk);
 	if(is_order) {
 		//以订单号查询
 		query_result = JC.internal.call('ticketingsys', '/api/orders', [pid:pid, order_no:qk]);
@@ -87,7 +93,8 @@ if(user_info_obj!=null) {
 		}
 	} else {
 		//以取票码查询
-		query_result = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketing/query_by_code_flag1', [flag_1:qk, pid:pid]);
+		// query_result = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketing/query_by_code_flag1', [flag_1:qk, pid:pid]);
+		query_result = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketing/query_by_code', [get_code:qk, pid:pid]);
 		if(query_result && query_result.available) {
 			query_result.data[0]['seats'] = query_result.data[1];
 			query_result = [query_result.data[0]];
