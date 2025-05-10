@@ -27,7 +27,7 @@ if(ret == null || !ret.available) {
 //重置pid
 pid = ret.data.user.pid;
 
-logger.info("query ticket by flag is_order: {}, qk: {}", is_order, qk);
+logger.info("query ticket by flag, qk: {}", qk);
 
 //以取票码查询
 def query_result = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketing/take_by_code_for_direct_check', [get_code:qk, pid:pid]);
