@@ -33,17 +33,20 @@ SimpleAjax query_result = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketi
 
 logger.info("query ticket by flag, qk: {}, result: {}", qk, JackSonBeanMapper.toJson(query_result));
 
+def ret_data = null;
+
 if(query_result && query_result.available) {
-	query_result.data[0]['seats'] = query_result.data[1];
-	query_result = [query_result.data[0]];
+//	query_result.data[0]['seats'] = query_result.data[1];
+//	query_result = [query_result.data[0]];
+	ret_data = query_result.data;
 } else {
 	return GeneralPub.fail(query_result.messages[0], query_result.messages[1], null);
 }
 
 //增加是否过场标志
-if(query_result) {
+if(ret_data) {
 	SimpleDateFormat _sdf_ymdhms_ = new SimpleDateFormat('yyyy-MM-dd HH:mm:ss');
-	for (x in query_result) {
+	for (x in ret_data[1]) {
 		def pass_flag = 0;    //默认未过场
 		def play_time = x['plan_date'] + ' ' + x['plan_time'];
 		try {
