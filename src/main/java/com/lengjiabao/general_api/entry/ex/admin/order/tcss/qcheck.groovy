@@ -30,15 +30,15 @@ pid = ret.data.user.pid;
 
 //以取票码查询
 SimpleAjax query_result = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketing/take_by_code_for_direct_check_split', [get_code:qk, pid:pid, modify_status:modify_status]);
+
+logger.info("query ticket by flag, qk: {}, result: {}", qk, JackSonBeanMapper.toJson(query_result));
+
 if(query_result && query_result.available) {
 	query_result.data[0]['seats'] = query_result.data[1];
 	query_result = [query_result.data[0]];
 } else {
-
 	return GeneralPub.fail(query_result.messages[0], query_result.messages[1], null);
 }
-
-logger.info("query ticket by flag, qk: {}, result: {}", qk, JackSonBeanMapper.toJson(query_result));
 
 //增加是否过场标志
 if(query_result) {
