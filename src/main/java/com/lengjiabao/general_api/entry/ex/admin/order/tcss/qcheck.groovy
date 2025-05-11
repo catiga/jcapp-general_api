@@ -16,6 +16,7 @@ import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 def pid = GlobalHolder.pid;
 def qk = JC.request.param('qk');
 def token = JC.request.param('token');
+def modify_status = JC.request.param('modify_status');
 
 JCLogger logger = JCLoggerFactory.getLogger("query ticket:");
 
@@ -28,7 +29,7 @@ if(ret == null || !ret.available) {
 pid = ret.data.user.pid;
 
 //以取票码查询
-def query_result = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketing/take_by_code_for_direct_check_split', [get_code:qk, pid:pid]);
+def query_result = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketing/take_by_code_for_direct_check_split', [get_code:qk, pid:pid, modify_status:modify_status]);
 if(query_result && query_result.available) {
 	query_result.data[0]['seats'] = query_result.data[1];
 	query_result = [query_result.data[0]];
