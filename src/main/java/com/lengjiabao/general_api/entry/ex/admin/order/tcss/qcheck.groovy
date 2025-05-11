@@ -27,14 +27,14 @@ if(ret == null || !ret.available) {
 //重置pid
 pid = ret.data.user.pid;
 
-logger.info("query ticket by flag, qk: {}", qk);
-
 //以取票码查询
 def query_result = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketing/take_by_code_for_direct_check', [get_code:qk, pid:pid]);
 if(query_result && query_result.available) {
 	query_result.data[0]['seats'] = query_result.data[1];
 	query_result = [query_result.data[0]];
 }
+
+logger.info("query ticket by flag, qk: {}, result: {}", qk, JackSonBeanMapper.toJson(query_result));
 
 //增加是否过场标志
 if(query_result) {
