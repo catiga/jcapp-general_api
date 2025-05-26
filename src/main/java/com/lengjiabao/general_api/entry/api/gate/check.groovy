@@ -21,6 +21,12 @@ if (!qk.startsWith("so-")) {
     return new RespModel(errorCode: 901001, errorMessage: DataUtils.toUnicode("无效的自营快捷入场码"), status: 0)
 }
 qk = qk.substring("so-".length())
+try {
+    qk = qk.split(",")
+    qk = qk[0] + "," + qk[1]
+} catch (e) {
+    return new RespModel(errorCode: 901002, errorMessage: DataUtils.toUnicode("电子票无效"), status: 0)
+}
 
 //以取票码查询
 SimpleAjax query_result = JC.internal.call(SimpleAjax, 'ticketingsys', '/ticketing/take_by_code_for_direct_check_split', [get_code:qk, pid:pid, modify_status:modify_status]);
@@ -34,7 +40,7 @@ if(query_result && query_result.available) {
 }
 
 if (ret_data == null) {
-    return new RespModel(errorCode: 901002, errorMessage: DataUtils.toUnicode(query_result.messages[1]), status: 0)
+    return new RespModel(errorCode: 901003, errorMessage: DataUtils.toUnicode(query_result.messages[1]), status: 0)
 }
 
 //增加是否过场标志
