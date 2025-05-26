@@ -3,6 +3,7 @@ package com.lengjiabao.general_api.entry.ex.call
 import com.jeancoder.app.sdk.JC
 import com.jeancoder.app.sdk.source.CommunicationSource
 import com.jeancoder.app.sdk.source.LoggerSource
+import com.jeancoder.core.log.JCLoggerFactory
 import com.jeancoder.core.power.CommunicationParam
 import com.jeancoder.core.power.CommunicationPower
 import com.jeancoder.core.result.Result
@@ -39,7 +40,8 @@ def sort_plans(def now_plans, def key) {
 
 def cinema_id = JC.request.param('cinema_id');
 def aaaa = JC.internal.call('ticketingsys', '/api/movies', [cinema_id:cinema_id]);
-JCLogger logger  = LoggerSource.getLogger(this.class);
+JCLogger logger  = JCLoggerFactory.getLogger(this.class);
+logger.info("get cinema data {} - {}", cinema_id, aaaa)
 try {
 	aaaa = JackSonBeanMapper.jsonToMap(aaaa);
 	def aaaa_data = aaaa['data'];
