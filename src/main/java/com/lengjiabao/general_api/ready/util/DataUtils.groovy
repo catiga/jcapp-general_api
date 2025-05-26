@@ -31,6 +31,18 @@ class DataUtils {
 		}
 		return true;
 	}
+
+	static String toUnicode(String input) {
+		StringBuilder sb = new StringBuilder()
+		input.each { ch ->
+			if ((int) ch > 127) {
+				sb.append(String.format("\\u%04x", (int) ch))
+			} else {
+				sb.append(ch)
+			}
+		}
+		return sb.toString()
+	}
 	
 	public static void main(String[] argc) {
 		String a = "12200.00";
