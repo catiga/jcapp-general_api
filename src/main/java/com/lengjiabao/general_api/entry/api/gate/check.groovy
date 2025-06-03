@@ -22,8 +22,7 @@ JCLogger logger = JCLoggerFactory.getLogger("query ticket:");
 if (!qk.startsWith("so-")) {
     //return new RespModel(errorCode: 901001, errorMessage: DataUtils.toUnicode("无效的自营快捷入场码"), status: 0)
 
-    RespModel errMod = new RespModel(errorCode: 901001, errorMessage: DataUtils.toUnicode("无效的自营快捷入场码"), status: 0,
-            data: new RespData(ticket: new RespTicket()))
+    RespModel errMod = new RespModel(errorCode: 901001, errorMessage: DataUtils.toUnicode("无效的自营快捷入场码"), status: 0, data: null);
 
     return new RespWrapper(res: errMod);
 }
@@ -32,8 +31,7 @@ try {
     qk = qk.split(",")
     qk = qk[0] + "," + qk[1]
 } catch (e) {
-    RespModel errMod = new RespModel(errorCode: 901002, errorMessage: DataUtils.toUnicode("电子票无效"), status: 0,
-            data: new RespData(ticket: new RespTicket()))
+    RespModel errMod = new RespModel(errorCode: 512404, errorMessage: DataUtils.toUnicode("电子票无效"), status: 0, data: null);
     return new RespWrapper(res: errMod);
 }
 
@@ -49,8 +47,7 @@ if(query_result && query_result.available) {
 }
 
 if (ret_data == null) {
-    RespModel errMod = new RespModel(errorCode: 901003, errorMessage: DataUtils.toUnicode(query_result.messages[1]), status: 0,
-            data: new RespData(ticket: new RespTicket()));
+    RespModel errMod = new RespModel(errorCode: 512404, errorMessage: DataUtils.toUnicode(query_result.messages[1]), status: 0, data: null);
     return new RespWrapper(res: errMod);
 }
 
@@ -106,8 +103,7 @@ try {
     return respModel;
 } catch (e) {
     logger.error("闸机检票服务异常", e)
-    RespModel errMod = new RespModel(errorCode: 909999, errorMessage: DataUtils.toUnicode("检票服务调试中"), status: 0,
-            data: new RespData(ticket: new RespTicket()))
+    RespModel errMod = new RespModel(errorCode: 909999, errorMessage: DataUtils.toUnicode("检票服务调试中"), status: 0, data: null);
     return new RespWrapper(res: errMod);
 }
 
