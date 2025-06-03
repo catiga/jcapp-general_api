@@ -100,7 +100,7 @@ try {
     respData.serviceFee = "0.00";
 
     RespModel respModel = new RespModel(status: 1, errorMessage: "", errorCode: 0, data: new RespData(ticket: respData));
-    return respModel;
+    return new RespWrapper(res: respModel);
 } catch (e) {
     logger.error("闸机检票服务异常", e)
     RespModel errMod = new RespModel(errorCode: 909999, errorMessage: DataUtils.toUnicode("检票服务调试中"), status: 0, data: null);
