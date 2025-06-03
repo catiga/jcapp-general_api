@@ -1,7 +1,9 @@
 package com.lengjiabao.general_api.entry.api.gate
 
 class RespModel {
-    int status;
+    Integer status;
     String errorMessage;
-    int errorCode;
+    Integer errorCode;
+
+    RespData data;
 }

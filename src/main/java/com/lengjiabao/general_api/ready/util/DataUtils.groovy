@@ -43,6 +43,11 @@ class DataUtils {
 		}
 		return sb.toString()
 	}
+
+	static String generateThreeDigitRandomNumber() {
+		int number = (int) (Math.random() * 900) + 100 // 生成 100 到 999 的随机整数
+		return String.valueOf(number)
+	}
 	
 	public static void main(String[] argc) {
 		String a = "12200.00";
