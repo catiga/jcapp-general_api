@@ -41,7 +41,7 @@ def sort_plans(def now_plans, def key) {
 def cinema_id = JC.request.param('cinema_id');
 def aaaa = JC.internal.call('ticketingsys', '/api/movies', [cinema_id:cinema_id]);
 JCLogger logger  = JCLoggerFactory.getLogger(this.class);
-logger.info("get cinema data {} - {}", cinema_id, aaaa)
+
 try {
 	aaaa = JackSonBeanMapper.jsonToMap(aaaa);
 	def aaaa_data = aaaa['data'];
@@ -58,7 +58,7 @@ try {
 	}
 	aaaa['data'] = aaaa_data;
 }catch(any) {
-	any.printStackTrace();
+	logger.error("city_cinema_movie_list error:", any)
 }
 
 Result result = new Result();
