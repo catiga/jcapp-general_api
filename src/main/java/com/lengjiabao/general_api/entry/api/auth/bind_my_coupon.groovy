@@ -20,5 +20,5 @@ def mobile = accountInfo['mobile'] == null ? "" : accountInfo['mobile'];
 
 logger.info("bind_my_coupon: {}", coupon_code);
 
-SimpleAjax ajax =  JC.internal.call(SimpleAjax,"market", "/coupon/add_code", [pid:pid,ap_id:ap_id,mobile:mobile]);
+SimpleAjax ajax =  JC.internal.call(SimpleAjax,"market", "/coupon/add_code", [pid:pid,ap_id:ap_id,mobile:mobile, coupon_code:coupon_code]);
 return ajax;
