@@ -1,9 +1,13 @@
 package com.lengjiabao.general_api.entry.ex.call.auth
 
 import com.jeancoder.app.sdk.JC
+import com.jeancoder.core.log.JCLogger
+import com.jeancoder.core.log.JCLoggerFactory
 import com.jeancoder.core.result.Result
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 import com.lengjiabao.general_api.ready.ypcall.GeneralPub
+
+JCLogger logger = JCLoggerFactory.getLogger("uni_pay");
 
 def domain = JC.request.get().getServerName();
 def tnum = JC.request.param("tnum");

@@ -11,6 +11,7 @@ import com.lengjiabao.general_api.ready.util.GlobalHolder
 import com.lengjiabao.general_api.ready.util.JackSonBeanMapper
 import com.lengjiabao.general_api.ready.ypcall.GeneralPub
 
+// qk=44017401so-341371,358802,717  说明 影城编码 so- 取票码1，取票码2 随机数
 def pid = GlobalHolder.pid;
 def qk = JC.request.param('qk');
 def modify_status = JC.request.param('modify_status');
@@ -18,6 +19,12 @@ def modify_status = JC.request.param('modify_status');
 def originalQk = qk;
 
 JCLogger logger = JCLoggerFactory.getLogger("query ticket:");
+if (qk.length() < 10) {
+    RespModel errMod = new RespModel(errorCode: 901001, errorMessage: DataUtils.toUnicode("无效的自营快捷入场码"), status: 0, data: null);
+
+    return new RespWrapper(res: errMod);
+}
+qk = qk.substring("44017401".length())
 
 if (!qk.startsWith("so-")) {
     //return new RespModel(errorCode: 901001, errorMessage: DataUtils.toUnicode("无效的自营快捷入场码"), status: 0)
@@ -26,6 +33,7 @@ if (!qk.startsWith("so-")) {
 
     return new RespWrapper(res: errMod);
 }
+
 qk = qk.substring("so-".length())
 try {
     qk = qk.split(",")
