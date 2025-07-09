@@ -19,12 +19,6 @@ def modify_status = JC.request.param('modify_status');
 def originalQk = qk;
 
 JCLogger logger = JCLoggerFactory.getLogger("query ticket:");
-if (qk.length() < 10) {
-    RespModel errMod = new RespModel(errorCode: 901001, errorMessage: DataUtils.toUnicode("无效的自营快捷入场码"), status: 0, data: null);
-
-    return new RespWrapper(res: errMod);
-}
-qk = qk.substring("44017401".length())
 
 if (!qk.startsWith("so-")) {
     //return new RespModel(errorCode: 901001, errorMessage: DataUtils.toUnicode("无效的自营快捷入场码"), status: 0)
