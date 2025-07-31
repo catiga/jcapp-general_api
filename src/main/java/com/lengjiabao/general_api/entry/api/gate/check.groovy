@@ -20,7 +20,8 @@ def originalQk = qk;
 
 JCLogger logger = JCLoggerFactory.getLogger("query ticket:");
 
-if (!qk.startsWith("so-")) {
+//if (!qk.startsWith("so-")) {
+if (!qk.matches("^([0-9]{8})?so-.*")) {
     //return new RespModel(errorCode: 901001, errorMessage: DataUtils.toUnicode("无效的自营快捷入场码"), status: 0)
 
     RespModel errMod = new RespModel(errorCode: 901001, errorMessage: DataUtils.toUnicode("无效的自营快捷入场码"), status: 0, data: null);
@@ -28,7 +29,19 @@ if (!qk.startsWith("so-")) {
     return new RespWrapper(res: errMod);
 }
 
-qk = qk.substring("so-".length())
+//qk = qk.substring("so-".length())
+def soIndex = qk.indexOf("so-")
+if (soIndex == -1) {
+    // 说明格式不合法
+    RespModel errMod = new RespModel(
+            errorCode: 901001,
+            errorMessage: DataUtils.toUnicode("无效的自营快捷入场码"),
+            status: 0,
+            data: null
+    )
+    return new RespWrapper(res: errMod)
+}
+qk = qk.substring(soIndex + "so-".length())
 try {
     qk = qk.split(",")
     qk = qk[0] + "," + qk[1]
