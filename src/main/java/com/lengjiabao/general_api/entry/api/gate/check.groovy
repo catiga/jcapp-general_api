@@ -102,12 +102,12 @@ try {
     respData.printed = "0";
     respData.printTime = "";
     respData.printChannel = "self";
-    respData.screenCode = "123456";
+    respData.screenCode = orderData["hall_id"];
     respData.cinePlayId = "";
     respData.according = "1";
     respData.sellTime = "";
     respData.ticketType = DataUtils.toUnicode("成人票")
-    respData.seatId = "123456"
+    respData.seatId = "123456" + DataUtils.generateThreeDigitRandomNumber();
     respData.handleFee = "0.00";
     respData.qrCode = originalQk;
     respData.serviceName = "";
