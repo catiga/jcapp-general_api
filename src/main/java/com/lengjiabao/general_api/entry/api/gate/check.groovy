@@ -103,7 +103,7 @@ try {
     respData.printTime = "";
     respData.printChannel = "self";
     respData.screenCode = orderData["hall_id"];
-    respData.cinePlayId = orderData["hall_id"];
+    respData.cinePlayId = orderData["plan_id"];
     respData.according = "1";
     respData.sellTime = "";
     respData.ticketType = DataUtils.toUnicode("成人票")
