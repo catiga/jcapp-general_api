@@ -85,7 +85,7 @@ try {
 
     RespTicket respData = new RespTicket();
     respData.ticketNumber = orderData["order_no"];
-    respData.ticketNo = orderData["order_no"];
+    respData.ticketNo = '440127110QzE6U8';//orderData["order_no"];
     respData.seatCode = orderData["order_no"] + DataUtils.generateThreeDigitRandomNumber();
     respData.cinemaName = DataUtils.toUnicode(orderData["store_name"]);
     respData.movieName = DataUtils.toUnicode(orderData["film_name"]);
@@ -96,13 +96,13 @@ try {
     respData.price = orderData["pay_amount"];
 
 
-    respData.movieCode = "123456";
+    respData.movieCode = orderData["film_no"];
     respData.row = "4";
     respData.column = "5";
     respData.printed = "0";
     respData.printTime = "";
     respData.printChannel = "self";
-    respData.screenCode = orderData["hall_id"];
+    respData.screenCode = '0000000000000002';//orderData["hall_id"];
     respData.cinePlayId = orderData["plan_id"];
     respData.according = "1";
     respData.sellTime = "";
