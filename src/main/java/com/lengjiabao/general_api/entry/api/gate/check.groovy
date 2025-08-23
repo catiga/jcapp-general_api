@@ -82,6 +82,12 @@ for (x in ret_data[1]) {
 try {
     def orderData = ret_data[0];
     def orderSeats = ret_data[1];
+    def cinemaHall = ret_data[2];
+    def screen_code = orderData["hall_id"];
+    if (cinemaHall != null) {
+        screen_code = cinemaHall['screen_code'];
+    }
+
 
     RespTicket respData = new RespTicket();
     respData.ticketNumber = orderData["order_no"];
@@ -102,7 +108,7 @@ try {
     respData.printed = "0";
     respData.printTime = "";
     respData.printChannel = "self";
-    respData.screenCode = '0000000000000002';//orderData["hall_id"];
+    respData.screenCode = screen_code;//orderData["hall_id"];
     respData.cinePlayId = orderData["plan_id"];
     respData.according = "1";
     respData.sellTime = "";
